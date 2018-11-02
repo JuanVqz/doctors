@@ -43,9 +43,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
-  #gem 'capybara', '>= 2.15'
-  #gem 'selenium-webdriver'
-  #gem 'chromedriver-helper'
+  gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 group :development do

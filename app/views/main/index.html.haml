@@ -1,1 +1,119 @@
-%h1 main#index
+%section.hero
+  .hero-body
+    .container
+      - if request.subdomain.present?
+        = link_to new_user_session_path, class: "button is-link is-inverted is-pulled-right" do
+          %span.icon
+            %i.fas.fa-user
+          %span Iniciar sesión
+      %h1.title Doctor X
+      %h2.subtitle Sistema de Historial Clinico
+
+%section.section.has-background-light
+  .container
+    .columns
+      .column
+        .media.notification.is-info
+          %figure.media-left
+            %span.icon.is-medium
+              %i.fa.fa-2x.fa-bell
+          .media-content
+            .content
+              %h1.title.is-size-4 Sistema web
+              %p.is-size-5
+                En la gestión médica mucho ha cambiado en los últimos años gracias a la introducción de los programas informáticos en las clínicas. El día a día de los doctores ha dado un salto de calidad en la manera en la cual administran documentos y tienen contacto indirecto con sus pacientes.
+      .column
+        .media.notification.is-warning
+          %figure.media-left
+            %span.icon.is-medium
+              %i.fa.fa-2x.fa-check-circle
+          .media-content
+            .content
+              %h1.title.is-size-4 Beneficios
+              %p.is-size-5
+                La automatización de ciertas tareas por medio de un software online permite que un paciente reciba un mensaje avisando de una cita próxima. De esta manera el paciente recuerde la cita, independientemente del período de tiempo que haya pasado desde su última visita.
+      .column
+        .media.notification.is-primary
+          %figure.media-left
+            %span.icon.is-medium
+              %i.fa.fa-2x.fa-plus
+          .media-content
+            .content
+              %h1.title.is-size-4 Disponibilidad
+              %p.is-size-5
+                El programa se puede utilizar desde distintos dispositivos, sin necesidad de que el paciente deba desplazarse a un lugar concreto en el que sea almacenado su historial. Cualquier clínica conectada al usuario puede trabajar con la información contenida en sus archivos.
+
+%section.section
+  .container
+    .columns.is-multiline
+      .column.is-one-third
+        .media.notification.has-background-white
+          %figure.media-left
+            %span.icon
+              %i.fa.fa-lg.fa-address-card
+          .media-content
+            .content
+              %h1.title.is-size-4 Pacientes
+              %p.subtitle.is-size-5
+                Un historial médico es una recopilación de información acerca de un paciente que se puede utilizar para comprender mejor cualquier problema de salud.
+      .column.is-one-third
+        .media.notification.has-background-white
+          %figure.media-left
+            %span.icon
+              %i.fa.fa-lg.fa-book
+          .media-content
+            .content
+              %h1.title.is-size-4 Consultas
+              %p.subtitle.is-size-5
+                El motivo o razón de consulta médica es la expresión del paciente por la que solicita atención sanitaria al profesional de salud.
+      .column.is-one-third
+        .media.notification.has-background-white
+          %figure.media-left
+            %span.icon
+              %i.fa.fa-lg.fa-bookmark
+          .media-content
+            .content
+              %h1.title.is-size-4 Recetas
+              %p.subtitle.is-size-5
+                La receta es una orden escrita emitida por el médico. (prescripción) para que se surta o dispense uno o varios medicamentos y otros insumos.
+      .column.is-one-third
+        .media.notification.has-background-white
+          %figure.media-left
+            %span.icon
+              %i.fa.fa-lg.fa-flask
+          .media-content
+            .content
+              %h1.title.is-size-4 Laboratorio
+              %p.subtitle.is-size-5
+                La implementación de un laboratorio clínico moderno es una necesidad actual debido a una creciente solicitud de exámenes.
+      .column.is-one-third
+        .media.notification.has-background-white
+          %figure.media-left
+            %span.icon
+              %i.fa.fa-lg.fa-heart
+          .media-content
+            .content
+              %h1.title.is-size-4 Hospitalización
+              %p.subtitle.is-size-5
+                Este servicio está orientado a proporcionar cuidados básicos y especializados seguros en ambiente hospitalario confortable
+      .column.is-one-third
+        .media.notification.has-background-white
+          %figure.media-left
+            %span.icon
+              %i.fa.fa-lg.fa-thumbs-up
+          .media-content
+            .content
+              %h1.title.is-size-4 Diagnosticos
+              %p.subtitle.is-size-5
+                Un buen diagnóstico médico debe de comenzar por una anamnesis detallada y exploración física completa.
+
+%footer.footer
+  .content.has-text-centered
+    .columns
+      .column
+        %p.title Doctor X
+      .column
+        %p.title Servicios
+      .column
+        %p.title Contacto
+

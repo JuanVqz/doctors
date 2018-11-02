@@ -215,16 +215,14 @@ es-MX:
     errors:
       <<: *errors
     attributes:
-      empleado/datos_empleado:
-        tipo_contrato: 'Tipo de contrato'
-        periodicidad_pago: 'Periodicidad de pago'
-        salario: 'Salario'
-        tipo_regimen: 'Tipo de régimen'
-        curp: 'CURP'
-        riesgo_puesto: 'Riesgo del puesto'
-      mensaje_correo:
-        mensaje_de_envio: 'Mensaje de envío'
-        mensaje_de_cancelacion: 'Mensaje de cancelación'
+      doctor:
+        name: "Nombre"
+        first_name: "Apellido Paterno"
+        last_name: "Apellido Materno"
+        specialty: "Especialidad"
+        professional_card: "Cédula Profesional"
+        email: "Correo Electronico"
+        password: "Contraseña"
     state_machines:
       states:
         sin_timbre: "Sin timbre"

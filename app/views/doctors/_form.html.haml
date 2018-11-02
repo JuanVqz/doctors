@@ -1,0 +1,38 @@
+-# frozen_string_literal: true
+= simple_form_for(@doctor) do |f|
+  %p.has-text-grey-light.is-uppercase Datos generales
+  .columns.is-multiline
+    .column.is-4
+      = f.input :name
+    .column.is-4
+      = f.input :first_name
+    .column.is-4
+      = f.input :last_name
+    .column.is-4
+      = f.input :specialty
+    .column.is-4
+      = f.input :professional_card
+    .column.is-4
+      .field
+        %label.label Activar/Desactivar
+      = f.input :active
+
+    = f.input :hospital_id, as: :hidden
+
+  %p.has-text-grey-light.is-uppercase Datos de inicio de sesión
+  .columns
+    .column.is-4
+      = f.input :email
+
+    - if f.object.new_record?
+      .column.is-4
+        = f.input :password
+      .column.is-4
+        = f.input :password_confirmation
+
+  .buttons
+    = link_to doctors_path, class: "button is-info" do
+      %span.icon
+        %i.fa.fa-arrow-left
+      %span Regresar
+    = f.button :submit

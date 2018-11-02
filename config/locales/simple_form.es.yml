@@ -10,6 +10,17 @@ es-MX:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Por favor, revise los siguientes problemas:"
+    labels:
+      defaults:
+        name: "Nombre"
+        first_name: "Apellido Paterno"
+        last_name: "Apellido Materno"
+        specialty: "Especialidad"
+        professional_card: "Cédula Profesional"
+        email: "Correo Electrónico"
+        password: "Contraseña"
+        password_confirmation: "Confirmar Contraseña"
+
     # Examples
     # labels:
     #   defaults:

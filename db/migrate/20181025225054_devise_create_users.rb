@@ -15,6 +15,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string  :occupation
       t.string  :referred_by
       t.string  :type
+      t.boolean :active, default: true
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

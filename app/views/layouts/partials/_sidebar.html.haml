@@ -1,0 +1,15 @@
+%aside.menu
+  %p.menu-label
+    MENÚ
+  %ul.menu-list
+    %li
+      %a{ href: "#" }
+        %span.icon
+          %i.fa.fa-caret-right
+        %span Administración
+      %ul
+        %li
+          = link_to doctors_path, class: "#{controller_name == 'doctors' ? 'is-active' : ''}" do
+            %span.icon
+              %i.fa.fa-user-md
+            %span Doctores
