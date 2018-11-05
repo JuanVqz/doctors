@@ -21,7 +21,7 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.new(doctor_params)
 
     if @doctor.save
-      redirect_to doctor_path(@doctor), notice: "Doctor creado correctamente"
+      redirect_to doctor_path(@doctor), notice: "Doctor creado correctamente."
     else
       render :new
     end
@@ -29,7 +29,7 @@ class DoctorsController < ApplicationController
 
   def update
     if @doctor.update(doctor_params)
-      redirect_to doctor_path(@doctor), notice: "Doctor actualizado correctamente"
+      redirect_to doctor_path(@doctor), notice: "Doctor actualizado correctamente."
     else
       render :edit
     end

@@ -8,6 +8,15 @@ module Feature
       click_button "Iniciar Sesión"
     end
 
+    def visit_sign_in_doctor
+      visit new_user_session_path
+      expect(page).to have_current_path(new_user_session_path)
+    end
+
+    def visit_dash_path
+      expect(page).to have_current_path(dash_path)
+    end
+
     def invalid_sign_in hospital
       doctor = create :doctor, hospital: hospital
       fill_in "user_email", with: "invalid@gmail.com"

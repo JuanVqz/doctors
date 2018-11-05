@@ -1,9 +1,8 @@
 require "rails_helper"
 
-RSpec.describe "Doctor's landing", type: :system do
+RSpec.describe "Doctor's flow", type: :system do
   before :each do
     create_subdomain_hospital
-    set_capybara_subdomain @hospital.subdomain
   end
 
   feature "Visit main page with subdomain" do
@@ -130,22 +129,9 @@ RSpec.describe "Doctor's landing", type: :system do
     click_button "Crear Doctor"
   end
 
-  def visit_dash_path
-    expect(page).to have_current_path(dash_path)
-  end
-
   def visit_main_page
     visit "http://ursula.lvh.me"
     expect(page).to have_content "Doctor X"
     expect(page).to have_content "Iniciar sesión"
-  end
-
-  def visit_sign_in_doctor
-    visit new_user_session_path
-    expect(page).to have_current_path(new_user_session_path)
-  end
-
-  def create_subdomain_hospital
-    @hospital = create :hospital, subdomain: "ursula"
   end
 end

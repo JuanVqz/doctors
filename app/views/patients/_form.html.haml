@@ -1,0 +1,32 @@
+-# frozen_string_literal: true
+= simple_form_for(@patient) do |f|
+  %p.has-text-grey-light.is-uppercase Datos generales
+  .columns.is-multiline
+    .column.is-4
+      = f.input :name
+    .column.is-4
+      = f.input :first_name
+    .column.is-4
+      = f.input :last_name
+    .column.is-4
+      .field
+        %label.label Fecha de Nacimiento
+        .control
+          = date_field("patient", "birthday", class: "input", lang: "es")
+    .column.is-4
+      = f.input :height, placeholder: "Altura en centimetros"
+    .column.is-4
+      = f.input :weight, placeholder: "Peso en metros"
+    .column.is-4
+      = f.input :blood_group
+    .column.is-4
+      = f.input :occupation
+    .column.is-4
+      = f.input :referred_by
+
+  .buttons
+    = link_to patients_path, class: "button is-info" do
+      %span.icon
+        %i.fa.fa-arrow-left
+      %span Regresar
+    = f.button :submit

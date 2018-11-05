@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_29_195424) do
+ActiveRecord::Schema.define(version: 2018_11_04_221012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "doctors_patients", id: false, force: :cascade do |t|
+    t.bigint "doctor_id", null: false
+    t.bigint "patient_id", null: false
+    t.index ["doctor_id", "patient_id"], name: "index_doctors_patients_on_doctor_id_and_patient_id"
+    t.index ["patient_id", "doctor_id"], name: "index_doctors_patients_on_patient_id_and_doctor_id"
+  end
 
   create_table "hospitals", force: :cascade do |t|
     t.string "name"
@@ -37,7 +44,7 @@ ActiveRecord::Schema.define(version: 2018_10_29_195424) do
     t.string "referred_by"
     t.string "type"
     t.boolean "active", default: true
-    t.string "email", default: "", null: false
+    t.string "email"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

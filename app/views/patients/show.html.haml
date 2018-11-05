@@ -1,0 +1,59 @@
+.card
+  %header.card-header
+    %p.card-header-title
+      %span.icon
+        %i.fa.fa-users
+      %span.is-uppercase Información del paciente
+  .card-content
+    %p.has-text-grey-light.is-uppercase Datos generales
+    .table-container
+      %table.table.is-hoverable.is-fullwidth
+        %tr
+          %thead
+            %tr
+              %th Ocupación
+              %td= @patient.occupation
+            %tr
+              %th Nombre Completo
+              %td= @patient
+            %tr
+              %th Fecha de cumpleaños
+              %td= @patient.birthday
+            %tr
+              %th Altura
+              %td= "#{@patient.height} cm."
+            %tr
+              %th Peso
+              %td= "#{@patient.weight} kg."
+            %tr
+              %th Grupo Sanguíneo
+              %td= @patient.blood_group
+            %tr
+              %th Referido por:
+              %td= @patient.referred_by.titleize
+
+    %p.has-text-grey-light.is-uppercase Doctores con los que ha tomado consulta
+
+    .table-container
+      %table.table.is-hoverable.is-fullwidth
+        %tr
+          %thead
+            %tr
+              %th Doctor
+              %th Especialidad
+          %tbody
+            - @patient.doctors.each do |doctor|
+              %tr
+                %td= doctor
+                %td= doctor.specialty
+
+    .buttons
+      = link_to patients_path, class: "button is-info" do
+        %span.icon
+          %i.fa.fa-arrow-left
+        %span Regresar
+
+      = link_to edit_patient_path(@patient), class: "button is-warning" do
+        %span.icon
+          %i.fa.fa-edit
+        %span Editar

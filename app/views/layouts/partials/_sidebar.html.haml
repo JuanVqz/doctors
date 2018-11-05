@@ -9,6 +9,11 @@
         %span Administración
       %ul
         %li
+          = link_to patients_path, class: "#{controller_name == 'patients' ? 'is-active' : ''}" do
+            %span.icon
+              %i.fa.fa-users
+            %span Pacientes
+        %li
           = link_to doctors_path, class: "#{controller_name == 'doctors' ? 'is-active' : ''}" do
             %span.icon
               %i.fa.fa-user-md

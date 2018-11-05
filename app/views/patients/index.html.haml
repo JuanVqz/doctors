@@ -1,0 +1,37 @@
+.card
+  %header.card-header
+    %p.card-header-title
+      %span.icon
+        %i.fa.fa-users
+      %span.is-uppercase Pacientes
+    = link_to new_patient_path, class: "button is-small is-link" do
+      %span.icon
+        %i.fa.fa-plus
+      %span Registrar Paciente
+  .card-content
+    .content
+      .table-container
+        %table.table.is-hoverable
+          %thead.is-uppercase
+            %tr
+              %th Ocupación
+              %th Nombre
+              %th Consultas
+              %th Acciones
+
+          %tbody
+            - @patients.each do |patient|
+              %tr
+                %td= patient.occupation
+                %td= patient
+                %td 12
+                %td
+                  .buttons
+                    = link_to patient_path(patient), class: "button is-small is-info" do
+                      %span.icon
+                        %i.fa.fa-eye
+                      %span Detalles
+                    = link_to edit_patient_path(patient), class: "button is-small is-warning" do
+                      %span.icon
+                        %i.fa.fa-edit
+                      %span Editar

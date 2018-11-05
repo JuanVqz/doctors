@@ -140,6 +140,9 @@ es-MX:
     select:
       prompt: Por favor selecciona
     submit:
+      patient:
+        create: Crear Paciente
+        update: Actualizar Paciente
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
@@ -223,6 +226,15 @@ es-MX:
         professional_card: "Cédula Profesional"
         email: "Correo Electronico"
         password: "Contraseña"
+      patient:
+        name: "Nombre"
+        first_name: "Apellido Paterno"
+        last_name: "Apellido Materno"
+        height: "Alto"
+        weight: "Peso"
+        blood_group: "Grupo Sanguíneo"
+        occupation: "Ocupación"
+        referred_by: "Referido por"
     state_machines:
       states:
         sin_timbre: "Sin timbre"

@@ -7,4 +7,8 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && active?
   end
+
+  def to_s
+    "#{name} #{first_name} #{last_name}".titleize
+  end
 end
