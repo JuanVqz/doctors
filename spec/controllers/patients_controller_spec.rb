@@ -4,6 +4,8 @@ RSpec.describe PatientsController, type: :controller do
   let(:hospital) { create :hospital, subdomain: "ursula" }
   let(:doctor) { create :doctor, hospital_id: hospital.id }
 
+  let(:address) { attributes_for :address }
+
   let(:valid_attributes) do
     {
       name: "Marco",
@@ -15,7 +17,8 @@ RSpec.describe PatientsController, type: :controller do
       blood_group: "A+",
       occupation: "Herrero",
       referred_by: "Pedro Ramos",
-      hospital_id: hospital.id
+      hospital_id: hospital.id,
+      address_attributes: address
     }
   end
 
@@ -30,7 +33,8 @@ RSpec.describe PatientsController, type: :controller do
       blood_group: "A+",
       occupation: "Herrero",
       referred_by: "Pedro Ramos",
-      hospital_id: hospital.id
+      hospital_id: hospital.id,
+      address_attributes: address
     }
   end
 
@@ -78,6 +82,12 @@ RSpec.describe PatientsController, type: :controller do
         }.to change(Patient, :count).by(1)
       end
 
+      it "creates a new Address" do
+        expect {
+          post :create, params: { patient: valid_attributes }
+        }.to change(Address, :count).by(1)
+      end
+
       it "redirects to the created doctor" do
         post :create, params: { patient: valid_attributes }
         expect(response).to redirect_to(patient_path(Patient.last))
@@ -98,7 +108,8 @@ RSpec.describe PatientsController, type: :controller do
           blood_group: "A+",
           occupation: "Herrero",
           referred_by: "Pedro Ramos",
-          hospital_id: hospital.id
+          hospital_id: hospital.id,
+          address_attributes: address
         }
       end
 

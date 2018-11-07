@@ -11,6 +11,6 @@ FactoryBot.define do
     referred_by { "Pedro Ramos" }
     type { "Patient" }
     confirmed_at { Time.now }
-    association :doctor, factory: :doctor
+    association :doctors, factory: :doctor
   end
 end

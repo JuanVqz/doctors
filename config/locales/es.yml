@@ -235,6 +235,14 @@ es-MX:
         blood_group: "Grupo Sanguíneo"
         occupation: "Ocupación"
         referred_by: "Referido por"
+      address:
+        street: "Calle"
+        number: "Numero"
+        colony: "Colonia"
+        postal_code: "Código Postal"
+        municipality: "Municipio"
+        state: "Estado"
+        contry: "País"
     state_machines:
       states:
         sin_timbre: "Sin timbre"

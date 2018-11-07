@@ -1,7 +1,9 @@
 - unless flash.empty?
   - if flash[:notice]
-    .notification.is-success
+    #flash.notification.is-success
+      %button.delete
       %p= notice
   - if flash[:alert]
-    .notification.is-danger
+    #flash.notification.is-danger
+      %button.delete
       %p= alert

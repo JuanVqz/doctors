@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Custom gems
 gem 'bulma-extensions-rails'
 gem 'bulma-rails', '~> 0.7.1'
+gem 'cocoon'
 gem 'devise'
 gem 'font-awesome-sass', '~> 5.3.1'
 gem 'haml-rails', '~>1.0'

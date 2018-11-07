@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   constraints(!SubdomainRoutes) do
     authenticated :user do
+      resources :addresses
       resources :doctors
       resources :patients
       root to: "dash#index", as: :dash

@@ -20,6 +20,13 @@ es-MX:
         email: "Correo Electrónico"
         password: "Contraseña"
         password_confirmation: "Confirmar Contraseña"
+        street: "Calle"
+        number: "Número"
+        colony: "Colonia"
+        postal_code: "Código Postal"
+        municipality: "Municipio"
+        state: "Estado"
+        contry: "País"
 
     # Examples
     # labels:

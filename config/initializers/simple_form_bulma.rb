@@ -58,7 +58,7 @@ SimpleForm.setup do |config|
     b.use :placeholder
     b.optional :pattern
     b.optional :readonly
-    b.use :input, class: 'is-hovered', wrap_with: { tag: 'div', class: 'select' }, error_class: 'is-danger', valid_class: 'is-success'
+    b.use :input, wrap_with: { tag: 'div', class: 'select' }
     b.use :full_error, wrap_with: { tag: 'div', class: 'help is-danger' }
     #b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end

@@ -1,7 +1,10 @@
 class Patient < User
-  validates :email, uniqueness: true, allow_nil: true
+  has_one :address, as: :addressable, dependent: :destroy
   has_and_belongs_to_many :doctors, join_table: "doctors_patients"
 
+  accepts_nested_attributes_for :address, allow_destroy: true
+
+  validates :email, uniqueness: true, allow_nil: true
   validates :name, :first_name, :last_name, :birthday,
     :height, :weight, presence: true
 

@@ -54,9 +54,15 @@ RSpec.describe "Patient's flow", type: :system do
     fill_in "patient_birthday", with: "1989-09-19"
     fill_in "patient_height", with: 180
     fill_in "patient_weight", with: 100
-    fill_in "patient_blood_group", with: "A+"
+    find("#patient_blood_group").find(:xpath, "option[2]").select_option
     fill_in "patient_occupation", with: "Herrero"
     fill_in "patient_referred_by", with: "Pedro Ramos"
+    fill_in "patient_address_attributes_street", with: "Cuahutemoc"
+    fill_in "patient_address_attributes_number", with: "12"
+    fill_in "patient_address_attributes_colony", with: "Centro"
+    fill_in "patient_address_attributes_postal_code", with: "68000"
+    fill_in "patient_address_attributes_municipality", with: "Oaxaca"
+    find("#patient_address_attributes_state").find(:xpath, "option[2]").select_option
 
     click_button "Crear Paciente"
   end

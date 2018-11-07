@@ -8,10 +8,19 @@
 
 # Hospitals
 puts "Creating Hospitals"
-hospital_uno = Hospital.where(name: "Primero", subdomain: "uno", description: "Una descripcion para el primer hospital.").first_or_create
-hospital_dos = Hospital.where(name: "Segundo", subdomain: "dos", description: "Una descripcion para el segudo hospital.").first_or_create
+hospital_one = Hospital.where(name: "Primero", subdomain: "uno", description: "Una descripcion para el primer hospital.").first_or_create
+hospital_two = Hospital.where(name: "Segundo", subdomain: "dos", description: "Una descripcion para el segudo hospital.").first_or_create
 
 # Doctors
 puts "Creating Doctors"
-Doctor.create(name: "Pedro Primero", first_name: "Ramírez", last_name: "Sánchez", specialty: "Cirujano Plastico", email: "pedrouno@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_uno.id)
-Doctor.create(name: "Pedro Segundo", first_name: "Santos", last_name: "Pérez", specialty: "Cirujano Dentista", email: "pedrodos@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_dos.id)
+doctor_one = Doctor.create(name: "Pedro Primero", first_name: "Ramírez", last_name: "Sánchez", specialty: "Cirujano Plastico", email: "pedrouno@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_one.id)
+Doctor.create(name: "Pedro Segundo", first_name: "Santos", last_name: "Pérez", specialty: "Cirujano Dentista", email: "pedrodos@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_two.id)
+
+# Patients
+puts "Creating Patients"
+patient_one = Patient.create(name: "Marco", first_name: "Chavez", last_name: "Castro", birthday: "1989-09-19", height: "180", weight: "100", blood_group: "a+", occupation: "Herrero", referred_by: "el Dr. Ramiro", hospital_id: hospital_one.id)
+patient_two = Patient.create(name: "Ignacio", first_name: "Islas", last_name: "Miguel", birthday: "2000-09-19", height: "200", weight: "100", blood_group: "a+", occupation: "Minero", referred_by: "el Dr. Ramiro", hospital_id: hospital_one.id)
+
+# Doctor << Paciente
+puts "Doctor << Patients"
+doctor_one.patients << [patient_one, patient_two]

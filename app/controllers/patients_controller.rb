@@ -10,7 +10,7 @@ class PatientsController < ApplicationController
   end
 
   def new
-    @patient = Patient.new
+    @patient = Patient.new address: Address.new
   end
 
   def edit
@@ -44,7 +44,11 @@ class PatientsController < ApplicationController
   def patient_params
     params.require(:patient).permit(
       :name, :first_name, :last_name, :birthday, :height,
-      :weight, :blood_group, :occupation, :referred_by
+      :weight, :blood_group, :occupation, :referred_by,
+      address_attributes: [
+        :id, :street, :number, :colony, :postal_code, :municipality,
+        :state, :country, :_destroy
+      ]
     )
   end
 end

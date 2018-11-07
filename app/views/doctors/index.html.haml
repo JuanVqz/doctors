@@ -9,27 +9,26 @@
         %i.fa.fa-plus
       %span Registrar Doctor
   .card-content
-    .content
-      .table-container
-        %table.table.is-hoverable
-          %thead.is-uppercase
-            %tr
-              %th Especialidad
-              %th Nombre
-              %th Acciones
+    .table-container
+      %table.table.is-hoverable.is-fullwidth
+        %thead.is-uppercase
+          %tr
+            %th Especialidad
+            %th Nombre
+            %th Acciones
 
-          %tbody
-            - @doctores.each do |doctor|
-              %tr
-                %td= doctor
-                %td= doctor.specialty
-                %td
-                  .buttons
-                    = link_to doctor_path(doctor), class: "button is-small is-info" do
-                      %span.icon
-                        %i.fa.fa-eye
-                      %span Detalles
-                    = link_to edit_doctor_path(doctor), class: "button is-small is-warning" do
-                      %span.icon
-                        %i.fa.fa-edit
-                      %span Editar
+        %tbody
+          - @doctores.each do |doctor|
+            %tr
+              %td= doctor
+              %td= doctor.specialty
+              %td
+                .buttons
+                  = link_to doctor_path(doctor), class: "button is-small is-info" do
+                    %span.icon
+                      %i.fa.fa-eye
+                    %span Detalles
+                  = link_to edit_doctor_path(doctor), class: "button is-small is-warning" do
+                    %span.icon
+                      %i.fa.fa-edit
+                    %span Editar

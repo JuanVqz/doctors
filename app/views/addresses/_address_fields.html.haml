@@ -1,0 +1,15 @@
+= f.simple_fields_for(:address) do |af|
+  .columns.is-multiline
+    .column.is-2
+      = af.input :street
+    .column.is-2
+      = af.input :number
+    .column.is-2
+      = af.input :colony
+    .column.is-2
+      = af.input :postal_code
+    .column.is-2
+      = af.input :municipality
+    .column.is-2
+      %label.label Estado
+      = af.input :state, collection: state_for_select, selected: "Oaxaca", wrapper: :select_form
