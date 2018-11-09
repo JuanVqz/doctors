@@ -143,6 +143,9 @@ es-MX:
       patient:
         create: Crear Paciente
         update: Actualizar Paciente
+      medical_consultation:
+        create: Crear Consulta
+        update: Actualizar Consulta
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
@@ -205,7 +208,7 @@ es-MX:
       long: ! '%A, %d de %B de %Y a las %I:%M %p'
       factura: ! '%d de %B %Y %H:%M hrs'
       factura_sin_hora: ! '%d de %B %Y'
-      listado: ! '%d %b %y'
+      list: ! '%d %b %y'
       short: ! '%d de %b a las %H:%M hrs'
       comprobante: ! '%FT%T'
       day_month_year: ! '%d/%m/%Y'
@@ -243,6 +246,18 @@ es-MX:
         municipality: "Municipio"
         state: "Estado"
         contry: "País"
+      medical_consultation:
+        reason: "Motivo de Consulta"
+        subjetive: "Subjetivo"
+        objetive: "Objetivo"
+        plan: "Plan"
+        diagnosis: "Diagnostico"
+        treatment: "Tratamiento"
+        observations: "Observaciones"
+        prescription: "Receta"
+        lab_results: "Resutaldos de Laboratorio"
+        histopathology: "Histopatologia"
+        comments: "Comentarios"
     state_machines:
       states:
         sin_timbre: "Sin timbre"

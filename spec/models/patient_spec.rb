@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe Patient, type: :model do
   it { should have_one(:address).dependent(:destroy) }
+  it { should have_many :medical_consultations }
   it { should have_and_belong_to_many :doctors }
 
   it { should accept_nested_attributes_for(:address).allow_destroy(true) }

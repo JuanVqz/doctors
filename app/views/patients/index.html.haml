@@ -23,7 +23,7 @@
             %tr
               %td= patient.occupation
               %td= patient
-              %td 12
+              %td= patient.medical_consultations.count
               %td
                 .buttons
                   = link_to patient_path(patient), class: "button is-small is-info" do

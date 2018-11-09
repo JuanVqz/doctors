@@ -1,0 +1,44 @@
+-# frozen_string_literal: true
+= simple_form_for(@medical_consultation) do |f|
+  .columns.is-multiline
+    .column.is-8{ style:"border-right: 1px solid #e5e5e5;"}
+      %p.has-text-grey-light.is-uppercase Datos de consulta
+      .columns.is-multiline
+        .column.is-6
+          = f.association :patient, wrapper: :select_form
+        .column.is-6
+          = f.input :reason
+        .column.is-6
+          = f.input :subjetive
+        .column.is-6
+          = f.input :objetive
+        .column.is-6
+          = f.input :plan
+        .column.is-6
+          = f.input :diagnosis
+        .column.is-6
+          = f.input :treatment
+        .column.is-6
+          = f.input :observations
+      .columns
+        .column
+          = f.input :prescription, input_html: { class: "textarea" }
+
+    = f.input :hospital_id, as: :hidden
+
+    .column.is-4
+      %p.has-text-grey-light.is-uppercase Datos de laboratorio
+      .columns.is-multiline
+        .column.is-6
+          = f.input :lab_results
+        .column.is-6
+          = f.input :histopathology
+        .column
+          = f.input :comments, input_html: { class: "textarea" }
+
+  .buttons
+    = link_to medical_consultations_path, class: "button is-info" do
+      %span.icon
+        %i.fa.fa-arrow-left
+      %span Regresar
+    = f.button :submit
