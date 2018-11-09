@@ -4,7 +4,7 @@
       %span.icon
         %i.fa.fa-book
       %span.is-uppercase Consultas
-    = link_to new_medical_consultation_path, class: "button is-small is-link" do
+    = link_to new_medical_consultation_path, class: "button is-link" do
       %span.icon
         %i.fa.fa-plus
       %span Registrar Consulta
@@ -26,11 +26,11 @@
               %td= medical_consultation.doctor
               %td
                 .buttons
-                  = link_to medical_consultation_path(medical_consultation), class: "button is-small is-info" do
+                  = link_to medical_consultation_path(medical_consultation), class: "button is-info" do
                     %span.icon
                       %i.fa.fa-eye
                     %span Detalles
-                  = link_to edit_medical_consultation_path(medical_consultation), class: "button is-small is-warning" do
+                  = link_to edit_medical_consultation_path(medical_consultation), class: "button is-warning" do
                     %span.icon
                       %i.fa.fa-edit
                     %span Editar

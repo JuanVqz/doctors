@@ -4,7 +4,7 @@
       %span.icon
         %i.fa.fa-user-md
       %span.is-uppercase Doctores
-    = link_to new_doctor_path, class: "button is-small is-link" do
+    = link_to new_doctor_path, class: "button is-link" do
       %span.icon
         %i.fa.fa-plus
       %span Registrar Doctor
@@ -24,11 +24,11 @@
               %td= doctor.specialty
               %td
                 .buttons
-                  = link_to doctor_path(doctor), class: "button is-small is-info" do
+                  = link_to doctor_path(doctor), class: "button is-info" do
                     %span.icon
                       %i.fa.fa-eye
                     %span Detalles
-                  = link_to edit_doctor_path(doctor), class: "button is-small is-warning" do
+                  = link_to edit_doctor_path(doctor), class: "button is-warning" do
                     %span.icon
                       %i.fa.fa-edit
                     %span Editar

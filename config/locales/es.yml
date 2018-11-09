@@ -136,6 +136,10 @@ es-MX:
         one: ! '%{model} no pudo guardarse debido a 1 error'
         other: ! '%{model} no pudo guardarse debido a %{count} errores'
     models:
+      medical_consultation:
+        attributes:
+          patient:
+            required: "El Paciente no puede estar en blanco"
   helpers:
     select:
       prompt: Por favor selecciona
@@ -247,6 +251,7 @@ es-MX:
         state: "Estado"
         contry: "País"
       medical_consultation:
+        patient: "Paciente"
         reason: "Motivo de Consulta"
         subjetive: "Subjetivo"
         objetive: "Objetivo"

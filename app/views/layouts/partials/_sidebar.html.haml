@@ -2,12 +2,11 @@
   %p.menu-label
     MENÚ
   %ul.menu-list
-    - if current_user.patients.present?
-      %li
-        = link_to medical_consultations_path, class: "#{controller_name == 'medical_consultations' ? 'is-active' : ''}" do
-          %span.icon
-            %i.fa.fa-book
-          %span Consultas
+    %li
+      = link_to medical_consultations_path, class: "#{controller_name == 'medical_consultations' ? 'is-active' : ''}" do
+        %span.icon
+          %i.fa.fa-book
+        %span Consultas
     %li
       = link_to patients_path, class: "#{controller_name == 'patients' ? 'is-active' : ''}" do
         %span.icon

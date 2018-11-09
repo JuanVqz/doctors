@@ -5,7 +5,8 @@
       %p.has-text-grey-light.is-uppercase Datos de consulta
       .columns.is-multiline
         .column.is-6
-          = f.association :patient, wrapper: :select_form
+          %label.label{ for: "medical_consultation_patient_id" } Paciente
+          = f.select :patient_id, options_for_select(patients_for_select), { prompt: "Seleccione un paciente" }, class: "select2"
         .column.is-6
           = f.input :reason
         .column.is-6

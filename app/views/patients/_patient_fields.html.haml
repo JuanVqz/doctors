@@ -15,8 +15,8 @@
   .column.is-4
     = f.input :weight, placeholder: "Peso en metros"
   .column.is-4
-    %label.label Grupo sanguíneo
-    = f.input :blood_group, collection: blood_group_for_select, input_html: { css: "is-fullwidth" }, wrapper: :select_form
+    %label.label{ for: "patient_blood_group" } Grupo sanguíneo
+    = f.select :blood_group, options_for_select(blood_groups_for_select), { prompt: "Seleccione un grupo sanguíneo" }, class: "select2"
   .column.is-4
     = f.input :occupation
   .column.is-4
