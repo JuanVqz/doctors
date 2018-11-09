@@ -18,9 +18,14 @@ Doctor.create(name: "Pedro Segundo", first_name: "Santos", last_name: "Pérez", 
 
 # Patients
 puts "Creating Patients"
-patient_one = Patient.create(name: "Marco", first_name: "Chavez", last_name: "Castro", birthday: "1989-09-19", height: "180", weight: "100", blood_group: "a+", occupation: "Herrero", referred_by: "el Dr. Ramiro", hospital_id: hospital_one.id)
-patient_two = Patient.create(name: "Ignacio", first_name: "Islas", last_name: "Miguel", birthday: "2000-09-19", height: "200", weight: "100", blood_group: "a+", occupation: "Minero", referred_by: "el Dr. Ramiro", hospital_id: hospital_one.id)
+patient_one = Patient.create(name: "Marco", first_name: "Chavez", last_name: "Castro", birthday: "1989-09-19", height: "180", weight: "100", blood_group: "A+", occupation: "Herrero", referred_by: "el Dr. Ramiro", hospital_id: hospital_one.id)
+patient_two = Patient.create(name: "Ignacio", first_name: "Islas", last_name: "Miguel", birthday: "2000-09-19", height: "200", weight: "100", blood_group: "O+", occupation: "Minero", referred_by: "el Dr. Ramiro", hospital_id: hospital_one.id)
 
 # Doctor << Paciente
 puts "Doctor << Patients"
 doctor_one.patients << [patient_one, patient_two]
+
+# Doctors
+puts "Creating Medical Consultations"
+MedicalConsultation.create(reason: "Motivo de la consulta", subjetive: "Explicacion del malestar", objetive: "EL objetivo es curar", prescription: "Lo que se le receta al paciente", doctor: doctor_one, patient: patient_one, hospital_id: hospital_one.id)
+MedicalConsultation.create(reason: "Motivo de la consulta", subjetive: "Explicacion del malestar", objetive: "EL objetivo es curar", prescription: "Lo que se le receta al paciente", doctor: doctor_one, patient: patient_two, hospital_id: hospital_one.id)

@@ -27,6 +27,17 @@ es-MX:
         municipality: "Municipio"
         state: "Estado"
         contry: "País"
+        reason: "Motivo de Consulta"
+        subjetive: "Subjetivo"
+        objetive: "Objetivo"
+        plan: "Plan"
+        diagnosis: "Diagnostico"
+        treatment: "Tratamiento"
+        observations: "Observaciones"
+        prescription: "Receta"
+        lab_results: "Resutaldos de Laboratorio"
+        histopathology: "Histopatologia"
+        comments: "Comentarios"
 
     # Examples
     # labels:
