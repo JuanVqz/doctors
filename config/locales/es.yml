@@ -237,7 +237,7 @@ es-MX:
         name: "Nombre"
         first_name: "Apellido Paterno"
         last_name: "Apellido Materno"
-        height: "Alto"
+        height: "Altura"
         weight: "Peso"
         blood_group: "Grupo Sanguíneo"
         occupation: "Ocupación"

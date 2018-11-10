@@ -17,7 +17,7 @@
   .column.is-3
     = f.input :height, placeholder: "Altura en centimetros"
   .column.is-3
-    = f.input :weight, placeholder: "Peso en metros"
+    = f.input :weight, placeholder: "Peso en kilogramos"
   .column.is-3
     %label.label{ for: "patient_blood_group" } Grupo sanguíneo
     = f.select :blood_group, options_for_select(blood_groups_for_select), { prompt: "Seleccione un grupo sanguíneo" }, class: "select2"
