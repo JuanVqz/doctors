@@ -14,9 +14,12 @@ RSpec.describe PatientsController, type: :controller do
       birthday: "1989-09-19",
       height: 180,
       weight: 100,
-      blood_group: "A+",
+      blood_group: "ARH+",
       occupation: "Herrero",
       referred_by: "Pedro Ramos",
+      place_of_birth: "Oaxaca de Juárez",
+      cellphone: "951 123 45 67",
+      sex: "Masculino",
       hospital_id: hospital.id,
       address_attributes: address
     }
@@ -30,9 +33,12 @@ RSpec.describe PatientsController, type: :controller do
       birthday: "1989-09-19",
       height: 180,
       weight: 100,
-      blood_group: "A+",
+      blood_group: "ARH+",
       occupation: "Herrero",
       referred_by: "Pedro Ramos",
+      place_of_birth: "Oaxaca de Juárez",
+      cellphone: "951 123 45 67",
+      sex: "Masculino",
       hospital_id: hospital.id,
       address_attributes: address
     }
@@ -105,9 +111,12 @@ RSpec.describe PatientsController, type: :controller do
           birthday: "1989-09-19",
           height: 180,
           weight: 100,
-          blood_group: "A+",
+          blood_group: "ARH+",
           occupation: "Herrero",
           referred_by: "Pedro Ramos",
+          place_of_birth: "Oaxaca de Juárez",
+          cellphone: "951 123 45 67",
+          sex: "Masculino",
           hospital_id: hospital.id,
           address_attributes: address
         }

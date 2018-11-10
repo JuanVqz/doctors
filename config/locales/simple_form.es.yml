@@ -38,6 +38,10 @@ es-MX:
         lab_results: "Resutaldos de Laboratorio"
         histopathology: "Histopatologia"
         comments: "Comentarios"
+        blood_pressure: "Presion Arterial"
+        place_of_birth: "Lugar de Nacimiento"
+        sex: "Sexo"
+        cellphone: "Celular"
 
     # Examples
     # labels:

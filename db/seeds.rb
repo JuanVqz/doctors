@@ -18,8 +18,14 @@ Doctor.create(name: "Pedro Segundo", first_name: "Santos", last_name: "Pérez", 
 
 # Patients
 puts "Creating Patients"
-patient_one = Patient.create(name: "Marco", first_name: "Chavez", last_name: "Castro", birthday: "1989-09-19", height: "180", weight: "100", blood_group: "A+", occupation: "Herrero", referred_by: "el Dr. Ramiro", hospital_id: hospital_one.id)
-patient_two = Patient.create(name: "Ignacio", first_name: "Islas", last_name: "Miguel", birthday: "2000-09-19", height: "200", weight: "100", blood_group: "O+", occupation: "Minero", referred_by: "el Dr. Ramiro", hospital_id: hospital_one.id)
+patient_one = Patient.create(name: "Marco", first_name: "Chavez", last_name: "Castro", birthday: "1989-09-19", place_of_birth: "Oaxaca de Juárez", sex: "Masculino", cellphone: "951 123 45 67", height: "180", weight: "100", blood_group: "ARH+", occupation: "Herrero", referred_by: "el Dr. Ramiro", hospital_id: hospital_one.id)
+patient_two = Patient.create(name: "Ignacio", first_name: "Islas", last_name: "Miguel", birthday: "2000-09-19", place_of_birth: "Oaxaca de Juárez", sex: "Masculino", cellphone: "951 123 45 67", height: "200", weight: "100", blood_group: "ORH+", occupation: "Minero", referred_by: "el Dr. Ramiro", hospital_id: hospital_one.id)
+
+# Address
+puts "Creating Address"
+Address.create(street: "Morelos", number: "8", colony: "Centro", postal_code: "68000", municipality: "Oaxaca", state: "Oaxaca", country: "México", addressable_type: "Patient", addressable: patient_one)
+Address.create(street: "Benito Juárez", number: "18", colony: "Centro", postal_code: "68000", municipality: "Oaxaca", state: "Oaxaca", country: "México", addressable_type: "Patient", addressable: patient_two)
+
 
 # Doctor << Paciente
 puts "Doctor << Patients"

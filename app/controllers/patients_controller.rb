@@ -45,6 +45,7 @@ class PatientsController < ApplicationController
     params.require(:patient).permit(
       :name, :first_name, :last_name, :birthday, :height,
       :weight, :blood_group, :occupation, :referred_by,
+      :place_of_birth, :sex, :cellphone,
       address_attributes: [
         :id, :street, :number, :colony, :postal_code, :municipality,
         :state, :country, :_destroy

@@ -1,23 +1,30 @@
 .columns.is-multiline
-  .column.is-4
+  .column.is-3
+    = f.input :occupation
+  .column.is-3
     = f.input :name
-  .column.is-4
+  .column.is-3
     = f.input :first_name
-  .column.is-4
+  .column.is-3
     = f.input :last_name
-  .column.is-4
+  .column.is-3
     .field
       %label.label Fecha de Nacimiento
       .control
         = date_field("patient", "birthday", class: "input", lang: "es")
-  .column.is-4
+  .column.is-3
+    = f.input :place_of_birth
+  .column.is-3
     = f.input :height, placeholder: "Altura en centimetros"
-  .column.is-4
+  .column.is-3
     = f.input :weight, placeholder: "Peso en metros"
-  .column.is-4
+  .column.is-3
     %label.label{ for: "patient_blood_group" } Grupo sanguíneo
     = f.select :blood_group, options_for_select(blood_groups_for_select), { prompt: "Seleccione un grupo sanguíneo" }, class: "select2"
-  .column.is-4
-    = f.input :occupation
-  .column.is-4
+  .column.is-3
+    %label.label{ for: "patient_sex" } Sexo
+    = f.select :sex, options_for_select(sexos_for_select), { prompt: "Seleccione el sexo" }, class: "select2"
+  .column.is-3
+    = f.input :cellphone
+  .column.is-3
     = f.input :referred_by

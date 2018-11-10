@@ -13,9 +13,12 @@ RSpec.describe "patients/index", type: :view do
         birthday: "1989-09-19",
         height: "180.0",
         weight: "80.0",
-        blood_group: "A+",
+        blood_group: "ARH+",
         occupation: "Herrero",
         referred_by: "Pedro Ramos",
+        place_of_birth: "Oaxaca de Juárez",
+        cellphone: "951 123 45 67",
+        sex: "Masculino",
         confirmed_at: Time.now,
         doctors: [doctor]
       ),
@@ -26,9 +29,12 @@ RSpec.describe "patients/index", type: :view do
         birthday: "1989-09-19",
         height: "180.0",
         weight: "80.0",
-        blood_group: "A+",
+        blood_group: "ARH+",
         occupation: "Industrial",
         referred_by: "Pedro Ramos",
+        place_of_birth: "Oaxaca de Juárez",
+        cellphone: "951 123 45 67",
+        sex: "Masculino",
         confirmed_at: Time.now,
         doctors: [doctor]
       )

@@ -19,9 +19,6 @@
                   %th Nombre Completo
                   %td= @patient
                 %tr
-                  %th Fecha de cumpleaños
-                  %td= @patient.birthday
-                %tr
                   %th Altura
                   %td= "#{@patient.height} cm."
                 %tr
@@ -30,25 +27,60 @@
                 %tr
                   %th Grupo Sanguíneo
                   %td= @patient.blood_group
-                %tr
-                  %th Referido por:
-                  %td= @patient.referred_by.titleize
 
       .column
-        %p.has-text-grey-light.is-uppercase Doctores con los que ha tomado consulta
-
+        %p.has-text-grey-light.is-uppercase .
         .table-container
           %table.table.is-hoverable.is-fullwidth
             %tr
               %thead
                 %tr
-                  %th Doctor
-                  %th Especialidad
-              %tbody
-                - @patient.doctors.each do |doctor|
-                  %tr
-                    %td= doctor
-                    %td= doctor.specialty
+                  %th Fecha de cumpleaños
+                  %td= @patient.birthday
+                %tr
+                  %th Lugar de Nacimiento
+                  %td= @patient.place_of_birth
+                %tr
+                  %th Celular
+                  %td= @patient.cellphone
+                %tr
+                  %th Sexo
+                  %td= @patient.sex
+                %tr
+                  %th Referido por:
+                  %td= @patient.referred_by.titleize
+    .columns
+      .column
+        %p.has-text-grey-light.is-uppercase Dirección
+        .table-container
+          %table.table.is-hoverable.is-fullwidth
+            %tr
+              %thead
+                %tr
+                  %th Calle
+                  %td= @patient.address.street
+                %tr
+                  %th Número
+                  %td= @patient.address.number
+                %tr
+                  %th Colonia
+                  %td= @patient.address.colony
+      .column
+        %p.has-text-grey-light.is-uppercase .
+        .table-container
+          %table.table.is-hoverable.is-fullwidth
+            %tr
+              %thead
+                %tr
+                  %th Código Postal
+                  %td= @patient.address.postal_code
+                %tr
+                  %th Municipio
+                  %td= @patient.address.municipality
+                %tr
+                  %th Estado
+                  %td= @patient.address.state
+
     .columns
       .column
         %p.has-text-grey-light.is-uppercase Historial de Consultas

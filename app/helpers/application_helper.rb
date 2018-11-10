@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def sexos_for_select
+    ["Masculino", "Femenino"]
+  end
+
   def patients_for_select
     Patient.all.map { |p| [p, p.id] }
   end
@@ -16,6 +20,6 @@ module ApplicationHelper
   end
 
   def blood_groups_for_select
-    ["A+", "O+", "B+", "AB+", "A-", "O-", "B-", "AB-"]
+    ["ARH+", "ORH+", "BRH+", "ABRH+", "ARH-", "ORH-", "BRH-", "ABRH-"]
   end
 end

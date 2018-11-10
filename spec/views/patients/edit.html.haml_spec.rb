@@ -12,9 +12,12 @@ RSpec.describe "patients/edit", type: :view do
       birthday: "1989-09-19",
       height: 100,
       weight: 100,
-      blood_group: "A+",
+      blood_group: "ARH+",
       occupation: "Herrero",
-      referred_by: "Pedro Ramos"
+      referred_by: "Pedro Ramos",
+      place_of_birth: "Oaxaca de Juárez",
+      cellphone: "951 123 45 67",
+      sex: "Masculino"
     ))
   end
 
@@ -31,6 +34,9 @@ RSpec.describe "patients/edit", type: :view do
       assert_select "select[name=?]", "patient[blood_group]"
       assert_select "input[name=?]", "patient[occupation]"
       assert_select "input[name=?]", "patient[referred_by]"
+      assert_select "input[name=?]", "patient[place_of_birth]"
+      assert_select "input[name=?]", "patient[cellphone]"
+      assert_select "select[name=?]", "patient[sex]"
     end
   end
 end

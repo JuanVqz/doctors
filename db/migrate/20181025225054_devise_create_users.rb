@@ -7,6 +7,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string  :first_name
       t.string  :last_name
       t.date    :birthday
+      t.string  :place_of_birth
+      t.string  :sex
+      t.string  :cellphone
       t.decimal :height
       t.decimal :weight
       t.string  :blood_group

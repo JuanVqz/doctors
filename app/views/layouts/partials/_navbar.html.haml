@@ -17,10 +17,10 @@
             .navbar-link
               = current_user.name
             .navbar-dropdown
-              .navbar-item
-                %a
-                  %i.fas.fa-user-circle
-                  Perfil
+              -#.navbar-item
+                -#%a
+                  -#%i.fas.fa-user-circle
+                  -#Perfil
               .navbar-item
                 = link_to destroy_user_session_path, method: :delete do
                   %i.fas.fa-sign-out-alt
