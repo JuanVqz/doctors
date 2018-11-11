@@ -26,11 +26,19 @@
               %td= patient.medical_consultations.count
               %td
                 .buttons
-                  = link_to patient_path(patient), class: "button is-info" do
+                  = link_to new_medical_consultation_path(patient: patient), class: "button is-small is-default" do
+                    %span.icon
+                      %i.fa.fa-book
+                    %span Nueva Consulta
+                  = link_to new_hospitalization_path(patient: patient), class: "button is-small is-default" do
+                    %span.icon
+                      %i.fa.fa-ambulance
+                    %span Nueva Hospitalización
+                  = link_to patient_path(patient), class: "button is-small is-info" do
                     %span.icon
                       %i.fa.fa-eye
                     %span Detalles
-                  = link_to edit_patient_path(patient), class: "button is-warning" do
+                  = link_to edit_patient_path(patient), class: "button is-small is-warning" do
                     %span.icon
                       %i.fa.fa-edit
                     %span Editar

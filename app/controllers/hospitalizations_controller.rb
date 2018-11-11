@@ -16,7 +16,7 @@ class HospitalizationsController < ApplicationController
 
   # GET /hospitalizations/new
   def new
-    @hospitalization = Hospitalization.new(hospital_id: @hospital.id)
+    @hospitalization = Hospitalization.new(hospital_id: @hospital.id, patient_id: params[:patient])
   end
 
   # GET /hospitalizations/1/edit
