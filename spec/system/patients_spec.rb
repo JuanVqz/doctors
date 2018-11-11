@@ -6,19 +6,17 @@ RSpec.describe "Patient's flow", type: :system do
     visit_sign_in_doctor
     sign_in_doctor @hospital
     visit_dash_path
+    visit_patients_path
+    visit_new_patient
   end
 
   feature "Doctor can create a patient" do
     scenario "with valid data" do
-      visit_patients
-      visit_new_patient
       create_new_patient "Marco"
       visit_show_patient
     end
 
     scenario "with invalid data" do
-      visit_patients
-      visit_new_patient
       create_new_patient ""
       expect(page).to have_content "Nombre no puede estar en blanco"
     end
@@ -27,8 +25,6 @@ RSpec.describe "Patient's flow", type: :system do
   feature "Doctor can edit a patient" do
     context "from show patient page" do
       before :each do
-        visit_patients
-        visit_new_patient
         create_new_patient "Marco"
         visit_show_patient
       end

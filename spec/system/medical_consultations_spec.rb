@@ -5,9 +5,9 @@ RSpec.describe "Medical Consultations flow", type: :system do
     create_subdomain_hospital
     visit_sign_in_doctor
     sign_in_doctor @hospital
-    create_patient_for_medical_consultation
+    create_patient
     visit_dash_path
-    visit_patients
+    visit_patients_path
   end
 
   feature "Doctor can create a medical consultation" do
@@ -23,11 +23,11 @@ RSpec.describe "Medical Consultations flow", type: :system do
   def visit_show_medical_consultation
     expect(page).to have_current_path medical_consultation_path MedicalConsultation.last
     expect(page).to have_content "INFORMACIÓN DE LA CONSULTA"
-    expect(page).to have_content(/Marco/)
+    see_patient_name
   end
 
   def create_new_medical_consultation_with_preselected_patient
-    expect(page).to have_content(/Marco/)
+    see_patient_name
     fill_in "medical_consultation_reason", with: "Razón de la consulta"
     fill_in "medical_consultation_subjetive", with: "Subjetivo"
     fill_in "medical_consultation_objetive", with: "Objetivo"
@@ -49,13 +49,5 @@ RSpec.describe "Medical Consultations flow", type: :system do
 
   def click_new_medical_consultation
     click_link "Nueva Consulta"
-  end
-
-  def see_patient_name
-    expect(page).to have_content(/Marco/)
-  end
-
-  def create_patient_for_medical_consultation
-    @patient = create :patient, name: "Marco", doctors: [@doctor]
   end
 end
