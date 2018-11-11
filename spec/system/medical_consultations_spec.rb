@@ -1,0 +1,61 @@
+require "rails_helper"
+
+RSpec.describe "Medical Consultations flow", type: :system do
+  before :each do
+    create_subdomain_hospital
+    visit_sign_in_doctor
+    sign_in_doctor @hospital
+    create_patient_for_medical_consultation
+    visit_dash_path
+    visit_patients
+  end
+
+  feature "Doctor can create a medical consultation" do
+    scenario "from patients list" do
+      see_patient_name
+      click_new_medical_consultation
+      visit_new_medical_consultation_with_patient_id_param
+      create_new_medical_consultation_with_preselected_patient
+      visit_show_medical_consultation
+    end
+  end
+
+  def visit_show_medical_consultation
+    expect(page).to have_current_path medical_consultation_path MedicalConsultation.last
+    expect(page).to have_content "INFORMACIÓN DE LA CONSULTA"
+    expect(page).to have_content(/Marco/)
+  end
+
+  def create_new_medical_consultation_with_preselected_patient
+    expect(page).to have_content(/Marco/)
+    fill_in "medical_consultation_reason", with: "Razón de la consulta"
+    fill_in "medical_consultation_subjetive", with: "Subjetivo"
+    fill_in "medical_consultation_objetive", with: "Objetivo"
+    fill_in "medical_consultation_plan", with: "Plan"
+    fill_in "medical_consultation_diagnosis", with: "Diagnóstico"
+    fill_in "medical_consultation_treatment", with: "Tratamiento"
+    fill_in "medical_consultation_observations", with: "Observaciones"
+    fill_in "medical_consultation_prescription", with: "Receta"
+    fill_in "medical_consultation_lab_results", with: "Resultados de Laboratorio"
+    fill_in "medical_consultation_histopathology", with: "histopatologia"
+    fill_in "medical_consultation_comments", with: "Comentarios"
+
+    click_button "Crear Consulta"
+  end
+
+  def visit_new_medical_consultation_with_patient_id_param
+    expect(page).to have_current_path(new_medical_consultation_path(patient_id: @patient.id))
+  end
+
+  def click_new_medical_consultation
+    click_link "Nueva Consulta"
+  end
+
+  def see_patient_name
+    expect(page).to have_content(/Marco/)
+  end
+
+  def create_patient_for_medical_consultation
+    @patient = create :patient, name: "Marco", doctors: [@doctor]
+  end
+end

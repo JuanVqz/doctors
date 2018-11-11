@@ -16,7 +16,7 @@ class MedicalConsultationsController < ApplicationController
 
   # GET /medical_consultations/new
   def new
-    @medical_consultation = MedicalConsultation.new(hospital_id: @hospital.id, patient_id: params[:patient])
+    @medical_consultation = MedicalConsultation.new(hospital_id: @hospital.id)
   end
 
   # GET /medical_consultations/1/edit

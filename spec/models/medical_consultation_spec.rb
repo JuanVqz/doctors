@@ -8,4 +8,5 @@ RSpec.describe MedicalConsultation, type: :model do
   it { should validate_presence_of :subjetive }
   it { should validate_presence_of :objetive }
   it { should validate_presence_of :prescription }
+  it { should validate_presence_of :patient_id }
 end

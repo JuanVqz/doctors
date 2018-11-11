@@ -4,5 +4,5 @@ class MedicalConsultation < ApplicationRecord
   belongs_to :doctor
   belongs_to :patient
 
-  validates :reason, :subjetive, :objetive, :prescription, presence: true
+  validates :reason, :subjetive, :objetive, :prescription, :patient_id, presence: true
 end

@@ -61,6 +61,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include Feature::AuthenticationHelpers, type: :feature
   config.include Feature::SubdomainHelpers, type: :feature
+  config.include Feature::PatientMethodsHelpers, type: :feature
 
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
