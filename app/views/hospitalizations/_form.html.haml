@@ -1,0 +1,39 @@
+-# frozen_string_literal: true
+= simple_form_for(@hospitalization) do |f|
+  %p.has-text-grey-light.is-uppercase Datos de Hospitalización
+  .columns
+    .column
+      %label.label{ for: "medical_consultation_patient_id" } Paciente
+      = f.select :patient_id, options_for_select(patients_for_select), { prompt: "Seleccione un paciente" }, class: "select2"
+      - if f.object.errors[:patient_id].any?
+        .help.is-danger= f.object.errors[:patient_id].to_sentence
+    .column
+      .field
+        %label.label Inicio
+        .control
+          = date_field("hospitalization", "starting", class: "input #{ f.object.errors[:starting].any? ? 'is-danger' : '' }")
+          - if f.object.errors[:starting].any?
+            .help.is-danger= f.object.errors[:starting].to_sentence
+    .column
+      .field
+        %label.label Final
+        .control
+          = date_field("hospitalization", "ending", class: "input #{ f.object.errors[:starting].any? ? 'is-danger' : '' }")
+          - if f.object.errors[:ending].any?
+            .help.is-danger= f.object.errors[:ending].to_sentence
+    .column
+      = f.input :days_of_stay
+  .columns
+    .column.is-6
+      = f.input :reason_for_hospitalization, input_html: { class: "textarea" }
+    .column.is-6
+      = f.input :treatment, input_html: { class: "textarea" }
+
+    = f.input :hospital_id, as: :hidden
+
+  .buttons
+    = link_to hospitalizations_path, class: "button is-info" do
+      %span.icon
+        %i.fa.fa-arrow-left
+      %span Regresar
+    = f.button :submit

@@ -1,0 +1,52 @@
+.card
+  %header.card-header
+    %p.card-header-title
+      %span.icon
+        %i.fa.fa-ambulance
+      %span.is-uppercase Información de la hospitalización
+  .card-content
+    .columns
+      .column
+        %p.has-text-grey-light.is-uppercase Datos generales
+        .table-container
+          %table.table.is-hoverable.is-fullwidth
+            %tr
+              %thead
+                %tr
+                  %th Doctor
+                  %td= @hospitalization.doctor
+                %tr
+                  %th Paciente
+                  %td= link_to @hospitalization.patient, patient_path(@hospitalization.patient), target: "_blank"
+                %tr
+                  %th Inicio
+                  %td= @hospitalization.starting
+                %tr
+                  %th Final
+                  %td= @hospitalization.ending
+      .column
+        %p.has-text-grey-light.is-uppercase .
+        .table-container
+          %table.table.is-hoverable.is-fullwidth
+            %tr
+              %thead
+                %tr
+                  %th Días de estancia
+                  %td= @hospitalization.days_of_stay
+                %tr
+                  %th Razón de hospitalización
+                  %td= @hospitalization.reason_for_hospitalization
+                %tr
+                  %th Tratamiento
+                  %td= @hospitalization.treatment
+
+    .buttons
+      = link_to hospitalizations_path, class: "button is-info" do
+        %span.icon
+          %i.fa.fa-arrow-left
+        %span Regresar
+
+      = link_to edit_hospitalization_path(@hospitalization), class: "button is-warning" do
+        %span.icon
+          %i.fa.fa-edit
+        %span Editar

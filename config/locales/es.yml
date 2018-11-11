@@ -144,6 +144,9 @@ es-MX:
     select:
       prompt: Por favor selecciona
     submit:
+      hospitalization:
+        create: Crear Hospitalización
+        update: Actualizar Hospitalización
       patient:
         create: Crear Paciente
         update: Actualizar Paciente
@@ -215,7 +218,7 @@ es-MX:
       list: ! '%d %b %y'
       short: ! '%d de %b a las %H:%M hrs'
       comprobante: ! '%FT%T'
-      day_month_year: ! '%d/%m/%Y'
+      day_month_year: ! '%d-%m-%Y'
     pm: pm
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:

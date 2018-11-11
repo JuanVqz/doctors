@@ -42,6 +42,13 @@ es-MX:
         place_of_birth: "Lugar de Nacimiento"
         sex: "Sexo"
         cellphone: "Celular"
+        starting: "Inicio"
+        ending: "Final"
+        days_of_stay: "Días de Estadia"
+        reason_for_hospitalization: "Razón de Hospitalización"
+        treatment: "Tratamiento"
+        doctor: "Doctor"
+        patient: "Paciente"
 
     # Examples
     # labels:
