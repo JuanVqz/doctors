@@ -1,0 +1,36 @@
+.card
+  %header.card-header
+    %p.card-header-title
+      %span.icon
+        %i.fa.fa-ambulance
+      %span.is-uppercase Hospitalizaciónes
+    = link_to new_hospitalization_path, class: "button is-link" do
+      %span.icon
+        %i.fa.fa-plus
+      %span Registrar Hospitalización
+  .card-content
+    .table-container
+      %table.table.is-hoverable.is-fullwidth
+        %thead.is-uppercase
+          %tr
+            %th Inicio
+            %th Final
+            %th Dias de estadia
+            %th Acciones
+
+        %tbody
+          - @hospitalizations.each do |hospitalization|
+            %tr
+              %td= hospitalization.starting
+              %td= hospitalization.ending
+              %td= hospitalization.days_of_stay
+              %td
+                .buttons
+                  = link_to hospitalization_path(hospitalization), class: "button is-info" do
+                    %span.icon
+                      %i.fa.fa-eye
+                    %span Detalles
+                  = link_to edit_hospitalization_path(hospitalization), class: "button is-warning" do
+                    %span.icon
+                      %i.fa.fa-edit
+                    %span Editar

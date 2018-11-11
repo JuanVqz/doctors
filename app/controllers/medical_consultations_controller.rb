@@ -1,4 +1,5 @@
 class MedicalConsultationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_medical_consultation, only: [:show, :edit, :update, :destroy]
   before_action :set_hospital, only: [:new]
 
@@ -29,7 +30,7 @@ class MedicalConsultationsController < ApplicationController
 
     respond_to do |format|
       if @medical_consultation.save
-        format.html { redirect_to @medical_consultation, notice: 'Medical consultation was successfully created.' }
+        format.html { redirect_to @medical_consultation, notice: 'Consulta creada correctamente.' }
         format.json { render :show, status: :created, location: @medical_consultation }
       else
         format.html { render :new }
@@ -43,7 +44,7 @@ class MedicalConsultationsController < ApplicationController
   def update
     respond_to do |format|
       if @medical_consultation.update(medical_consultation_params)
-        format.html { redirect_to @medical_consultation, notice: 'Medical consultation was successfully updated.' }
+        format.html { redirect_to @medical_consultation, notice: 'Consulta actualizada correctamente.' }
         format.json { render :show, status: :ok, location: @medical_consultation }
       else
         format.html { render :edit }

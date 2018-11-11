@@ -8,6 +8,11 @@
           %i.fa.fa-book
         %span Consultas
     %li
+      = link_to hospitalizations_path, class: "#{controller_name == 'hospitalizations' ? 'is-active' : ''}" do
+        %span.icon
+          %i.fa.fa-ambulance
+        %span Hospitalizaciónes
+    %li
       = link_to patients_path, class: "#{controller_name == 'patients' ? 'is-active' : ''}" do
         %span.icon
           %i.fa.fa-users
