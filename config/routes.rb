@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   constraints(!SubdomainRoutes) do
     authenticated :user do
-      resources :addresses
       resources :doctors
       resources :hospitalizations
       resources :medical_consultations
