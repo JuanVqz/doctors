@@ -6,6 +6,9 @@
   %p.has-text-grey-light.is-uppercase Domicilio
   = render "addresses/address_fields", f: f
 
+  %p.has-text-grey-light.is-uppercase Historial Clinico
+  = render "clinic_histories/clinic_history_fields", f: f
+
   .buttons
     = link_to patients_path, class: "button is-info" do
       %span.icon

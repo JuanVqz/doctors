@@ -63,16 +63,18 @@ SimpleForm.setup do |config|
     #b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
-  # bulma vertical input for boolean
+  # bulma extension vertical input for boolean
   config.wrappers :vertical_boolean, tag: 'div', class: 'field' do |b|
     b.use :html5
     b.optional :readonly
-    b.wrapper :form_check_wrapper, tag: 'div', class: 'control' do |bb|
-      bb.use :input, wrap_with: { tag: 'label', class: 'checkbox' }
-      bb.use :label, class: 'checkbox'
+    b.use :input, class: 'is-checkradio is-info'
+    b.use :label
+    #b.wrapper :form_check_wrapper, tag: 'div', class: 'control' do |bb|
+      #bb.use :input, wrap_with: { tag: 'label', class: 'checkbox' }
+      #bb.use :label, class: 'checkbox'
       #bb.use :full_error, wrap_with: { tag: 'div', class: 'help is-danger' }
       #bb.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
-    end
+    #end
   end
 
   ## vertical input for radio buttons and check boxes

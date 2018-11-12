@@ -27,7 +27,6 @@
                 %tr
                   %th Grupo Sanguíneo
                   %td= @patient.blood_group
-
       .column
         %p.has-text-grey-light.is-uppercase .
         .table-container
@@ -49,6 +48,7 @@
                 %tr
                   %th Referido por:
                   %td= @patient.referred_by.titleize
+
     .columns
       .column
         %p.has-text-grey-light.is-uppercase Dirección
@@ -81,31 +81,69 @@
                   %th Estado
                   %td= @patient.address.state
 
+    %p.has-text-grey-light.is-uppercase Historial Clinico
+    .columns.is-multiline
+      - if @patient.clinic_history.description_diabetes?
+        .column.is-4
+          %strong Descripción Diabetes
+          %p= @patient.clinic_history.description_diabetes
+      - if @patient.clinic_history.description_hypertension?
+        .column.is-4
+          %strong Descripción Hipertensión
+          %p= @patient.clinic_history.description_hypertension
+      - if @patient.clinic_history.description_allergic?
+        .column.is-4
+          %strong Descripción Alergia
+          %p= @patient.clinic_history.description_allergic
+        - if @patient.clinic_history.description_traumatic?
+          .column.is-4
+            %strong Descripción Traumátismo
+            %p= @patient.clinic_history.description_traumatic
+        - if @patient.clinic_history.description_transfusion?
+          .column.is-4
+            %strong Descripción Transfusión
+            %p= @patient.clinic_history.description_transfusion
+        - if @patient.clinic_history.description_surgical?
+          .column.is-4
+            %strong Descripción Quirúrgico
+            %p= @patient.clinic_history.description_surgical
+        - if @patient.clinic_history.description_drug_addiction?
+          .column.is-4
+            %strong Descripción Toxicomanías
+            %p= @patient.clinic_history.description_drug_addiction
+        - if @patient.clinic_history.description_cancer?
+          .column.is-4
+            %strong Descripción Cancer
+            %p= @patient.clinic_history.description_cancer
+        - if @patient.clinic_history.description_other?
+          .column.is-4
+            %strong Descripción Otro
+            %p= @patient.clinic_history.description_other
+
     .columns
       .column
         %p.has-text-grey-light.is-uppercase Historial de Consultas
 
         .table-container
           %table.table.is-hoverable.is-fullwidth
-            %tr
-              %thead
+            %thead
+              %tr
+                %th Doctor
+                %th Motivo
+                %th Fecha
+                %th Acciones
+            %tbody
+              - @patient.medical_consultations.each do |mc|
                 %tr
-                  %th Doctor
-                  %th Motivo
-                  %th Fecha
-                  %th Acciones
-              %tbody
-                - @patient.medical_consultations.each do |mc|
-                  %tr
-                    %td= mc.doctor
-                    %td= mc.reason
-                    %td= l mc.created_at, format: :long
-                    %td
-                      = link_to medical_consultation_path(mc), class: "button is-info", target: "_blank" do
-                        %span.icon
-                          %i.fa.fa-eye
-                        %span
-                          Detalles
+                  %td= mc.doctor
+                  %td= mc.reason
+                  %td= l mc.created_at, format: :long
+                  %td
+                    = link_to medical_consultation_path(mc), class: "button is-info", target: "_blank" do
+                      %span.icon
+                        %i.fa.fa-eye
+                      %span
+                        Detalles
 
     .buttons
       = link_to patients_path, class: "button is-info" do

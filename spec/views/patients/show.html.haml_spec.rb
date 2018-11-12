@@ -17,6 +17,7 @@ RSpec.describe "patients/show", type: :view do
       sex: "Masculino"
     ))
     @address = create :address, addressable: @patient
+    @clinic_history = create :clinic_history, patient: @patient
   end
 
   it "renders attributes in <p>" do

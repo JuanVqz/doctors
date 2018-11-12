@@ -26,6 +26,10 @@ puts "Creating Address"
 Address.create(street: "Morelos", number: "8", colony: "Centro", postal_code: "68000", municipality: "Oaxaca", state: "Oaxaca", country: "México", addressable_type: "Patient", addressable: patient_one)
 Address.create(street: "Benito Juárez", number: "18", colony: "Centro", postal_code: "68000", municipality: "Oaxaca", state: "Oaxaca", country: "México", addressable_type: "Patient", addressable: patient_two)
 
+# Clinic Histories
+puts "Creating Clinic History"
+ClinicHistory.create(description_diabetes: "Razón de la diabetes", patient: patient_one)
+ClinicHistory.create(description_hypertension: "Razón de la hipertención", patient: patient_two)
 
 # Doctor << Paciente
 puts "Doctor << Patients"

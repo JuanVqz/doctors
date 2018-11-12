@@ -49,6 +49,16 @@ es-MX:
         treatment: "Tratamiento"
         doctor: "Doctor"
         patient: "Paciente"
+        description_diabetes: "Motivo de Diabetes"
+        description_hypertension: "Motivo de Hipertensión"
+        description_allergic: "Motivo de Alergia"
+        description_traumatic: "Motivo de Traumátismo"
+        description_transfusion: "Motivo de Transfusión"
+        description_surgical: "Motivo Quirúrgico"
+        description_drug_addiction: "Motivo Toxicomanías"
+        description_hereditary: "Motivo Hereditario"
+        description_cancer: "Motivo de Cancer"
+        description_other: "Otro Motivo"
 
     # Examples
     # labels:

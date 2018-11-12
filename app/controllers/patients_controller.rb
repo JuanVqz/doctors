@@ -10,7 +10,7 @@ class PatientsController < ApplicationController
   end
 
   def new
-    @patient = Patient.new address: Address.new
+    @patient = Patient.new(address: Address.new, clinic_history: ClinicHistory.new)
   end
 
   def edit
@@ -49,6 +49,13 @@ class PatientsController < ApplicationController
       address_attributes: [
         :id, :street, :number, :colony, :postal_code, :municipality,
         :state, :country, :_destroy
+      ],
+      clinic_history_attributes: [
+        :id, :description_diabetes, :description_hypertension,
+        :description_allergic, :description_traumatic,
+        :description_transfusion, :description_surgical,
+        :description_drug_addiction, :description_cancer,
+        :description_other, :patien_id, :_destroy
       ]
     )
   end
