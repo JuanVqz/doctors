@@ -27,6 +27,9 @@
                 %tr
                   %th Objetivo
                   %td= @medical_consultation.objetive
+                %tr
+                  %th Receta
+                  %td= @medical_consultation.prescription
       .column.is-6
         %p.has-text-grey-light.is-uppercase .
         .table-container
@@ -46,8 +49,8 @@
                   %th Observación
                   %td= @medical_consultation.observations
                 %tr
-                  %th Receta
-                  %td= @medical_consultation.prescription
+                  %th Fecha de registro
+                  %td= l @medical_consultation.created_at, format: :long
     .columns
       .column
         %p.has-text-grey-light.is-uppercase Resultado de Laboratorio
@@ -69,7 +72,12 @@
       = link_to medical_consultations_path, class: "button is-info" do
         %span.icon
           %i.fa.fa-arrow-left
-        %span Regresar
+        %span Lista de Consultas
+
+      = link_to patient_path(@medical_consultation.patient), class: "button is-success" do
+        %span.icon
+          %i.fa.fa-user
+        %span Ir al Detalle del Paciente
 
       = link_to edit_medical_consultation_path(@medical_consultation), class: "button is-warning" do
         %span.icon

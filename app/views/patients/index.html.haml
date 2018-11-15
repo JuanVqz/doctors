@@ -13,17 +13,17 @@
       %table.table.is-hoverable.is-fullwidth
         %thead.is-uppercase
           %tr
-            %th Ocupación
             %th Nombre
-            %th Consultas
+            %th Edad
+            %th Fecha de Registro
             %th Acciones
 
         %tbody
           - @patients.each do |patient|
             %tr
-              %td= patient.occupation
               %td= patient
-              %td= patient.medical_consultations.count
+              %td= age patient
+              %td= l patient.created_at, format: :day_month_year
               %td
                 .buttons
                   = link_to new_medical_consultation_path(patient_id: patient.id), class: "button is-default" do

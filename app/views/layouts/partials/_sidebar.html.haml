@@ -3,6 +3,11 @@
     MENÚ
   %ul.menu-list
     %li
+      = link_to patients_path, class: "#{controller_name == 'patients' ? 'is-active' : ''}" do
+        %span.icon
+          %i.fa.fa-users
+        %span Pacientes
+    %li
       = link_to medical_consultations_path, class: "#{controller_name == 'medical_consultations' ? 'is-active' : ''}" do
         %span.icon
           %i.fa.fa-book
@@ -12,11 +17,6 @@
         %span.icon
           %i.fa.fa-ambulance
         %span Hospitalizaciónes
-    %li
-      = link_to patients_path, class: "#{controller_name == 'patients' ? 'is-active' : ''}" do
-        %span.icon
-          %i.fa.fa-users
-        %span Pacientes
     %li
       = link_to doctors_path, class: "#{controller_name == 'doctors' ? 'is-active' : ''}" do
         %span.icon

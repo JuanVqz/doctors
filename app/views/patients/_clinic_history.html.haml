@@ -1,0 +1,37 @@
+.columns.is-multiline
+  - if @patient.clinic_history.description_diabetes?
+    .column.is-4
+      %strong Motivo Diabetes
+      %p= @patient.clinic_history.description_diabetes
+  - if @patient.clinic_history.description_hypertension?
+    .column.is-4
+      %strong Motivo Hipertensión
+      %p= @patient.clinic_history.description_hypertension
+  - if @patient.clinic_history.description_allergic?
+    .column.is-4
+      %strong Motivo Alergia
+      %p= @patient.clinic_history.description_allergic
+    - if @patient.clinic_history.description_traumatic?
+      .column.is-4
+        %strong Motivo Traumátismo
+        %p= @patient.clinic_history.description_traumatic
+    - if @patient.clinic_history.description_transfusion?
+      .column.is-4
+        %strong Motivo Transfusión
+        %p= @patient.clinic_history.description_transfusion
+    - if @patient.clinic_history.description_surgical?
+      .column.is-4
+        %strong Motivo Quirúrgico
+        %p= @patient.clinic_history.description_surgical
+    - if @patient.clinic_history.description_drug_addiction?
+      .column.is-4
+        %strong Motivo Toxicomanías
+        %p= @patient.clinic_history.description_drug_addiction
+    - if @patient.clinic_history.description_cancer?
+      .column.is-4
+        %strong Motivo Cancer
+        %p= @patient.clinic_history.description_cancer
+    - if @patient.clinic_history.description_other?
+      .column.is-4
+        %strong Motivo Otro
+        %p= @patient.clinic_history.description_other

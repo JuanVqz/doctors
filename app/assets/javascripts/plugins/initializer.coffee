@@ -4,6 +4,20 @@
 ready =->
   startAutosize()
   startSelect2()
+  startNavbar()
+  startFlash()
+
+startFlash =->
+  $("#flash").on "click", ->
+    $(this).remove()
+
+startNavbar =->
+  burger = document.querySelector '.burger'
+  nav = document.querySelector '#navMenu'
+
+  burger.addEventListener 'click', ->
+    burger.classList.toggle 'is-active'
+    nav.classList.toggle 'is-active'
 
 startAutosize =->
   autosize($('textarea'))

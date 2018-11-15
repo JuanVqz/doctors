@@ -6,7 +6,7 @@ class MedicalConsultationsController < ApplicationController
   # GET /medical_consultations
   # GET /medical_consultations.json
   def index
-    @medical_consultations = MedicalConsultation.all
+    @medical_consultations = current_user.medical_consultations
   end
 
   # GET /medical_consultations/1

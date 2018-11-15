@@ -45,7 +45,5 @@ RSpec.describe "patients/index", type: :view do
     render
     assert_select "tr>td", :text => "Marco Chavez Castro".to_s, :count => 1
     assert_select "tr>td", :text => "José Ramirez Carrillo".to_s, :count => 1
-    assert_select "tr>td", :text => "Herrero".to_s, :count => 1
-    assert_select "tr>td", :text => "Industrial".to_s, :count => 1
   end
 end

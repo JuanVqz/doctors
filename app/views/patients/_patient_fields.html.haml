@@ -12,6 +12,8 @@
       %label.label Fecha de Nacimiento
       .control
         = date_field("patient", "birthday", class: "input", lang: "es")
+      - if f.object.errors[:birthday].any?
+        .help.is-danger= f.object.errors[:birthday].to_sentence
   .column.is-3
     = f.input :place_of_birth
   .column.is-3

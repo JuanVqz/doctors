@@ -1,0 +1,37 @@
+.columns.is-multiline
+  .column.is-3
+    %strong Ocupación
+    %p= @patient.occupation
+  .column.is-3
+    %strong Nombre Completo
+    %p= @patient
+  .column.is-3
+    %strong Altura
+    %p= "#{@patient.height} cm."
+  .column.is-3
+    %strong Peso
+    %p= "#{@patient.weight} kg."
+  .column.is-3
+    %strong Grupo Sanguíneo
+    %p= @patient.blood_group
+  .column.is-3
+    %strong Edad
+    %p= age @patient
+  .column.is-3
+    %strong Fecha de cumpleaños
+    %p= @patient.birthday
+  .column.is-3
+    %strong Lugar de Nacimiento
+    %p= @patient.place_of_birth
+  .column.is-3
+    %strong Celular
+    %p= @patient.cellphone
+  .column.is-3
+    %strong Sexo
+    %p= @patient.sex
+  .column.is-3
+    %strong Referido por
+    %p= @patient.referred_by.titleize
+  .column.is-3
+    %strong Fecha de Registro
+    %p= l @patient.created_at, format: :long

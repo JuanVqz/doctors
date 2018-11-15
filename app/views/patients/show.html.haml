@@ -1,157 +1,65 @@
-.card
+.card{ "data-no-turbolink": true }
   %header.card-header
     %p.card-header-title
       %span.icon
         %i.fa.fa-users
-      %span.is-uppercase Información del paciente
+      %span.is-uppercase Información del paciente #{ @patient }
   .card-content
-    .columns
-      .column
-        %p.has-text-grey-light.is-uppercase Datos generales
-        .table-container
-          %table.table.is-hoverable.is-fullwidth
-            %tr
-              %thead
-                %tr
-                  %th Ocupación
-                  %td= @patient.occupation
-                %tr
-                  %th Nombre Completo
-                  %td= @patient
-                %tr
-                  %th Altura
-                  %td= "#{@patient.height} cm."
-                %tr
-                  %th Peso
-                  %td= "#{@patient.weight} kg."
-                %tr
-                  %th Grupo Sanguíneo
-                  %td= @patient.blood_group
-      .column
-        %p.has-text-grey-light.is-uppercase .
-        .table-container
-          %table.table.is-hoverable.is-fullwidth
-            %tr
-              %thead
-                %tr
-                  %th Fecha de cumpleaños
-                  %td= @patient.birthday
-                %tr
-                  %th Lugar de Nacimiento
-                  %td= @patient.place_of_birth
-                %tr
-                  %th Celular
-                  %td= @patient.cellphone
-                %tr
-                  %th Sexo
-                  %td= @patient.sex
-                %tr
-                  %th Referido por:
-                  %td= @patient.referred_by.titleize
+    #tabs.tabs.is-boxed
+      %ul
+        %li.is-active{ "data-tab": "general" }
+          %a
+            %span.icon.is-small
+              %i.fa.fa-info
+            %span Datos Generales
+        %li{ "data-tab": "address" }
+          %a
+            %span.icon.is-small
+              %i.fas.fa-map-marker
+            %span Domicilio
+        %li{ "data-tab": "clinic_history" }
+          %a
+            %span.icon.is-small
+              %i.fas.fa-history
+            %span Historial Clinico
+        %li{ "data-tab": "medical_consultations" }
+          %a
+            %span.icon.is-small
+              %i.fas.fa-book
+            %span Consultas
+        %li{ "data-tab": "hospitalizations" }
+          %a
+            %span.icon.is-small
+              %i.fas.fa-ambulance
+            %span Hospitalizaciones
 
-    .columns
-      .column
-        %p.has-text-grey-light.is-uppercase Dirección
-        .table-container
-          %table.table.is-hoverable.is-fullwidth
-            %tr
-              %thead
-                %tr
-                  %th Calle
-                  %td= @patient.address.street
-                %tr
-                  %th Número
-                  %td= @patient.address.number
-                %tr
-                  %th Colonia
-                  %td= @patient.address.colony
-      .column
-        %p.has-text-grey-light.is-uppercase .
-        .table-container
-          %table.table.is-hoverable.is-fullwidth
-            %tr
-              %thead
-                %tr
-                  %th Código Postal
-                  %td= @patient.address.postal_code
-                %tr
-                  %th Municipio
-                  %td= @patient.address.municipality
-                %tr
-                  %th Estado
-                  %td= @patient.address.state
+    #tabs-content
+      %span.is-active{ "data-content": "general" }
+        = render "patients/general"
+      %span{ "data-content": "address" }
+        = render "patients/address"
+      %span{ "data-content": "clinic_history" }
+        = render "patients/clinic_history"
+      %span{ "data-content": "medical_consultations" }
+        = render "patients/medical_consultations"
+      %span{ "data-content": "hospitalizations" }
+        = render "patients/hospitalizations"
 
-    %p.has-text-grey-light.is-uppercase Historial Clinico
-    .columns.is-multiline
-      - if @patient.clinic_history.description_diabetes?
-        .column.is-4
-          %strong Descripción Diabetes
-          %p= @patient.clinic_history.description_diabetes
-      - if @patient.clinic_history.description_hypertension?
-        .column.is-4
-          %strong Descripción Hipertensión
-          %p= @patient.clinic_history.description_hypertension
-      - if @patient.clinic_history.description_allergic?
-        .column.is-4
-          %strong Descripción Alergia
-          %p= @patient.clinic_history.description_allergic
-        - if @patient.clinic_history.description_traumatic?
-          .column.is-4
-            %strong Descripción Traumátismo
-            %p= @patient.clinic_history.description_traumatic
-        - if @patient.clinic_history.description_transfusion?
-          .column.is-4
-            %strong Descripción Transfusión
-            %p= @patient.clinic_history.description_transfusion
-        - if @patient.clinic_history.description_surgical?
-          .column.is-4
-            %strong Descripción Quirúrgico
-            %p= @patient.clinic_history.description_surgical
-        - if @patient.clinic_history.description_drug_addiction?
-          .column.is-4
-            %strong Descripción Toxicomanías
-            %p= @patient.clinic_history.description_drug_addiction
-        - if @patient.clinic_history.description_cancer?
-          .column.is-4
-            %strong Descripción Cancer
-            %p= @patient.clinic_history.description_cancer
-        - if @patient.clinic_history.description_other?
-          .column.is-4
-            %strong Descripción Otro
-            %p= @patient.clinic_history.description_other
-
-    .columns
-      .column
-        %p.has-text-grey-light.is-uppercase Historial de Consultas
-
-        .table-container
-          %table.table.is-hoverable.is-fullwidth
-            %thead
-              %tr
-                %th Doctor
-                %th Motivo
-                %th Fecha
-                %th Acciones
-            %tbody
-              - @patient.medical_consultations.each do |mc|
-                %tr
-                  %td= mc.doctor
-                  %td= mc.reason
-                  %td= l mc.created_at, format: :long
-                  %td
-                    = link_to medical_consultation_path(mc), class: "button is-info", target: "_blank" do
-                      %span.icon
-                        %i.fa.fa-eye
-                      %span
-                        Detalles
-
+    %br
     .buttons
       = link_to patients_path, class: "button is-info" do
         %span.icon
           %i.fa.fa-arrow-left
-        %span Regresar
-
-      = link_to edit_patient_path(@patient), class: "button is-warning" do
+        %span Lista de Pacientes
+      = link_to edit_patient_path(@patient), id: "edit_patient_path", class: "button is-warning" do
         %span.icon
           %i.fa.fa-edit
         %span Editar
+      = link_to new_medical_consultation_path(patient_id: @patient.id), id: "new_medical_consultation_path", class: "button is-default" do
+        %span.icon
+          %i.fa.fa-book
+        %span Nueva Consulta
+      = link_to new_hospitalization_path(patient_id: @patient.id), id: "new_hospitalization_path", class: "button is-default" do
+        %span.icon
+          %i.fa.fa-ambulance
+        %span Nueva Hospitalización

@@ -1,0 +1,12 @@
+.columns
+  .column
+    .table-container
+      %table.table.is-hoverable.is-fullwidth
+        %thead
+          %tr
+            %th Inicio
+            %th Final
+            %th Dias de estadia
+            %th Acciones
+        %tbody
+          = render @patient.hospitalizations

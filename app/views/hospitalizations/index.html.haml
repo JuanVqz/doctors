@@ -13,6 +13,8 @@
       %table.table.is-hoverable.is-fullwidth
         %thead.is-uppercase
           %tr
+            %th Fecha
+            %th Paciente
             %th Inicio
             %th Final
             %th Dias de estadia
@@ -21,6 +23,8 @@
         %tbody
           - @hospitalizations.each do |hospitalization|
             %tr
+              %td= l hospitalization.created_at, format: :list
+              %td= hospitalization.patient
               %td= hospitalization.starting
               %td= hospitalization.ending
               %td= hospitalization.days_of_stay

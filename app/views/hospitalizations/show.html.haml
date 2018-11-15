@@ -39,12 +39,20 @@
                 %tr
                   %th Tratamiento
                   %td= @hospitalization.treatment
+                %tr
+                  %th Fecha de registro
+                  %td= l @hospitalization.created_at, format: :long
 
     .buttons
       = link_to hospitalizations_path, class: "button is-info" do
         %span.icon
           %i.fa.fa-arrow-left
-        %span Regresar
+        %span Lista de Hospitalizaciónes
+
+      = link_to patient_path(@hospitalization.patient), class: "button is-success" do
+        %span.icon
+          %i.fa.fa-user
+        %span Ir al Detalle del Paciente
 
       = link_to edit_hospitalization_path(@hospitalization), class: "button is-warning" do
         %span.icon

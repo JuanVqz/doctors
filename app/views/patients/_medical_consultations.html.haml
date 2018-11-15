@@ -1,0 +1,11 @@
+.columns
+  .column
+    .table-container
+      %table.table.is-hoverable.is-fullwidth
+        %thead
+          %tr
+            %th Motivo
+            %th Fecha
+            %th Acciones
+        %tbody
+          = render @patient.medical_consultations
