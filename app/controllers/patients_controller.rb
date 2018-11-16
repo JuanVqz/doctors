@@ -7,6 +7,8 @@ class PatientsController < ApplicationController
   end
 
   def show
+    @medical_consultations = MedicalConsultation.by_patient(current_user.id, @patient.id)
+    @hospitalizations = Hospitalization.by_patient(current_user.id, @patient.id)
   end
 
   def new

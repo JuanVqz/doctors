@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "patients/show", type: :view do
+  let(:doctor) { create :doctor }
+
   before(:each) do
     @patient = assign(:patient, Patient.create!(
       name: "Marco",
@@ -14,8 +16,12 @@ RSpec.describe "patients/show", type: :view do
       referred_by: "Pedro Ramos",
       place_of_birth: "Oaxaca de Juárez",
       cellphone: "951 123 45 67",
-      sex: "Masculino"
+      sex: "Masculino",
+      hospital_id: doctor.hospital.id,
+      doctors: [doctor]
     ))
+    @medical_consultations = create :medical_consultation, doctor: doctor, patient: @patient, hospital_id: doctor.hospital_id
+    @hospitalizations = create :hospitalization, doctor: doctor, patient: @patient, hospital_id: doctor.hospital_id
     @address = create :address, addressable: @patient
     @clinic_history = create :clinic_history, patient: @patient
   end
