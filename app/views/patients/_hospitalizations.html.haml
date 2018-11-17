@@ -8,5 +8,10 @@
             %th Final
             %th Dias de estadia
             %th Acciones
-        %tbody
+        %tfoot
+          %tr
+            %th{ colspan: 4 }
+              #paginate_hospitalizations
+                = paginate @hospitalizations, remote: true
+        %tbody#hospitalizations
           = render @hospitalizations

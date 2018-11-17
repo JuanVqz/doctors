@@ -1,0 +1,5 @@
+$("#medical_consultations").html("<%= j render @medical_consultations %>")
+$("#paginate_medical_consultations").html("<%= j paginate(@medical_consultations, remote: true).to_s %>")
+
+$("#hospitalizations").html("<%= j render @hospitalizations %>")
+$("#paginate_hospitalizations").html("<%= j paginate(@hospitalizations, remote: true).to_s %>")

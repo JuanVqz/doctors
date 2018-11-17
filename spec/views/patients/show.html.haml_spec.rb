@@ -20,8 +20,13 @@ RSpec.describe "patients/show", type: :view do
       hospital_id: doctor.hospital.id,
       doctors: [doctor]
     ))
-    @medical_consultations = create :medical_consultation, doctor: doctor, patient: @patient, hospital_id: doctor.hospital_id
-    @hospitalizations = create :hospitalization, doctor: doctor, patient: @patient, hospital_id: doctor.hospital_id
+
+    @medical_consultations = create_list :medical_consultation, 2, doctor: doctor, patient: @patient, hospital_id: doctor.hospital_id
+    assign(:medical_consultations, Kaminari.paginate_array(@medical_consultations).page(1))
+
+    @hospitalizations = create_list :hospitalization, 2, doctor: doctor, patient: @patient, hospital_id: doctor.hospital_id
+    assign(:hospitalizations, Kaminari.paginate_array(@hospitalizations).page(1))
+
     @address = create :address, addressable: @patient
     @clinic_history = create :clinic_history, patient: @patient
   end
