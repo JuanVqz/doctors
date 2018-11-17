@@ -156,6 +156,14 @@ es-MX:
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} encontrados"
+          one: "Mostrando <b>1</b> %{entry_name}"
+          other: "Mostrando <b>los %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> en total"
   number:
     currency:
       format:
@@ -291,116 +299,20 @@ es-MX:
         con_cbb: "Con CBB"
       events:
         continuar_timbrando: "Continuar timbrando"
-  will_paginate:
-    previous_label: "&#8592; Anterior"
-    next_label: "Siguiente &#8594;"
-    page_gap: '&hellip;'
-  monologue:
-    posts:
-      pagination:
-        older_posts: "Artículos más antiguos"
-        newer_posts: "Artículos más nuevos"
-      social_sharing:
-        tagline: "¿Te ha gustado el artículo? Compártelo"
-      post:
-        readmore: "Leer más"
-      "404":
-        title: "La página que estas buscando no existe."
-        message: "Comprueba que has escrito bien el nombre, si no es posible que la página se haya movido"
-    sidebar:
-      categories:
-        title: "Categorías"
-      latest_posts:
-        title: "Últimos artículos"
-      latest_tweets:
-        title: "Últimos tweets"
-      tag_cloud:
-        title: "Tags"
-    tags:
-      show:
-        showing_post_with_tag: "Mostrando artículos con la etiqueta"
-        show_all_posts: "Mostrar todos los artículos"
-    admin:
-      login:
-        need_auth: "Tienes que iniciar sesión para acceder a la sección de administración"
-      users:
-        form:
-          email: "Email"
-          name: "Nombre"
-          password: "Contraseña"
-          password_confirmation: "Confirmar contraseña"
-        edit:
-          header: "Editar cuenta"
-          save: "Guardar"
-        new:
-          create: "Crear"
-          header: "Añadir un usuario"
-        create:
-          success: "Usuario creado"
-        delete:
-          removed: "Usuario '%{user}' eliminado correctamente"
-          failed: "No se ha podido eliminar al usuario'%{user}'"
-        index:
-          email: "Email"
-          name: "Nombre"
-          edit: "Editar"
-          delete: "Borrar"
-          create: "Crear"
-      posts:
-        index:
-          title: "Título"
-          edit: "Editar"
-          delete: "Borrar"
-          published: "Sí"
-          not_published: "No publicado"
-          status: "¿Publicado?"
-        new:
-          header: "Nuevo artículo"
-        create:
-          saved: "Artículo creado"
-          saved_with_future_date_and_cache: "Artículo creado: Los artículos con una fecha de publicación futura no se mostrarán a menas que la cache sea borrada ese mismo día. Es muy probable que La cache se haya generado antes de éso y no se refrescará automáticamente."
-        edit:
-          header: "Editar"
-        update:
-          saved_with_future_date_and_cache: "Artículo creado: Los artículos con una fecha de publicación futura no se mostrarán a menas que la cache sea borrada ese mismo día. Es muy probable que La cache se haya generado antes de éso y no se refrescará automáticamente."
-          saved: "Artículo guardado"
-        delete:
-          removed: "Artículo eliminado"
-          fail: "¡Fallo al eliminar el artículo!"
-        form:
-          title: "Título"
-          content: "Contenido"
-          url:
-            caption: "URL<br/><i> Ésto será rellenado por defecto con '%{default_url}'. Puedes escoger tu propia URL. No añadas '%{root}' al principio de la URL.</i>"
-            generated_title: "titulo-del-articulo"
-          published_at: "Publicado en"
-          published: "¿Publicado?"
-          save: "Guardar"
-          preview: "Vista previa"
-          close: "Cerrar"
-          tags: "Tags"
-      comments:
-        show:
-          recent_comments: "Comentarios recientes"
-      cache:
-        show:
-          title: "Gestionar cache"
-          description: "Puedes borrar la cache aquí"
-          files_in_cache: "Estos son los ficheros en cache:"
-          no_files_are_cached: "No hay ningun fichero en cache"
-          delete: "¿Borrar la cache por completo?"
-          confirm: '¿Estás seguro de que quieres borrar la cache por completo?'
-          cache_wiped: "¡La cache se ha borrado!"
-        how_to_enable:
-          warning: "¡No puedes gestionar la cache!"
-          explanations: "Hay ciertos ajustes que no estan correctamente definidos para usar la cache de Monologue. Por favor revisa la documentación de configuración"
-      sessions:
-        new:
-          title: "Iniciar sesión"
-          email: "Email"
-          password: "Contraseña"
-          button: "Iniciar sesión"
-        messages:
-          invalid: "Email o contraseña incorrecto"
-          logged_in: "¡Has iniciado sesión!"
-          logged_out: "¡Has cerrado sesión!"
+  sessions:
+    new:
+      title: "Iniciar sesión"
+      email: "Email"
+      password: "Contraseña"
+      button: "Iniciar sesión"
+    messages:
+      invalid: "Email o contraseña incorrecto"
+      logged_in: "¡Has iniciado sesión!"
+      logged_out: "¡Has cerrado sesión!"
+  views:
+    pagination:
+      first: "&laquo; Primera"
+      last: "Última &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Siguiente &rsaquo;"
+      truncate: "&hellip;"

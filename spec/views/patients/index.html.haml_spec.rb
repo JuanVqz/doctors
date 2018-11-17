@@ -4,7 +4,7 @@ RSpec.describe "patients/index", type: :view do
   let(:doctor) { create :doctor }
 
   before(:each) do
-    assign(:patients, [
+    assign(:patients, Kaminari.paginate_array([
       Patient.create!(
         name: "Marco",
         first_name: "Chavez",
@@ -37,7 +37,7 @@ RSpec.describe "patients/index", type: :view do
         confirmed_at: Time.now,
         doctors: [doctor]
       )
-    ])
+    ]).page(1))
   end
 
   it "renders a list of patients" do

@@ -4,7 +4,7 @@ class DoctorsController < ApplicationController
   before_action :set_hospital, only: [:new]
 
   def index
-    @doctores = Doctor.all
+    @doctores = Doctor.page(params[:page])
   end
 
   def show

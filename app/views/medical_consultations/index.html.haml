@@ -18,6 +18,13 @@
             %th Doctor
             %th Acciones
 
+        %tfoot
+          %tr
+            %th{ colspan: 4 }
+              = paginate @medical_consultations
+              %br
+              = page_entries_info @medical_consultations, entry_name: "consultas medicas"
+
         %tbody
           - @medical_consultations.each do |medical_consultation|
             %tr

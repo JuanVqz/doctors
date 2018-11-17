@@ -8,7 +8,7 @@ RSpec.describe "medical_consultations/index", type: :view do
 
   before(:each) do
     allow(Hospital).to receive(:current_id).and_return hospital.id
-    assign(:medical_consultations, [
+    assign(:medical_consultations, Kaminari.paginate_array([
       MedicalConsultation.create!(
         :reason => "MyText",
         :subjetive => "MyText",
@@ -39,7 +39,7 @@ RSpec.describe "medical_consultations/index", type: :view do
         :doctor_id => doctor.id,
         :patient_id => patient.id
       )
-    ])
+    ]).page(1))
   end
 
   it "renders a list of medical_consultations" do

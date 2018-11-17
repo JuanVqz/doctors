@@ -20,6 +20,13 @@
             %th Dias de estadia
             %th Acciones
 
+        %tfoot
+          %tr
+            %th{ colspan: 6 }
+              = paginate @hospitalizations
+              %br
+              = page_entries_info @hospitalizations, entry_name: "hospitalizaciones"
+
         %tbody
           - @hospitalizations.each do |hospitalization|
             %tr

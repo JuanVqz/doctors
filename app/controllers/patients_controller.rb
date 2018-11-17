@@ -3,7 +3,7 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update]
 
   def index
-    @patients = Patient.all
+    @patients = Patient.page(params[:page])
   end
 
   def show

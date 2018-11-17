@@ -8,7 +8,7 @@ RSpec.describe "hospitalizations/index", type: :view do
 
   before(:each) do
     allow(Hospital).to receive(:current_id).and_return hospital.id
-    assign(:hospitalizations, [
+    assign(:hospitalizations, Kaminari.paginate_array([
       Hospitalization.create!(
         :starting => "2018-11-10",
         :ending => "2018-11-12",
@@ -17,6 +17,7 @@ RSpec.describe "hospitalizations/index", type: :view do
         :treatment => "Tratamiento",
         :doctor_id => doctor.id,
         :patient_id => patient.id,
+        :hospital_id => hospital.id
       ),
       Hospitalization.create!(
         :starting => "2018-11-10",
@@ -26,8 +27,9 @@ RSpec.describe "hospitalizations/index", type: :view do
         :treatment => "Tratamiento",
         :doctor_id => doctor.id,
         :patient_id => patient.id,
+        :hospital_id => hospital.id
       )
-    ])
+    ]).page(1))
   end
 
   it "renders a list of hospitalizations" do

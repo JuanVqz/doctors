@@ -6,7 +6,7 @@ class HospitalizationsController < ApplicationController
   # GET /hospitalizations
   # GET /hospitalizations.json
   def index
-    @hospitalizations = current_user.hospitalizations
+    @hospitalizations = current_user.hospitalizations.page(params[:page])
   end
 
   # GET /hospitalizations/1
