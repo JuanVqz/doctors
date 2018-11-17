@@ -13,29 +13,47 @@ hospital_two = Hospital.where(name: "Segundo", subdomain: "dos", description: "U
 
 # Doctors
 puts "Creating Doctors"
-doctor_one = Doctor.create(name: "Pedro Primero", first_name: "Ramírez", last_name: "Sánchez", specialty: "Cirujano Plastico", email: "pedrouno@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_one.id)
-Doctor.create(name: "Pedro Segundo", first_name: "Santos", last_name: "Pérez", specialty: "Cirujano Dentista", email: "pedrodos@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_two.id)
+doctor_one = Doctor.create(name: "Pedro", first_name: "Ramírez", last_name: "Sánchez", specialty: "Cirujano Plastico", email: "pedrouno@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_one.id)
+Doctor.create(name: "José", first_name: "Mendieta", last_name: "Pérez", specialty: "Cirujano Dentista", email: "jose@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_one.id)
+Doctor.create(name: "Juan", first_name: "Santos", last_name: "Pérez", specialty: "Cirujano Dentista", email: "juan@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_two.id)
 
 # Patients
 puts "Creating Patients"
-patient_one = Patient.create(name: "Marco", first_name: "Chavez", last_name: "Castro", birthday: "1989-09-19", place_of_birth: "Oaxaca de Juárez", sex: "Masculino", cellphone: "951 123 45 67", height: "180", weight: "100", blood_group: "ARH+", occupation: "Herrero", referred_by: "el Dr. Ramiro", hospital_id: hospital_one.id)
-patient_two = Patient.create(name: "Ignacio", first_name: "Islas", last_name: "Miguel", birthday: "2000-09-19", place_of_birth: "Oaxaca de Juárez", sex: "Masculino", cellphone: "951 123 45 67", height: "200", weight: "100", blood_group: "ORH+", occupation: "Minero", referred_by: "el Dr. Ramiro", hospital_id: hospital_one.id)
+patients = [
+  ["Marco", "1989-09-19", "ARH+"],
+  ["Eduardo", "1969-01-09", "ARH+"],
+  ["Ramon", "2009-03-12", "ARH+"],
+  ["Guirnaldo", "1979-06-10", "ARH+"],
+  ["José", "1989-08-14", "ARH+"],
+  ["Abraham", "1999-09-16", "ORH+"],
+  ["Mario", "1979-02-18", "ARH+"],
+  ["Alfonso", "1959-05-12", "ARH-"],
+  ["Isac", "2005-04-14", "ARH+"],
+  ["Carlos", "2004-09-16", "ARH+"],
+  ["Oscar", "1999-01-11", "ORH+"],
+  ["Uriel", "1950-04-21", "ARH+"],
+  ["Jeff", "2001-09-13", "ORH-"],
+  ["Taylor", "2004-03-19", "ORH-"],
+  ["Melvin", "2003-02-17", "ORH-"],
+  ["Yoeman", "2002-05-15", "ORH-"],
+  ["Gabriel", "2005-08-09", "ORH-"],
+  ["David", "1960-02-25", "ORH-"],
+  ["Isidro", "1956-09-28", "ORH-"],
+]
 
-# Address
-puts "Creating Address"
-Address.create(street: "Morelos", number: "8", colony: "Centro", postal_code: "68000", municipality: "Oaxaca", state: "Oaxaca", country: "México", addressable_type: "Patient", addressable: patient_one)
-Address.create(street: "Benito Juárez", number: "18", colony: "Centro", postal_code: "68000", municipality: "Oaxaca", state: "Oaxaca", country: "México", addressable_type: "Patient", addressable: patient_two)
+patients.each do |name, birthday, blood_group|
+  patient = Patient.create(name: name, first_name: "Chavez", last_name: "Castro", birthday: birthday, place_of_birth: "Oaxaca de Juárez", sex: "Masculino", cellphone: "951 123 45 67", height: "180", weight: "100", blood_group: blood_group, occupation: "Herrero", referred_by: "El Dr. Ramiro", hospital_id: hospital_one.id)
 
-# Clinic Histories
-puts "Creating Clinic History"
-ClinicHistory.create(description_diabetes: "Razón de la diabetes", patient: patient_one)
-ClinicHistory.create(description_hypertension: "Razón de la hipertención", patient: patient_two)
+  Address.create(street: "Morelos", number: "8", colony: "Centro", postal_code: "68000", municipality: "Oaxaca", state: "Oaxaca", country: "México", addressable_type: "Patient", addressable: patient)
 
-# Doctor << Paciente
-puts "Doctor << Patients"
-doctor_one.patients << [patient_one, patient_two]
+  ClinicHistory.create(description_diabetes: "Razón de la diabetes", patient: patient)
 
-# Doctors
-puts "Creating Medical Consultations"
-MedicalConsultation.create(reason: "Motivo de la consulta", subjetive: "Explicacion del malestar", objetive: "EL objetivo es curar", prescription: "Lo que se le receta al paciente", doctor: doctor_one, patient: patient_one, hospital_id: hospital_one.id)
-MedicalConsultation.create(reason: "Motivo de la consulta", subjetive: "Explicacion del malestar", objetive: "EL objetivo es curar", prescription: "Lo que se le receta al paciente", doctor: doctor_one, patient: patient_two, hospital_id: hospital_one.id)
+  doctor_one.patients << patient
+
+  (1..4).each do
+    MedicalConsultation.create(reason: "Motivo de la consulta", subjetive: "Explicacion del malestar", objetive: "EL objetivo es curar", prescription: "Lo que se le receta al paciente", doctor: doctor_one, patient: patient, hospital_id: hospital_one.id)
+
+    Hospitalization.create(starting: "2018-11-15", ending: "2018-11-20", doctor: doctor_one, patient: patient, hospital_id: hospital_one.id)
+  end
+end
+
