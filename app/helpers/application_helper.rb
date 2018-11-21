@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def active_for current
+    return "is-active" if request.path.include? current
+  end
+
   def sexos_for_select
     ["Masculino", "Femenino"]
   end

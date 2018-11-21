@@ -8,7 +8,10 @@ Rails.application.routes.draw do
       resources :doctors
       resources :hospitalizations
       resources :medical_consultations
-      resources :patients
+      resources :patients do
+        get :hospitalizations, on: :member
+        get :medical_consultations, on: :member
+      end
       root to: "dash#index", as: :dash
     end
 

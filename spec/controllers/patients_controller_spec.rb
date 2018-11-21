@@ -45,6 +45,7 @@ RSpec.describe PatientsController, type: :controller do
   end
 
   before(:each) do
+    allow(Hospital).to receive(:current_id).and_return hospital.id
     @request.host = "#{hospital.subdomain}.lvh.me"
     sign_in doctor
   end

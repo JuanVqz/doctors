@@ -2,8 +2,8 @@ class Patient < User
   has_one :clinic_history, dependent: :destroy
   has_one :address, as: :addressable, dependent: :destroy
   has_and_belongs_to_many :doctors, join_table: "doctors_patients"
-  has_many :medical_consultations
-  has_many :hospitalizations
+  has_many :medical_consultations, -> { order(created_at: :desc) }
+  has_many :hospitalizations, -> { order(created_at: :desc) }
 
   accepts_nested_attributes_for :clinic_history, allow_destroy: true
   accepts_nested_attributes_for :address, allow_destroy: true
@@ -11,6 +11,8 @@ class Patient < User
   validates :email, uniqueness: true, allow_nil: true
   validates :name, :first_name, :birthday,
     :height, :weight, presence: true
+
+  scope :recent, -> { order(created_at: :desc) }
 
   delegate :street, :number, :colony, :postal_code, :municipality,
     :state, :country, to: :address, prefix: true, allow_nil: true

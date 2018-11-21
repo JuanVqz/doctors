@@ -4,7 +4,7 @@
       %span.icon
         %i.fa.fa-user-md
       %span.is-uppercase Doctores
-    = link_to new_doctor_path, class: "button is-link" do
+    = link_to [:new, :doctor], class: "button is-link" do
       %span.icon
         %i.fa.fa-plus
       %span Registrar Doctor
@@ -15,27 +15,29 @@
           %tr
             %th Especialidad
             %th Nombre
+            %th Fecha de registro
             %th Acciones
 
         %tfoot
           %tr
-            %th{ colspan: 3 }
+            %th{ colspan: 4 }
               = paginate @doctores
               %br
-              = page_entries_info @doctores, entry_name: "doctores"
+              .has-text-right= page_entries_info @doctores, entry_name: "doctores"
 
         %tbody
           - @doctores.each do |doctor|
             %tr
-              %td= doctor
               %td= doctor.specialty
+              %td= doctor
+              %td= l doctor.created_at, format: :not_hour
               %td
                 .buttons
-                  = link_to doctor_path(doctor), class: "button is-info" do
+                  = link_to doctor, class: "button is-link" do
                     %span.icon
                       %i.fa.fa-eye
                     %span Detalles
-                  = link_to edit_doctor_path(doctor), class: "button is-warning" do
+                  = link_to [:edit, doctor], class: "button is-warning" do
                     %span.icon
                       %i.fa.fa-edit
                     %span Editar

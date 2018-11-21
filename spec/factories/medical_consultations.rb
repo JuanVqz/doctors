@@ -11,7 +11,15 @@ FactoryBot.define do
     lab_results { "MyText" }
     histopathology { "MyText" }
     comments { "MyText" }
-    doctor { nil }
-    patient { nil }
+
+    after :build do |medical_consultation|
+      if medical_consultation.doctor.nil?
+        medical_consultation.doctor = create :doctor
+      end
+      if medical_consultation.patient.nil?
+        medical_consultation.patient = create :patient,
+          doctors: [medical_consultation.doctor]
+      end
+    end
   end
 end

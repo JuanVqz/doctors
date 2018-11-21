@@ -17,7 +17,7 @@
                   %td= @hospitalization.doctor
                 %tr
                   %th Paciente
-                  %td= link_to @hospitalization.patient, patient_path(@hospitalization.patient), target: "_blank"
+                  %td= link_to @hospitalization.patient, @hospitalization.patient, target: "_blank"
                 %tr
                   %th Inicio
                   %td= @hospitalization.starting
@@ -44,17 +44,17 @@
                   %td= l @hospitalization.created_at, format: :long
 
     .buttons
-      = link_to hospitalizations_path, class: "button is-info" do
+      = link_to :back, class: "button is-link" do
         %span.icon
           %i.fa.fa-arrow-left
-        %span Lista de Hospitalizaciónes
+        %span Regresar
 
-      = link_to patient_path(@hospitalization.patient), class: "button is-success" do
+      = link_to @hospitalization.patient, class: "button is-success" do
         %span.icon
           %i.fa.fa-user
         %span Ir al Detalle del Paciente
 
-      = link_to edit_hospitalization_path(@hospitalization), class: "button is-warning" do
+      = link_to [:edit, @hospitalization], class: "button is-warning" do
         %span.icon
           %i.fa.fa-edit
         %span Editar

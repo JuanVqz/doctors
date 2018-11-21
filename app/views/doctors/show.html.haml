@@ -25,12 +25,12 @@
               %th Correo Electrónico
               %td= @doctor.email
     .buttons
-      = link_to doctors_path, class: "button is-info" do
+      = link_to doctors_path, class: "button is-link" do
         %span.icon
           %i.fa.fa-arrow-left
         %span Regresar
 
-      = link_to edit_doctor_path(@doctor), class: "button is-warning" do
+      = link_to [:edit, @doctor], class: "button is-warning" do
         %span.icon
           %i.fa.fa-edit
         %span Editar

@@ -6,17 +6,25 @@ RSpec.describe "Medical Consultations flow", type: :system do
     visit_sign_in_doctor
     sign_in_doctor @hospital
     create_patient
+    create_medical_consultations_for_patient
     visit_dash_path
     visit_patients_path
+    see_patient_name
+    click_link_my_medical_consultations
   end
 
   feature "Doctor can create a medical consultation" do
     scenario "from patients list" do
-      see_patient_name
-      click_new_medical_consultation
+      click_link_new_medical_consultation
       visit_new_medical_consultation_with_patient_id_param
       create_new_medical_consultation_with_preselected_patient
       visit_show_medical_consultation
+    end
+  end
+
+  feature "Doctor should look at patient's medical consultations" do
+    scenario "returns 3 medical consultations" do
+      look_at_medical_consultations_for_patient
     end
   end
 
@@ -43,11 +51,21 @@ RSpec.describe "Medical Consultations flow", type: :system do
     click_button "Crear Consulta"
   end
 
+  def click_link_new_medical_consultation
+    click_link "Registrar Consulta"
+  end
+
   def visit_new_medical_consultation_with_patient_id_param
     expect(page).to have_current_path(new_medical_consultation_path(patient_id: @patient.id))
   end
 
-  def click_new_medical_consultation
-    click_link "Nueva Consulta"
+  def click_link_my_medical_consultations
+    click_link "Mis Consultas"
+  end
+
+  def look_at_medical_consultations_for_patient
+    expect(@patient.medical_consultations.count).to eq 3
+    expect(page).to have_content(/CONSULTAS DEL/)
+    expect(page).to have_content(/FECHA/)
   end
 end

@@ -8,7 +8,7 @@
 
 # Hospitals
 puts "Creating Hospitals"
-hospital_one = Hospital.where(name: "Primero", subdomain: "uno", description: "Una descripcion para el primer hospital.").first_or_create
+hospital_one = Hospital.where(name: "Heroku", subdomain: "stark-headland-73197", description: "Una descripcion para el primer hospital.").first_or_create
 hospital_two = Hospital.where(name: "Segundo", subdomain: "dos", description: "Una descripcion para el segudo hospital.").first_or_create
 
 # Doctors

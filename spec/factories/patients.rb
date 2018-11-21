@@ -14,6 +14,11 @@ FactoryBot.define do
     sex { "Masculino" }
     type { "Patient" }
     confirmed_at { Time.now }
-    association :doctors, factory: :doctor
+
+    after :build do |patient|
+      patient.doctors = build_list :doctor, 1
+      patient.clinic_history = build :clinic_history
+      patient.address = build :address
+    end
   end
 end

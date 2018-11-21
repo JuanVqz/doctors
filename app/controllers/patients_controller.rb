@@ -1,14 +1,12 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_patient, only: [:show, :edit, :update]
+  before_action :set_patient, only: [:show, :edit, :update, :hospitalizations, :medical_consultations]
 
   def index
-    @patients = Patient.page(params[:page])
+    @patients = Patient.recent.page(params[:page])
   end
 
   def show
-    @medical_consultations = MedicalConsultation.by_patient(current_user.id, @patient.id).page(params[:page])
-    @hospitalizations = Hospitalization.by_patient(current_user.id, @patient.id).page(params[:page])
   end
 
   def new
@@ -31,10 +29,22 @@ class PatientsController < ApplicationController
 
   def update
     if @patient.update(patient_params)
-      redirect_to patient_path(@patient), notice: "Paciente actualizado correctamente."
+      redirect_to @patient, notice: "Paciente actualizado correctamente."
     else
       render :edit
     end
+  end
+
+  def hospitalizations
+    @hospitalizations = Hospitalization.by_doctor_and_patient(current_user.id, @patient.id)
+      .recent
+      .page(params[:page])
+  end
+
+  def medical_consultations
+    @medical_consultations = MedicalConsultation.by_doctor_and_patient(current_user.id, @patient.id)
+      .recent
+      .page(params[:page])
   end
 
   private

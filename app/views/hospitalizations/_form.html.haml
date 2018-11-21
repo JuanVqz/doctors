@@ -29,10 +29,8 @@
     .column.is-6
       = f.input :treatment, input_html: { class: "textarea" }
 
-    = f.input :hospital_id, as: :hidden
-
   .buttons
-    = link_to :back, class: "button is-info" do
+    = link_to :back, class: "button is-link" do
       %span.icon
         %i.fa.fa-arrow-left
       %span Regresar

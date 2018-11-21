@@ -1,11 +1,19 @@
 FactoryBot.define do
   factory :hospitalization do
-    starting { "2018-11-10" }
-    ending { "2018-11-10" }
-    days_of_stay { "9.99" }
+    starting { "2018-11-11" }
+    ending { "2018-11-16" }
+    days_of_stay { "5" }
     reason_for_hospitalization { "MyText" }
     treatment { "MyText" }
-    doctor { nil }
-    patient { nil }
+
+    after :build do |hospitalization|
+      if hospitalization.doctor.nil?
+        hospitalization.doctor = create :doctor
+      end
+      if hospitalization.patient.nil?
+        hospitalization.patient = create :patient,
+          doctors: [hospitalization.doctor]
+      end
+    end
   end
 end

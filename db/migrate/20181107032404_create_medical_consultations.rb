@@ -14,7 +14,6 @@ class CreateMedicalConsultations < ActiveRecord::Migration[5.2]
       t.text :comments
       t.references :doctor, foreign_key: { to_table: :users }
       t.references :patient, foreign_key: { to_table: :users }
-      t.references :hospital, foreign_key: true
 
       t.timestamps
     end

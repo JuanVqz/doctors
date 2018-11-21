@@ -45,6 +45,5 @@ RSpec.describe "medical_consultations/index", type: :view do
   it "renders a list of medical_consultations" do
     render
     assert_select "tr>td", :text => "Marco Chavez Castro".to_s, :count => 2
-    assert_select "tr>td", :text => "Pedro Pérez Ramos".to_s, :count => 2
   end
 end
