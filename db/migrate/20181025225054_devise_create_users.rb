@@ -17,6 +17,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string  :specialty
       t.string  :occupation
       t.string  :referred_by
+      t.integer :role, default: 1, null: false
       t.string  :type
       t.boolean :active, default: true
 

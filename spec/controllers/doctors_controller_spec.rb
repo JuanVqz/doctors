@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe DoctorsController, type: :controller do
 
   let(:hospital) { create :hospital, subdomain: "ursula" }
-  let(:doctor) { create :doctor, hospital_id: hospital.id }
+  let(:doctor) { create :doctor, hospital_id: hospital.id, role: "admin" }
 
   let(:valid_attributes) do
     {

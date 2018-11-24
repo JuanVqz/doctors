@@ -14,10 +14,11 @@
       = f.input :professional_card
     .column.is-4
       .field
-        %label.label Activar/Desactivar
+        %label.label{ for: "doctor_active" } ¿Puede iniciar sesión?
       = f.input :active
 
     = f.input :hospital_id, as: :hidden
+    = f.input :role, as: :hidden, value: "doctor"
 
   %p.has-text-grey-light.is-uppercase Datos de inicio de sesión
   .columns

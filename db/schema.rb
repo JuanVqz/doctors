@@ -62,11 +62,9 @@ ActiveRecord::Schema.define(version: 2018_11_12_022645) do
     t.text "treatment"
     t.bigint "doctor_id"
     t.bigint "patient_id"
-    t.bigint "hospital_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_hospitalizations_on_doctor_id"
-    t.index ["hospital_id"], name: "index_hospitalizations_on_hospital_id"
     t.index ["patient_id"], name: "index_hospitalizations_on_patient_id"
   end
 
@@ -92,11 +90,9 @@ ActiveRecord::Schema.define(version: 2018_11_12_022645) do
     t.text "comments"
     t.bigint "doctor_id"
     t.bigint "patient_id"
-    t.bigint "hospital_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_medical_consultations_on_doctor_id"
-    t.index ["hospital_id"], name: "index_medical_consultations_on_hospital_id"
     t.index ["patient_id"], name: "index_medical_consultations_on_patient_id"
   end
 
@@ -115,6 +111,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_022645) do
     t.string "specialty"
     t.string "occupation"
     t.string "referred_by"
+    t.integer "role", default: 1, null: false
     t.string "type"
     t.boolean "active", default: true
     t.string "email"
@@ -141,10 +138,8 @@ ActiveRecord::Schema.define(version: 2018_11_12_022645) do
   end
 
   add_foreign_key "clinic_histories", "users", column: "patient_id"
-  add_foreign_key "hospitalizations", "hospitals"
   add_foreign_key "hospitalizations", "users", column: "doctor_id"
   add_foreign_key "hospitalizations", "users", column: "patient_id"
-  add_foreign_key "medical_consultations", "hospitals"
   add_foreign_key "medical_consultations", "users", column: "doctor_id"
   add_foreign_key "medical_consultations", "users", column: "patient_id"
 end

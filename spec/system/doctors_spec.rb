@@ -16,7 +16,7 @@ RSpec.describe "Doctor's flow", type: :system do
       visit_main_page
       click_link "Iniciar sesión"
       visit_sign_in_doctor
-      sign_in_doctor @hospital
+      sign_in_admin_doctor @hospital
       visit_dash_path
     end
 
@@ -32,7 +32,7 @@ RSpec.describe "Doctor's flow", type: :system do
       visit_main_page
       click_link "Iniciar sesión"
       visit_sign_in_doctor
-      sign_in_doctor @hospital
+      sign_in_admin_doctor @hospital
       visit_dash_path
       visit_new_doctor
       create_new_doctor "Pedro"
@@ -43,7 +43,7 @@ RSpec.describe "Doctor's flow", type: :system do
       visit_main_page
       click_link "Iniciar sesión"
       visit_sign_in_doctor
-      sign_in_doctor @hospital
+      sign_in_admin_doctor @hospital
       visit_dash_path
       visit_new_doctor
       create_new_doctor ""
@@ -57,7 +57,7 @@ RSpec.describe "Doctor's flow", type: :system do
         visit_main_page
         click_link "Iniciar sesión"
         visit_sign_in_doctor
-        sign_in_doctor @hospital
+        sign_in_admin_doctor @hospital
         visit_dash_path
         visit_new_doctor
         create_new_doctor "Pedro"
@@ -77,7 +77,7 @@ RSpec.describe "Doctor's flow", type: :system do
         visit_main_page
         click_link "Iniciar sesión"
         visit_sign_in_doctor
-        sign_in_doctor @hospital
+        sign_in_admin_doctor @hospital
         visit_dash_path
         visit_new_doctor
         create_new_doctor "Pedro"

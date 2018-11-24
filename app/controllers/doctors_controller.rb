@@ -4,21 +4,25 @@ class DoctorsController < ApplicationController
   before_action :set_hospital, only: [:new]
 
   def index
-    @doctores = Doctor.page(params[:page])
+    @doctores = policy_scope(Doctor).page(params[:page])
   end
 
   def show
+    authorize @doctor
   end
 
   def new
     @doctor = Doctor.new(hospital_id: @hospital.id)
+    authorize @doctor
   end
 
   def edit
+    authorize @doctor
   end
 
   def create
     @doctor = Doctor.new(doctor_params)
+    authorize @doctor
 
     if @doctor.save
       redirect_to doctor_path(@doctor), notice: "Doctor creado correctamente."
@@ -28,6 +32,7 @@ class DoctorsController < ApplicationController
   end
 
   def update
+    authorize @doctor
     if @doctor.update(doctor_params)
       redirect_to doctor_path(@doctor), notice: "Doctor actualizado correctamente."
     else
@@ -48,7 +53,8 @@ class DoctorsController < ApplicationController
   def doctor_params
     params.require(:doctor).permit(
       :name, :first_name, :last_name, :specialty, :professional_card,
-      :email, :password, :password_confirmation, :active, :hospital_id
+      :email, :password, :password_confirmation, :active, :hospital_id,
+      :role
     )
   end
 end

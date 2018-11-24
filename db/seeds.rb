@@ -13,7 +13,7 @@ hospital_two = Hospital.where(name: "Segundo", subdomain: "dos", description: "U
 
 # Doctors
 puts "Creating Doctors"
-doctor_one = Doctor.create(name: "Pedro", first_name: "Ramírez", last_name: "Sánchez", specialty: "Cirujano Plastico", email: "pedrouno@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_one.id)
+doctor_one = Doctor.create(name: "Pedro", first_name: "Ramírez", last_name: "Sánchez", specialty: "Cirujano Plastico", email: "pedrouno@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_one.id, role: "admin")
 Doctor.create(name: "José", first_name: "Mendieta", last_name: "Pérez", specialty: "Cirujano Dentista", email: "jose@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_one.id)
 Doctor.create(name: "Juan", first_name: "Santos", last_name: "Pérez", specialty: "Cirujano Dentista", email: "juan@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Time.now, hospital_id: hospital_two.id)
 

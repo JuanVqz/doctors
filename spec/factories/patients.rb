@@ -12,6 +12,7 @@ FactoryBot.define do
     place_of_birth { "Oaxaca de Juárez" }
     cellphone { "951 123 4567" }
     sex { "Masculino" }
+    role { "patient" }
     type { "Patient" }
     confirmed_at { Time.now }
 

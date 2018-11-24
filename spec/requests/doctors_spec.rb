@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Doctors", type: :request do
 
   let(:hospital) { create :hospital, subdomain: "ursula" }
-  let(:doctor) { create :doctor, hospital_id: hospital.id }
+  let(:doctor) { create :doctor, hospital_id: hospital.id, role: "admin" }
 
   before :each do
     allow(Hospital).to receive(:current_id).and_return hospital.id

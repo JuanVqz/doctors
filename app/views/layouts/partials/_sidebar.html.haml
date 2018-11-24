@@ -17,8 +17,9 @@
         %span.icon
           %i.fa.fa-ambulance
         %span Hospitalizaciónes
-    %li
-      = link_to doctors_path, class: active_for(doctors_path) do
-        %span.icon
-          %i.fa.fa-user-md
-        %span Doctores
+    - if is_admin?
+      %li
+        = link_to doctors_path, class: active_for(doctors_path) do
+          %span.icon
+            %i.fa.fa-user-md
+          %span Doctores

@@ -16,8 +16,7 @@ RSpec.describe "hospitalizations/index", type: :view do
         :reason_for_hospitalization => "Razon",
         :treatment => "Tratamiento",
         :doctor_id => doctor.id,
-        :patient_id => patient.id,
-        :hospital_id => hospital.id
+        :patient_id => patient.id
       ),
       Hospitalization.create!(
         :starting => "2018-11-10",
@@ -26,8 +25,7 @@ RSpec.describe "hospitalizations/index", type: :view do
         :reason_for_hospitalization => "Razon",
         :treatment => "Tratamiento",
         :doctor_id => doctor.id,
-        :patient_id => patient.id,
-        :hospital_id => hospital.id
+        :patient_id => patient.id
       )
     ]).page(1))
   end
