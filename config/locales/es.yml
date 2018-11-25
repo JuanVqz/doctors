@@ -290,6 +290,10 @@ es-MX:
         description_hereditary: "Motivo Hereditario"
         description_cancer: "Motivo de Cancer"
         description_other: "Otro Motivo"
+      hospitalization:
+        starting: "Inicio"
+        ending: "Final"
+        days_of_stay: "Días de Estadia"
     state_machines:
       states:
         sin_timbre: "Sin timbre"

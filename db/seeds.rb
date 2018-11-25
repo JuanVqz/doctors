@@ -53,7 +53,7 @@ patients.each do |name, birthday, blood_group|
   (1..4).each do
     MedicalConsultation.create(reason: "Motivo de la consulta", subjetive: "Explicacion del malestar", objetive: "EL objetivo es curar", prescription: "Lo que se le receta al paciente", doctor: doctor_one, patient: patient)
 
-    Hospitalization.create(starting: "2018-11-15", ending: "2018-11-20", doctor: doctor_one, patient: patient)
+    Hospitalization.create(starting: "2018-11-15", ending: "2018-11-20", days_of_stay: 5, doctor: doctor_one, patient: patient)
   end
 end
 

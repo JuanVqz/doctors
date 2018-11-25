@@ -8,6 +8,7 @@ RSpec.describe Hospitalization, type: :model do
   it { should validate_presence_of :patient_id }
   it { should validate_presence_of :starting }
   it { should validate_presence_of :ending }
+  it { should validate_numericality_of(:days_of_stay).is_greater_than(0) }
 
   describe "returns hospitalizations" do
     let(:doctor_one) { create :doctor, name: "Pedro" }
