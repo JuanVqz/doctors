@@ -1,6 +1,8 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_patient, only: [:show, :edit, :update, :hospitalizations, :medical_consultations]
+  before_action :set_hospitalizations, only: [:show, :hospitalizations]
+  before_action :set_medical_consultations, only: [:show, :medical_consultations]
 
   def index
     @patients = Patient.recent.page(params[:page])
@@ -36,21 +38,27 @@ class PatientsController < ApplicationController
   end
 
   def hospitalizations
-    @hospitalizations = Hospitalization.by_doctor_and_patient(current_user.id, @patient.id)
-      .recent
-      .page(params[:page])
   end
 
   def medical_consultations
-    @medical_consultations = MedicalConsultation.by_doctor_and_patient(current_user.id, @patient.id)
-      .recent
-      .page(params[:page])
   end
 
   private
 
   def set_patient
     @patient = Patient.find(params[:id])
+  end
+
+  def set_medical_consultations
+    @medical_consultations = MedicalConsultation.by_doctor_and_patient(current_user.id, @patient.id)
+      .recent
+      .page(params[:page])
+  end
+
+  def set_hospitalizations
+    @hospitalizations = Hospitalization.by_doctor_and_patient(current_user.id, @patient.id)
+      .recent
+      .page(params[:page])
   end
 
   def patient_params

@@ -1,0 +1,12 @@
+%tr
+  %td= l medical_consultation.created_at, format: :not_hour
+  %td= truncate(medical_consultation.reason, lenght: 50)
+  %td= truncate(medical_consultation.prescription, lenght: 50)
+  %td
+    .buttons
+      = link_to medical_consultation, class: "button is-link" do
+        %i.fa.fa-eye
+        &nbsp;Detalles
+      = link_to [:edit, medical_consultation], class: "button is-warning" do
+        %i.fa.fa-edit
+        &nbsp;Editar

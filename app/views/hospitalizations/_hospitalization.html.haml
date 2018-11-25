@@ -1,0 +1,14 @@
+%tr
+  %td= l hospitalization.created_at, format: :not_hour
+  %td= hospitalization.starting
+  %td= hospitalization.ending
+  %td= hospitalization.days_of_stay
+  %td
+    .buttons
+      = link_to hospitalization, class: "button is-link" do
+        %i.fa.fa-eye
+        &nbsp;Detalles
+      = link_to [:edit, hospitalization], class: "button is-warning" do
+        %i.fa.fa-edit
+        &nbsp;Editar
+
