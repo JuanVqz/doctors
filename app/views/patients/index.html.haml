@@ -14,8 +14,8 @@
         %thead.is-uppercase
           %tr
             %th Nombre
-            %th Edad
-            %th Fecha de Registro
+            %th Registrado
+            %th Actualizado
             %th Acciones
 
         %tfoot
@@ -29,8 +29,8 @@
           - @patients.each do |patient|
             %tr
               %td= patient
-              %td= age patient
               %td= l patient.created_at, format: :day_month_year
+              %td= l patient.updated_at, format: :day_month_year
               %td
                 .buttons
                   = link_to [:medical_consultations, patient], class: "button is-default" do

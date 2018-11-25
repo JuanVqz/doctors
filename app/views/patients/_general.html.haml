@@ -33,5 +33,8 @@
     %strong Referido por
     %p= @patient.referred_by.titleize
   .column.is-3
-    %strong Fecha de Registro
+    %strong Registro
     %p= l @patient.created_at, format: :long
+  .column.is-3
+    %strong Actualizado
+    %p= l @patient.updated_at, format: :long
