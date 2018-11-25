@@ -1,9 +1,8 @@
 .card
   %header.card-header
-    %p.card-header-title
-      %span.icon
-        %i.fa.fa-users
-      %span.is-uppercase Pacientes
+    .card-header-title
+      = render "shared/search", search_path: patients_path,
+        placeholder: "Pacientes"
     .card-header-icon
       = link_to [:new, :patient], class: "button is-link" do
         %span.icon
@@ -22,9 +21,10 @@
         %tfoot
           %tr
             %th{ colspan: 4 }
-              = paginate @patients
+              = paginate @patients, params: { query: params[:query] }
               %br
-              .has-text-right= page_entries_info @patients, entry_name: "pacientes"
+              .has-text-right
+                = page_entries_info @patients, entry_name: "pacientes"
 
         %tbody
           = render @patients

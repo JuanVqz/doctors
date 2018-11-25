@@ -2,7 +2,7 @@ module Feature
   module PatientMethodsHelpers
     def visit_patients_path
       click_link "Pacientes"
-      expect(page).to have_content "PACIENTES"
+      expect(page).to have_content "Buscar"
     end
 
     def create_patient

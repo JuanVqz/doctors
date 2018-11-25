@@ -12,10 +12,14 @@ class Patient < User
   validates :name, :first_name, :birthday,
     :height, :weight, presence: true
 
-  scope :recent, -> { order(created_at: :desc) }
-
   delegate :street, :number, :colony, :postal_code, :municipality,
     :state, :country, to: :address, prefix: true, allow_nil: true
+
+  def self.search query
+    where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
+      .or(where("LOWER(first_name) LIKE LOWER(?)", "%#{query}%"))
+      .or(where("LOWER(last_name) LIKE LOWER(?)", "%#{query}%"))
+  end
 
   def email_required?
     false

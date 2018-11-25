@@ -17,7 +17,9 @@ FactoryBot.define do
     confirmed_at { Time.now }
 
     after :build do |patient|
-      patient.doctors = build_list :doctor, 1
+      if patient.doctors.nil?
+        patient.doctors = build_list :doctor, 1
+      end
       patient.clinic_history = build :clinic_history
       patient.address = build :address
     end

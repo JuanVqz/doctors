@@ -15,4 +15,61 @@ RSpec.describe Patient, type: :model do
   it { should validate_presence_of :birthday }
   it { should validate_presence_of :height }
   it { should validate_presence_of :weight }
+
+  describe ".search" do
+    let(:hospital) { create :hospital }
+    let(:doctor) { create :doctor, hospital: hospital }
+    let(:jose) do
+      create :patient, doctors: [doctor],
+        name: "José", first_name: "Pérez", last_name: "Castro"
+    end
+    let(:juan) do
+      create :patient, doctors: [doctor],
+        name: "Juan", first_name: "Sanchez", last_name: "Ramos"
+    end
+    let(:juanito) do
+      create :patient, doctors: [doctor],
+        name: "Juanito", first_name: "Vasquez", last_name: "Suarez"
+    end
+    let(:josue) do
+      create :patient, doctors: [doctor],
+        name: "Josué", first_name: "Garcia", last_name: "Rios"
+    end
+
+    context "when search for name 'jUaN'" do
+      it "returns nothing" do
+        [jose, josue]
+        expect(Patient.search("jUaN").count).to eq 0
+      end
+
+      it "returns 2" do
+        [jose, juan, juanito, josue]
+        expect(Patient.search("jUaN").count).to eq 2
+      end
+    end
+
+    context "when search for first_name 'PéRez'" do
+      it "returns nothing" do
+        [juan, juanito, josue]
+        expect(Patient.search("PéRez").count).to eq 0
+      end
+
+      it "returns 1" do
+        [jose, juan, juanito, josue]
+        expect(Patient.search("PéRez").count).to eq 1
+      end
+    end
+
+    context "when search for last_name 'RioS'" do
+      it "returns nothing" do
+        [jose, juan, juanito]
+        expect(Patient.search("RioS").count).to eq 0
+      end
+
+      it "returns 1" do
+        [jose, juan, juanito, josue]
+        expect(Patient.search("RioS").count).to eq 1
+      end
+    end
+  end
 end

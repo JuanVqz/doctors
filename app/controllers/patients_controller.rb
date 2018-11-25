@@ -5,7 +5,7 @@ class PatientsController < ApplicationController
   before_action :set_medical_consultations, only: [:show, :medical_consultations]
 
   def index
-    @patients = Patient.recent.page(params[:page])
+    @patients = Patient.recent.search(params[:query]).page(params[:page])
   end
 
   def show
