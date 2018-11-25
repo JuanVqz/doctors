@@ -4,10 +4,11 @@
       %span.icon
         %i.fa.fa-user-md
       %span.is-uppercase Doctores
-    = link_to [:new, :doctor], class: "button is-link" do
-      %span.icon
-        %i.fa.fa-plus
-      %span Registrar Doctor
+    .card-header-icon
+      = link_to [:new, :doctor], class: "button is-link" do
+        %span.icon
+          %i.fa.fa-plus
+        %span Registrar Doctor
   .card-content
     .table-container
       %table.table.is-hoverable.is-fullwidth
@@ -16,14 +17,15 @@
             %th Especialidad
             %th Nombre
             %th Fecha de registro
-            %th Acciones
+            %th.has-text-right Acciones
 
         %tfoot
           %tr
             %th{ colspan: 4 }
               = paginate @doctores
               %br
-              .has-text-right= page_entries_info @doctores, entry_name: "doctores"
+              .has-text-right
+                = page_entries_info @doctores, entry_name: "doctores"
 
         %tbody
           - @doctores.each do |doctor|
@@ -32,7 +34,7 @@
               %td= doctor
               %td= l doctor.created_at, format: :not_hour
               %td
-                .buttons
+                .buttons.is-right
                   = link_to doctor, class: "button is-link" do
                     %span.icon
                       %i.fa.fa-eye

@@ -3,7 +3,7 @@
   %td= truncate(medical_consultation.reason, lenght: 50)
   %td= truncate(medical_consultation.prescription, lenght: 50)
   %td
-    .buttons
+    .buttons.is-right
       = link_to medical_consultation, class: "button is-link" do
         %i.fa.fa-eye
         &nbsp;Detalles

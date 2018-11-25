@@ -4,10 +4,11 @@
       %span.icon
         %i.fa.fa-ambulance
       %span.is-uppercase Hospitalizaciónes del doctor #{current_user}
-    = link_to [:new, :hospitalization], class: "button is-link" do
-      %span.icon
-        %i.fa.fa-plus
-      %span Registrar Hospitalización
+    .card-header-icon
+      = link_to [:new, :hospitalization], class: "button is-link" do
+        %span.icon
+          %i.fa.fa-plus
+        %span Registrar Hospitalización
   .card-content
     .table-container
       %table.table.is-hoverable.is-fullwidth
@@ -18,14 +19,15 @@
             %th Inicio
             %th Final
             %th Dias de estadia
-            %th Acciones
+            %th.has-text-right Acciones
 
         %tfoot
           %tr
             %th{ colspan: 6 }
               = paginate @hospitalizations
               %br
-              .has-text-right= page_entries_info @hospitalizations, entry_name: "hospitalizaciones"
+              .has-text-right
+                = page_entries_info @hospitalizations, entry_name: "hospitalizaciones"
 
         %tbody
           - @hospitalizations.each do |hospitalization|
@@ -36,7 +38,7 @@
               %td= hospitalization.ending
               %td= hospitalization.days_of_stay
               %td
-                .buttons
+                .buttons.is-right
                   = link_to hospitalization, class: "button is-link" do
                     %span.icon
                       %i.fa.fa-eye

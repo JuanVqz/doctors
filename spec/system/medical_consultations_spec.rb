@@ -65,7 +65,7 @@ RSpec.describe "Medical Consultations flow", type: :system do
 
   def look_at_medical_consultations_for_patient
     expect(@patient.medical_consultations.count).to eq 3
-    expect(page).to have_content(/CONSULTAS DEL/)
+    expect(page).to have_content(/CONSULTAS DE/)
     expect(page).to have_content(/FECHA/)
   end
 end
