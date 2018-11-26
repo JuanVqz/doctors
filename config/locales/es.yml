@@ -221,7 +221,7 @@ es-MX:
     formats:
       default: ! '%a, %d de %b de %Y a las %H:%M:%S %Z'
       long: ! '%A, %d de %B de %Y a las %I:%M %p'
-      factura: ! '%d de %B %Y %H:%M hrs'
+      normal: ! '%d de %B %Y %H:%M hrs'
       not_hour: ! '%d de %B %Y'
       list: ! '%d %b %y'
       short: ! '%d de %b a las %H:%M hrs'

@@ -39,6 +39,8 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem "pundit"
 gem 'simple_form'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary', '0.12.3'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

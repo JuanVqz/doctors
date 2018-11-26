@@ -3,13 +3,18 @@ class MedicalConsultationsController < ApplicationController
   before_action :set_medical_consultation, only: [:show, :edit, :update, :destroy]
 
   def index
-    @medical_consultations = MedicalConsultation.includes(:patient)
-      .per_doctor(current_user.id)
+    @medical_consultations = MedicalConsultation.per_doctor(current_user.id)
       .recent
       .page(params[:page])
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf { render pdf: prescription_name,
+                    template: "medical_consultations/prescription",
+                    layout: "pdfs/prescription" }
+    end
   end
 
   def new
@@ -45,7 +50,11 @@ class MedicalConsultationsController < ApplicationController
   private
 
     def set_medical_consultation
-      @medical_consultation = MedicalConsultation.find(params[:id])
+      @medical_consultation = MedicalConsultation.includes(:patient).find(params[:id])
+    end
+
+    def prescription_name
+      "#{@medical_consultation.patient.name}_#{@medical_consultation.id}_#{@medical_consultation.created_at.to_s(:number)}".upcase
     end
 
     def medical_consultation_params

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+  <title>Consulta Medica</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container > div {
+      word-wrap: break-word;
+      font-size: 15px;
+      margin: 10px;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <%= yield %>
+  </div>
+</body>
+</html>

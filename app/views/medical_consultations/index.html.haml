@@ -37,6 +37,10 @@
               %td= truncate(medical_consultation.prescription, lenght: 50)
               %td
                 .buttons.is-right
+                  = link_to medical_consultation_path(medical_consultation, format: "pdf"), class: "button is-danger", target: "_blank" do
+                    %span.icon
+                      %i.fa.fa-file-pdf
+                    %span Receta
                   = link_to medical_consultation, class: "button is-link" do
                     %span.icon
                       %i.fa.fa-eye
