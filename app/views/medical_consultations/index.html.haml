@@ -1,14 +1,15 @@
 .card
-  %header.card-header
-    %p.card-header-title
-      %span.icon
-        %i.fa.fa-book
-      %span.is-uppercase Consultas del Doctor #{current_user}
-    .card-header-icon
-      = link_to [:new, :medical_consultation], class: "button is-link" do
-        %span.icon
-          %i.fa.fa-plus
-        %span Registrar Consulta
+  .columns
+    .column
+      .card-header-title
+        = render "shared/search", search_path: medical_consultations_path,
+          placeholder: "Consultas"
+    .column
+      .card-header-icon.buttons.is-right
+        = link_to [:new, :medical_consultation], class: "button is-link" do
+          %span.icon
+            %i.fa.fa-plus
+          %span Registrar Consulta
   .card-content
     .table-container
       %table.table.is-hoverable.is-fullwidth
@@ -17,13 +18,12 @@
             %th Fecha
             %th Paciente
             %th Motivo
-            %th Receta
             %th.has-text-right Acciones
 
         %tfoot
           %tr
-            %th{ colspan: 5 }
-              = paginate @medical_consultations
+            %th{ colspan: 4 }
+              = paginate @medical_consultations, params: { query: params[:query] }
               %br
               .has-text-right
                 = page_entries_info @medical_consultations, entry_name: "consultas medicas"
@@ -34,7 +34,6 @@
               %td= l medical_consultation.created_at, format: :not_hour
               %td= medical_consultation.patient
               %td= truncate(medical_consultation.reason, lenght: 50)
-              %td= truncate(medical_consultation.prescription, lenght: 50)
               %td
                 .buttons.is-right
                   = link_to medical_consultation_path(medical_consultation, format: "pdf"), class: "button is-danger", target: "_blank" do

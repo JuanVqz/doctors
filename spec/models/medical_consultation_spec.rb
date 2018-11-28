@@ -8,6 +8,59 @@ RSpec.describe MedicalConsultation, type: :model do
   it { should validate_presence_of :prescription }
   it { should validate_presence_of :patient_id }
 
+  describe ".search" do
+    let(:mateo) do
+      create :patient, name: "Mateo", first_name: "Pérez",
+        last_name: "Toledo"
+    end
+
+    let(:josue) do
+      create :patient, name: "Josue", first_name: "Alvarez",
+        last_name: "Suarez"
+    end
+
+    let(:medical_consultation_one) do
+      create :medical_consultation, reason: "Motivo 1",
+        diagnosis: "Diagnostico 1", prescription: "Receta 1",
+        patient: mateo
+    end
+
+    let(:medical_consultation_two) do
+      create :medical_consultation, reason: "Otra cosa",
+      diagnosis: "Practica", prescription: "Persona",
+      patient: josue
+    end
+
+    let(:medical_consultation_three) do
+      create :medical_consultation, reason: "Mi razón",
+        diagnosis: "Practica", prescription: "Imprimir",
+        patient: mateo
+    end
+
+    before :each do
+      [medical_consultation_one, medical_consultation_two,
+      medical_consultation_three]
+    end
+
+    context "when search for reason 'RaZón'" do
+      it "returns 1" do
+        expect(MedicalConsultation.search("RaZón").count).to eq 1
+      end
+    end
+
+    context "when search for diagnosis 'PracTicA'" do
+      it "returns 2" do
+        expect(MedicalConsultation.search("PracTicA").count).to eq 2
+      end
+    end
+
+    context "when search for prescription 'ImpriMir'" do
+      it "returns 1" do
+        expect(MedicalConsultation.search("ImpriMir").count).to eq 1
+      end
+    end
+  end
+
   describe "returns medical_consultations" do
     let(:doctor_one) { create :doctor, name: "Pedro" }
     let(:doctor_two) { create :doctor, name: "José" }

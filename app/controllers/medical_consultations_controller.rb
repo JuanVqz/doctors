@@ -3,7 +3,8 @@ class MedicalConsultationsController < ApplicationController
   before_action :set_medical_consultation, only: [:show, :edit, :update, :destroy]
 
   def index
-    @medical_consultations = MedicalConsultation.per_doctor(current_user.id)
+    @medical_consultations = MedicalConsultation.search(params[:query])
+      .per_doctor(current_user.id)
       .recent
       .page(params[:page])
   end

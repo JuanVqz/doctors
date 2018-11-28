@@ -1,13 +1,15 @@
 .card
-  %header.card-header
-    .card-header-title
-      = render "shared/search", search_path: patients_path,
-        placeholder: "Pacientes"
-    .card-header-icon
-      = link_to [:new, :patient], class: "button is-link" do
-        %span.icon
-          %i.fa.fa-plus
-        %span Registrar Paciente
+  .columns
+    .column
+      .card-header-title
+        = render "shared/search", search_path: patients_path,
+          placeholder: "Pacientes"
+    .column
+      .card-header-icon.buttons.is-right
+        = link_to [:new, :patient], class: "button is-link" do
+          %span.icon
+            %i.fa.fa-plus
+          %span Registrar Paciente
   .card-content
     .table-container
       %table.table.is-hoverable.is-fullwidth

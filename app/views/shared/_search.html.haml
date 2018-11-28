@@ -2,11 +2,11 @@
   .field.is-grouped
     .control.has-icons-left
       %input{ type: "text", name: "query", value: "#{params[:query]}",
-        class: "input is-rounded", id: "query",
+        class: "input", id: "query",
         placeholder: "Buscar #{placeholder}", autocomplete: "off" }
       %span.icon.is-small.is-left
         %i.fas.fa-search
     .control
-      %button{ type: "submit", class: "button is-link is-rounded" }
+      %button{ type: "submit", class: "button is-link" }
         Buscar
 
