@@ -6,6 +6,10 @@ ready =->
   startSelect2()
   startNavbar()
   startFlash()
+  startScrollTable()
+
+startScrollTable =->
+  $(".table-container").scrollLeft($(document).outerWidth())
 
 startFlash =->
   $("#flash").on "click", ->
