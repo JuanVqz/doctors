@@ -10,11 +10,12 @@ RSpec.describe "Hospitalization's flow", type: :system do
     visit_dash_path
     visit_patients_path
     see_patient_name
-    click_link_my_hospitalizations
+    click_link_details
   end
 
   feature "Doctor can create a hospitalization" do
-    scenario "from patient's hospitalizations" do
+    scenario "from patient list" do
+      click_link_tab_hospitalizations
       click_link_new_hospitalization
       visit_new_hospitalization_with_patient_id_param
       create_new_hospitalization_with_preselected_patient
@@ -22,18 +23,12 @@ RSpec.describe "Hospitalization's flow", type: :system do
     end
   end
 
-  feature "Doctor should look at patient's hospitalizations" do
-    scenario "returns 3 hospitalizations" do
-      look_at_hospitalizations_for_patient
-    end
-  end
-
-  def click_link_my_hospitalizations
-    click_link "Mis Hospitalizaciónes"
+  def click_link_tab_hospitalizations
+    find(:css, '#my_hospitalizations').click
   end
 
   def click_link_new_hospitalization
-    click_link "Registrar Hospitalización"
+    click_link "Nueva Hospitalización"
   end
 
   def visit_new_hospitalization_with_patient_id_param
@@ -55,11 +50,5 @@ RSpec.describe "Hospitalization's flow", type: :system do
     expect(page).to have_current_path hospitalization_path Hospitalization.last
     expect(page).to have_content "INFORMACIÓN DE LA HOSPITALIZACIÓN"
     expect(page).to have_content Hospitalization.last.starting
-  end
-
-  def look_at_hospitalizations_for_patient
-    expect(@patient.hospitalizations.count).to eq 3
-    expect(page).to have_content(/HOSPITALIZACIÓNES DE/)
-    expect(page).to have_content(/2018-11-11/)
   end
 end

@@ -1,14 +1,14 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_patient, only: [:show, :edit, :update, :hospitalizations, :medical_consultations]
-  before_action :set_hospitalizations, only: [:show, :hospitalizations]
-  before_action :set_medical_consultations, only: [:show, :medical_consultations]
+  before_action :set_patient, only: [:show, :edit, :update]
 
   def index
     @patients = Patient.recent.search(params[:query]).page(params[:page])
   end
 
   def show
+    set_medical_consultations
+    set_hospitalizations
   end
 
   def new
@@ -35,12 +35,6 @@ class PatientsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def hospitalizations
-  end
-
-  def medical_consultations
   end
 
   private
