@@ -4,8 +4,8 @@ class CreateHospitalizations < ActiveRecord::Migration[5.2]
       t.date :starting
       t.date :ending
       t.decimal :days_of_stay
-      t.text :reason_for_hospitalization
-      t.text :treatment
+      t.text :reason_for_hospitalization, default: ""
+      t.text :treatment, default: ""
       t.references :doctor, foreign_key: { to_table: :users }
       t.references :patient, foreign_key: { to_table: :users }
 

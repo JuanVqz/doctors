@@ -1,14 +1,15 @@
 .card
-  %header.card-header
-    %p.card-header-title
-      %span.icon
-        %i.fa.fa-ambulance
-      %span.is-uppercase Hospitalizaciónes del doctor #{current_user}
-    .card-header-icon
-      = link_to [:new, :hospitalization], class: "button is-link" do
-        %span.icon
-          %i.fa.fa-plus
-        %span Registrar Hospitalización
+  .columns
+    .column
+      .card-header-title
+        = render "shared/search", search_path: hospitalizations_path,
+          placeholder: "Hospitalizaciónes"
+    .column
+      .card-header-icon.buttons.is-right
+        = link_to [:new, :hospitalization], class: "button is-link" do
+          %span.icon
+            %i.fa.fa-plus
+          %span Registrar Hospitalización
   .card-content
     .table-container
       %table.table.is-hoverable.is-fullwidth

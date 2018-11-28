@@ -5,6 +5,7 @@ class HospitalizationsController < ApplicationController
   def index
     @hospitalizations = Hospitalization.includes(:patient)
       .per_doctor(current_user.id)
+      .search(params[:query])
       .recent
       .page(params[:page])
   end

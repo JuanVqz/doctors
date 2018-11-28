@@ -3,8 +3,9 @@ class MedicalConsultationsController < ApplicationController
   before_action :set_medical_consultation, only: [:show, :edit, :update, :destroy]
 
   def index
-    @medical_consultations = MedicalConsultation.search(params[:query])
+    @medical_consultations = MedicalConsultation.includes(:patient)
       .per_doctor(current_user.id)
+      .search(params[:query])
       .recent
       .page(params[:page])
   end
