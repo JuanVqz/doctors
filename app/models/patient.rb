@@ -16,9 +16,7 @@ class Patient < User
     :state, :country, to: :address, prefix: true, allow_nil: true
 
   def self.search query
-    where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
-      .or(where("LOWER(first_name) LIKE LOWER(?)", "%#{query}%"))
-      .or(where("LOWER(last_name) LIKE LOWER(?)", "%#{query}%"))
+    where("concat_ws(' ', name, first_name, last_name) ILIKE ?", "%#{query&.squish}%")
   end
 
   def email_required?
