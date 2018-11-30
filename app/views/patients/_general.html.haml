@@ -31,7 +31,7 @@
     %p= @patient.sex
   .column.is-3
     %strong Referido por
-    %p= @patient.referred_by.titleize
+    %p= @patient.referred_by
   .column.is-3
     %strong Registro
     %p= l @patient.created_at, format: :long
