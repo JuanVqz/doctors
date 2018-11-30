@@ -71,5 +71,17 @@ RSpec.describe Patient, type: :model do
         expect(Patient.search("RioS").count).to eq 1
       end
     end
+
+    context "when search for full_name 'Josué Garcia Rios'" do
+      it "returns nothing" do
+        [jose, juan, juanito]
+        expect(Patient.search("JoSué GarCia RiOs").count).to eq 0
+      end
+
+      it "returns 1" do
+        [jose, juan, juanito, josue]
+        expect(Patient.search("JoSué GarCia RiOs").count).to eq 1
+      end
+    end
   end
 end
