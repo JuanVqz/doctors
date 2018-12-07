@@ -38,8 +38,9 @@
                 .buttons.is-right
                   = link_to medical_consultation_path(medical_consultation, format: "pdf"), class: "button is-danger", target: "_blank" do
                     %span.icon
-                      %i.fa.fa-file-pdf
-                    %span Receta
+                      %i.fa.fa-print
+                    %span Imprimir
+
                   = link_to medical_consultation, class: "button is-link" do
                     %span.icon
                       %i.fa.fa-eye

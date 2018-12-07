@@ -74,12 +74,17 @@
           %i.fa.fa-arrow-left
         %span Regresar
 
-      = link_to @medical_consultation.patient, class: "button is-success" do
-        %span.icon
-          %i.fa.fa-user
-        %span Ir al Detalle del Paciente
-
       = link_to [:edit, @medical_consultation], class: "button is-warning" do
         %span.icon
           %i.fa.fa-edit
         %span Editar
+
+      = link_to [@medical_consultation, format: "pdf"], class: "button is-danger", target: "_blank" do
+        %span.icon
+          %i.fa.fa-print
+        %span Imprimir
+
+      = link_to @medical_consultation.patient, class: "button is-success", style: "margin-left: auto" do
+        %span.icon
+          %i.fa.fa-user
+        %span Ir al Detalle del Paciente
