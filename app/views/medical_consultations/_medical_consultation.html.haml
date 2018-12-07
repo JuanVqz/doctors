@@ -4,9 +4,10 @@
   %td= truncate(medical_consultation.prescription, lenght: 50)
   %td
     .buttons.is-right
+      = link_to [medical_consultation, format: "pdf"], class: "button is-danger", target: "_blank" do
+        %i.fa.fa-print
+        &nbsp;Imprimir
+
       = link_to medical_consultation, class: "button is-link" do
         %i.fa.fa-eye
         &nbsp;Detalles
-      = link_to [:edit, medical_consultation], class: "button is-warning" do
-        %i.fa.fa-edit
-        &nbsp;Editar
