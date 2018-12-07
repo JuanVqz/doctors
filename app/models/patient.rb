@@ -4,6 +4,7 @@ class Patient < User
   has_and_belongs_to_many :doctors, join_table: "doctors_patients"
   has_many :medical_consultations, -> { order(created_at: :desc) }
   has_many :hospitalizations, -> { order(created_at: :desc) }
+  has_many :bentos
 
   accepts_nested_attributes_for :clinic_history, allow_destroy: true
   accepts_nested_attributes_for :address, allow_destroy: true

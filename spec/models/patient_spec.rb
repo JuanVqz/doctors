@@ -6,6 +6,7 @@ RSpec.describe Patient, type: :model do
   it { should have_and_belong_to_many :doctors }
   it { should have_many :medical_consultations }
   it { should have_many :hospitalizations }
+  it { should have_many :bentos }
 
   it { should accept_nested_attributes_for(:clinic_history).allow_destroy(true) }
   it { should accept_nested_attributes_for(:address).allow_destroy(true) }
