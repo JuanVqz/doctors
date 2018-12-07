@@ -1,32 +1,30 @@
-.card
-  .columns
-    .column
-      .card-header-title
-        = render "shared/search", search_path: patients_path,
-          placeholder: "Pacientes"
-    .column
-      .card-header-icon.buttons.is-right
-        = link_to [:new, :patient], class: "button is-link" do
-          %span.icon
-            %i.fa.fa-plus
-          %span Registrar Paciente
-  .card-content
-    .table-container
-      %table.table.is-hoverable.is-fullwidth
-        %thead.is-uppercase
-          %tr
-            %th Nombre
-            %th Registrado
-            %th Actualizado
-            %th.has-text-right Acciones
+%nav.level
+  .level-left
+    .level-item
+      = render "shared/search", search_path: patients_path,
+        placeholder: "Pacientes"
+  .level-right
+    .level-item
+      = link_to [:new, :patient], class: "button is-link" do
+        %span.icon
+          %i.fa.fa-plus
+        %span Registrar Paciente
+.table-container
+  %table.table.is-hoverable.is-fullwidth
+    %thead.is-uppercase
+      %tr
+        %th Nombre
+        %th Registrado
+        %th Actualizado
+        %th.has-text-right Acciones
 
-        %tfoot
-          %tr
-            %th{ colspan: 4 }
-              = paginate @patients, params: { query: params[:query] }
-              %br
-              .has-text-right
-                = page_entries_info @patients, entry_name: "pacientes"
+    %tfoot
+      %tr
+        %th{ colspan: 4 }
+          = paginate @patients, params: { query: params[:query] }
+          %br
+          .has-text-right
+            = page_entries_info @patients, entry_name: "pacientes"
 
-        %tbody
-          = render @patients
+    %tbody
+      = render @patients
