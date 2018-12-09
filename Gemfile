@@ -8,27 +8,11 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'mini_racer', platforms: :ruby
-
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# Custom gems
 gem 'bulma-extensions-rails'
 gem 'bulma-rails', '~> 0.7.1'
 gem 'cocoon'
@@ -39,6 +23,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem "pundit"
 gem 'simple_form'
+gem 'unicorn'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', '0.12.3'
 
@@ -58,6 +43,13 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-yarn'
+  gem 'capistrano-rake'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
