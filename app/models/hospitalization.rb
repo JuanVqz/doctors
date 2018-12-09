@@ -2,7 +2,7 @@ class Hospitalization < ApplicationRecord
   belongs_to :doctor
   belongs_to :patient
 
-  validates :starting, :ending, :patient_id, presence: true
+  validates :starting, :ending, :patient, :days_of_stay, presence: true
   validates :days_of_stay, numericality: { greater_than: 0 }
 
   scope :per_doctor, -> (doctor_id) { where(doctor_id: doctor_id) }
