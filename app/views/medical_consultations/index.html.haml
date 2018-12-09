@@ -1,47 +1,45 @@
-.card
-  .columns
-    .column
-      .card-header-title
-        = render "shared/search", search_path: medical_consultations_path,
-          placeholder: "Consultas"
-    .column
-      .card-header-icon.buttons.is-right
-        = link_to [:new, :medical_consultation], class: "button is-link" do
-          %span.icon
-            %i.fa.fa-plus
-          %span Registrar Consulta
-  .card-content
-    .table-container
-      %table.table.is-hoverable.is-fullwidth
-        %thead.is-uppercase
-          %tr
-            %th Fecha
-            %th Paciente
-            %th Motivo
-            %th.has-text-right Acciones
+%nav.level
+  .level-left
+    .level-item
+      = render "shared/search", search_path: medical_consultations_path,
+        placeholder: "Consultas"
+  .level-right
+    .level-item
+      = link_to [:new, :medical_consultation], class: "button is-link" do
+        %span.icon
+          %i.fa.fa-plus
+        %span Registrar Consulta
+.table-container
+  %table.table.is-hoverable.is-fullwidth
+    %thead.is-uppercase
+      %tr
+        %th Fecha
+        %th Paciente
+        %th Motivo
+        %th.has-text-right Acciones
 
-        %tfoot
-          %tr
-            %th{ colspan: 4 }
-              = paginate @medical_consultations, params: { query: params[:query] }
-              %br
-              .has-text-right
-                = page_entries_info @medical_consultations, entry_name: "consultas medicas"
+    %tfoot
+      %tr
+        %th{ colspan: 4 }
+          = paginate @medical_consultations, params: { query: params[:query] }
+          %br
+          .has-text-right
+            = page_entries_info @medical_consultations, entry_name: "consultas medicas"
 
-        %tbody
-          - @medical_consultations.each do |medical_consultation|
-            %tr
-              %td= l medical_consultation.created_at, format: :not_hour
-              %td= medical_consultation.patient
-              %td= truncate(medical_consultation.reason, lenght: 50)
-              %td
-                .buttons.is-right
-                  = link_to medical_consultation_path(medical_consultation, format: "pdf"), class: "button is-danger", target: "_blank" do
-                    %span.icon
-                      %i.fa.fa-print
-                    %span Imprimir
+    %tbody
+      - @medical_consultations.each do |medical_consultation|
+        %tr
+          %td= l medical_consultation.created_at, format: :not_hour
+          %td= medical_consultation.patient
+          %td= truncate(medical_consultation.reason, lenght: 50)
+          %td
+            .buttons.is-right
+              = link_to medical_consultation_path(medical_consultation, format: "pdf"), class: "button is-danger", target: "_blank" do
+                %span.icon
+                  %i.fa.fa-print
+                %span Imprimir
 
-                  = link_to medical_consultation, class: "button is-link" do
-                    %span.icon
-                      %i.fa.fa-eye
-                    %span Detalles
+              = link_to medical_consultation, class: "button is-link" do
+                %span.icon
+                  %i.fa.fa-eye
+                %span Detalles
