@@ -1,46 +1,44 @@
-.card
-  .columns
-    .column
-      .card-header-title
-        = render "shared/search", search_path: hospitalizations_path,
-          placeholder: "Hospitalizaciónes"
-    .column
-      .card-header-icon.buttons.is-right
-        = link_to [:new, :hospitalization], class: "button is-link" do
-          %span.icon
-            %i.fa.fa-plus
-          %span Registrar Hospitalización
-  .card-content
-    .table-container
-      %table.table.is-hoverable.is-fullwidth
-        %thead.is-uppercase
-          %tr
-            %th Fecha
-            %th Paciente
-            %th Inicio
-            %th Final
-            %th Dias de estadia
-            %th.has-text-right Acciones
+%nav.level
+  .level-left
+    .level-item
+      = render "shared/search", search_path: hospitalizations_path,
+        placeholder: "Hospitalizaciónes"
+  .level-right
+    .level-item
+      = link_to [:new, :hospitalization], class: "button is-link" do
+        %span.icon
+          %i.fa.fa-plus
+        %span Registrar Hospitalización
+.table-container
+  %table.table.is-hoverable.is-fullwidth
+    %thead.is-uppercase
+      %tr
+        %th Fecha
+        %th Paciente
+        %th Inicio
+        %th Final
+        %th Dias de estadia
+        %th.has-text-right Acciones
 
-        %tfoot
-          %tr
-            %th{ colspan: 6 }
-              = paginate @hospitalizations
-              %br
-              .has-text-right
-                = page_entries_info @hospitalizations, entry_name: "hospitalizaciones"
+    %tfoot
+      %tr
+        %th{ colspan: 6 }
+          = paginate @hospitalizations
+          %br
+          .has-text-right
+            = page_entries_info @hospitalizations, entry_name: "hospitalizaciones"
 
-        %tbody
-          - @hospitalizations.each do |hospitalization|
-            %tr
-              %td= l hospitalization.created_at, format: :not_hour
-              %td= hospitalization.patient
-              %td= hospitalization.starting
-              %td= hospitalization.ending
-              %td= hospitalization.days_of_stay
-              %td
-                .buttons.is-right
-                  = link_to hospitalization, class: "button is-link" do
-                    %span.icon
-                      %i.fa.fa-eye
-                    %span Detalles
+    %tbody
+      - @hospitalizations.each do |hospitalization|
+        %tr
+          %td= l hospitalization.created_at, format: :not_hour
+          %td= hospitalization.patient
+          %td= hospitalization.starting
+          %td= hospitalization.ending
+          %td= hospitalization.days_of_stay
+          %td
+            .buttons.is-right
+              = link_to hospitalization, class: "button is-link" do
+                %span.icon
+                  %i.fa.fa-eye
+                %span Detalles
