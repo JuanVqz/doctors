@@ -48,7 +48,6 @@ group :development do
   gem 'capistrano-rails-console'
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
-  gem 'capistrano-yarn'
   gem 'capistrano-rake'
 end
 
