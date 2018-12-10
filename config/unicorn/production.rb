@@ -10,7 +10,7 @@ worker_processes 2
 timeout 180
 preload_app true
 
-listen '/tmp/unicorn.sigma.sock', backlog: 64
+listen '/tmp/unicorn.doctors.sock', backlog: 64
 
 # Force the bundler gemfile environment variable to
 # reference the capistrano "current" symlink
