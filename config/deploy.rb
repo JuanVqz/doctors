@@ -2,7 +2,7 @@
 lock "~> 3.11.0"
 
 set :application, "doctors"
-set :repo_url, "git clone git@bitbucket.org:JuanVqz/doctors.git"
+set :repo_url, "git@bitbucket.org:JuanVqz/doctors.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
