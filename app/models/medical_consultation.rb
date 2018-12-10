@@ -9,8 +9,8 @@ class MedicalConsultation < ApplicationRecord
   scope :by_doctor_and_patient, -> (doctor_id, patient_id) { per_doctor(doctor_id).per_patient(patient_id) }
 
   def self.search query
-    where("LOWER(reason) LIKE LOWER(?)", "%#{query}%")
-      .or(where("LOWER(diagnosis) LIKE LOWER(?)", "%#{query}%"))
-      .or(where("LOWER(prescription) LIKE LOWER(?)", "%#{query}%"))
+    where("reason ILIKE ?", "%#{query}%")
+      .or(where("diagnosis ILIKE ?", "%#{query}%"))
+      .or(where("prescription ILIKE ?", "%#{query}%"))
   end
 end

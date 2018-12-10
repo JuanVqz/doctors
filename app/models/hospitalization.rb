@@ -10,7 +10,7 @@ class Hospitalization < ApplicationRecord
   scope :by_doctor_and_patient, -> (doctor_id, patient_id) { per_doctor(doctor_id).per_patient(patient_id) }
 
   def self.search query
-    where("LOWER(reason_for_hospitalization) LIKE LOWER(?)", "%#{query}%")
-      .or(where("LOWER(treatment) LIKE LOWER(?)", "%#{query}%"))
+    where("reason_for_hospitalization ILIKE ?", "%#{query}%")
+      .or(where("treatment ILIKE ?", "%#{query}%"))
   end
 end
