@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+if Rails.env.development?
 # Hospitals
 puts "Creating Hospitals"
 hospital_one = Hospital.where(name: "Heroku", subdomain: "stark-headland-73197", description: "Una descripcion para el primer hospital.").first_or_create
@@ -56,4 +57,4 @@ Doctor.create(name: "Juan", first_name: "Santos", last_name: "Pérez", specialty
     #Hospitalization.create(starting: "2018-11-15", ending: "2018-11-20", days_of_stay: 5, doctor: doctor_one, patient: patient)
   #end
 #end
-
+end
