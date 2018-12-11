@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_183318) do
     t.string "name"
     t.string "subdomain"
     t.string "description"
+    t.integer "plan", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
