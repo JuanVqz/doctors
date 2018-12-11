@@ -1,0 +1,15 @@
+-# frozen_string_literal: true
+= simple_form_for(@hospital) do |f|
+  %p.has-text-grey-light.is-uppercase Datos generales
+  .columns
+    .column
+      = f.input :name
+    .column
+      = f.input :description
+
+  .buttons
+    = link_to :back, class: "button is-link" do
+      %span.icon
+        %i.fa.fa-arrow-left
+      %span Regresar
+    = f.button :submit

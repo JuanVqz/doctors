@@ -20,9 +20,17 @@
         %span.icon
           %i.fa.fa-ambulance
         %span Hospitalizaciónes
-    - if is_admin?
+  - if is_admin?
+    %p.menu-label
+      CONFIGURACIÓN
+    %ul.menu-list
       %li
         = link_to doctors_path, class: active_for(doctors_path) do
           %span.icon
             %i.fa.fa-user-md
           %span Doctores
+      %li
+        = link_to [:edit, current_hospital], class: active_for(edit_hospital_path(current_hospital)) do
+          %span.icon
+            %i.fa.fa-hospital
+          %span Página principal

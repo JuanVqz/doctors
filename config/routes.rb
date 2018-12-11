@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     authenticated :user do
       resources :doctors
       resources :hospitalizations
+      resources :hospitals, only: [:edit, :update]
       resources :medical_consultations
       resources :patients
       root to: "dash#index", as: :dash

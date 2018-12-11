@@ -59,6 +59,7 @@ es-MX:
         description_hereditary: "Motivo Hereditario"
         description_cancer: "Motivo de Cancer"
         description_other: "Otro Motivo"
+        description: "Descripción"
 
     # Examples
     # labels:

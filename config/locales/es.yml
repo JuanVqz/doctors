@@ -153,6 +153,8 @@ es-MX:
       medical_consultation:
         create: Crear Consulta
         update: Actualizar Consulta
+      hospital:
+        update: Actualizar Página
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
@@ -294,6 +296,9 @@ es-MX:
         starting: "Inicio"
         ending: "Final"
         days_of_stay: "Días de Estadia"
+      hospital:
+        name: "Nombre"
+        description: "Descripción"
     state_machines:
       states:
         sin_timbre: "Sin timbre"
