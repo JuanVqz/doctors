@@ -4,8 +4,8 @@ module Feature
       Capybara.app_host = "http://#{@hospital.subdomain}.lvh.me"
     end
 
-    def create_subdomain_hospital
-      @hospital = create :hospital, subdomain: "ursula"
+    def create_hospital_plan_medium
+      @hospital = create :hospital, :medium, subdomain: "ursula"
       set_capybara_subdomain
     end
   end

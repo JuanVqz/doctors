@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "Doctors", type: :request do
 
-  let(:hospital) { create :hospital, subdomain: "ursula" }
-  let(:doctor) { create :doctor, hospital_id: hospital.id, role: "admin" }
+  let(:hospital) { create :hospital, :basic }
+  let(:doctor) do
+    create :doctor, :admin, hospital_id: hospital.id
+  end
 
   before :each do
     allow(Hospital).to receive(:current_id).and_return hospital.id

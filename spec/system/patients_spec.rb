@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Patient's flow", type: :system do
   before :each do
-    create_subdomain_hospital
+    create_hospital_plan_medium
     visit_sign_in_doctor
     sign_in_doctor @hospital
     visit_dash_path

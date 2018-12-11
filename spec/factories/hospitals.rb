@@ -3,6 +3,13 @@ FactoryBot.define do
     sequence(:name) { |n| "Santa Ursula #{n}" }
     sequence(:subdomain) { |n| "santa#{n}" }
     description { "Es un hospital seguro" }
-    plan { nil }
+  end
+
+  trait :basic do
+    plan { :basic }
+  end
+
+  trait :medium do
+    plan { :medium }
   end
 end

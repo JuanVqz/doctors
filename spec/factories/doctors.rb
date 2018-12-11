@@ -7,9 +7,20 @@ FactoryBot.define do
     professional_card { nil }
     sequence(:email) { |n| "doctor#{n}@gmail.com" }
     password { "123456" }
-    role { "doctor" }
     type { "Doctor" }
     confirmed_at { Time.now }
     association :hospital, factory: :hospital
+  end
+
+  trait :patient do
+    role { :patient }
+  end
+
+  trait :doctor do
+    role { :doctor }
+  end
+
+  trait :admin do
+    role { :admin }
   end
 end

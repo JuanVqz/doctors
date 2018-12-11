@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Doctor's flow", type: :system do
   before :each do
-    create_subdomain_hospital
+    create_hospital_plan_medium
   end
 
   feature "Visit main page with subdomain" do
