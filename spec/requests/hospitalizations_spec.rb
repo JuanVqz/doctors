@@ -13,6 +13,7 @@ RSpec.describe "Hospitalizations", type: :request do
 
   before :each do
     allow(Hospital).to receive(:current_id).and_return hospital.id
+    allow_any_instance_of(ApplicationController).to receive(:current_hospital).and_return hospital
     sign_in doctor
   end
 
