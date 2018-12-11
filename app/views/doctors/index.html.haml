@@ -6,10 +6,11 @@
       %span.is-uppercase Doctores
   .level-right
     .level-item
-      = link_to [:new, :doctor], class: "button is-link" do
-        %span.icon
-          %i.fa.fa-plus
-        %span Registrar Doctor
+      - unless current_hospital.basic?
+        = link_to [:new, :doctor], class: "button is-link" do
+          %span.icon
+            %i.fa.fa-plus
+          %span Registrar Doctor
 
 .table-container
   %table.table.is-hoverable.is-fullwidth
