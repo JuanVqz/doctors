@@ -34,12 +34,10 @@
           %td= truncate(medical_consultation.reason, lenght: 50)
           %td
             .buttons.is-right
-              = link_to medical_consultation_path(medical_consultation, format: "pdf"), class: "button is-danger", target: "_blank" do
+              = link_to medical_consultation_path(medical_consultation, format: "pdf"), "data-tooltip": "Imprimir", class: "button is-danger tooltip", target: "_blank" do
                 %span.icon
                   %i.fa.fa-print
-                %span Imprimir
 
-              = link_to medical_consultation, class: "button is-link" do
+              = link_to medical_consultation, "data-tooltip": "Detalles", class: "button is-link tooltip" do
                 %span.icon
                   %i.fa.fa-eye
-                %span Detalles

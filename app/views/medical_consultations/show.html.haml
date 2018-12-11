@@ -75,17 +75,14 @@
       %i.fa.fa-arrow-left
     %span Regresar
 
-  = link_to [:edit, @medical_consultation], class: "button is-warning" do
+  = link_to [:edit, @medical_consultation], "data-tooltip": "Editar", class: "button is-warning tooltip" do
     %span.icon
       %i.fa.fa-edit
-    %span Editar
 
-  = link_to [@medical_consultation, format: "pdf"], class: "button is-danger", target: "_blank" do
+  = link_to [@medical_consultation, format: "pdf"], "data-tooltip": "Imprimir", class: "button is-danger tooltip", target: "_blank" do
     %span.icon
       %i.fa.fa-print
-    %span Imprimir
 
-  = link_to @medical_consultation.patient, class: "button is-success", style: "margin-left: auto" do
+  = link_to @medical_consultation.patient, "data-tooltip": "Ir al detalle del paciente", class: "button is-success tooltip is-tooltip-left", style: "margin-left: auto" do
     %span.icon
       %i.fa.fa-user
-    %span Ir al Detalle del Paciente
