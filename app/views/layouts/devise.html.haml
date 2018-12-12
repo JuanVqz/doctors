@@ -10,9 +10,9 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    = render "layouts/partials/flash"
     %section.hero.is-fullheight
       .hero-body
         .container.has-text-centered
           .column.is-4.is-offset-4
-            = render "layouts/partials/flash"
             = yield
