@@ -17,6 +17,7 @@ gem 'bulma-extensions-rails'
 gem 'bulma-rails', '~> 0.7.1'
 gem 'cocoon'
 gem 'devise'
+gem 'ffaker'
 gem 'font-awesome-sass', '~> 5.3.1'
 gem 'haml-rails', '~>1.0'
 gem 'jquery-rails'
@@ -36,7 +37,6 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
-  gem 'ffaker'
 end
 
 group :development do
