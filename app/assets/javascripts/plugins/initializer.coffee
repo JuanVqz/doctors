@@ -1,13 +1,18 @@
 //= require plugins/autosize
 //= require plugins/select2
+//= require plugins/bulma-tagsinput
 
 ready =->
+  startBulmaTagsInput()
   startScrollTable()
   startFlash()
   setTimeout flashCallback, 5000
   startNavbar()
   startAutosize()
   startSelect2()
+
+startBulmaTagsInput =->
+  bulmaTagsInput = bulmaTagsinput.attach()
 
 startScrollTable =->
   $(".table-container").scrollLeft($(document).outerWidth())

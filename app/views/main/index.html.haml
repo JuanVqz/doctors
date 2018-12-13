@@ -1,13 +1,8 @@
 %section.hero
   .hero-body
     .container
-      - if request.subdomain.present?
-        = link_to new_user_session_path, class: "button is-link is-inverted is-pulled-right" do
-          %span.icon
-            %i.fas.fa-user
-          %span Iniciar sesión
-      %h1.title Doctor X
-      %h2.subtitle Sistema de Historial Clinico
+      %h1.title Asistencia Clinica
+      %h2.subtitle Salvando información, salvando vidas.
 
 %section.section.has-background-light
   .container

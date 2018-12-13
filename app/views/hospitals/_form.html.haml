@@ -1,11 +1,25 @@
 -# frozen_string_literal: true
 = simple_form_for(@hospital) do |f|
   %p.has-text-grey-light.is-uppercase Datos generales
-  .columns
-    .column
+  .columns.is-multiline
+    .column.is-3
       = f.input :name
-    .column
+    .column.is-3
+      = f.input :maps
+    .column.is-3
+      = f.input :facebook
+    .column.is-3
+      = f.input :twitter
+    .column.is-3
+      = f.input :linkedin
+    .column.is-3
       = f.input :description
+    .column.is-3
+      = f.input :about
+    .column.is-3
+      = f.input :schedule
+    .column.is-12
+      = f.input :tags, input_html: { type: "tags", placeholder: "Ingrese sus servicios" }
 
   .buttons
     = link_to :back, class: "button is-link" do

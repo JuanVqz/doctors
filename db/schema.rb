@@ -81,6 +81,13 @@ ActiveRecord::Schema.define(version: 2018_12_04_183318) do
     t.string "subdomain"
     t.string "description"
     t.integer "plan", default: 0, null: false
+    t.text "about"
+    t.text "schedule"
+    t.string "tags"
+    t.string "facebook", default: "https://www.facebook.com/"
+    t.string "twitter", default: "https://twitter.com/?lang=es"
+    t.string "linkedin", default: "https://www.linkedin.com/"
+    t.string "maps", default: "https://www.google.com/maps"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

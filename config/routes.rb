@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       root to: "dash#index", as: :dash
     end
 
-    root to: "main#index"
+    root to: "main#hospital"
   end
 
   devise_for :users

@@ -131,7 +131,7 @@ RSpec.describe "Doctor's flow", type: :system do
 
   def visit_main_page
     visit "http://ursula.lvh.me"
-    expect(page).to have_content "Doctor X"
+    expect(page).to have_content @hospital.name
     expect(page).to have_content "Iniciar sesión"
   end
 end

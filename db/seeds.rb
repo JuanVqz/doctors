@@ -10,8 +10,9 @@ require 'ffaker'
 # Hospitals
 puts "Creating Hospitals"
 hospital_one = Hospital.where(
-  name: "Heroku", subdomain: "stark-headland-73197",
-  description: "Una descripcion para el primer hospital."
+  name: "Hospital Pediatrico", subdomain: "stark-headland-73197",
+  description: "Salvando Vidas", tags: "Cirugía general gastrointestinal,Cirugía con laparoscópica avanzada,Enfermedades del aparato digestivo,Clínica de hernias,Tiroides y paratiroide,Estómago,Enfermedad  por reflujo gastroesofágico,Esófago,Hígado,Vesícula biliar,Apéndice",
+  about: "La fundación del Hospital Infantil de México, primero de los actuales Institutos Nacionales de Salud, dio inicio, sin duda, de la modernidad del sistema de salud en México."
 ).first_or_create
 
 # Doctors

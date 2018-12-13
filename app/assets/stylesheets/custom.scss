@@ -5,3 +5,7 @@
   top: 20px;
   z-index: 999;
 }
+
+.is-hospital { background: url("doctor.jpg"); }
+@media(max-width: 1024px) { .is-hospital { background: url("doctor.jpg") center / cover; } }
+@media(max-width: 768px) { .is-hospital { background: url("doctor.jpg") center / cover; } }

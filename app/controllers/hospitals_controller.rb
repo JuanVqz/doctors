@@ -3,6 +3,7 @@ class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:edit, :update]
 
   def edit
+    flash[:notice] = "Los datos que se requieren en esta sección seran publicos"
   end
 
   def update
@@ -20,6 +21,9 @@ class HospitalsController < ApplicationController
   end
 
   def hospital_params
-    params.require(:hospital).permit(:name, :description)
+    params.require(:hospital).permit(
+      :name, :schedule, :maps, :facebook, :twitter,
+      :linkedin, :description, :about, :tags
+    )
   end
 end

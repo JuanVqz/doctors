@@ -1,0 +1,82 @@
+%section.hero.is-hospital.is-fullheight
+  .hero-head
+    %nav.navbar
+      .container
+        .navbar-brand
+          = link_to root_path, class: "navbar-item" do
+            %h1.title.has-text-white
+              = current_hospital.name
+          %span.navbar-burger.burger{ "data-target": "navMenu" }
+            %span
+            %span
+            %span
+        #navMenu.navbar-menu
+          .navbar-end
+            = link_to "#about", class: "navbar-item has-text-white" do
+              %span Acerca de
+            = link_to "#services", class: "navbar-item has-text-white" do
+              %span Servicios
+            = link_to "#contact", class: "navbar-item has-text-white" do
+              %span Contacto
+            = link_to new_user_session_path, class: "navbar-item has-text-white" do
+              %span.icon
+                %i.fas.fa-user
+              %span Iniciar sesión
+  .hero-body
+    .container
+      %h1.title.has-text-white
+        = current_hospital.description
+
+%section.hero.has-background-white.is-fullheight
+  #about.hero-body
+    .container
+      %h1.title.has-text-centered.is-uppercase
+        Acerca de
+      %p
+        = current_hospital.about
+
+%section.section.has-background-warning.is-fullheight
+  #services.hero-body
+    .container
+      %h1.title.has-text-centered.is-uppercase
+        Nuestros Servicios
+      .columns.is-multiline
+        - tags_spliter(current_hospital).each do |tag|
+          .column.is-4
+            %article.media.notification
+              %figure.media-left
+                %span.icon
+                  %i.fa.fa-check
+              .media-content
+                .content
+                  = tag
+
+%section.hero.has-background-white.is-fullheight
+  #contact.hero-body
+    .container
+      .columns.has-text-centered
+        .column
+          %h2.title.is-uppercase
+            Horario de atención
+            %pre
+              = current_hospital.schedule
+
+%footer.footer.has-background-white
+  .content
+    .columns.has-text-centered
+      .column.is-6
+        = link_to "Powered by @javasgon", "https://twitter.com/javasgon", target: "_blank"
+      .column.is-6
+        .buttons.is-centered
+          = link_to current_hospital.maps, class: "button", target: "_blank" do
+            %span.icon
+              %i.fas.fa-2x.fa-street-view
+          = link_to current_hospital.linkedin, class: "button is-link", target: "_blank" do
+            %span.icon
+              %i.fab.fa-2x.fa-linkedin
+          = link_to current_hospital.facebook, class: "button is-link", target: "_blank" do
+            %span.icon
+              %i.fab.fa-2x.fa-facebook
+          = link_to current_hospital.twitter, class: "button is-info", target: "_blank" do
+            %span.icon
+              %i.fab.fa-2x.fa-twitter
