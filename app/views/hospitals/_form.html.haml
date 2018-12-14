@@ -15,11 +15,11 @@
     .column.is-3
       = f.input :description
     .column.is-3
-      = f.input :about
-    .column.is-3
       = f.input :schedule
-    .column.is-12
+    .column.is-3
       = f.input :tags, input_html: { type: "tags", placeholder: "Ingrese sus servicios" }
+    .column.is-12
+      = f.input :about, as: :trix_editor
 
   %p.has-text-grey-light.is-uppercase Domicilio
   = render "addresses/address_fields", f: f

@@ -32,8 +32,7 @@
     .container
       %h1.title.has-text-centered.is-uppercase
         Acerca de
-      %p
-        = current_hospital.about
+      = raw current_hospital.about.to_s.html_safe
 
 %section.section.has-background-warning.is-fullheight
   #services.hero-body

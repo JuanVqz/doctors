@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require plugins/initializer
+ *= require trix
  *= require_directory .
  *= require_self
  */
