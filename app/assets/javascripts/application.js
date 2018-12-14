@@ -15,5 +15,6 @@
 //= require activestorage
 //= require turbolinks
 //= require cocoon
+//= require trix
 //= require plugins/initializer
 //= require_directory .
