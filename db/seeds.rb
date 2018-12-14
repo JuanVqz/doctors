@@ -12,8 +12,14 @@ puts "Creating Hospitals"
 hospital_one = Hospital.where(
   name: "Hospital Pediatrico", subdomain: "stark-headland-73197",
   description: "Salvando Vidas", tags: "Cirugía general gastrointestinal,Cirugía con laparoscópica avanzada,Enfermedades del aparato digestivo,Clínica de hernias,Tiroides y paratiroide,Estómago,Enfermedad  por reflujo gastroesofágico,Esófago,Hígado,Vesícula biliar,Apéndice",
-  about: "La fundación del Hospital Infantil de México, primero de los actuales Institutos Nacionales de Salud, dio inicio, sin duda, de la modernidad del sistema de salud en México."
+  about: "La fundación del Hospital Infantil de México, primero de los actuales Institutos Nacionales de Salud, dio inicio, sin duda, de la modernidad del sistema de salud en México.",
+  schedule: "Lunes a Viernes de 09:00 - 19:00"
 ).first_or_create
+
+Address.create(
+  street: "Emiliano Zapata", number: "Int 10", colony: "Reforma",
+  municipality: "Oaxaca de Juárez", addressable: hospital_one
+)
 
 # Doctors
 puts "Creating Doctors"

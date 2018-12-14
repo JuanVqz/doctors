@@ -60,6 +60,10 @@ es-MX:
         description_cancer: "Motivo de Cancer"
         description_other: "Otro Motivo"
         description: "Descripción"
+        maps: "Mapa"
+        about: "Acerca de"
+        schedule: "Horario"
+        tags: "Expertos en"
 
     # Examples
     # labels:

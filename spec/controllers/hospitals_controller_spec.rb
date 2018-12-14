@@ -6,10 +6,21 @@ RSpec.describe HospitalsController, type: :controller do
       subdomain: "santa"
   end
   let(:doctor) { create :doctor, :admin, hospital_id: hospital.id }
+  let(:address) { attributes_for :address }
+
+  let(:valid_attributes) do
+    {
+      name: "San Jóse",
+      subdomain: "san_jose",
+      address_attributes: address
+    }
+  end
 
   let(:invalid_attributes) do
     {
-      name: nil
+      name: nil,
+      subdomain: nil,
+      address_attributes: address
     }
   end
 
@@ -20,7 +31,8 @@ RSpec.describe HospitalsController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      get :edit, params: { id: hospital.id }
+      hospital = Hospital.create! valid_attributes
+      get :edit, params: { id: hospital.to_param }
       expect(response).to be_successful
     end
   end
@@ -31,11 +43,13 @@ RSpec.describe HospitalsController, type: :controller do
         {
           name: "Santa Update",
           description: "Algo acerca de la página",
+          address_attributes: address
         }
       end
 
       it "updates the requested hospital" do
-        put :update, params: { id: hospital.id, hospital: new_attributes }
+        hospital = Hospital.create! valid_attributes
+        put :update, params: { id: hospital.to_param, hospital: new_attributes }
         hospital.reload
         expect(hospital.name).to eq "Santa Update"
       end
@@ -43,7 +57,8 @@ RSpec.describe HospitalsController, type: :controller do
 
     context "with invalid params" do
       it "returns a success response to display the 'edit' template" do
-        put :update, params: { id: hospital.id, hospital: invalid_attributes }
+        hospital = Hospital.create! valid_attributes
+        put :update, params: { id: hospital.to_param, hospital: invalid_attributes }
         expect(response).to be_successful
       end
     end

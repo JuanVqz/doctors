@@ -21,6 +21,9 @@
     .column.is-12
       = f.input :tags, input_html: { type: "tags", placeholder: "Ingrese sus servicios" }
 
+  %p.has-text-grey-light.is-uppercase Domicilio
+  = render "addresses/address_fields", f: f
+
   .buttons
     = link_to :back, class: "button is-link" do
       %span.icon

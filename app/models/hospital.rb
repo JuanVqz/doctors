@@ -3,6 +3,10 @@ class Hospital < ApplicationRecord
 
   enum plan: [:basic, :medium]
 
+  has_one :address, as: :addressable, dependent: :destroy
+
+  accepts_nested_attributes_for :address, allow_destroy: true
+
   validates :subdomain, :name, presence: true
   validates :subdomain, :name, uniqueness: true
 
