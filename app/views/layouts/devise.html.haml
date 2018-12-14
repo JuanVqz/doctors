@@ -7,11 +7,12 @@
     %title Doctores
     = csrf_meta_tags
     = csp_meta_tag
+    = favicon_link_tag asset_path('favicon.png')
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = render "layouts/partials/flash"
-    %section.hero.is-fullheight
+    %section.hero.is-hospital.is-fullheight
       .hero-body
         .container.has-text-centered
           .column.is-4.is-offset-4
