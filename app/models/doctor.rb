@@ -5,4 +5,6 @@ class Doctor < User
   has_many :hospitalizations, -> { order(created_at: :desc) }
 
   validates :name, :first_name, :last_name, :specialty, presence: true
+
+  delegate :subdomain, to: :hospital, prefix: true, allow_nil: true
 end
