@@ -1,5 +1,11 @@
-<p>Welcome <%= @email %>!</p>
+<p class="header">Bienvenido <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p class="paragraph">
+  Puede confirmar el correo electrónico de su cuenta a través del siguiente enlace:
+</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p class="paragraph-center">
+  <%= link_to 'Confirmar mi cuenta',
+    confirmation_url(@resource, confirmation_token: @token, subdomain: @resource.hospital_subdomain),
+    class: "button button--green" %>
+</p>
