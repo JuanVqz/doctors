@@ -1,0 +1,17 @@
+<div class="header text-right">
+  <strong><%= @medical_consultation.patient %></strong>
+
+  <div>
+    <%= age @medical_consultation.patient %>
+    <%= @medical_consultation.patient.height %> cm.
+    <%= @medical_consultation.patient.weight %> Kg.
+  </div>
+
+  <div>
+    <%= l @medical_consultation.created_at, format: :normal %>
+  </div>
+</div>
+
+<div style="padding-top:40px">
+  <pre><%= @medical_consultation.prescription %></pre>
+</div>

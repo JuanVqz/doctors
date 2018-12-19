@@ -14,7 +14,7 @@ class MedicalConsultationsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf { render pdf: prescription_name,
-                    template: "medical_consultations/prescription",
+                    template: "pdfs/prescription",
                     layout: "pdfs/prescription" }
     end
   end

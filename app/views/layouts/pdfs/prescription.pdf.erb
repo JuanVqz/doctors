@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-  <title>Consulta Medica</title>
+  <title>Consulta Medica de <%= @medical_consultation.patient %></title>
   <style>
+    pre {
+      font-size: 11px;
+    }
+
     .container {
       display: flex;
       flex-direction: column;
@@ -11,8 +15,11 @@
 
     .container > div {
       word-wrap: break-word;
-      font-size: 15px;
-      margin: 10px;
+    }
+
+    .header {
+      font-size: 13px;
+      margin-right: 80px;
     }
 
     .text-right {
