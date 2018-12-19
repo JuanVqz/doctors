@@ -10,15 +10,15 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_hospital
 
-  before_action :ensure_subdomain
+  #before_action :ensure_subdomain
   private
 
-  def ensure_subdomain
-    return "no subdomain" unless current_hospital.present?
-  end
+  #def ensure_subdomain
+    #return "no subdomain" unless current_hospital.present?
+  #end
 
   def scope_current_hospital
-    Hospital.current_id = current_hospital ? current_hospital.id : nil
+    Hospital.current_id = current_hospital ? current_hospital.id : current_user.hospital_id
   end
 
   def user_not_authorized
