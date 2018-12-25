@@ -278,7 +278,7 @@ es-MX:
         treatment: "Tratamiento"
         observations: "Observaciones"
         prescription: "Receta"
-        lab_results: "Resutaldos de Laboratorio"
+        lab_results: "Resultados de Laboratorio"
         histopathology: "Histopatologia"
         comments: "Comentarios"
       clinic_history:
