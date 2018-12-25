@@ -6,17 +6,17 @@
     MENÚ
   %ul.menu-list
     %li
-      = link_to patients_path, class: active_for(patients_path)do
+      = link_to patients_path(subdomain: current_hospital.subdomain), class: active_for(patients_path)do
         %span.icon
           %i.fa.fa-users
         %span Pacientes
     %li
-      = link_to medical_consultations_path, class: active_for(medical_consultations_path) do
+      = link_to medical_consultations_path(subdomain: current_hospital.subdomain), class: active_for(medical_consultations_path) do
         %span.icon
           %i.fa.fa-book
         %span Consultas
     %li
-      = link_to hospitalizations_path, class: active_for(hospitalizations_path) do
+      = link_to hospitalizations_path(subdomain: current_hospital.subdomain), class: active_for(hospitalizations_path) do
         %span.icon
           %i.fa.fa-ambulance
         %span Hospitalizaciónes
@@ -25,7 +25,7 @@
       CONFIGURACIÓN
     %ul.menu-list
       %li
-        = link_to doctors_path, class: active_for(doctors_path) do
+        = link_to doctors_path(subdomain: current_hospital.subdomain), class: active_for(doctors_path) do
           %span.icon
             %i.fa.fa-user-md
           %span Doctores
