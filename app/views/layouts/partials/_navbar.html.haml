@@ -1,7 +1,7 @@
 %nav.navbar
   .container
     .navbar-brand
-      = link_to root_url(subdomain: request.subdomain), class: "navbar-item" do
+      = link_to root_url(subdomain: current_hospital.subdomain), class: "navbar-item" do
         %h6.title.is-5
           = current_hospital.name
           %sup
