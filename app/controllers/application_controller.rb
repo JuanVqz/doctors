@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_hospital
 
+  def after_sign_in_path_for resource
+    return patients_path if user_signed_in?
+    super
+  end
+
   #before_action :ensure_subdomain
   private
 

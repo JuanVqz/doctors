@@ -3,6 +3,7 @@ module Feature
     def visit_patients_path
       click_link "Pacientes"
       expect(page).to have_content "Buscar"
+      expect(page).to have_current_path(patients_path)
     end
 
     def create_patient

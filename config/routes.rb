@@ -4,14 +4,11 @@ Rails.application.routes.draw do
   end
 
   constraints(!SubdomainRoutes) do
-    authenticated :user do
-      resources :doctors
-      resources :hospitalizations
-      resources :hospitals, only: [:edit, :update]
-      resources :medical_consultations
-      resources :patients
-      root to: "dash#index", as: :dash
-    end
+    resources :doctors
+    resources :hospitalizations
+    resources :hospitals, only: [:edit, :update]
+    resources :medical_consultations
+    resources :patients
 
     root to: "main#hospital"
   end

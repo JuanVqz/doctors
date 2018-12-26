@@ -7,7 +7,7 @@ RSpec.describe "Hospitalization's flow", type: :system do
     sign_in_doctor @hospital
     create_patient
     create_hospitalizations_for_patient
-    visit_dash_path
+    visit_patients_path
     visit_patients_path
     see_patient_name
     click_link_details

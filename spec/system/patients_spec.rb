@@ -5,7 +5,6 @@ RSpec.describe "Patient's flow", type: :system do
     create_hospital_plan_medium
     visit_sign_in_doctor
     sign_in_doctor @hospital
-    visit_dash_path
     visit_patients_path
     visit_new_patient
   end

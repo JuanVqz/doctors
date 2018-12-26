@@ -17,7 +17,7 @@ RSpec.describe "Doctor's flow", type: :system do
       click_link "Iniciar sesión"
       visit_sign_in_doctor
       sign_in_admin_doctor @hospital
-      visit_dash_path
+      visit_patients_path
     end
 
     scenario "with invalid email" do
@@ -33,7 +33,7 @@ RSpec.describe "Doctor's flow", type: :system do
       click_link "Iniciar sesión"
       visit_sign_in_doctor
       sign_in_admin_doctor @hospital
-      visit_dash_path
+      visit_patients_path
       visit_new_doctor
       create_new_doctor "Pedro"
       visit_show_doctor
@@ -44,7 +44,7 @@ RSpec.describe "Doctor's flow", type: :system do
       click_link "Iniciar sesión"
       visit_sign_in_doctor
       sign_in_admin_doctor @hospital
-      visit_dash_path
+      visit_patients_path
       visit_new_doctor
       create_new_doctor ""
       show_name_error
@@ -58,7 +58,7 @@ RSpec.describe "Doctor's flow", type: :system do
         click_link "Iniciar sesión"
         visit_sign_in_doctor
         sign_in_admin_doctor @hospital
-        visit_dash_path
+        visit_patients_path
         visit_new_doctor
         create_new_doctor "Pedro"
         visit_show_doctor
@@ -78,7 +78,7 @@ RSpec.describe "Doctor's flow", type: :system do
         click_link "Iniciar sesión"
         visit_sign_in_doctor
         sign_in_admin_doctor @hospital
-        visit_dash_path
+        visit_patients_path
         visit_new_doctor
         create_new_doctor "Pedro"
         visit_show_doctor
