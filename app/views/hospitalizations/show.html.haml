@@ -17,7 +17,7 @@
               %td= @hospitalization.doctor
             %tr
               %th Paciente
-              %td= link_to @hospitalization.patient, @hospitalization.patient, target: "_blank"
+              %td= @hospitalization.patient
             %tr
               %th Inicio
               %td= @hospitalization.starting
@@ -50,12 +50,10 @@
       %i.fa.fa-arrow-left
     %span Regresar
 
-  = link_to [:edit, @hospitalization], class: "button is-warning" do
+  = link_to [:edit, @hospitalization, patient_id: @hospitalization.patient], "data-tooltip": "Editar", class: "button is-warning tooltip" do
     %span.icon
       %i.fa.fa-edit
-    %span Editar
 
-  = link_to @hospitalization.patient, class: "button is-success", style: "margin-left: auto" do
+  = link_to @hospitalization.patient, "data-tooltip": "Detalle de #{@hospitalization.patient}", class: "button is-success tooltip is-tooltip-left", style: "margin-left: auto" do
     %span.icon
       %i.fa.fa-user
-    %span Ir al Detalle del Paciente

@@ -81,7 +81,7 @@
       %i.fa.fa-arrow-left
     %span Regresar
 
-  = link_to [:edit, @medical_consultation], "data-tooltip": "Editar", class: "button is-warning tooltip" do
+  = link_to [:edit, @medical_consultation, patient_id: @medical_consultation.patient], "data-tooltip": "Editar", class: "button is-warning tooltip" do
     %span.icon
       %i.fa.fa-edit
 
@@ -89,6 +89,6 @@
     %span.icon
       %i.fa.fa-print
 
-  = link_to @medical_consultation.patient, "data-tooltip": "Ir al detalle del paciente", class: "button is-success tooltip is-tooltip-left", style: "margin-left: auto" do
+  = link_to @medical_consultation.patient, "data-tooltip": "Detalle de #{@medical_consultation.patient}", class: "button is-success tooltip is-tooltip-left", style: "margin-left: auto" do
     %span.icon
       %i.fa.fa-user
