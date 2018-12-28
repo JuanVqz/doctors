@@ -10,64 +10,70 @@
     %p.has-text-grey-light.is-uppercase Datos generales
     .table-container
       %table.table.is-hoverable.is-fullwidth
-        %tr
-          %thead
-            %tr
-              %th Doctor
-              %td= @medical_consultation.doctor
-            %tr
-              %th Paciente
-              %td= link_to @medical_consultation.patient, patient_path(@medical_consultation.patient), target: "_blank"
-            %tr
-              %th Motivo de Consulta
-              %td= @medical_consultation.reason
-            %tr
-              %th Subjetivo
-              %td= @medical_consultation.subjetive
-            %tr
-              %th Objetivo
-              %td= @medical_consultation.objetive
+        %thead
+          %tr
+            %th Doctor
+            %td= @medical_consultation.doctor
+          %tr
+            %th Paciente
+            %td= @medical_consultation.patient
+          %tr
+            %th Altura
+            %td= "#{@medical_consultation.height} cm."
+          %tr
+            %th Peso
+            %td= "#{@medical_consultation.weight} kg."
+          %tr
+            %th IMC
+            %td= number_with_precision(@medical_consultation.imc, precision: 2)
+          %tr
+            %th Motivo de Consulta
+            %td= @medical_consultation.reason
+          %tr
+            %th Objetivo
+            %td= @medical_consultation.objetive
 
   .column.is-6
     %p.has-text-grey-light.is-uppercase .
     .table-container
       %table.table.is-hoverable.is-fullwidth
-        %tr
-          %thead
-            %tr
-              %th Receta
-              %td= @medical_consultation.prescription
-            %tr
-              %th Plan
-              %td= @medical_consultation.plan
-            %tr
-              %th Diagnostico
-              %td= @medical_consultation.diagnosis
-            %tr
-              %th Tratamiento
-              %td= @medical_consultation.treatment
-            %tr
-              %th Observación
-              %td= @medical_consultation.observations
-            %tr
-              %th Fecha de registro
-              %td= l @medical_consultation.created_at, format: :long
+        %thead
+          %tr
+            %th Subjetivo
+            %td= @medical_consultation.subjetive
+          %tr
+            %th Receta
+            %td= @medical_consultation.prescription
+          %tr
+            %th Plan
+            %td= @medical_consultation.plan
+          %tr
+            %th Diagnostico
+            %td= @medical_consultation.diagnosis
+          %tr
+            %th Tratamiento
+            %td= @medical_consultation.treatment
+          %tr
+            %th Observación
+            %td= @medical_consultation.observations
+          %tr
+            %th Fecha de registro
+            %td= l @medical_consultation.created_at, format: :long
 
   .column.is-12
     %p.has-text-grey-light.is-uppercase Resultado de Laboratorio
     .table-container
       %table.table.is-hoverable.is-fullwidth
-        %tr
-          %thead
-            %tr
-              %th Resultados de Laboratorio
-              %td= @medical_consultation.lab_results
-            %tr
-              %th Histopatologia
-              %td= @medical_consultation.histopathology
-            %tr
-              %th Comentarios
-              %td= @medical_consultation.comments
+        %thead
+          %tr
+            %th Resultados de Laboratorio
+            %td= @medical_consultation.lab_results
+          %tr
+            %th Histopatologia
+            %td= @medical_consultation.histopathology
+          %tr
+            %th Comentarios
+            %td= @medical_consultation.comments
 
 .buttons
   = link_to :back, class: "button is-link" do
