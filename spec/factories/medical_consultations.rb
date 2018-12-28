@@ -11,6 +11,9 @@ FactoryBot.define do
     lab_results { "MyText" }
     histopathology { "MyText" }
     comments { "MyText" }
+    height { 170.5 }
+    weight { 80.0 }
+    imc { 26.6406 }
 
     after :build do |medical_consultation|
       if medical_consultation.doctor.nil?

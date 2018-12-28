@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_patient, only: [:show, :edit, :update]
+  before_action :set_patient, only: [:show, :edit, :update, :weight]
 
   def index
     @patients = Patient.recent.search(params[:query]).page(params[:page])
@@ -35,6 +35,9 @@ class PatientsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def weight
   end
 
   private

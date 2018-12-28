@@ -37,6 +37,16 @@
         .column
           = f.input :comments, input_html: { class: "textarea" }
 
+      %p.has-text-grey-light.is-uppercase Datos del paciente
+      .columns.is-multiline
+        .column.is-6
+          = f.input :height
+        .column.is-6
+          = f.input :weight
+        .column.is-12
+          = f.input :imc, readonly: true
+          %p#imc_text.help
+
   .buttons
     = link_to :back, class: "button is-link" do
       %span.icon

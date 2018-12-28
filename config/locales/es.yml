@@ -281,6 +281,9 @@ es-MX:
         lab_results: "Resultados de Laboratorio"
         histopathology: "Histopatologia"
         comments: "Comentarios"
+        height: "Altura"
+        weight: "Peso"
+        imc: "IMC"
       clinic_history:
         description_diabetes: "Motivo de Diabetes"
         description_hypertension: "Motivo de Hipertensión"

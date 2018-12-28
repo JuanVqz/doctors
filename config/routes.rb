@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :hospitalizations
     resources :hospitals, only: [:edit, :update]
     resources :medical_consultations
-    resources :patients
+    resources :patients do
+      get :weight, on: :member
+    end
 
     root to: "main#hospital"
   end

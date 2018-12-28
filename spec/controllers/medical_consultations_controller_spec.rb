@@ -20,6 +20,9 @@ RSpec.describe MedicalConsultationsController, type: :controller do
       lab_results: "Resultados del laboratorio",
       histopathology: "No se que es",
       comments: "Algo que decir con respecto al resutaldo de laboratorio",
+      height: 175.0,
+      weight: 80.0,
+      imc: 27.34375,
       doctor_id: doctor.id,
       patient_id: patient.id
     }
@@ -38,6 +41,9 @@ RSpec.describe MedicalConsultationsController, type: :controller do
       lab_results: "Resultados del laboratorio",
       histopathology: "No se que es",
       comments: "Algo que decir con respecto al resutaldo de laboratorio",
+      height: 175.0,
+      weight: 80.0,
+      imc: 27.34375,
       doctor_id: doctor.id,
       patient_id: patient.id
     }
