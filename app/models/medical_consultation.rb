@@ -17,7 +17,8 @@ class MedicalConsultation < ApplicationRecord
   end
 
   def update_patient
-    patient = Patient.find(patient_id)
-    patient.update_attributes(height: height, weight: weight)
+    self.patient.height = height
+    self.patient.weight = weight
+    self.patient.save
   end
 end
