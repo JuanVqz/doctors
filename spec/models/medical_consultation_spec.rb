@@ -8,6 +8,31 @@ RSpec.describe MedicalConsultation, type: :model do
   it { should validate_presence_of :prescription }
   it { should validate_presence_of :patient_id }
 
+  describe "#update_patient" do
+    let(:patient) { create :patient, height: 160, weight: 60 }
+    let(:medical_consultation) do
+      create :medical_consultation, patient: patient,
+        height: 170, weight: 70
+    end
+
+    before { medical_consultation }
+
+    context "when create a medical_consultation" do
+      it "update patient height and weight" do
+        expect(medical_consultation.patient.height).to eq 170.00
+        expect(medical_consultation.patient.weight).to eq 70.00
+      end
+    end
+
+    context "when update a medical_consultation" do
+      it "update patient height and weight" do
+        medical_consultation.update(height: 180, weight: 80)
+        expect(medical_consultation.patient.height).to eq 180.00
+        expect(medical_consultation.patient.weight).to eq 80.00
+      end
+    end
+  end
+
   describe ".search" do
     let(:mateo) do
       create :patient, name: "Mateo", first_name: "Pérez",
