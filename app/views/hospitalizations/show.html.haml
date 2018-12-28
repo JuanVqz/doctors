@@ -54,6 +54,10 @@
     %span.icon
       %i.fa.fa-edit
 
+  = link_to [@hospitalization, format: :pdf], "data-tooltip": "Imprimir", class: "button is-danger tooltip", target: "_blank" do
+    %span.icon
+      %i.fa.fa-print
+
   = link_to @hospitalization.patient, "data-tooltip": "Detalle de #{@hospitalization.patient}", class: "button is-success tooltip is-tooltip-left", style: "margin-left: auto" do
     %span.icon
       %i.fa.fa-user

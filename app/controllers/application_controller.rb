@@ -15,6 +15,19 @@ class ApplicationController < ActionController::Base
     super
   end
 
+  def generar_pdf name
+    {
+      pdf: pdf_name,
+      page_size: "Letter",
+      template: "pdfs/#{name}.pdf.erb",
+      viewport_size: "1280x1024",
+      margin: { top: "30", bottom: "20" },
+      header: { html: { template: "layouts/pdfs/_header.pdf.erb" } },
+      footer: { html: { template: "layouts/pdfs/_footer.pdf.erb" } },
+      layout: "pdfs/hospital"
+    }
+  end
+
   #before_action :ensure_subdomain
   private
 

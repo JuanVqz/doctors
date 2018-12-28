@@ -11,6 +11,10 @@ class HospitalizationsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf { render generar_pdf("hospitalization") }
+    end
   end
 
   def new
@@ -47,6 +51,10 @@ class HospitalizationsController < ApplicationController
 
     def set_hospitalization
       @hospitalization = Hospitalization.find(params[:id])
+    end
+
+    def pdf_name
+      "#{@hospitalization.patient.name}_#{@hospitalization.id}_#{@hospitalization.created_at.to_s(:number)}".upcase
     end
 
     def hospitalization_params

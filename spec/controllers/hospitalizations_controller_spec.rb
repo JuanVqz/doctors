@@ -50,6 +50,12 @@ RSpec.describe HospitalizationsController, type: :controller do
       get :show, params: { id: hospitalization.to_param }
       expect(response).to be_successful
     end
+
+    it "returns a pdf file" do
+      hospitalization = Hospitalization.create! valid_attributes
+      get :show, params: { id: hospitalization.to_param, format: :pdf }
+      expect(response.content_type).to eq "application/pdf"
+    end
   end
 
   describe "GET #new" do
