@@ -5,10 +5,5 @@
   %td= hospitalization.days_of_stay
   %td
     .buttons.is-right
-      = link_to hospitalization, class: "button is-link" do
+      = link_to hospitalization, "data-tooltip": "Detalles", class: "button is-link tooltip" do
         %i.fa.fa-eye
-        &nbsp;Detalles
-      = link_to [:edit, hospitalization], class: "button is-warning" do
-        %i.fa.fa-edit
-        &nbsp;Editar
-

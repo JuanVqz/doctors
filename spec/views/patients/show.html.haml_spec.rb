@@ -39,7 +39,6 @@ RSpec.describe "patients/show", type: :view do
     expect(rendered).to match(/Chavez/)
     expect(rendered).to match(/Castro/)
     expect(rendered).to match(/1989-09-19/)
-    expect(rendered).to match(/100/)
     expect(rendered).to match(/ARH+/)
     expect(rendered).to match(/Herrero/)
     expect(rendered).to match(/Pedro/)
