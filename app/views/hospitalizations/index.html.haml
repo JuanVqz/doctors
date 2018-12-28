@@ -38,7 +38,6 @@
           %td= hospitalization.days_of_stay
           %td
             .buttons.is-right
-              = link_to hospitalization, class: "button is-link" do
+              = link_to hospitalization, "data-tooltip": "Detalles", class: "button is-link tooltip" do
                 %span.icon
                   %i.fa.fa-eye
-                %span Detalles
