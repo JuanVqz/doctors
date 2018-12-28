@@ -1,9 +1,11 @@
 require "rails_helper"
 
 RSpec.describe "patients/index", type: :view do
-  let(:doctor) { create :doctor }
+  let(:hospital) { create :hospital, subdomain: "ursula" }
+  let(:doctor) { create :doctor, hospital_id: hospital.id }
 
   before(:each) do
+    allow(Hospital).to receive(:current_id).and_return hospital.id
     assign(:patients, Kaminari.paginate_array([
       Patient.create!(
         name: "Marco",

@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "patients/new", type: :view do
+  let(:hospital) { create :hospital, subdomain: "ursula" }
+  let(:doctor) { create :doctor, hospital_id: hospital.id }
+
   before(:each) do
+    allow(Hospital).to receive(:current_id).and_return hospital.id
     @patient = assign(:patient, Patient.new(
       name: "Marco",
       first_name: "Chavez",
