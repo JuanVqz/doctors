@@ -61,8 +61,9 @@ class MedicalConsultationsController < ApplicationController
 
     def medical_consultation_params
       params.require(:medical_consultation).permit(
-        :reason, :subjetive, :objetive, :plan, :diagnosis, :treatment, :observations, :prescription,
-        :lab_results, :histopathology, :comments, :patient_id
+        :reason, :subjetive, :objetive, :plan, :diagnosis, :treatment,
+        :observations, :prescription, :lab_results, :histopathology, :comments,
+        :height, :weight, :imc, :patient_id
       )
     end
 end
