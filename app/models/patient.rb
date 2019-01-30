@@ -10,8 +10,7 @@ class Patient < User
   accepts_nested_attributes_for :address, allow_destroy: true
 
   validates :email, uniqueness: true, allow_nil: true
-  validates :name, :first_name, :birthday,
-    :height, :weight, presence: true
+  validates :name, :first_name, :birthday, presence: true
 
   delegate :street, :number, :colony, :postal_code, :municipality,
     :state, :country, to: :address, prefix: true, allow_nil: true
