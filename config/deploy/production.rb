@@ -7,7 +7,7 @@ set :rails_env, :production
 #set :conditionally_migrate, true
 set :branch, ENV["REVISION"] || ENV["BRANCH_NAME"] || "master"
 
-server "138.68.0.80", user: "deployer", roles: %w{app db web}, primary: true
+server "142.93.207.49", user: "deployer", roles: %w{app db web}, primary: true
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
