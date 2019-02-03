@@ -30,9 +30,6 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 # Default value for default_env is {}
 #set :default_env, { path: "/home/deployer/.nvm/versions/node/v10.14.1/bin:$PATH" }
-set :default_environment, {
-    'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
-}
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
