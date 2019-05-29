@@ -1,24 +1,39 @@
-# README
+# ASISTENCIA CLINICA
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Es un sistema donde las instituciones clinicas podran registrar doctores para
+tomar consultas de los pacientes y conservar el historial clinico.
 
-Things you may want to cover:
+## Requisitos
+  * ruby 2.5.3
+  * rails 5.2.2
+  * postgres
 
-* Ruby version
+## Instalación
+```sh
+git clone https://JuanVqz@bitbucket.org/JuanVqz/doctors.git
+cd doctors
+bundle install
+```
 
-* System dependencies
+## Ejecutar servidor
+Es necesario utilizar `lvh.me:300` para ingresar a los subdominio desde el ambiente
+de desarrollo, si ejecuta las semillas existe un subdominio `stark-headland-73197`
+y debes ingresar de la siguiente manera.
 
-* Configuration
+iniciar el servidor
+```sh
+rails server
+```
+visitar la ruta
+```
+http://stark-headland-73197.lvh.me:3000
+```
+e iniciar sesión con el doctor (administrador)
+```
+usuario: pedrouno@gmail.com
+contraseña: 123456
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Desarrollo
+Si esta interesado en contribuir al desarrollo comprando un subdominio en
+[asistencia clinica](https://asistenciaclinica.com/) puede contactarnos.
