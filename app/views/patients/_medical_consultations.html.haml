@@ -6,12 +6,11 @@
         %th Motivo
         %th Receta
         %th.has-text-right Acciones
-
+    %tbody#medical_consultations
+      = render @medical_consultations
     %tfoot
       %tr
         %th{ colspan: 4 }
           #pag_medical_consultations
             = paginate @medical_consultations, remote: true
 
-    %tbody#medical_consultations
-      = render @medical_consultations

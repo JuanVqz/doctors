@@ -20,15 +20,6 @@
         %th Nombre
         %th Fecha de registro
         %th.has-text-right Acciones
-
-    %tfoot
-      %tr
-        %th{ colspan: 4 }
-          = paginate @doctores
-          %br
-          .has-text-right
-            = page_entries_info @doctores, entry_name: "doctores"
-
     %tbody
       - @doctores.each do |doctor|
         %tr
@@ -45,3 +36,11 @@
                 %span.icon
                   %i.fa.fa-edit
                 %span Editar
+    %tfoot
+      %tr
+        %th{ colspan: 4 }
+          = paginate @doctores
+          %br
+          .has-text-right
+            = page_entries_info @doctores, entry_name: "doctores"
+

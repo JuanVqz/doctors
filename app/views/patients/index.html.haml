@@ -17,7 +17,8 @@
         %th Registrado
         %th Actualizado
         %th.has-text-right Acciones
-
+    %tbody
+      = render @patients
     %tfoot
       %tr
         %th{ colspan: 4 }
@@ -26,5 +27,3 @@
           .has-text-right
             = page_entries_info @patients, entry_name: "pacientes"
 
-    %tbody
-      = render @patients

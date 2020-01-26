@@ -19,15 +19,6 @@
         %th Final
         %th Dias de estadia
         %th.has-text-right Acciones
-
-    %tfoot
-      %tr
-        %th{ colspan: 6 }
-          = paginate @hospitalizations
-          %br
-          .has-text-right
-            = page_entries_info @hospitalizations, entry_name: "hospitalizaciones"
-
     %tbody
       - @hospitalizations.each do |hospitalization|
         %tr
@@ -45,3 +36,11 @@
               = link_to hospitalization, "data-tooltip": "Detalles", class: "button is-link tooltip" do
                 %span.icon
                   %i.fa.fa-eye
+    %tfoot
+      %tr
+        %th{ colspan: 6 }
+          = paginate @hospitalizations
+          %br
+          .has-text-right
+            = page_entries_info @hospitalizations, entry_name: "hospitalizaciones"
+
