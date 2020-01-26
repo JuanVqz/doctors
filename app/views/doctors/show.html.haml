@@ -4,6 +4,18 @@
       %span.icon
         %i.fa.fa-user-md
       %span.is-uppercase información del doctor
+  .level-right
+    .level-item
+      .buttons
+        = link_to doctors_path, class: "button is-link" do
+          %span.icon
+            %i.fa.fa-arrow-left
+          %span Regresar
+
+        = link_to [:edit, @doctor], class: "button is-warning" do
+          %span.icon
+            %i.fa.fa-edit
+          %span Editar
 
 .table-container
   %table.table.is-hoverable.is-fullwidth
@@ -24,13 +36,4 @@
         %tr
           %th Correo Electrónico
           %td= @doctor.email
-.buttons
-  = link_to doctors_path, class: "button is-link" do
-    %span.icon
-      %i.fa.fa-arrow-left
-    %span Regresar
 
-  = link_to [:edit, @doctor], class: "button is-warning" do
-    %span.icon
-      %i.fa.fa-edit
-    %span Editar
