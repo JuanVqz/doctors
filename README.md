@@ -34,6 +34,37 @@ usuario: pedrouno@gmail.com
 contraseña: 123456
 ```
 
+## Importar información
+Los Doctores que utilizan nuestro servicio habian usado un sistema llamado Bento.
+
+Este sistema solo tenia soporte para Mac pero no lo han actualizado por lo tanto
+los Doctores buscaron una alternativa web pero requieren el historial clinico de sus pacientes.
+
+1. Exportar desde Bento
+  * El template de los pacientes
+  * El template de las consultas medicas
+
+2. Crear un namespace con el nombre del doctor en la tarea import.rake
+
+```
+  namespace :import do
+    namespace :doctor_name do
+      task patients do
+      end
+      task medical_consultations do
+      end
+    end
+  end
+```
+
+Ejecutar importación:
+
+```ruby
+rake import:doctor_name:patients
+rake import:doctor_name:medical_consultation
+```
+
+
 ## Desarrollo
 Si esta interesado en contribuir al desarrollo comprando un subdominio en
-[asistencia clinica](https://asistenciaclinica.com/) puede contactarnos.
+[asistencia clinica](https://asistenciaclinica.com/) puede [contactarnos.](https://github.com/JuanVqz)
