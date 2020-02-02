@@ -41,6 +41,7 @@ es-MX:
         blood_pressure: "Presion Arterial"
         place_of_birth: "Lugar de Nacimiento"
         sex: "Sexo"
+        marital_status: "Estado Civil"
         cellphone: "Celular"
         starting: "Inicio"
         ending: "Final"

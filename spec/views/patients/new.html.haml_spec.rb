@@ -18,7 +18,9 @@ RSpec.describe "patients/new", type: :view do
       referred_by: "Pedro Ramos",
       place_of_birth: "Oaxaca de Juárez",
       cellphone: "951 123 45 67",
-      sex: "Masculino"
+      sex: "Masculino",
+      marital_status: "Casado",
+      comments: "Comentario de prueba"
     ))
   end
 
@@ -38,6 +40,8 @@ RSpec.describe "patients/new", type: :view do
       assert_select "input[name=?]", "patient[place_of_birth]"
       assert_select "input[name=?]", "patient[cellphone]"
       assert_select "select[name=?]", "patient[sex]"
+      assert_select "input[name=?]", "patient[marital_status]"
+      assert_select "textarea[name=?]", "patient[comments]"
     end
   end
 end

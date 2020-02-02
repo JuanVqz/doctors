@@ -21,7 +21,9 @@ RSpec.describe PatientsController, type: :controller do
       cellphone: "951 123 45 67",
       sex: "Masculino",
       hospital_id: hospital.id,
-      address_attributes: address
+      address_attributes: address,
+      marital_status: "Casado",
+      comments: "Algo que decir"
     }
   end
 

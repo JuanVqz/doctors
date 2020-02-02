@@ -19,6 +19,8 @@ RSpec.describe "patients/show", type: :view do
       place_of_birth: "Oaxaca de Juárez",
       cellphone: "951 123 45 67",
       sex: "Masculino",
+      marital_status: "Casado",
+      comments: "Algo que decir",
       hospital_id: doctor.hospital.id,
       doctors: [doctor]
     ))
@@ -45,5 +47,7 @@ RSpec.describe "patients/show", type: :view do
     expect(rendered).to match(/Oaxaca/)
     expect(rendered).to match(/951/)
     expect(rendered).to match(/Masculino/)
+    expect(rendered).to match(/Casado/)
+    expect(rendered).to match(/Algo que decir/)
   end
 end

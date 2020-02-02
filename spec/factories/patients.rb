@@ -11,6 +11,8 @@ FactoryBot.define do
     referred_by { "Pedro Ramos" }
     place_of_birth { "Oaxaca de Juárez" }
     cellphone { "951 123 4567" }
+    marital_status { "Soltero" }
+    comments { "Algo que decir" }
     sex { "Masculino" }
     role { "patient" }
     type { "Patient" }
