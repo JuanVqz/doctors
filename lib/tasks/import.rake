@@ -6,7 +6,8 @@ namespace :import do
     desc "Import Patients from CSV"
     task patients: :environment do
       filename = File.join Rails.root, "lib/tasks/info/rafael_aragon/patients.csv"
-      counter  = 0
+      count_imported     = 0
+      count_not_imported = 0
 
       CSV.foreach(filename, headers: true) do |row|
         code           = row["0"]
@@ -70,20 +71,23 @@ namespace :import do
             end
           end
 
-          counter += 1 if patient.persisted?
+          count_imported += 1 if patient.persisted?
           puts "#{code} patient #{patient.id} #{patient.name}."
         else
+          count_not_imported += 1
           puts "#{code} not exists."
         end
       end
 
-      puts "Imported #{counter} bentos."
+      puts "#{count_imported} patients imported."
+      puts "#{count_not_imported} patients not imported."
     end
 
     desc "Import Medical Consultation from CSV"
     task medical_consultations: :environment do
       filename = File.join Rails.root, "lib/tasks/info/rafael_aragon/medical_consultations.csv"
-      counter  = 0
+      count_imported     = 0
+      count_not_imported = 0
 
       CSV.foreach(filename, headers: true) do |row|
         code           = row["0"]
@@ -113,17 +117,19 @@ namespace :import do
               patient: patient, created_at: created_at, updated_at: updated_at)
             puts "#{medical_consultation.errors.full_messages.join(",")}" if medical_consultation.errors.any?
 
-            counter += 1 if medical_consultation.persisted?
+            count_imported += 1 if medical_consultation.persisted?
             puts "#{code} Patient #{patient.id} #{patient.name} has medical consultation."
           else
             puts "#{code} The medical consultation has not Patient."
           end
         else
+          count_not_imported += 1
           puts "#{code} The code not exists."
         end
       end
 
-      puts "Imported #{counter} medical consultations."
+      puts "#{count_imported} medical consultations imported."
+      puts "#{count_not_imported} medical consultations not imported."
     end
   end
 
@@ -131,12 +137,13 @@ namespace :import do
     desc "Import Patients from CSV"
     task patients: :environment do
       filename = File.join Rails.root, "lib/tasks/info/carlos_cervantes/patients.csv"
-      counter  = 0
+      count_imported     = 0
+      count_not_imported = 0
 
       CSV.foreach(filename, headers: true) do |row|
         code           = row["Data/0"]
         created_at     = row["Data/1/e"].present? ? DateTime.parse(row["Data/1/e"]) : DateTime.new
-        updated_at     = row["Data/2/e"].present? ? DateTime.parse(row["2/e"]) : DateTime.new
+        updated_at     = row["Data/2/e"].present? ? DateTime.parse(row["Data/2/e"]) : DateTime.new
         name           = row["Data/3"].present? ? row["Data/3"].strip : nil
         first_name     = row["Data/4"].present? ? row["Data/4"].strip : "Apellido Paterno"
         last_name      = row["Data/5"].present? ? row["Data/5"].strip : "Apellido Materno"
@@ -149,9 +156,12 @@ namespace :import do
         weight         = row["Data/13"].present? ? row["Data/13"].strip : 0
         comments       = row["Data/14"].present? ? row["Data/14"].strip : ""
         occupation     = row["Data/15"].present? ? row["Data/15"].strip : ""
+        sex            = "Femenino"
 
         if name.present?
           doctor      = Doctor.unscoped.find_by(email: "carpo123@gmail.com")
+          abort "Not Doctor found" if doctor.blank?
+
           hospital_id = doctor.hospital.id if doctor.present?
 
           patient = Patient.create(name: name, first_name: first_name, last_name: last_name,
@@ -175,20 +185,23 @@ namespace :import do
             end
           end
 
-          counter += 1 if patient.persisted?
+          count_imported += 1 if patient.persisted?
           puts "#{code} patient #{patient.id} #{patient.name}."
         else
+          count_not_imported += 1
           puts "#{code} not exists."
         end
       end
 
-      puts "Imported #{counter} bentos."
+      puts "#{count_imported} patients imported."
+      puts "#{count_not_imported} patients not imported."
     end
 
     desc "Import Medical Consultation from CSV"
     task medical_consultations: :environment do
       filename = File.join Rails.root, "lib/tasks/info/carlos_cervantes/medical_consultations.csv"
-      counter  = 0
+      count_imported     = 0
+      count_not_imported = 0
 
       CSV.foreach(filename, headers: true) do |row|
         code           = row["Data/0"]
@@ -199,11 +212,13 @@ namespace :import do
         treatment      = row["Data/5"].present? ? row["Data/5"].strip : nil
         comments       = row["Data/6"].present? ? row["Data/6"].strip : nil
         prescription   = "Bento"
+        subjetive, objetive, plan, lab_results, histopathology = ""
 
         bento = Bento.find_by(code: code)
         if bento
-          if plan || subjetive
-            doctor  = Doctor.unscoped.find_by(email: "drrafaelaragon@gmail.com")
+          if reason || diagnosis
+            doctor  = Doctor.unscoped.find_by(email: "carpo123@gmail.com")
+            abort "Not Doctor found" if doctor.blank?
             patient = Patient.unscoped.find(bento.patient_id)
 
             medical_consultation = MedicalConsultation.create(subjetive: subjetive,
@@ -213,17 +228,19 @@ namespace :import do
               patient: patient, created_at: created_at, updated_at: updated_at)
             puts "#{medical_consultation.errors.full_messages.join(",")}" if medical_consultation.errors.any?
 
-            counter += 1 if medical_consultation.persisted?
+            count_imported += 1 if medical_consultation.persisted?
             puts "#{code} Patient #{patient.id} #{patient.name} has medical consultation."
           else
             puts "#{code} The medical consultation has not Patient."
           end
         else
+          count_not_imported += 1
           puts "#{code} The code not exists."
         end
       end
 
-      puts "Imported #{counter} medical consultations."
+      puts "#{count_imported} medical consultations imported."
+      puts "#{count_not_imported} medical consultations not imported."
     end
   end
 

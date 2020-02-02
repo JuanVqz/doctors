@@ -1,39 +1,65 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'ffaker'
 
 # Hospitals
 puts "Creating Hospitals"
-hospital_one = Hospital.where(
-  name: "Hospital Pediatrico", subdomain: "stark-headland-73197",
-  description: "Salvando Vidas", tags: "Cirugía general gastrointestinal,Cirugía con laparoscópica avanzada,Enfermedades del aparato digestivo,Clínica de hernias,Tiroides y paratiroide,Estómago,Enfermedad  por reflujo gastroesofágico,Esófago,Hígado,Vesícula biliar,Apéndice",
-  about: "La fundación del Hospital Infantil de México, primero de los actuales Institutos Nacionales de Salud, dio inicio, sin duda, de la modernidad del sistema de salud en México.",
-  schedule: "Lunes a Viernes de 09:00 - 19:00"
-).first_or_create
+fake_hospitals = [
+  {
+    name: "Hospital Pediatrico", subdomain: "stark-headland-73197",
+    description: "Salvando Vidas", tags: "Cirugía, Especialistas",
+    about: "La fundación del Hospital Infantil de México",
+    schedule: "Lunes a Viernes de 09:00 - 19:00"
+  },{
+    name: "Hospital Gastroenterologia", subdomain: "rafaelaragon",
+    description: "Salvando Vidas", tags: "Cirugía, Especialistas",
+    about: "La fundación del Hospital Infantil de México",
+    schedule: "Lunes a Viernes de 09:00 - 19:00"
+  }, {
+    name: "Hospital Ginecologia", subdomain: "carloscervantes",
+    description: "Salvando Vidas", tags: "Cirugía, Especialistas",
+    about: "La fundación del Hospital Infantil de México",
+    schedule: "Lunes a Viernes de 09:00 - 19:00"
+  }
+]
 
-Address.create(
-  street: "Emiliano Zapata", number: "Int 10", colony: "Reforma",
-  municipality: "Oaxaca de Juárez", addressable: hospital_one
-)
+hospitals = Hospital.create(fake_hospitals)
+puts "Hospitals #{hospitals.size}"
+
+hospitals.each do |hospital|
+  Address.create(
+    street: "Emiliano Zapata", number: "Int 10", colony: "Reforma",
+    municipality: "Oaxaca de Juárez", addressable: hospital
+  )
+end
 
 # Doctors
 puts "Creating Doctors"
-doctor_one = Doctor.create(
-  name: "Pedro", first_name: "Ramírez", last_name: "Sánchez",
-  specialty: "Cirujano Plastico", email: "pedrouno@gmail.com", password: "123456",
-  password_confirmation: "123456", confirmed_at: Time.now,
-  hospital_id: hospital_one.id, role: "admin"
-)
+fake_doctors = [
+  {
+    name: "Pedro", first_name: "Ramírez", last_name: "Sánchez",
+    specialty: "Cirujano Plastico", email: "pedrouno@gmail.com",
+    password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
+    hospital_id: Hospital.find_by(subdomain: "stark-headland-73197").id,
+    role: "admin"
+  }, {
+    name: "Rafael", first_name: "Aragon", last_name: "Soto",
+    specialty: "Cirujano Plastico", email: "drrafaelaragon@gmail.com",
+    password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
+    hospital_id: Hospital.find_by(subdomain: "rafaelaragon").id, role: "admin"
+  }, {
+    name: "Carlos", first_name: "Cervantes", last_name: "Garcia",
+    specialty: "Cirujano Plastico", email: "carpo123@gmail.com",
+    password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
+    hospital_id: Hospital.find_by(subdomain: "carloscervantes").id, role: "admin"
+  }
+]
+
+doctors = Doctor.create(fake_doctors)
+puts "Doctors #{doctors.size}"
 
 # Patients
 puts "Creating Patients"
-30.times do |n|
-  puts "#{n} - 30"
+10.times do |n|
+  puts "#{n} - 10"
   patient = Patient.create(
     name: FFaker::NameMX.name, first_name: FFaker::Name.last_name,
     last_name: FFaker::Name.last_name, birthday: "1989-09-19",
@@ -41,7 +67,7 @@ puts "Creating Patients"
     cellphone: FFaker::PhoneNumberMX.mobile_phone_number, height: 170,
     weight: 80, blood_group: "ARH+", occupation: "Ocupacion #{n}",
     created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
-    referred_by: FFaker::NameMX.name, hospital_id: hospital_one.id
+    referred_by: FFaker::NameMX.name, hospital_id: Hospital.first.id
   )
 
   Address.create(
@@ -61,22 +87,16 @@ puts "Creating Patients"
     patient: patient
   )
 
-  doctor_one.patients << patient
+  doctor = Doctor.unscoped.first
+  doctor.patients << patient
 
-  (1..20).each do
+  (1..10).each do
     MedicalConsultation.create(
       reason: FFaker::Lorem.phrase, subjetive: FFaker::Lorem.phrase,
       objetive: FFaker::Lorem.phrase, prescription: FFaker::Lorem.phrase,
       plan: FFaker::Lorem.paragraph, diagnosis: FFaker::Lorem.paragraph,
       created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
-      doctor: doctor_one, patient: patient
-    )
-
-    Hospitalization.create(
-      starting: "2018-12-10", ending: "2018-12-15",
-      days_of_stay: 5, doctor: doctor_one,
-      created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
-      patient: patient
+      doctor: doctor, patient: patient
     )
   end
 end
