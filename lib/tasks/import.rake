@@ -7,8 +7,6 @@ namespace :import do
     task patients: :environment do
       filename = File.join Rails.root, "lib/tasks/info/rafael_aragon/patients.csv"
       counter  = 0
-      doctor   = Doctor.unscoped.find_by(email: "drrafaelaragon@gmail.com")
-      hospital = Hospital.find_by(subdomain: "rafaelaragon")
 
       CSV.foreach(filename, headers: true) do |row|
         code           = row["0"]
@@ -41,11 +39,14 @@ namespace :import do
         d_other          = row["46"]
 
         if name.present?
+          doctor      = Doctor.unscoped.find_by(email: "drrafaelaragon@gmail.com")
+          hospital_id = doctor.hospital.id if doctor.present?
+
           patient = Patient.create(name: name, first_name: first_name, last_name: last_name,
            birthday: birthday, height: height, weight: weight, blood_group: blood_group,
            occupation: occupation, referred_by: referred_by, place_of_birth: place_of_birth,
            sex: sex, created_at: created_at, updated_at: updated_at, confirmed_at: Time.now,
-           hospital_id: hospital.id)
+           hospital_id: hospital_id)
           puts "#{patient.errors.full_messages.join(",")}" if patient.errors.any?
 
           address = Address.create(street: street, addressable_type: "Patient", addressable: patient)
@@ -84,7 +85,6 @@ namespace :import do
     task medical_consultations: :environment do
       filename = File.join Rails.root, "lib/tasks/info/rafael_aragon/medical_consultations.csv"
       counter  = 0
-      doctor   = Doctor.unscoped.find_by(email: "drrafaelaragon@gmail.com")
 
       CSV.foreach(filename, headers: true) do |row|
         code           = row["0"]
@@ -104,7 +104,9 @@ namespace :import do
         bento = Bento.find_by(code: code)
         if bento
           if plan || subjetive
+            doctor  = Doctor.unscoped.find_by(email: "drrafaelaragon@gmail.com")
             patient = Patient.unscoped.find(bento.patient_id)
+
             medical_consultation = MedicalConsultation.create(subjetive: subjetive,
               objetive: objetive, diagnosis: diagnosis, plan: plan, lab_results: lab_results,
               treatment: treatment, reason: reason, histopathology: histopathology,
