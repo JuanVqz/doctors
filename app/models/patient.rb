@@ -6,6 +6,8 @@ class Patient < User
   has_many :hospitalizations, -> { order(created_at: :desc) }
   has_many :bentos
 
+  has_one_attached :avatar
+
   accepts_nested_attributes_for :clinic_history, allow_destroy: true
   accepts_nested_attributes_for :address, allow_destroy: true
 

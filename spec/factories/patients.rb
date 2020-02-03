@@ -25,5 +25,13 @@ FactoryBot.define do
       patient.clinic_history = build :clinic_history
       patient.address = build :address
     end
+
+    trait :with_avatar do
+      after :create do |patient|
+        file_path = Rails.root.join("spec", "support", "assets", "avatar.jpg")
+        patient.avatar.attach(io: File.open(file_path), filename: "avatar.jpg", content_type: "image/jpg")
+      end
+    end
+
   end
 end

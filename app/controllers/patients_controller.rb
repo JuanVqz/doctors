@@ -22,6 +22,7 @@ class PatientsController < ApplicationController
     @patient = Patient.new patient_params
 
     if @patient.save
+      @patient.avatar.attach(params[:avatar])
       current_user.patients << @patient
       redirect_to patient_path(@patient), notice: "Paciente creado correctamente."
     else
@@ -62,7 +63,8 @@ class PatientsController < ApplicationController
     params.require(:patient).permit(
       :name, :first_name, :last_name, :birthday, :height,
       :weight, :blood_group, :occupation, :referred_by,
-      :place_of_birth, :sex, :cellphone, :marital_status, :comments,
+      :place_of_birth, :sex, :cellphone, :marital_status,
+      :comments, :avatar,
       address_attributes: [
         :id, :street, :number, :colony, :postal_code, :municipality,
         :state, :country, :_destroy

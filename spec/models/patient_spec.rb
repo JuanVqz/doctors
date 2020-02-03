@@ -8,6 +8,22 @@ RSpec.describe Patient, type: :model do
   it { should have_many :hospitalizations }
   it { should have_many :bentos }
 
+  context "#avatar" do
+    it "has an avatar" do
+      patient = create :patient, :with_avatar
+
+      expect(patient).to be_valid
+      expect(patient.avatar).to be_attached
+    end
+
+    it "has not an avatar" do
+      patient = create :patient
+
+      expect(patient).to be_valid
+      expect(patient.avatar).not_to be_attached
+    end
+  end
+
   it { should accept_nested_attributes_for(:clinic_history).allow_destroy(true) }
   it { should accept_nested_attributes_for(:address).allow_destroy(true) }
 
