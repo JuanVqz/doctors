@@ -1,6 +1,7 @@
 ready =->
   tabs()
   toggleButtonForTab("general")
+  showNameFileUploading()
 
 tabs =->
   $("#tabs li").on "click", ->
@@ -27,5 +28,14 @@ toggleButtonForTab = (tab) ->
       $("#new_medical_consultation_path").hide()
       $("#new_hospitalization_path").hide()
       $("#edit_patient_path").show()
+
+showNameFileUploading =->
+  fileInput = document.querySelector("#show_name_uploading input[type=file]")
+
+  fileInput.onchange =->
+    if fileInput.files.length
+      fileName = document.querySelector("#show_name_uploading .file-name")
+      fileName.textContent = fileInput.files[0].name
+    return
 
 $(document).on "turbolinks:load", ready

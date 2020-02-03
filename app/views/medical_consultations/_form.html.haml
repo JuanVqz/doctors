@@ -1,51 +1,45 @@
 -# frozen_string_literal: true
 = simple_form_for(@medical_consultation) do |f|
   .columns.is-multiline
-    .column.is-8{ style:"border-right: 1px solid #e5e5e5;"}
-      %p.has-text-grey-light.is-uppercase Datos de consulta
-      .columns.is-multiline
-        .column.is-6
-          %label.label{ for: "medical_consultation_patient_id" } Paciente
-          = f.select :patient_id, options_for_select(patients_for_select, selected: params[:patient_id]), { prompt: "Seleccione un paciente" }, class: "select2"
-          - if f.object.errors[:patient_id].any?
-            .help.is-danger= f.object.errors[:patient_id].to_sentence
-        .column.is-6
-          = f.input :reason
-        .column.is-6
-          = f.input :subjetive
-        .column.is-6
-          = f.input :objetive
-        .column.is-6
-          = f.input :plan
-        .column.is-6
-          = f.input :diagnosis
-        .column.is-6
-          = f.input :treatment
-        .column.is-6
-          = f.input :observations
-      .columns
-        .column
-          = f.input :prescription, input_html: { class: "textarea" }
-
     .column.is-4
-      %p.has-text-grey-light.is-uppercase Datos de laboratorio
+      %label.label{ for: "medical_consultation_patient_id" } Paciente
+      = f.select :patient_id, options_for_select(patients_for_select, selected: params[:patient_id]), { prompt: "Seleccione un paciente" }, class: "select2"
+      - if f.object.errors[:patient_id].any?
+        .help.is-danger= f.object.errors[:patient_id].to_sentence
+    .column.is-4
+      = f.input :reason
+    .column.is-4
+      = f.input :subjetive
+    .column.is-4
+      = f.input :objetive
+    .column.is-4
+      = f.input :plan
+    .column.is-4
+      = f.input :diagnosis
+    .column.is-4
+      = f.input :treatment
+    .column.is-4
+      = f.input :observations
+    .column.is-4
       .columns.is-multiline
-        .column.is-6
-          = f.input :lab_results
-        .column.is-6
-          = f.input :histopathology
         .column
-          = f.input :comments, input_html: { class: "textarea" }
-
-      %p.has-text-grey-light.is-uppercase Datos del paciente
-      .columns.is-multiline
-        .column.is-6
           = f.input :height
-        .column.is-6
+        .column
           = f.input :weight
-        .column.is-12
+        .column
           = f.input :imc, readonly: true
           %p#imc_text.help
+  .columns
+    .column
+      = f.input :prescription, input_html: { class: "textarea" }
+
+  .columns
+    .column
+      = f.input :lab_results
+    .column
+      = f.input :histopathology
+    .column
+      = f.input :comments
 
   .buttons
     = link_to :back, class: "button is-link" do
