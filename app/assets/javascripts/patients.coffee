@@ -30,12 +30,10 @@ toggleButtonForTab = (tab) ->
       $("#edit_patient_path").show()
 
 showNameFileUploading =->
-  fileInput = document.querySelector("#show_name_uploading input[type=file]")
+  fileField = $(".file-input")
 
-  fileInput.onchange =->
-    if fileInput.files.length
-      fileName = document.querySelector("#show_name_uploading .file-name")
-      fileName.textContent = fileInput.files[0].name
-    return
+  fileField.on "change", ->
+    if fileField[0].files.length
+      $(".file-name").text(fileField[0].files[0].name)
 
 $(document).on "turbolinks:load", ready

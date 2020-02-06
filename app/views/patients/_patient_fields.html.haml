@@ -54,7 +54,7 @@
       = label_tag "Foto", nil, class: "label"
       #show_name_uploading.file.has-name.is-info
         %label.file-label
-          = f.file_field :avatar, class: "file-input"
+          = f.file_field :avatar, id: "file_field", class: "file-input"
           %span.file-cta
             %span.file-icon
               %i.fas.fa-upload

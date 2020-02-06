@@ -6,7 +6,7 @@
     MENÚ
   %ul.menu-list
     %li
-      = link_to patients_path(subdomain: current_hospital.subdomain), class: active_for(patients_path)do
+      = link_to patients_path(subdomain: current_hospital.subdomain), class: active_for(patients_path) do
         %span.icon
           %i.fa.fa-users
         %span Pacientes
