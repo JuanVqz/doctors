@@ -14,6 +14,14 @@ FactoryBot.define do
     height { 170.5 }
     weight { 80.0 }
     imc { 26.6406 }
+    blood_pressure { "110/80" }
+    heart_rate { 18 }
+    breathing_rate { 90 }
+    temperature { 36.5 }
+    glycaemia { 234 }
+    sat_02 { 456 }
+    cost { 0 }
+    recommendation { "Recomendaciones" }
 
     after :build do |medical_consultation|
       if medical_consultation.doctor.nil?

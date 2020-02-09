@@ -63,7 +63,8 @@ class MedicalConsultationsController < ApplicationController
       params.require(:medical_consultation).permit(
         :reason, :subjetive, :objetive, :plan, :diagnosis, :treatment,
         :observations, :prescription, :lab_results, :histopathology, :comments,
-        :height, :weight, :imc, :patient_id
+        :height, :weight, :imc, :patient_id, :blood_pressure, :heart_rate,
+        :breathing_rate, :temperature, :glycaemia, :sat_02, :cost, :recommendation
       )
     end
 end

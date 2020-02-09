@@ -24,7 +24,13 @@ RSpec.describe MedicalConsultationsController, type: :controller do
       weight: 80.0,
       imc: 27.34375,
       doctor_id: doctor.id,
-      patient_id: patient.id
+      patient_id: patient.id,
+      heart_rate: 0,
+      breathing_rate: 0,
+      temperature: 0,
+      glycaemia: 0,
+      sat_02: 0,
+      cost: 0
     }
   end
 
@@ -45,7 +51,13 @@ RSpec.describe MedicalConsultationsController, type: :controller do
       weight: 80.0,
       imc: 27.34375,
       doctor_id: doctor.id,
-      patient_id: patient.id
+      patient_id: patient.id,
+      heart_rate: -1,
+      breathing_rate: -1,
+      temperature: -1,
+      glycaemia: -1,
+      sat_02: -1,
+      cost: -1
     }
   end
 
@@ -124,7 +136,13 @@ RSpec.describe MedicalConsultationsController, type: :controller do
           histopathology: "No se que es",
           comments: "Algo que decir con respecto al resutaldo de laboratorio",
           doctor_id: doctor.id,
-          patient_id: patient.id
+          patient_id: patient.id,
+          heart_rate: 1,
+          breathing_rate: 1,
+          temperature: 1,
+          glycaemia: 1,
+          sat_02: 1,
+          cost: 1
         }
       end
 

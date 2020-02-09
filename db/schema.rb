@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_02_221544) do
+ActiveRecord::Schema.define(version: 2020_02_09_021513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,14 @@ ActiveRecord::Schema.define(version: 2020_02_02_221544) do
     t.decimal "imc", default: "0.0"
     t.decimal "weight", default: "0.0"
     t.decimal "height", default: "0.0"
+    t.string "blood_pressure", default: ""
+    t.float "heart_rate", default: 0.0
+    t.float "breathing_rate", default: 0.0
+    t.float "temperature", default: 0.0
+    t.float "glycaemia", default: 0.0
+    t.float "sat_02", default: 0.0
+    t.float "cost", default: 0.0
+    t.text "recommendation", default: ""
     t.index ["doctor_id"], name: "index_medical_consultations_on_doctor_id"
     t.index ["patient_id"], name: "index_medical_consultations_on_patient_id"
   end

@@ -25,72 +25,85 @@
             %i.fa.fa-user
 
 .columns.is-multiline
-  .column.is-6
-    %p.has-text-grey-light.is-uppercase Datos generales
+  .column.is-9
     .table-container
       %table.table.is-hoverable.is-fullwidth
         %thead
           %tr
-            %th Doctor
-            %td= @medical_consultation.doctor
-          %tr
-            %th Paciente
+            %th= t("activerecord.attributes.medical_consultation.patient")
             %td= @medical_consultation.patient
           %tr
-            %th Altura
-            %td= "#{@medical_consultation.height} cm."
-          %tr
-            %th Peso
-            %td= "#{@medical_consultation.weight} kg."
-          %tr
-            %th IMC
-            %td= number_with_precision(@medical_consultation.imc, precision: 2)
-          %tr
-            %th Motivo de Consulta
-            %td= @medical_consultation.reason
-          %tr
-            %th Objetivo
+            %th= t("activerecord.attributes.medical_consultation.objetive")
             %td= @medical_consultation.objetive
-
-  .column.is-6
-    %p.has-text-grey-light.is-uppercase .
-    .table-container
-      %table.table.is-hoverable.is-fullwidth
-        %thead
           %tr
-            %th Subjetivo
-            %td= @medical_consultation.subjetive
-          %tr
-            %th Receta
-            %td= @medical_consultation.prescription
-          %tr
-            %th Plan
-            %td= @medical_consultation.plan
-          %tr
-            %th Diagnostico
+            %th= t("activerecord.attributes.medical_consultation.diagnosis")
             %td= @medical_consultation.diagnosis
           %tr
-            %th Tratamiento
-            %td= @medical_consultation.treatment
+            %th= t("activerecord.attributes.medical_consultation.reason")
+            %td= @medical_consultation.reason
           %tr
-            %th Observación
+            %th= t("activerecord.attributes.medical_consultation.observations")
             %td= @medical_consultation.observations
           %tr
-            %th Fecha de registro
+            %th= t("activerecord.attributes.medical_consultation.treatment")
+            %td= @medical_consultation.treatment
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.subjetive")
+            %td= @medical_consultation.subjetive
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.plan")
+            %td= @medical_consultation.plan
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.prescription")
+            %td= @medical_consultation.prescription
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.recommendation")
+            %td= @medical_consultation.recommendation
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.created_at")
             %td= l @medical_consultation.created_at, format: :long
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.lab_results")
+            %td= @medical_consultation.lab_results
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.histopathology")
+            %td= @medical_consultation.histopathology
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.endoscopias")
+            %td= @medical_consultation.comments
 
-  .column.is-12
-    %p.has-text-grey-light.is-uppercase Resultado de Laboratorio
+  .column.is-3
     .table-container
       %table.table.is-hoverable.is-fullwidth
         %thead
           %tr
-            %th Resultados de Laboratorio
-            %td= @medical_consultation.lab_results
+            %th= t("activerecord.attributes.medical_consultation.height")
+            %td= "#{@medical_consultation.height} cm."
           %tr
-            %th Histopatologia
-            %td= @medical_consultation.histopathology
+            %th= t("activerecord.attributes.medical_consultation.weight")
+            %td= "#{@medical_consultation.weight} kg."
           %tr
-            %th Comentarios
-            %td= @medical_consultation.comments
+            %th= t("activerecord.attributes.medical_consultation.imc")
+            %td= number_with_precision(@medical_consultation.imc, precision: 2)
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.blood_pressure")
+            %td= @medical_consultation.blood_pressure
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.heart_rate")
+            %td= number_with_precision(@medical_consultation.heart_rate, precision: 2)
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.breathing_rate")
+            %td= number_with_precision(@medical_consultation.breathing_rate, precision: 2)
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.temperature")
+            %td= temperature @medical_consultation
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.glycaemia")
+            %td= @medical_consultation.glycaemia
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.sat_02")
+            %td= @medical_consultation.sat_02
+          %tr
+            %th= t("activerecord.attributes.medical_consultation.cost")
+            %td= number_to_currency @medical_consultation.cost
 

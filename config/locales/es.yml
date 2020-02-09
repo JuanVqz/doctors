@@ -238,6 +238,7 @@ es-MX:
     errors:
       <<: *errors
     attributes:
+      endoscopias: "Endoscopias"
       doctor:
         name: "Nombre"
         first_name: "Apellido Paterno"
@@ -271,19 +272,28 @@ es-MX:
       medical_consultation:
         patient: "Paciente"
         reason: "Motivo de Consulta"
+        observations: "Analisis"
+        treatment: "Pronostico"
         subjetive: "Subjetivo"
-        objetive: "Objetivo"
         plan: "Plan"
-        diagnosis: "Diagnostico"
-        treatment: "Tratamiento"
-        observations: "Observaciones"
         prescription: "Receta"
-        lab_results: "Resultados de Laboratorio"
+        lab_results: "Resultados de gabinete"
         histopathology: "Histopatologia"
+        objetive: "Objetivo"
+        diagnosis: "Diagnostico"
         comments: "Comentarios"
         height: "Altura"
         weight: "Peso"
         imc: "IMC"
+        blood_pressure: "T. A."
+        heart_rate: "F. C."
+        breathing_rate: "F. R."
+        temperature: "Temp."
+        glycaemia: "Gluc. Cap."
+        sat_02: "SAT. 02"
+        cost: "Costo"
+        recommendation: "Recomendaciones"
+        created_at: "Fecha de registro"
       clinic_history:
         description_diabetes: "Motivo de Diabetes"
         description_hypertension: "Motivo de Hipertensión"
@@ -302,16 +312,6 @@ es-MX:
       hospital:
         name: "Nombre"
         description: "Descripción"
-    state_machines:
-      states:
-        sin_timbre: "Sin timbre"
-        procesando: "Procesando..."
-        con_respuesta: "Con respuesta"
-        con_xml: "Con XML"
-        con_timbre: "Con timbre"
-        con_cbb: "Con CBB"
-      events:
-        continuar_timbrando: "Continuar timbrando"
   sessions:
     new:
       title: "Iniciar sesión"
