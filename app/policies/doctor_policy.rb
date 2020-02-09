@@ -11,7 +11,7 @@ class DoctorPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin?
+    user.admin? && user.hospital.medium?
   end
 
   def new?
@@ -19,10 +19,10 @@ class DoctorPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    show?
   end
 
   def edit?
-    update?
+    show?
   end
 end
