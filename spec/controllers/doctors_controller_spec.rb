@@ -14,7 +14,8 @@ RSpec.describe DoctorsController, type: :controller do
       professional_card: "123123123",
       email: "jonh@gmail.com",
       password: "123456",
-      hospital_id: hospital.id
+      hospital_id: hospital.id,
+      role: "doctor"
     }
   end
 
@@ -27,7 +28,8 @@ RSpec.describe DoctorsController, type: :controller do
       professional_card: "123123123",
       email: "jonh@gmail.com",
       password: "123456",
-      hospital_id: hospital.id
+      hospital_id: hospital.id,
+      role: "patient"
     }
   end
 
@@ -53,6 +55,8 @@ RSpec.describe DoctorsController, type: :controller do
   end
 
   describe "GET #new" do
+    let(:hospital) { create :hospital, :medium, subdomain: "ursula" }
+
     it "returns a success response" do
       get :new, params: {}
       expect(response).to be_successful
@@ -68,6 +72,8 @@ RSpec.describe DoctorsController, type: :controller do
   end
 
   describe "POST #create" do
+    let(:hospital) { create :hospital, :medium, subdomain: "ursula" }
+
     context "with valid params" do
       it "creates a new Doctor" do
         expect {

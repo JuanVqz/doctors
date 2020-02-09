@@ -136,6 +136,10 @@ es-MX:
         one: ! '%{model} no pudo guardarse debido a 1 error'
         other: ! '%{model} no pudo guardarse debido a %{count} errores'
     models:
+      doctor:
+        attributes:
+          hospital:
+            required: "Hospital no puede estar en blanco"
       medical_consultation:
         attributes:
           patient:

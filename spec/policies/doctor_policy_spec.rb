@@ -33,6 +33,7 @@ RSpec.describe DoctorPolicy do
 
   permissions :new?, :create? do
     it "grants access if doctor is an admin" do
+      hospital.plan = :medium
       expect(subject).to permit(admin, Doctor.new)
     end
 

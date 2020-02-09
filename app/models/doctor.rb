@@ -5,6 +5,15 @@ class Doctor < User
   has_many :hospitalizations, -> { order(created_at: :desc) }
 
   validates :name, :first_name, :last_name, :specialty, presence: true
+  validate :role_error_message, if: :role_is_patient?
 
   delegate :subdomain, to: :hospital, prefix: true, allow_nil: true
+
+  def role_is_patient?
+    patient?
+  end
+
+  def role_error_message
+    errors.add(:role, "no puede tener el rol paciente" )
+  end
 end
