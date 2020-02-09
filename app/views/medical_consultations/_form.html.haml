@@ -7,19 +7,19 @@
       - if f.object.errors[:patient_id].any?
         .help.is-danger= f.object.errors[:patient_id].to_sentence
     .column.is-4
-      = f.input :reason
-    .column.is-4
-      = f.input :subjetive
-    .column.is-4
       = f.input :objetive
-    .column.is-4
-      = f.input :plan
     .column.is-4
       = f.input :diagnosis
     .column.is-4
-      = f.input :treatment
+      = f.input :reason
     .column.is-4
-      = f.input :observations
+      = f.input :observations, placeholder: "Observaciones"
+    .column.is-4
+      = f.input :treatment, placeholder: "Tratamiento"
+    .column.is-4
+      = f.input :subjetive
+    .column.is-4
+      = f.input :plan
     .column.is-4
       .columns.is-multiline
         .column
@@ -35,11 +35,11 @@
 
   .columns
     .column
-      = f.input :lab_results
+      = f.input :lab_results, placeholder: "Resultados de laboratorio"
     .column
       = f.input :histopathology
     .column
-      = f.input :comments
+      = f.input :comments, label: "Endoscopias"
 
   .buttons
     = link_to :back, class: "button is-link" do
