@@ -13,7 +13,7 @@ class DoctorsController < ApplicationController
 
   def new
     @doctor = Doctor.new(hospital_id: @hospital.id)
-    authorize @doctor
+    authorize current_user
   end
 
   def edit
@@ -22,7 +22,7 @@ class DoctorsController < ApplicationController
 
   def create
     @doctor = Doctor.new(doctor_params)
-    authorize @doctor
+    authorize current_user
 
     if @doctor.save
       redirect_to doctor_path(@doctor), notice: "Doctor creado correctamente."
