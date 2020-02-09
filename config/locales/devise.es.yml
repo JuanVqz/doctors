@@ -8,69 +8,69 @@ es-MX:
 
   devise:
     shared:
-      sign_in: 'Acceder'
-      sign_up: 'Regístrate'
-      forgot_password: '¿Ha olvidado su contraseña?'
+      sign_in: "Acceder"
+      sign_up: "Regístrate"
+      forgot_password: "¿Ha olvidado su contraseña?"
     failure:
-      unauthenticated: 'Necesita ingresar o registrarse para continuar.'
-      unconfirmed: 'Necesita confirmar su cuenta antes de continuar.'
-      locked: 'Su cuenta ha sido bloqueada.'
+      unauthenticated: "Necesita ingresar o registrarse para continuar."
+      unconfirmed: "Necesita confirmar su cuenta antes de continuar."
+      locked: "Su cuenta ha sido bloqueada."
       invalid: "Email o Contraseña inválido."
       invalid_token: "Llave de Autenticación invalida."
       timeout: "Su sesión ha expirado, por favor ingrese nuevamente para continuar."
-      inactive: 'Su cuenta aun no ha sido activada.'
-      account_inactive: 'Su cuenta ha sido bloqueada.'
+      inactive: "Su cuenta aun no ha sido activada."
+      account_inactive: "Su cuenta ha sido bloqueada."
       already_authenticated: "Ya tiene abierta una sesión en el sistema"
-      not_found_in_database: 'Usuario no encontrado'
+      not_found_in_database: "Usuario no encontrado"
     sessions:
       signed_in: "Ingresó exitosamente al sistema."
-      signed_out: 'Sesión cerrada exitosamente.'
+      signed_out: "Sesión cerrada exitosamente."
     passwords:
-      change_your_password: 'Cambia tu contraseña'
-      new_password: 'Nueva contraseña'
-      confirm_new_password: 'Confirma tu contraseña'
-      send_reset_password_instructions: 'Enviar las instrucciones para restablecer mi contraseña.'
+      change_your_password: "Cambia tu contraseña"
+      new_password: "Nueva contraseña"
+      confirm_new_password: "Confirma tu contraseña"
+      send_reset_password_instructions: "Enviar las instrucciones para restablecer mi contraseña."
       send_instructions: "Recibirá un email con instrucciones sobre como restablecer su contraseña en unos minutos."
       updated: "Su contraseña ha sido cambiada exitosamente."
     confirmations:
-      resend_instructions: 'Reenviar las instrucciones de confirmación'
-      send_instructions: 'Recibirá un email con instrucciones de cómo confirmar su cuenta en unos minutos.'
-      confirmed: 'Su cuenta ha sido confirmada exitosamente. Ya puede ingresar.'
+      resend_instructions: "Reenviar las instrucciones de confirmación"
+      send_instructions: "Recibirá un email con instrucciones de cómo confirmar su cuenta en unos minutos."
+      confirmed: "Su cuenta ha sido confirmada exitosamente. Ya puede ingresar."
     registrations:
       edit: "Modificar %{resourcename}"
-      leave_blank: 'dejar en blanco si no desea cambiar'
-      current_password_label: 'escriba su password actual para confirmar los cambios'
-      update: 'Actualizar'
-      unhappy: '¿Descontento?'
-      cancel_my_account: 'Cancelar mi cuenta'
-      confirm: '¿Está seguro?'
-      back: 'Regresar'
+      leave_blank: "dejar en blanco si no desea cambiar"
+      current_password_label: "escriba su password actual para confirmar los cambios"
+      update: "Actualizar"
+      unhappy: "¿Descontento?"
+      cancel_my_account: "Cancelar mi cuenta"
+      confirm: "¿Está seguro?"
+      back: "Regresar"
       signed_up: "Se ha registrado con éxito. Si está activado, la confirmación será enviada a su correo electrónico."
-      updated: 'Ha actualizado su cuenta exitosamente.'
-      destroyed: 'Su cuenta ha sido cancelada exitosamente.'
+      updated: "Ha actualizado su cuenta exitosamente."
+      destroyed: "Su cuenta ha sido cancelada exitosamente."
 
-      signed_up_but_unconfirmed: 'Se ha enviado a su correo electrónico un mensaje con un link de confirmación. Debe seguir las instrucciones para completar su registro.'
-      signed_up_but_inactive: 'Se ha registrado satisfactoriamente. Sin embargo, no puede acceder porque su cuenta aún no ha sido activada.'
-      signed_up_but_locked: 'Se ha registrado satisfactoriamente. Sin embargo, no puede acceder porque su cuenta está bloqueda.'
+      signed_up_but_unconfirmed: "Se ha enviado a su correo electrónico un mensaje con un link de confirmación. Debe seguir las instrucciones para completar su registro."
+      signed_up_but_inactive: "Se ha registrado satisfactoriamente. Sin embargo, no puede acceder porque su cuenta aún no ha sido activada."
+      signed_up_but_locked: "Se ha registrado satisfactoriamente. Sin embargo, no puede acceder porque su cuenta está bloqueda."
 
     unlocks:
       send_instructions: "Recibirá un email con instrucciones sobre como desbloquear su cuenta en unos minutos."
-      unlocked: 'Su cuenta ha sido desbloqueada exitosamente. Ya puede ingresar.'
+      unlocked: "Su cuenta ha sido desbloqueada exitosamente. Ya puede ingresar."
     mailer:
       hello: "¡Bienvenido %{email}!"
       welcome: "¡Bienvenido %{email}!"
-      confirm: 'Confirmar mi cuenta'
-      change: 'Cambiar mi password'
-      someone_requested: 'Se ha solicitado el cambio de password. Puede hacerlo a través del siguiente enlace.'
-      please_ignore: 'Si usted no ha realizado la solicitud, ignore este correo electrónico'
+      confirm: "Confirmar mi cuenta"
+      change: "Cambiar mi password"
+      someone_requested: "Se ha solicitado el cambio de password. Puede hacerlo a través del siguiente enlace."
+      please_ignore: "Si usted no ha realizado la solicitud, ignore este correo electrónico"
       password_wont_change: "Su contraseña no se cambiaré hasta que usted confirme en enlace anterior e introduzca una nueva."
-      locked: 'Su cuenta ha sido bloqueada debido a un número excesivo de intentos de acceso fallidos.'
-      click_to_unlock: 'Haga clic en el siguiente enlace para abrir su cuenta:'
-      unlock: 'Desbloquear mi cuenta'
+      locked: "Su cuenta ha sido bloqueada debido a un número excesivo de intentos de acceso fallidos."
+      click_to_unlock: "Haga clic en el siguiente enlace para abrir su cuenta:"
+      unlock: "Desbloquear mi cuenta"
       confirmation_instructions:
-        subject: 'Instrucciones de Confirmación'
+        subject: "Instrucciones de Confirmación"
       reset_password_instructions:
-        subject: 'Instrucciones para restablecer contraseña'
+        subject: "Instrucciones para restablecer contraseña"
       unlock_instructions:
-        subject: 'Instrucciones para desbloquear'
+        subject: "Instrucciones para desbloquear"
 

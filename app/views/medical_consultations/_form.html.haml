@@ -31,6 +31,20 @@
           %p#imc_text.help
   .columns
     .column
+      = f.input :blood_pressure
+    .column
+      = f.input :heart_rate
+    .column
+      = f.input :breathing_rate
+    .column
+      = f.input :temperature
+    .column
+      = f.input :glycaemia
+    .column
+      = f.input :sat_02
+
+  .columns
+    .column
       = f.input :prescription, input_html: { class: "textarea" }
 
   .columns
@@ -40,6 +54,12 @@
       = f.input :histopathology
     .column
       = f.input :comments, label: "Endoscopias"
+    .column
+      = f.input :recommendation
+
+  .columns
+    .column.is-3
+      = f.input :cost
 
   .buttons
     = link_to :back, class: "button is-link" do

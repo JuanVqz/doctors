@@ -3,6 +3,8 @@ class MedicalConsultation < ApplicationRecord
   belongs_to :patient
 
   validates :reason, :prescription, :patient_id, presence: true
+  validates :heart_rate, :breathing_rate, :temperature, :glycaemia, :sat_02,
+    :cost, numericality: { greater_than_or_equal_to: 0 }
 
   after_save :update_patient
 
