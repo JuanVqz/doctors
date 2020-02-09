@@ -125,6 +125,7 @@ RSpec.describe "Doctor's flow", type: :system do
     fill_in "doctor_password_confirmation", with: "123456"
 
     page.execute_script("$('#doctor_hospital_id').val(#{ @hospital.id })")
+    page.execute_script("$('#doctor_role').val('doctor')")
 
     click_button "Crear Doctor"
   end
