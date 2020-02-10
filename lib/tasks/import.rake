@@ -44,10 +44,10 @@ namespace :import do
           hospital_id = doctor.hospital.id if doctor.present?
 
           patient = Patient.create(name: name, first_name: first_name, last_name: last_name,
-           birthday: birthday, height: height, weight: weight, blood_group: blood_group,
-           occupation: occupation, referred_by: referred_by, place_of_birth: place_of_birth,
-           sex: sex, created_at: created_at, updated_at: updated_at, confirmed_at: Time.now,
-           hospital_id: hospital_id)
+            birthday: birthday, height: height, weight: weight, blood_group: blood_group,
+            occupation: occupation, referred_by: referred_by, place_of_birth: place_of_birth,
+            sex: sex, created_at: created_at, updated_at: updated_at, confirmed_at: Time.now,
+            hospital_id: hospital_id)
           puts "#{patient.errors.full_messages.join(",")}" if patient.errors.any?
 
           address = Address.create(street: street, addressable_type: "Patient", addressable: patient)
@@ -241,6 +241,116 @@ namespace :import do
 
       puts "#{count_imported} medical consultations imported."
       puts "#{count_not_imported} medical consultations not imported."
+    end
+  end
+
+  namespace :edgardo_gonzalez do
+    desc "Import Patients and Medical Consultation from CSV"
+    task info: :environment do
+      patients_file = File.join Rails.root, "lib/tasks/info/edgardo_gonzalez/patients.csv"
+      count_imported               = 0
+      count_not_imported           = 0
+      appoiment_count_imported     = 0
+      appoiment_count_not_imported = 0
+
+      CSV.foreach(patients_file, headers: true) do |row|
+        expedient  = row["expedient"].to_i
+        name       = "#{row['nombre_1']} #{row['nombre_2']}".strip
+        first_name = row["apellido_paterno"].present? ? row["apellido_paterno"] : "Apellido Paterno"
+        last_name  = row["apellido_materno"].present? ? row["apellido_materno"] : "Apellido Materno"
+
+        if row["fecha_ingreso"].present?
+          month, day, year = row["fecha_ingreso"].split("/")
+          created_at = Time.parse "#{day}-#{month}-#{year}"
+        else
+          created_at = Date.current
+        end
+
+        birthday  = row["nacimiento"].present? ? Time.parse(row["nacimiento"]) : "19-09-1989"
+        colonia   = row["colonia"]
+        domicilio = row["domicilio"]
+        telefono  = row["telefono"]
+        d_hereditary     = row["antecedentes_familiares"]
+        d_hypertension   = row["antecedentes_personales_patologicos"]
+        d_allergic       = row["antecedentes_personales_no_patologicos"]
+        d_traumatic      = row["antecedentes_gyo"]
+        d_surgical       = row["exploracion_fisica"]
+        d_drug_addiction = row["alergias"]
+
+        if name.present?
+          doctor = Doctor.unscoped.find_by(email: "ramos.surgery@gmail.com")
+          hospital_id = doctor.hospital.id if doctor.present?
+
+          patient = Patient.create(name: name, first_name: first_name,
+            last_name: last_name, birthday: birthday, created_at: created_at,
+            updated_at: created_at, confirmed_at: Time.now,
+            hospital_id: hospital_id)
+          puts "#{patient.errors.full_messages.join(",")}" if patient.errors.any?
+
+          address = Address.create(colony: colonia,  street: domicilio,
+            addressable_type: "Patient", addressable: patient)
+          puts "#{address.errors.full_messages.join(",")}" if address.errors.any?
+
+          clinic_history = ClinicHistory.create(description_hereditary: d_hereditary,
+            description_hypertension: d_hypertension, description_allergic: d_allergic,
+            description_traumatic: d_traumatic, description_surgical: d_surgical,
+            description_drug_addiction: d_drug_addiction, description_other: "OTRO",
+            patient: patient)
+          puts "#{clinic_history.errors.full_messages.join(",")}" if clinic_history.errors.any?
+
+          doctor.patients << patient
+
+          appoiments_file = File.join Rails.root, "lib/tasks/info/edgardo_gonzalez/medical_consultations.csv"
+          appoiments_by_patient = 0
+          CSV.foreach(appoiments_file, headers: true) do |fila|
+            expedient_id = fila["expedient_id"].present? ? fila["expedient_id"].to_i : nil
+            if expedient_id.present?
+              if expedient == expedient_id
+                fecha          = fila["fecha"].present? ? fila["fecha"] : DateTime.now
+                sexo           = "Masculino"
+                diagnostico    = fila["diagnostico"]
+                observacion    = fila["observacion"]
+                prescription   = fila["nota_medica"].present? ? fila["nota_medica"] : "IMPORTACIÓN"
+                weight         = fila["PESO"].present? ? fila["PESO"].to_f : 0
+                height         = fila["TALLA"].present? ? fila["TALLA"].to_f : 0
+                imc            = fila["IMC"].present? ? fila["IMC"].to_f : 0
+                blood_pressure = fila["TA"]
+                breathing_rate = fila["FR"].present? ? fila["FR"].to_f : 0
+                heart_rate     = fila["FC"].present? ? fila["FC"].to_f : 0
+                temperature    = fila["TEMP"].present? ? fila["TEMP"].to_i : 0
+                glycaemia      = fila["GLUC.CAP"].present? ? fila["GLUC.CAP"].to_i : 0
+                sat_02         = fila["SAT.02"].present? ? fila["SAT.02"].to_i : 0
+                cost           = fila["cost"].present? ? fila["cost"].to_f : 0
+
+                medical_consultation = MedicalConsultation.create(
+                  diagnosis: diagnostico, reason: "IMPORACION",
+                  comments: observacion, prescription: prescription,
+                  doctor: doctor, patient: patient, weight: weight,
+                  height: height, imc: imc, blood_pressure: blood_pressure,
+                  breathing_rate: breathing_rate, heart_rate: heart_rate,
+                  temperature: temperature, glycaemia: glycaemia,
+                  sat_02: sat_02, cost: cost, created_at: fecha,
+                  updated_at: fecha)
+                puts "#{medical_consultation.errors.full_messages.join(",")}" if medical_consultation.errors.any?
+
+                appoiments_by_patient += 1 if medical_consultation.persisted?
+                appoiment_count_imported += 1 if medical_consultation.persisted?
+              end
+            end
+          end
+          puts "Expedient #{expedient}, #{patient} has #{appoiments_by_patient} appoiments."
+          count_imported += 1 if patient.persisted?
+        else
+          count_not_imported += 1
+        end
+      end
+
+      puts "++++++++++++++++++++++++++++++++++++++++++++++++"
+      puts "#{count_imported} patients imported."
+      puts "#{count_not_imported} patients not imported."
+
+      puts "#{appoiment_count_imported} appoiments imported."
+      puts "#{appoiment_count_not_imported} appoiments not imported."
     end
   end
 

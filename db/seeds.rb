@@ -18,6 +18,11 @@ fake_hospitals = [
     description: "Salvando Vidas", tags: "Cirugía, Especialistas",
     about: "La fundación del Hospital Infantil de México",
     schedule: "Lunes a Viernes de 09:00 - 19:00"
+  }, {
+    name: "Sto Domingo de Guzmán", subdomain: "edgardogonzalez",
+    description: "Salvando Vidas", tags: "Cirugía, Especialistas",
+    about: "La fundación del Hospital Infantil de México",
+    schedule: "Lunes a Viernes de 09:00 - 19:00"
   }
 ]
 
@@ -50,6 +55,11 @@ fake_doctors = [
     specialty: "Cirujano Plastico", email: "carpo123@gmail.com",
     password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
     hospital_id: Hospital.find_by(subdomain: "carloscervantes").id, role: "admin"
+  }, {
+    name: "Edgardo", first_name: "Gonzalez", last_name: "Ramos",
+    specialty: "Cirujano Plastico", email: "ramos.surgery@gmail.com",
+    password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
+    hospital_id: Hospital.find_by(subdomain: "edgardogonzalez").id, role: "admin"
   }
 ]
 
