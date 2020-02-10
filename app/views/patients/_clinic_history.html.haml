@@ -1,32 +1,36 @@
 .columns.is-multiline
-  - if @patient.clinic_history&.description_diabetes?
+  - if @patient.clinic_history&.description_traumatic?
     .column.is-4
-      %strong Motivo Diabetes
-      %p= @patient.clinic_history.description_diabetes
+      %strong Antecedentes gineco-obstetricos
+      %p= @patient.clinic_history.description_traumatic
   - if @patient.clinic_history&.description_hypertension?
     .column.is-4
-      %strong Motivo Hipertensión
+      %strong Antecedentes personales patológicos
       %p= @patient.clinic_history.description_hypertension
   - if @patient.clinic_history&.description_allergic?
     .column.is-4
-      %strong Motivo Alergia
+      %strong Antecedentes personales no patológicos
       %p= @patient.clinic_history.description_allergic
-  - if @patient.clinic_history&.description_traumatic?
-    .column.is-4
-      %strong Motivo Traumátismo
-      %p= @patient.clinic_history.description_traumatic
   - if @patient.clinic_history&.description_transfusion?
     .column.is-4
-      %strong Motivo Transfusión
+      %strong Interrogatorio por aparatos y sistemas
       %p= @patient.clinic_history.description_transfusion
+  - if @patient.clinic_history&.description_hereditary?
+    .column.is-4
+      %strong Antecedentes heredo-familiares
+      %p= @patient.clinic_history.description_hereditary
   - if @patient.clinic_history&.description_surgical?
     .column.is-4
-      %strong Motivo Quirúrgico
+      %strong Exploración fisica
       %p= @patient.clinic_history.description_surgical
   - if @patient.clinic_history&.description_drug_addiction?
     .column.is-4
-      %strong Motivo Toxicomanías
+      %strong Alergias
       %p= @patient.clinic_history.description_drug_addiction
+  - if @patient.clinic_history&.description_diabetes?
+    .column.is-4
+      %strong Motivo de Diabetes
+      %p= @patient.clinic_history.description_diabetes
   - if @patient.clinic_history&.description_cancer?
     .column.is-4
       %strong Motivo Cancer
