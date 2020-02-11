@@ -4,14 +4,21 @@
 
     <div>
       <%= age @medical_consultation.patient %>
-      <%= @medical_consultation.patient.height %> cm.
-      <%= @medical_consultation.patient.weight %> Kg.
+      <% if @medical_consultation.height.present? %>
+        <%= @medical_consultation.height %> Cm.
+      <% end %>
+      <% if @medical_consultation.weight.present? %>
+        <%= @medical_consultation.weight %> Kg.
+      <% end %>
+      <% if @medical_consultation.imc.present? %>
+        <%= number_with_precision(@medical_consultation.imc, precision: 2) %> IMC
+      <% end %>
     </div>
 
     <div><%= l @medical_consultation.created_at, format: :normal %></div>
   </div>
 
-  <div style="padding-top:40px">
+  <div style="padding-top:20px">
     <pre><%= @medical_consultation.prescription %></pre>
   </div>
 </div>
