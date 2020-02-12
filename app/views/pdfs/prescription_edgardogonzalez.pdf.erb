@@ -1,24 +1,25 @@
 <div class="text-size-13">
-  <div class="header text-right text-uppercase" style="padding-top: 70px">
-    <strong><%= @medical_consultation.patient %></strong>
-
-    <div>
+  <div class="text-right text-uppercase" style="padding-top: 130px; padding-right: 130px">
+    <strong>
+      <%= @medical_consultation.patient %>
       <%= age @medical_consultation.patient %>
+    </strong>
+    <div>
       <% if @medical_consultation.height.present? %>
         <%= @medical_consultation.height %> Cm.
-      <% end %>
-      <% if @medical_consultation.weight.present? %>
-        <%= @medical_consultation.weight %> Kg.
       <% end %>
       <% if @medical_consultation.imc.present? %>
         <%= number_with_precision(@medical_consultation.imc, precision: 2) %> IMC
       <% end %>
+      <% if @medical_consultation.blood_pressure.present? %>
+        <%= @medical_consultation.blood_pressure %>
+      <% end %>
     </div>
-
     <div><%= l @medical_consultation.created_at, format: :normal %></div>
   </div>
 
-  <div style="padding-top:20px">
+  <div style="padding-top:10px">
     <pre><%= @medical_consultation.prescription %></pre>
+    <pre><%= @medical_consultation.recommendation %></pre>
   </div>
 </div>
