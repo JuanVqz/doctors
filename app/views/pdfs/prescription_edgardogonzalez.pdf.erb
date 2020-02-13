@@ -1,9 +1,13 @@
 <div class="text-size-13">
-  <div class="text-right text-uppercase" style="padding-top: 130px; padding-right: 130px">
-    <strong>
-      <%= @medical_consultation.patient %>
-      <%= age @medical_consultation.patient %>
-    </strong>
+  <div class="text-right text-uppercase" style="padding-top: 50px; padding-right: 130px">
+    <div>
+      <%= l @medical_consultation.created_at, format: :not_hour %>
+      <strong>
+        <%= @medical_consultation.patient %>
+        <%= age_months(@medical_consultation.patient) %>
+      </strong>
+    </div>
+
     <div>
       <% if @medical_consultation.height.present? %>
         <%= @medical_consultation.height %> Cm.
@@ -15,7 +19,6 @@
         <%= @medical_consultation.blood_pressure %>
       <% end %>
     </div>
-    <div><%= l @medical_consultation.created_at, format: :normal %></div>
   </div>
 
   <div style="padding-top:10px">
