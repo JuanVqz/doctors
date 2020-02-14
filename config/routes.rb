@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
 
   constraints(!SubdomainRoutes) do
+    resources :appoinments
     resources :doctors
     resources :hospitalizations
     resources :hospitals, only: [:edit, :update]

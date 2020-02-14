@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_09_183014) do
+ActiveRecord::Schema.define(version: 2020_02_16_205201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,31 @@ ActiveRecord::Schema.define(version: 2020_02_09_183014) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  end
+
+  create_table "appoinments", force: :cascade do |t|
+    t.string "reason"
+    t.text "note"
+    t.text "prescription"
+    t.text "recomendations"
+    t.bigint "doctor_id"
+    t.bigint "patient_id"
+    t.float "imc", default: 0.0
+    t.float "weight", default: 0.0
+    t.float "height", default: 0.0
+    t.string "blood_pressure", default: ""
+    t.float "heart_rate", default: 0.0
+    t.float "breathing_rate", default: 0.0
+    t.float "temperature", default: 0.0
+    t.float "glycaemia", default: 0.0
+    t.float "sat_02", default: 0.0
+    t.float "cost", default: 0.0
+    t.text "cabinet_results"
+    t.text "histopathology"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_appoinments_on_doctor_id"
+    t.index ["patient_id"], name: "index_appoinments_on_patient_id"
   end
 
   create_table "bentos", force: :cascade do |t|
@@ -188,6 +213,8 @@ ActiveRecord::Schema.define(version: 2020_02_09_183014) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "appoinments", "users", column: "doctor_id"
+  add_foreign_key "appoinments", "users", column: "patient_id"
   add_foreign_key "bentos", "users", column: "patient_id"
   add_foreign_key "clinic_histories", "users", column: "patient_id"
   add_foreign_key "hospitalizations", "users", column: "doctor_id"
