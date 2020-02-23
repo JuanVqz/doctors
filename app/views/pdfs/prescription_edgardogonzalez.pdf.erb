@@ -1,19 +1,16 @@
 <div class="text-right" style="padding-top: 50px; padding-right: 130px">
   <strong class="text-uppercase text-size-13">
-    <%= @medical_consultation.patient %>
-    <%= age_months(@medical_consultation.patient) %>
+    <%= @appoinment.patient %>
+    <%= age_months(@appoinment.patient) %>
   </strong>
 
   <div class="font-size-9">
-    <%= l @medical_consultation.created_at, format: :normal %>
+    <%= l @appoinment.created_at, format: :normal %>
   </div>
 </div>
 
 <div style="padding-top:10px;">
-  <pre class="pre-line text-justify">
-    <%= @medical_consultation.prescription %>
-  </pre>
-  <pre class="pre-line text-justify">
-    <%= @medical_consultation.recommendation %>
-  </pre>
+  <%= raw @appoinment.prescription %>
+  <p>RECOMENDACIONES</p>
+  <%= raw @appoinment.recommendations %>
 </div>

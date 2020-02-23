@@ -4,8 +4,8 @@ ready =->
   selectPatient()
 
 calculateImc =->
-  height = $("#medical_consultation_height")
-  weight = $("#medical_consultation_weight")
+  height = $("#appoinment_height")
+  weight = $("#appoinment_weight")
   setImc(weight.val(), height.val())
 
   height.on "change", ->
@@ -14,30 +14,30 @@ calculateImc =->
     setImc(weight.val(), height.val())
 
 setImc = (weight, height) ->
-  masa = (weight/(height**2))*10000
-  $("#medical_consultation_imc").val(masa)
+  masa = parseFloat((weight/(height**2))*10000).toFixed(2)
+  $("#appoinment_imc").val(masa)
   setImcText()
 
 preloadPatient =->
-  patient_id = location.search.split('patient_id=')[1]
-  if (patient_id)
-    searchPatient patient_id
+  url = new URL(window.location.href)
+  if (url.searchParams.get('patient_id'))
+    searchPatient parseInt(location.search.split('patient_id=')[1])
 
 selectPatient =->
-  $("#medical_consultation_patient_id").on "select2:select", ->
+  $("#appoinment_patient_id").on "select2:select", ->
     searchPatient $(this).val()
 
 searchPatient = (patient_id) ->
   $.ajax
     type: "GET",
-    url: "/patients/"+patient_id+"/weight",
+    url: "/patients/"+patient_id+"/appoinments",
     success: (response) ->
       calculateImc()
     error: (err) ->
       console.log err
 
 setImcText =->
-  imc      = $("#medical_consultation_imc").val()
+  imc      = $("#appoinment_imc").val()
   imc_text = $("#imc_text")
 
   if (imc < 18.50)

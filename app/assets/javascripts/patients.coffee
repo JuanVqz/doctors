@@ -16,16 +16,16 @@ tabs =->
 
 toggleButtonForTab = (tab) ->
   switch tab
-    when "medical_consultations"
+    when "appoinments"
       $("#edit_patient_path").hide()
       $("#new_hospitalization_path").hide()
-      $("#new_medical_consultation_path").show()
+      $("#new_appoinment_path").show()
     when "hospitalizations"
       $("#edit_patient_path").hide()
-      $("#new_medical_consultation_path").hide()
+      $("#new_appoinment_path").hide()
       $("#new_hospitalization_path").show()
     else
-      $("#new_medical_consultation_path").hide()
+      $("#new_appoinment_path").hide()
       $("#new_hospitalization_path").hide()
       $("#edit_patient_path").show()
 

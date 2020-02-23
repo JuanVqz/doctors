@@ -5,6 +5,7 @@ RSpec.describe Patient, type: :model do
   it { should have_one(:address).dependent(:destroy) }
   it { should have_and_belong_to_many :doctors }
   it { should have_many :medical_consultations }
+  it { should have_many :appoinments }
   it { should have_many :hospitalizations }
   it { should have_many :bentos }
 
