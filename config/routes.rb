@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :medical_consultations
     resources :patients do
       get :weight, on: :member
+      get :appoinments, on: :member
     end
 
     root to: "main#hospital"

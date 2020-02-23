@@ -140,10 +140,12 @@ es-MX:
         attributes:
           hospital:
             required: "Hospital no puede estar en blanco"
-      medical_consultation:
+      appoinment:
         attributes:
+          doctor:
+            required: "Doctor no puede estar en blanco"
           patient:
-            required: "El Paciente no puede estar en blanco"
+            required: "Paciente no puede estar en blanco"
   helpers:
     select:
       prompt: Por favor selecciona
@@ -154,7 +156,7 @@ es-MX:
       patient:
         create: Crear Paciente
         update: Actualizar Paciente
-      medical_consultation:
+      appoinment:
         create: Crear Consulta
         update: Actualizar Consulta
       hospital:
@@ -273,19 +275,14 @@ es-MX:
         municipality: "Municipio"
         state: "Estado"
         contry: "País"
-      medical_consultation:
+      appoinment:
         patient: "Paciente"
         reason: "Motivo de Consulta"
-        observations: "Analisis"
-        treatment: "Pronostico"
-        subjetive: "Subjetivo"
-        plan: "Plan"
         prescription: "Receta"
-        lab_results: "Resultados de gabinete"
+        recommendations: "Recomendaciones"
+        note: "Nota Medica"
+        cabinet_results: "Resultados de gabinete"
         histopathology: "Histopatologia"
-        objetive: "Objetivo"
-        diagnosis: "Diagnostico"
-        comments: "Comentarios"
         height: "Altura"
         weight: "Peso"
         imc: "IMC"
@@ -296,19 +293,7 @@ es-MX:
         glycaemia: "Gluc. Cap."
         sat_02: "SAT. 02"
         cost: "Costo"
-        recommendation: "Recomendaciones"
         created_at: "Fecha de registro"
-      clinic_history:
-        description_diabetes: "Motivo de Diabetes"
-        description_hypertension: "Motivo de Hipertensión"
-        description_allergic: "Motivo de Alergia"
-        description_traumatic: "Motivo de Traumátismo"
-        description_transfusion: "Motivo de Transfusión"
-        description_surgical: "Motivo Quirúrgico"
-        description_drug_addiction: "Motivo Toxicomanías"
-        description_hereditary: "Motivo Hereditario"
-        description_cancer: "Motivo de Cancer"
-        description_other: "Otro Motivo"
       hospitalization:
         starting: "Inicio"
         ending: "Final"

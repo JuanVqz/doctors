@@ -88,7 +88,7 @@ RSpec.describe Appoinment, type: :model do
       create_list :appoinment, 5, doctor: doctor_one, patient: patient_one
     end
     let!(:appoinment_doctor_two) do
-      create_list :medical_consultation, 3, doctor: doctor_two, patient: patient_two
+      create_list :appoinment, 3, doctor: doctor_two, patient: patient_two
     end
 
     it ".per_doctor" do

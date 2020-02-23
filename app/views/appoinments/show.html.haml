@@ -1,0 +1,99 @@
+%nav.level
+  .level-left
+    .level-item
+      %span.icon
+        %i.fa.fa-user-md
+      %span.is-uppercase información de la consulta
+  .level-right
+    .level-item
+      .buttons
+        = link_to :back, class: "button is-link" do
+          %span.icon
+            %i.fa.fa-arrow-left
+          %span Regresar
+
+        = link_to [:edit, @appoinment, patient_id: @appoinment.patient], "data-tooltip": "Editar", class: "button is-warning tooltip" do
+          %span.icon
+            %i.fa.fa-edit
+
+        = link_to [@appoinment, format: "pdf"], "data-tooltip": "Imprimir", class: "button is-danger tooltip", target: "_blank" do
+          %span.icon
+            %i.fa.fa-print
+
+        = link_to @appoinment.patient, target: "_blank", "data-tooltip": "Detalle de #{@appoinment.patient}", class: "button is-success tooltip is-tooltip-left", style: "margin-left: auto" do
+          %span.icon
+            %i.fa.fa-user
+
+.columns
+  .column.is-9
+    .table-container
+      %table.table.is-hoverable.is-fullwidth
+        %thead
+          %tr
+            %th= t("activerecord.attributes.appoinment.created_at")
+          %tr
+            %td= l @appoinment.created_at, format: :long
+          %tr
+            %th= t("activerecord.attributes.appoinment.patient")
+          %tr
+            %td= "#{@appoinment.patient} - #{age_months(@appoinment.patient)}"
+          %tr
+            %th= t("activerecord.attributes.appoinment.reason")
+          %tr
+            %td= @appoinment.reason
+          %tr
+            %th= t("activerecord.attributes.appoinment.note")
+          %tr
+            %td= raw sanitize @appoinment.note
+          %tr
+            %th= t("activerecord.attributes.appoinment.prescription")
+          %tr
+            %td= raw sanitize @appoinment.prescription
+          %tr
+            %th= t("activerecord.attributes.appoinment.recommendations")
+          %tr
+            %td= raw @appoinment.recommendations
+          %tr
+            %th= t("activerecord.attributes.appoinment.cabinet_results")
+          %tr
+            %td= @appoinment.cabinet_results
+          %tr
+            %th= t("activerecord.attributes.appoinment.histopathology")
+          %tr
+            %td= @appoinment.histopathology
+
+  .column.is-3
+    .table-container
+      %table.table.is-hoverable.is-fullwidth
+        %thead
+          %tr
+            %th= t("activerecord.attributes.appoinment.height")
+            %td= "#{@appoinment.height} cm."
+          %tr
+            %th= t("activerecord.attributes.appoinment.weight")
+            %td= "#{@appoinment.weight} kg."
+          %tr
+            %th= t("activerecord.attributes.appoinment.imc")
+            %td= number_with_precision(@appoinment.imc, precision: 2)
+          %tr
+            %th= t("activerecord.attributes.appoinment.blood_pressure")
+            %td= @appoinment.blood_pressure
+          %tr
+            %th= t("activerecord.attributes.appoinment.heart_rate")
+            %td= number_with_precision(@appoinment.heart_rate, precision: 2)
+          %tr
+            %th= t("activerecord.attributes.appoinment.breathing_rate")
+            %td= number_with_precision(@appoinment.breathing_rate, precision: 2)
+          %tr
+            %th= t("activerecord.attributes.appoinment.temperature")
+            %td= temperature @appoinment
+          %tr
+            %th= t("activerecord.attributes.appoinment.glycaemia")
+            %td= @appoinment.glycaemia
+          %tr
+            %th= t("activerecord.attributes.appoinment.sat_02")
+            %td= @appoinment.sat_02
+          %tr
+            %th= t("activerecord.attributes.appoinment.cost")
+            %td= number_to_currency @appoinment.cost
+

@@ -1,13 +1,13 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_patient, only: [:show, :edit, :update, :weight]
+  before_action :set_patient, only: [:show, :edit, :update, :appoinments]
+  before_action :set_appoinments, only: [:show, :appoinments]
 
   def index
     @patients = Patient.recent.search(params[:query]).page(params[:page])
   end
 
   def show
-    set_medical_consultations
     set_hospitalizations
   end
 
@@ -41,14 +41,17 @@ class PatientsController < ApplicationController
   def weight
   end
 
+  def appoinments
+  end
+
   private
 
   def set_patient
     @patient = Patient.find(params[:id])
   end
 
-  def set_medical_consultations
-    @medical_consultations = MedicalConsultation.by_doctor_and_patient(current_user.id, @patient.id)
+  def set_appoinments
+    @appoinments = Appoinment.by_doctor_and_patient(current_user.id, @patient.id)
       .recent
       .page(params[:page])
   end

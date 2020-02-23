@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_02_16_205201) do
     t.string "reason"
     t.text "note"
     t.text "prescription"
-    t.text "recomendations"
+    t.text "recommendations"
     t.bigint "doctor_id"
     t.bigint "patient_id"
     t.float "imc", default: 0.0

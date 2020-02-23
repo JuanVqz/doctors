@@ -11,7 +11,7 @@
           %i.fa.fa-users
         %span Pacientes
     %li
-      = link_to medical_consultations_path(subdomain: current_hospital.subdomain), class: active_for(medical_consultations_path) do
+      = link_to appoinments_path(subdomain: current_hospital.subdomain), class: active_for(appoinments_path) do
         %span.icon
           %i.fa.fa-book
         %span Consultas
