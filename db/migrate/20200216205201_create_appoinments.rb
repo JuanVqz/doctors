@@ -4,7 +4,7 @@ class CreateAppoinments < ActiveRecord::Migration[5.2]
       t.string :reason
       t.text :note
       t.text :prescription
-      t.text :recomendations
+      t.text :recommendations
       t.references :doctor, foreign_key: { to_table: :users }
       t.references :patient, foreign_key: { to_table: :users }
       t.float :imc, default: 0

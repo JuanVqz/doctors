@@ -3,6 +3,7 @@ class Patient < User
   has_one :address, as: :addressable, dependent: :destroy
   has_and_belongs_to_many :doctors, join_table: "doctors_patients"
   has_many :medical_consultations, -> { order(created_at: :desc) }
+  has_many :appoinments, -> { order(created_at: :desc) }
   has_many :hospitalizations, -> { order(created_at: :desc) }
   has_many :bentos
 

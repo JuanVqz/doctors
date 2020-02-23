@@ -42,5 +42,12 @@ RSpec.describe "Patient", type: :request do
     end
   end
 
+  describe "GET /patients/1/appoinments" do
+    it "returns patient's appoinments" do
+      get appoinments_patient_path(patient), xhr: true
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
 

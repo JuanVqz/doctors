@@ -9,3 +9,11 @@
 .is-hospital { background: asset_url("doctor.jpg"); }
 @media(max-width: 1024px) { .is-hospital { background: asset_url("doctor.jpg") center / cover; } }
 @media(max-width: 768px) { .is-hospital { background: asset_url("doctor.jpg") center / cover; } }
+
+.display-none {
+  display: none
+}
+
+.trix-button-group--file-tools {
+  display: none !important;
+}
