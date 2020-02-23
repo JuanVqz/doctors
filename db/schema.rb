@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_16_205201) do
+ActiveRecord::Schema.define(version: 2020_02_23_213403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,6 +206,14 @@ ActiveRecord::Schema.define(version: 2020_02_16_205201) do
     t.integer "hospital_id"
     t.string "marital_status"
     t.text "comments"
+    t.text "allergies", default: ""
+    t.text "pathological_background", default: ""
+    t.text "non_pathological_background", default: ""
+    t.text "gyneco_obstetric_background", default: ""
+    t.text "system_background", default: ""
+    t.text "family_inheritance_background", default: ""
+    t.text "physic_exploration", default: ""
+    t.text "other_background", default: ""
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["hospital_id"], name: "index_users_on_hospital_id"

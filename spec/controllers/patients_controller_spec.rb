@@ -23,7 +23,15 @@ RSpec.describe PatientsController, type: :controller do
       hospital_id: hospital.id,
       address_attributes: address,
       marital_status: "Casado",
-      comments: "Algo que decir"
+      comments: "Algo que decir",
+      allergies: "Alergias",
+      pathological_background: "Antecendentes patologico",
+      non_pathological_background: "Antecendentes no patologico",
+      gyneco_obstetric_background: "Antecendentes Gineco-Obstetrico",
+      system_background: "Interrogatorio por aparatos y sistemas",
+      family_inheritance_background: "Antecendentes heredo-familiares",
+      physic_exploration: "Exporacion Fisica",
+      other_background: "Otros"
     }
   end
 
