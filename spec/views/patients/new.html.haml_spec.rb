@@ -20,7 +20,15 @@ RSpec.describe "patients/new", type: :view do
       cellphone: "951 123 45 67",
       sex: "Masculino",
       marital_status: "Casado",
-      comments: "Comentario de prueba"
+      comments: "Comentario de prueba",
+      allergies: "Alergias",
+      pathological_background: "Antecendentes patologico",
+      non_pathological_background: "Antecendentes no patologico",
+      gyneco_obstetric_background: "Antecendentes Gineco-Obstetrico",
+      system_background: "Interrogatorio por aparatos y sistemas",
+      family_inheritance_background: "Antecendentes heredo-familiares",
+      physic_exploration: "Exporacion Fisica",
+      other_background: "Otros"
     ))
   end
 
@@ -42,6 +50,15 @@ RSpec.describe "patients/new", type: :view do
       assert_select "select[name=?]", "patient[sex]"
       assert_select "input[name=?]", "patient[marital_status]"
       assert_select "textarea[name=?]", "patient[comments]"
+
+      assert_select "textarea[name=?]", "patient[allergies]"
+      assert_select "textarea[name=?]", "patient[pathological_background]"
+      assert_select "textarea[name=?]", "patient[non_pathological_background]"
+      assert_select "textarea[name=?]", "patient[gyneco_obstetric_background]"
+      assert_select "textarea[name=?]", "patient[system_background]"
+      assert_select "textarea[name=?]", "patient[family_inheritance_background]"
+      assert_select "textarea[name=?]", "patient[physic_exploration]"
+      assert_select "textarea[name=?]", "patient[other_background]"
     end
   end
 end
