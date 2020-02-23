@@ -3,10 +3,8 @@
   #patient_info.columns.is-multiline.display-none
     .column
       #patient_age
-    .column
-      #patient_blood_group
-    .column
-      = link_to "Ver consultas anteriores", "#", class: "button"
+    .column.has-text-danger
+      #patient_allergies
   .columns.is-multiline
     .column.is-12
       %label.label{ for: "medical_consultation_patient_id" } Paciente

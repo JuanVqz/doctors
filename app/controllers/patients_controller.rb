@@ -67,7 +67,10 @@ class PatientsController < ApplicationController
       :name, :first_name, :last_name, :birthday, :height,
       :weight, :blood_group, :occupation, :referred_by,
       :place_of_birth, :sex, :cellphone, :marital_status,
-      :comments, :avatar,
+      :comments, :avatar, :allergies, :pathological_background,
+      :non_pathological_background, :gyneco_obstetric_background,
+      :system_background, :family_inheritance_background,
+      :physic_exploration, :other_background,
       address_attributes: [
         :id, :street, :number, :colony, :postal_code, :municipality,
         :state, :country, :_destroy

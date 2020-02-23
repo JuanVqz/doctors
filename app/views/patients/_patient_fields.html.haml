@@ -64,3 +64,22 @@
               Seleccionar archivo
           %span.file-name
 
+%p.has-text-grey-light.is-uppercase Historial Clinico
+.columns.is-multiline
+  .column.is-6
+    = f.input :allergies
+  .column.is-6
+    = f.input :pathological_background
+  .column.is-6
+    = f.input :non_pathological_background
+  .column.is-6
+    = f.input :gyneco_obstetric_background
+  .column.is-6
+    = f.input :system_background
+  .column.is-6
+    = f.input :family_inheritance_background
+  .column.is-6
+    = f.input :physic_exploration
+  .column.is-6
+    = f.input :other_background
+

@@ -1,41 +1,26 @@
 .columns.is-multiline
-  - if @patient.clinic_history&.description_traumatic?
-    .column.is-4
-      %strong Antecedentes gineco-obstetricos
-      %p= @patient.clinic_history.description_traumatic
-  - if @patient.clinic_history&.description_hypertension?
-    .column.is-4
-      %strong Antecedentes personales patológicos
-      %p= @patient.clinic_history.description_hypertension
-  - if @patient.clinic_history&.description_allergic?
-    .column.is-4
-      %strong Antecedentes personales no patológicos
-      %p= @patient.clinic_history.description_allergic
-  - if @patient.clinic_history&.description_transfusion?
-    .column.is-4
-      %strong Interrogatorio por aparatos y sistemas
-      %p= @patient.clinic_history.description_transfusion
-  - if @patient.clinic_history&.description_hereditary?
-    .column.is-4
-      %strong Antecedentes heredo-familiares
-      %p= @patient.clinic_history.description_hereditary
-  - if @patient.clinic_history&.description_surgical?
-    .column.is-4
-      %strong Exploración fisica
-      %p= @patient.clinic_history.description_surgical
-  - if @patient.clinic_history&.description_drug_addiction?
-    .column.is-4
-      %strong Alergias
-      %p= @patient.clinic_history.description_drug_addiction
-  - if @patient.clinic_history&.description_diabetes?
-    .column.is-4
-      %strong Motivo de Diabetes
-      %p= @patient.clinic_history.description_diabetes
-  - if @patient.clinic_history&.description_cancer?
-    .column.is-4
-      %strong Motivo Cancer
-      %p= @patient.clinic_history.description_cancer
-  - if @patient.clinic_history&.description_other?
-    .column.is-4
-      %strong Motivo Otro
-      %p= @patient.clinic_history.description_other
+  .column.is-4
+    %strong= t("activerecord.attributes.patient.allergies")
+    %p= @patient.allergies
+  .column.is-4
+    %strong= t("activerecord.attributes.patient.pathological_background")
+    %p= @patient.pathological_background
+  .column.is-4
+    %strong= t("activerecord.attributes.patient.non_pathological_background")
+    %p= @patient.non_pathological_background
+  .column.is-4
+    %strong= t("activerecord.attributes.patient.gyneco_obstetric_background")
+    %p= @patient.gyneco_obstetric_background
+  .column.is-4
+    %strong= t("activerecord.attributes.patient.system_background")
+    %p= @patient.system_background
+  .column.is-4
+    %strong= t("activerecord.attributes.patient.family_inheritance_background")
+    %p= @patient.family_inheritance_background
+  .column.is-4
+    %strong= t("activerecord.attributes.patient.physic_exploration")
+    %p= @patient.physic_exploration
+  .column.is-4
+    %strong= t("activerecord.attributes.patient.other_background")
+    %p= @patient.other_background
+
