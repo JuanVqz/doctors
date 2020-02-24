@@ -37,6 +37,21 @@ RSpec.describe "Patient's flow", type: :system do
     end
   end
 
+  feature "Doctor can create an appoinment" do
+    context "from patients#index" do
+      before :each do
+        create_new_patient "Marco"
+        visit_patients_path
+      end
+
+      scenario "redirect to new appoinment" do
+        find('a[data-tooltip="Nueva consulta"]').click
+        expect(page).to have_content "REGISTRAR CONSULTA"
+        expect(page).to have_content "Marco"
+      end
+    end
+  end
+
   def visit_show_patient
     expect(page).to have_current_path patient_path Patient.unscoped.last
     expect(page).to have_content "INFORMACIÓN DEL PACIENTE"
@@ -52,6 +67,13 @@ RSpec.describe "Patient's flow", type: :system do
     find("#patient_blood_group").find(:xpath, "option[2]").select_option
     fill_in "patient_occupation", with: "Herrero"
     fill_in "patient_referred_by", with: "Pedro Ramos"
+
+    fill_in "patient_allergies", with: "Alergico a la penicilina"
+    fill_in "patient_pathological_background", with: "Patologico"
+    fill_in "patient_non_pathological_background", with: "No Patologico"
+    fill_in "patient_gyneco_obstetric_background", with: "Gineco-Obstetra"
+    fill_in "patient_system_background", with: "Interrogatorio por aparatos y sistemas"
+
     fill_in "patient_address_attributes_street", with: "Cuahutemoc"
     fill_in "patient_address_attributes_number", with: "12"
     fill_in "patient_address_attributes_colony", with: "Centro"
