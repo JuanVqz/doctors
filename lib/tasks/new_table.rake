@@ -1,4 +1,4 @@
-namespace :apply do
+namespace :new_table do
   desc "Change medical_consultation model to appoiment model"
   task appoinments: :environment do
     imported_general = 0
@@ -26,7 +26,6 @@ namespace :apply do
   desc "Change clinic_history model to patient attributes"
   task patients: :environment do
     count = 0
-    puts "Inicio"
     patients.each do |p|
       next if p.clinic_history.nil?
 
