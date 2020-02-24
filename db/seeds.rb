@@ -76,6 +76,12 @@ puts "Creating Patients"
     place_of_birth: "México", sex: "Masculino",
     cellphone: FFaker::PhoneNumberMX.mobile_phone_number, height: 170,
     weight: 80, blood_group: "ARH+", occupation: "Ocupacion #{n}",
+    allergies: FFaker::Lorem.words, pathological_background: FFaker::Lorem.phrase,
+    non_pathological_background: FFaker::Lorem.sentence,
+    gyneco_obstetric_background: FFaker::Lorem.word,
+    system_background: FFaker::Lorem.words,
+    family_inheritance_background: FFaker::Lorem.words,
+    physic_exploration: FFaker::Lorem.words, other_background: FFaker::Lorem.words,
     created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
     referred_by: FFaker::NameMX.name, hospital_id: Hospital.first.id
   )
@@ -88,25 +94,17 @@ puts "Creating Patients"
     addressable: patient
   )
 
-  ClinicHistory.create(
-    description_diabetes: FFaker::Lorem.phrase, description_hypertension: FFaker::Lorem.word,
-    description_allergic: FFaker::Lorem.phrase, description_traumatic: FFaker::Lorem.word,
-    description_transfusion: FFaker::Lorem.phrase, description_surgical: FFaker::Lorem.word,
-    description_drug_addiction: FFaker::Lorem.phrase, description_hereditary: FFaker::Lorem.phrase,
-    description_cancer: FFaker::Lorem.phrase, description_other: FFaker::Lorem.word,
-    patient: patient
-  )
-
   doctor = Doctor.unscoped.first
   doctor.patients << patient
 
-  (1..10).each do
-    MedicalConsultation.create(
-      reason: FFaker::Lorem.phrase, subjetive: FFaker::Lorem.phrase,
-      objetive: FFaker::Lorem.phrase, prescription: FFaker::Lorem.phrase,
-      plan: FFaker::Lorem.paragraph, diagnosis: FFaker::Lorem.paragraph,
-      created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
-      doctor: doctor, patient: patient
-    )
+  Patient.all.each do |patient|
+    (1..10).each do
+      Appoinment.create(
+        reason: FFaker::Lorem.phrase, note: FFaker::HTMLIpsum.p,
+        prescription: FFaker::Lorem.paragraph, recommendations: FFaker::Lorem.paragraph,
+        created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
+        doctor: doctor, patient: patient
+      )
+    end
   end
 end
