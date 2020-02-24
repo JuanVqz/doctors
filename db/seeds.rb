@@ -76,12 +76,12 @@ puts "Creating Patients"
     place_of_birth: "México", sex: "Masculino",
     cellphone: FFaker::PhoneNumberMX.mobile_phone_number, height: 170,
     weight: 80, blood_group: "ARH+", occupation: "Ocupacion #{n}",
-    allergies: FFaker::Lorem.words, pathological_background: FFaker::Lorem.phrase,
+    allergies: FFaker::Lorem.word, pathological_background: FFaker::Lorem.phrase,
     non_pathological_background: FFaker::Lorem.sentence,
     gyneco_obstetric_background: FFaker::Lorem.word,
-    system_background: FFaker::Lorem.words,
-    family_inheritance_background: FFaker::Lorem.words,
-    physic_exploration: FFaker::Lorem.words, other_background: FFaker::Lorem.words,
+    system_background: FFaker::Lorem.word,
+    family_inheritance_background: FFaker::Lorem.word,
+    physic_exploration: FFaker::Lorem.word, other_background: FFaker::Lorem.word,
     created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
     referred_by: FFaker::NameMX.name, hospital_id: Hospital.first.id
   )
@@ -97,14 +97,13 @@ puts "Creating Patients"
   doctor = Doctor.unscoped.first
   doctor.patients << patient
 
-  Patient.all.each do |patient|
-    (1..10).each do
-      Appoinment.create(
-        reason: FFaker::Lorem.phrase, note: FFaker::HTMLIpsum.p,
-        prescription: FFaker::Lorem.paragraph, recommendations: FFaker::Lorem.paragraph,
-        created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
-        doctor: doctor, patient: patient
-      )
-    end
+  puts "Creating #{patient} Appoinments"
+  (1..10).each do
+    Appoinment.create(
+      reason: FFaker::Lorem.phrase, note: FFaker::HTMLIpsum.p,
+      prescription: FFaker::Lorem.paragraph, recommendations: FFaker::Lorem.paragraph,
+      created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
+      doctor: doctor, patient: patient
+    )
   end
 end
