@@ -2,11 +2,11 @@ version: 2.1
 
 executors:
   default:
-    working_directory: ~/hix_postgresql
+    working_directory: ~/doctors
     docker:
       - image: circleci/ruby:2.5.3
         environment:
-          BUNDLE_JOBS: 3
+          BUNDLE_JOBS: 1
           BUNDLE_PATH: vendor/bundle
           BUNDLE_RETRY: 3
           BUNDLER_VERSION: 2.0.1
