@@ -1,16 +1,16 @@
-<div class="header text-right text-uppercase">
-  <strong><%= @appoinment.patient %></strong>
+<div class="header text-size-11 text-right">
+  <strong class="text-uppercase"><%= @appoinment.patient %></strong>
 
   <div>
     <%= age @appoinment.patient %>
     <% if @appoinment.height.present? %>
-      <%= @appoinment.height %> Cm.
+      <%= @appoinment.height %> cm.
     <% end %>
     <% if @appoinment.weight.present? %>
-      <%= @appoinment.weight %> Kg.
+      <%= @appoinment.weight %> kg.
     <% end %>
     <% if @appoinment.imc.present? %>
-      <%= number_with_precision(@appoinment.imc, precision: 2) %> IMC
+      IMC <%= number_with_precision(@appoinment.imc, precision: 2) %>
     <% end %>
   </div>
 
@@ -19,6 +19,6 @@
   </div>
 </div>
 
-<div style="padding-top:40px">
+<div class="text-size-11" style="padding-top:40px">
   <%= raw @appoinment.prescription %>
 </div>
