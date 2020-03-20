@@ -1,7 +1,7 @@
 %tr
   %td= l appoinment.created_at, format: :not_hour
-  %td= truncate(appoinment.reason, lenght: 50)
-  %td= truncate(appoinment.prescription, lenght: 50)
+  %td= raw appoinment.reason.truncate(50)
+  %td= raw appoinment.prescription.truncate(50)
   %td
     .buttons.is-right
       = link_to [appoinment, format: "pdf"], "data-tooltip": "Imprimir", class: "button is-danger tooltip", target: "_blank" do
