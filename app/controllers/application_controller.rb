@@ -21,8 +21,11 @@ class ApplicationController < ActionController::Base
       page_size: "Letter",
       template: "pdfs/#{name}.pdf.erb",
       viewport_size: "1280x1024",
-      margin: { top: "30", bottom: "20" },
-      header: { html: { template: "layouts/pdfs/_header.pdf.erb" } },
+      #margin: { top: 30, bottom: 10 },
+      header: {
+        html: { template: "layouts/pdfs/_header.pdf.erb" },
+        spacing: 18,
+      },
       footer: { html: { template: "layouts/pdfs/_footer.pdf.erb" } },
       layout: "pdfs/hospital"
     }

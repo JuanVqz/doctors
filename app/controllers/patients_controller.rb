@@ -42,6 +42,10 @@ class PatientsController < ApplicationController
   end
 
   def appoinments
+    respond_to do |format|
+      format.js
+      format.pdf { render generar_pdf("appoinments") }
+    end
   end
 
   private
@@ -83,5 +87,9 @@ class PatientsController < ApplicationController
         :description_other, :patien_id, :_destroy
       ]
     )
+  end
+
+  def pdf_name
+    "#{@patient.name}_#{@patient.id}_#{@patient.created_at.to_s(:number)}".upcase
   end
 end

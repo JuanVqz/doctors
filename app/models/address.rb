@@ -4,6 +4,6 @@ class Address < ApplicationRecord
   validates :state, presence: true
 
   def to_s
-    "#{street} #{number} #{colony} \n #{postal_code} #{municipality} \n #{state} #{country}"
+    "#{street} #{number}\n#{colony}\n#{postal_code} #{municipality}"
   end
 end
