@@ -76,6 +76,12 @@ rake import:doctor_name:medical_consultation
 
 ## Deploy
 
+Antes de realizar el deploy puedes verificar los requisitos con:
+
+```sh
+cap production deploy:check
+```
+
 Comandos para realizar deploy con capistrano:
 
 ```sh
