@@ -15,8 +15,20 @@ body { font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
   border-collapse: collapse;
   width: 100%;
 }
+
 .table td, .table th {
   border: 1px solid #ddd;
   padding: 2px;
 }
 
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.alwaysbreak { page-break-before: always; }
+.nobreak:before { clear:both; }
+.nobreak { page-break-inside: avoid; }
