@@ -88,6 +88,12 @@ Comandos para realizar deploy con capistrano:
 cap production deploy
 ```
 
+Despues de realizar el deploy, tienes que reiniciar unicorn con el comando siguiente:
+
+```sh
+cap production unicorn:start
+```
+
 ## Desarrollo
 
 Si esta interesado en contribuir al desarrollo comprando un subdominio en
