@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
       #margin: { top: 30, bottom: 10 },
       header: {
         html: { template: "layouts/pdfs/_header.pdf.erb" },
-        spacing: 18,
+        spacing: 20,
       },
       footer: { html: { template: "layouts/pdfs/_footer.pdf.erb" } },
       layout: "pdfs/hospital"
