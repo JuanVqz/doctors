@@ -1,3 +1,50 @@
+<% if @patient.clinic_history? %>
+<table class="table nobreak">
+  <thead>
+    <% if @patient.allergies.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.allergies") %></th></tr>
+      <tr><td><%= @patient.allergies %></td></tr>
+    <% end %>
+
+    <% if @patient.pathological_background.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.pathological_background") %></th></tr>
+      <tr><td><%= @patient.pathological_background %></td></tr>
+    <% end %>
+
+    <% if @patient.non_pathological_background.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.non_pathological_background") %></th></tr>
+      <tr><td><%= @patient.non_pathological_background %></td></tr>
+    <% end %>
+
+    <% if @patient.gyneco_obstetric_background.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.gyneco_obstetric_background") %></th></tr>
+      <tr><td><%= @patient.gyneco_obstetric_background %></td></tr>
+    <% end %>
+
+    <% if @patient.system_background.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.system_background") %></th></tr>
+      <tr><td><%= @patient.system_background %></td></tr>
+    <% end %>
+
+    <% if @patient.family_inheritance_background.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.family_inheritance_background") %></th></tr>
+      <tr><td><%= @patient.family_inheritance_background %></td></tr>
+    <% end %>
+
+    <% if @patient.physic_exploration.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.physic_exploration") %></th></tr>
+      <tr><td><%= @patient.physic_exploration %></td></tr>
+    <% end %>
+
+    <% if @patient.other_background.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.other_background") %></th></tr>
+      <tr><td><%= @patient.other_background %></td></tr>
+    <% end %>
+  </thead>
+</table>
+<div class="alwaysbreak"></div>
+<% end %>
+
 <% @appoinments.each do |appoinment| %>
   <table class="table nobreak">
     <thead>
