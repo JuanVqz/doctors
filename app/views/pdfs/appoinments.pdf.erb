@@ -5,7 +5,7 @@
       <tr><td><%= l appoinment.created_at, format: :long %></td></tr>
 
       <tr><th><%= t("activerecord.attributes.appoinment.patient") %></th></tr>
-        <tr><td><%= @patient %> - <%= age_months(@patient) %></td></tr>
+      <tr><td><%= @patient %> - <%= age_months(@patient) %></td></tr>
 
       <tr><th><%= t("activerecord.attributes.appoinment.reason") %></th></tr>
       <tr><td><%= appoinment.reason %></td></tr>
@@ -34,13 +34,13 @@
           <table class="table">
             <thead>
               <tr>
-                <% unless appoinment.height.zero? %>
+                <% if appoinment.height.present? && !appoinment.height.zero? %>
                   <th><%= t("activerecord.attributes.appoinment.height") %></th>
                 <% end %>
-                <% unless appoinment.weight.zero? %>
+                <% if appoinment.weight.present? && !appoinment.weight.zero? %>
                   <th><%= t("activerecord.attributes.appoinment.weight") %></th>
                 <% end %>
-                <% unless appoinment.weight.zero? %>
+                <% if appoinment.imc.present? %>
                   <th><%= t("activerecord.attributes.appoinment.imc") %></th>
                 <% end %>
                 <% if appoinment.blood_pressure.present? %>
@@ -63,13 +63,13 @@
                 <% end %>
               </tr>
               <tr>
-                <% unless appoinment.height.zero? %>
+                <% if appoinment.height.present? && !appoinment.height.zero? %>
                   <td><%= appoinment.height %> cm.</td>
                 <% end %>
-                <% unless appoinment.weight.zero? %>
+                <% if appoinment.weight.present? && !appoinment.weight.zero? %>
                   <td><%= appoinment.weight %> kg.</td>
                 <% end %>
-                <% unless appoinment.weight.zero? %>
+                <% if appoinment.imc.present? %>
                   <td><%= number_with_precision(appoinment.imc, precision: 2) %></td>
                 <% end %>
                 <% if appoinment.blood_pressure.present? %>
