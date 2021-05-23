@@ -4,10 +4,10 @@
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
   # Default class for buttons
-  config.button_class = 'button'
+  config.button_class = "button"
 
   # Define the default class of the input wrapper of the boolean input.
-  config.boolean_label_class = 'checkbox'
+  config.boolean_label_class = "checkbox"
 
   # How the label text should be generated altogether with the required text.
   config.label_text = lambda { |label, required, explicit_label| "#{label} #{required}" }
@@ -23,7 +23,7 @@ SimpleForm.setup do |config|
   config.include_default_input_wrapper_class = false
 
   # CSS class to add for error notification helper.
-  config.error_notification_class = 'notification is-danger'
+  config.error_notification_class = "notification is-danger"
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
@@ -31,14 +31,14 @@ SimpleForm.setup do |config|
   config.error_method = :to_sentence
 
   # add validation classes to `input_field`
-  config.input_field_error_class = 'is-danger'
-  config.input_field_valid_class = 'is-success'
+  config.input_field_error_class = "is-danger"
+  config.input_field_valid_class = "is-success"
 
 
   # vertical forms
   #
   # bulma vertical default_wrapper
-  config.wrappers :vertical_form, tag: 'div', class: 'field' do |b|
+  config.wrappers :vertical_form, tag: "div", class: "field" do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -46,28 +46,28 @@ SimpleForm.setup do |config|
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-    b.use :label, class: 'label'
-    b.use :input, class: 'input', wrap_with: { tag: 'div', class: 'control' }, error_class: 'is-danger', valid_class: 'is-success'
-    b.use :full_error, wrap_with: { tag: 'div', class: 'help is-danger' }
+    b.use :label, class: "label"
+    b.use :input, class: "input", wrap_with: { tag: "div", class: "control" }, error_class: "is-danger", valid_class: "is-success"
+    b.use :full_error, wrap_with: { tag: "div", class: "help is-danger" }
     #b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
   # bulma vertical select_form
-  config.wrappers :select_form, tag: 'div', class: 'control' do |b|
+  config.wrappers :select_form, tag: "div", class: "control" do |b|
     b.use :html5
     b.use :placeholder
     b.optional :pattern
     b.optional :readonly
-    b.use :input, wrap_with: { tag: 'div', class: 'select' }
-    b.use :full_error, wrap_with: { tag: 'div', class: 'help is-danger' }
+    b.use :input, wrap_with: { tag: "div", class: "select" }
+    b.use :full_error, wrap_with: { tag: "div", class: "help is-danger" }
     #b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
   # bulma extension vertical input for boolean
-  config.wrappers :vertical_boolean, tag: 'div', class: 'field' do |b|
+  config.wrappers :vertical_boolean, tag: "div", class: "field" do |b|
     b.use :html5
     b.optional :readonly
-    b.use :input, class: 'is-checkradio is-info'
+    b.use :input, class: "is-checkradio is-info"
     b.use :label
     #b.wrapper :form_check_wrapper, tag: 'div', class: 'control' do |bb|
       #bb.use :input, wrap_with: { tag: 'label', class: 'checkbox' }
@@ -102,24 +102,24 @@ SimpleForm.setup do |config|
   #end
 
   ## bulma vertical file input
-  config.wrappers :vertical_file, tag: 'div', class: 'file' do |b|
+  config.wrappers :vertical_file, tag: "div", class: "file" do |b|
     b.use :html5
     b.optional :readonly
-    b.use :input, class: 'file-input', wrap_with: { tag: 'label', class: 'file-label'}
-    b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback d-block' }
-    b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
+    b.use :input, class: "file-input", wrap_with: { tag: "label", class: "file-label"}
+    b.use :full_error, wrap_with: { tag: "div", class: "invalid-feedback d-block" }
+    b.use :hint, wrap_with: { tag: "small", class: "form-text text-muted" }
   end
 
   ## bulma vertical multi select
-  config.wrappers :vertical_multi_select, tag: 'div', class: 'field' do |b|
+  config.wrappers :vertical_multi_select, tag: "div", class: "field" do |b|
     b.use :html5
     b.optional :readonly
-    b.use :label, class: 'label'
-    b.wrapper tag: 'div', class: 'control' do |ba|
-      ba.use :input, class: 'input', error_class: 'is-danger', valid_class: 'is-success'
+    b.use :label, class: "label"
+    b.wrapper tag: "div", class: "control" do |ba|
+      ba.use :input, class: "input", error_class: "is-danger", valid_class: "is-success"
     end
-    b.use :full_error, wrap_with: { tag: 'div', class: 'is-danger' }
-    b.use :hint, wrap_with: { tag: 'small', class: 'help' }
+    b.use :full_error, wrap_with: { tag: "div", class: "is-danger" }
+    b.use :hint, wrap_with: { tag: "small", class: "help" }
   end
 
   ## vertical range input

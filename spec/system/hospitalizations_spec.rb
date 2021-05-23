@@ -13,8 +13,8 @@ RSpec.describe "Hospitalization's flow", type: :system do
     click_link_details
   end
 
-  feature "Doctor can create a hospitalization" do
-    scenario "from patient list" do
+  feature "Doctor can create an hospitalization" do
+    scenario "from patient list", js: true do
       click_link_tab_hospitalizations
       click_link_new_hospitalization
       visit_new_hospitalization_with_patient_id_param
@@ -24,7 +24,7 @@ RSpec.describe "Hospitalization's flow", type: :system do
   end
 
   def click_link_tab_hospitalizations
-    find(:css, '#my_hospitalizations').click
+    find(:css, "#my_hospitalizations").click
   end
 
   def click_link_new_hospitalization
@@ -37,8 +37,9 @@ RSpec.describe "Hospitalization's flow", type: :system do
 
   def create_new_hospitalization_with_preselected_patient
     see_patient_name
-    fill_in "hospitalization_starting", with: "11-11-2018"
-    fill_in "hospitalization_ending", with: "15-11-2018"
+    save_and_open_screenshot
+    fill_in "hospitalization_starting", with: DateTime.current
+    fill_in "hospitalization_ending", with: DateTime.current
     fill_in "hospitalization_days_of_stay", with: "5"
     fill_in "hospitalization_reason_for_hospitalization", with: "Razon de la hospitalización"
     fill_in "hospitalization_treatment", with: "Tratamiento"
