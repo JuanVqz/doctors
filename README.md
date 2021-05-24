@@ -74,6 +74,17 @@ rake import:doctor_name:patients
 rake import:doctor_name:medical_consultation
 ```
 
+## Deploy
+
+### Reiniciar base de datos
+
+```bash
+heroku restart; heroku pg:reset DATABASE --confirm asistenciaclinica;
+heroku run rails db:migrate
+heroku run rails db:seed
+heroku run rails console
+```
+
 ## Deploy (deprecado)
 
 Antes de realizar el deploy puedes verificar los requisitos con:
