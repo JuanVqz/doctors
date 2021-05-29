@@ -13,7 +13,7 @@ RSpec.describe "Medical Consultations flow", type: :system do
   end
 
   feature "Doctor can create a medical consultation" do
-    scenario "from patients list" do
+    scenario "from patients list", js: true do
       click_link_tab_appoinments
       click_link_new_appoinment
       visit_new_appoinment_with_patient_id_param
@@ -23,7 +23,7 @@ RSpec.describe "Medical Consultations flow", type: :system do
   end
 
   def click_link_tab_appoinments
-    find(:css, '#appoinments').click
+    find(:css, "#appoinments").click
   end
 
   def click_link_new_appoinment

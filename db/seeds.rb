@@ -1,4 +1,4 @@
-require 'ffaker'
+require "ffaker"
 
 # Hospitals
 puts "Creating Hospitals"

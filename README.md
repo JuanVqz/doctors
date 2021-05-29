@@ -5,8 +5,8 @@ tomar consultas de los pacientes y conservar el historial clinico.
 
 ## Requisitos
 
-- ruby 2.5.3
-- rails 5.2.2
+- ruby 2.7.2
+- rails 6.0
 - postgres
 
 ## Instalación
@@ -42,7 +42,7 @@ usuario: pedrouno@gmail.com
 contraseña: 123456
 ```
 
-## Importar información
+## Importar información (opcional)
 
 Los Doctores que utilizan nuestro servicio habian usado un sistema llamado Bento.
 
@@ -75,6 +75,17 @@ rake import:doctor_name:medical_consultation
 ```
 
 ## Deploy
+
+### Reiniciar base de datos
+
+```bash
+heroku restart; heroku pg:reset DATABASE --confirm asistenciaclinica;
+heroku run rails db:migrate
+heroku run rails db:seed
+heroku run rails console
+```
+
+## Deploy (deprecado)
 
 Antes de realizar el deploy puedes verificar los requisitos con:
 

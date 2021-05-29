@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :appoinment do
-    reason { "MyString" }
+    sequence(:reason) { |n| "Motivo #{n}" }
     note { "MyText" }
-    prescription { "MyText" }
+    sequence(:prescription) { |n| "Prescription #{n}" }
     recommendations { "MyText" }
     imc { 1.5 }
     weight { 1.5 }

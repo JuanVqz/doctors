@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   constraints(SubdomainRoutes) do
-    root to: "main#index"
+    root to: "main#index", as: :main_index
   end
 
   constraints(!SubdomainRoutes) do
