@@ -143,9 +143,13 @@ es-MX:
       appoinment:
         attributes:
           doctor:
-            required: "Doctor no puede estar en blanco"
+            required: "no puede estar en blanco"
           patient:
             required: "Paciente no puede estar en blanco"
+      referred_doctor:
+        attributes:
+          doctor:
+            required: "no puede estar en blanco"
   helpers:
     select:
       prompt: Por favor selecciona
@@ -161,6 +165,9 @@ es-MX:
         update: Actualizar Consulta
       hospital:
         update: Actualizar Página
+      referred_doctor:
+        create: Crear Doctor
+        update: Actualizar Doctor
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
@@ -309,6 +316,9 @@ es-MX:
       hospital:
         name: "Nombre"
         description: "Descripción"
+      referred_doctor:
+        full_name: "Nombre completo"
+        specialty: "Especialidad"
   sessions:
     new:
       title: "Iniciar sesión"

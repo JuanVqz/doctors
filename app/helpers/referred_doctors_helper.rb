@@ -1,0 +1,2 @@
+module ReferredDoctorsHelper
+end

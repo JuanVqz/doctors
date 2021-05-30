@@ -1,0 +1,43 @@
+%nav.level
+  .level-left
+    .level-item
+      %span.icon
+        %i.fa.fa-user-md
+      %span.is-uppercase Doctores Referidos
+  .level-right
+    .level-item
+      = link_to [:new, :referred_doctor], class: "button is-link" do
+        %span.icon
+          %i.fa.fa-plus
+        %span Registrar Doctor
+
+.table-container
+  %table.table.is-hoverable.is-fullwidth
+    %thead.is-uppercase
+      %tr
+        %th Nombre Completo
+        %th Especialidad
+        %th.has-text-right Acciones
+    %tbody
+      - @referred_doctors.each do |referred_doctor|
+        %tr
+          %td= referred_doctor.full_name
+          %td= referred_doctor.specialty
+          %td
+            .buttons.is-right
+              = link_to referred_doctor, class: "button is-link" do
+                %span.icon
+                  %i.fa.fa-eye
+                %span Detalles
+              = link_to [:edit, referred_doctor], class: "button is-warning" do
+                %span.icon
+                  %i.fa.fa-edit
+                %span Editar
+    %tfoot
+      %tr
+        %th{ colspan: 4 }
+          = paginate @referred_doctors
+          %br
+          .has-text-right
+            = page_entries_info @referred_doctors, entry_name: "doctores"
+
