@@ -14,7 +14,7 @@ class ReferredDoctorsController < ApplicationController
 
   # GET /referred_doctors/new
   def new
-    @referred_doctor = ReferredDoctor.new
+    @referred_doctor = ReferredDoctor.new(address: Address.new)
   end
 
   # GET /referred_doctors/1/edit
@@ -68,7 +68,9 @@ class ReferredDoctorsController < ApplicationController
 
   def referred_doctor_params
     params.require(:referred_doctor)
-      .permit(:full_name, :specialty)
+      .permit(:full_name, :specialty, address_attributes: [
+        :id, :street, :number, :colony, :postal_code, :municipality,
+        :state, :country, :_destroy ],)
       .with_defaults(doctor: current_user)
   end
 end

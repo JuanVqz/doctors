@@ -31,6 +31,11 @@ RSpec.describe "Referred Doctor's flow", type: :system do
   def when_i_fill_in_the_fields
     fill_in "referred_doctor_full_name", with: "Licha Perez"
     fill_in "referred_doctor_specialty", with: "Odontólogo General"
+    fill_in "referred_doctor_address_attributes_street", with: "Independencia"
+    fill_in "referred_doctor_address_attributes_number", with: "19"
+    fill_in "referred_doctor_address_attributes_colony", with: "Centro"
+    fill_in "referred_doctor_address_attributes_postal_code", with: "12345"
+    fill_in "referred_doctor_address_attributes_municipality", with: "Centro"
   end
 
   def when_i_click_on_new_referred_doctor_button

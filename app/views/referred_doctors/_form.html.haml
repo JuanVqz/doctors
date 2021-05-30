@@ -4,6 +4,9 @@
     .column.is-8= f.input :full_name
     .column.is-4= f.input :specialty
 
+  %p.has-text-grey-light.is-uppercase Domicilio
+  = render "addresses/address_fields", f: f
+
   .buttons
     = link_to :back, class: "button is-link" do
       %span.icon

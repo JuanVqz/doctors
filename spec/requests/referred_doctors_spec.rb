@@ -16,6 +16,11 @@ RSpec.describe "/referred_doctors", type: :request do
       full_name: "Licha Perez",
       specialty: "Odontólogo General",
       doctor: doctor,
+      address_attributes: {
+        street: "Independencia",
+        number: "19",
+        state: "Oaxaca",
+      }
     }
   end
 
@@ -64,6 +69,7 @@ RSpec.describe "/referred_doctors", type: :request do
         expect {
           post referred_doctors_url, params: { referred_doctor: valid_attributes }
         }.to change(ReferredDoctor, :count).by(1)
+         .and change(Address, :count).by(1)
       end
 
       it "redirects to the created referred_doctor" do

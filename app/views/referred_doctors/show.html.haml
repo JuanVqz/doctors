@@ -19,12 +19,32 @@
 
 .table-container
   %table.table.is-hoverable.is-fullwidth
-    %tr
-      %thead
-        %tr
-          %th Nombre Completo
-          %td= @referred_doctor.full_name
-        %tr
-          %th Especialidad
-          %td= @referred_doctor.specialty
+    %thead
+      %tr
+        %th Nombre Completo
+        %td= @referred_doctor.full_name
+      %tr
+        %th Especialidad
+        %td= @referred_doctor.specialty
+      %tr
+        %th Calle
+        %td= @referred_doctor.address_street
+      %tr
+        %th Número
+        %td= @referred_doctor.address_number
+      %tr
+        %th Colonia
+        %td= @referred_doctor.address_colony
+      %tr
+        %th Código Postal
+        %td= @referred_doctor.address_postal_code
+      %tr
+        %th Municipio
+        %td= @referred_doctor.address_municipality
+      %tr
+        %th Estado
+        %td= @referred_doctor.address_state
+      %tr
+        %th País
+        %td= @referred_doctor.address_colony
 
