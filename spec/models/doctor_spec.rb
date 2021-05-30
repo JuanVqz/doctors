@@ -6,6 +6,7 @@ RSpec.describe Doctor, type: :model do
   it { should have_many :medical_consultations }
   it { should have_many :appoinments }
   it { should have_many :hospitalizations }
+  it { should have_many :referred_doctors }
 
   it { should validate_presence_of :name }
   it { should validate_presence_of :first_name }

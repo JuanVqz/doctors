@@ -9,12 +9,19 @@ RSpec.describe Patient, type: :model do
   it { should have_many :hospitalizations }
   it { should have_many :bentos }
 
+  it { should accept_nested_attributes_for(:clinic_history).allow_destroy(true) }
+  it { should accept_nested_attributes_for(:address).allow_destroy(true) }
+
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :first_name }
+  it { should validate_presence_of :birthday }
+
   context "#avatar" do
     it "has an avatar" do
       patient = create :patient, :with_avatar
 
       expect(patient).to be_valid
-      # expect(patient.avatar).to be_attached
+      expect(patient.avatar).to be_attached
     end
 
     it "has not an avatar" do
@@ -24,13 +31,6 @@ RSpec.describe Patient, type: :model do
       expect(patient.avatar).not_to be_attached
     end
   end
-
-  it { should accept_nested_attributes_for(:clinic_history).allow_destroy(true) }
-  it { should accept_nested_attributes_for(:address).allow_destroy(true) }
-
-  it { should validate_presence_of :name }
-  it { should validate_presence_of :first_name }
-  it { should validate_presence_of :birthday }
 
   describe ".search" do
     let(:hospital) { create :hospital }
