@@ -309,6 +309,7 @@ es-MX:
         sat_02: "SAT. 02"
         cost: "Costo"
         created_at: "Fecha de registro"
+        file: "Archivo"
       hospitalization:
         starting: "Inicio"
         ending: "Final"

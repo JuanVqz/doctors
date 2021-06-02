@@ -2,6 +2,8 @@ class Appoinment < ApplicationRecord
   belongs_to :doctor
   belongs_to :patient
 
+  has_one_attached :file
+
   validates :reason, :prescription, :patient, presence: true
   validates :heart_rate, :breathing_rate, :temperature, :glycaemia, :sat_02,
     :cost, numericality: { greater_than_or_equal_to: 0 }

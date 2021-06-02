@@ -50,6 +50,19 @@
     .column
       = f.input :cost
 
+  .columns
+    .column
+      = label_tag "Archivo", nil, class: "label"
+      .file.has-name.is-info
+        %label.file-label
+          = f.file_field :file, id: "file_field", class: "file-input"
+          %span.file-cta
+            %span.file-icon
+              %i.fas.fa-upload
+            %span.file-label
+              Seleccionar archivo
+          %span.file-name
+
   .buttons
     = link_to :back, class: "button is-link" do
       %span.icon

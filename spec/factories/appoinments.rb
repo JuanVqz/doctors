@@ -23,5 +23,12 @@ FactoryBot.define do
         appoinment.patient = create :patient, doctors: [appoinment.doctor]
       end
     end
+
+    trait :with_file do
+      after :create do |appoinment|
+        file_path = Rails.root.join("spec", "support", "assets", "cv.pdf")
+        appoinment.file.attach(io: File.open(file_path), filename: "cv.pdf", content_type: "application/pdf")
+      end
+    end
   end
 end

@@ -74,6 +74,6 @@ class AppoinmentsController < ApplicationController
     params.require(:appoinment).permit(:reason, :note, :prescription,
       :recommendations, :patient_id, :imc, :weight, :height, :blood_pressure,
       :heart_rate, :breathing_rate, :temperature, :glycaemia, :sat_02, :cost,
-      :cabinet_results, :histopathology)
+      :cabinet_results, :histopathology, :file)
   end
 end

@@ -96,4 +96,11 @@
           %tr
             %th= t("activerecord.attributes.appoinment.cost")
             %td= number_to_currency @appoinment.cost
+          - if @appoinment.file.attached?
+            %tr
+              %th= t("activerecord.attributes.appoinment.file")
+              %td
+                = link_to @appoinment.file.filename,
+                  rails_blob_path(@appoinment.file, disposition: :preview),
+                  target: "_blank"
 
