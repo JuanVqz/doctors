@@ -9,25 +9,32 @@
         .help.is-danger= f.object.errors[:patient_id].to_sentence
     .column
       .field
-        %label.label Inicio
+        %label.label= t "activerecord.attributes.hospitalization.starting"
         .control
           = date_field("hospitalization", "starting", class: "input #{ f.object.errors[:starting].any? ? 'is-danger' : '' }")
           - if f.object.errors[:starting].any?
             .help.is-danger= f.object.errors[:starting].to_sentence
     .column
       .field
-        %label.label Final
+        %label.label= t "activerecord.attributes.hospitalization.ending"
         .control
           = date_field("hospitalization", "ending", class: "input #{ f.object.errors[:starting].any? ? 'is-danger' : '' }")
           - if f.object.errors[:ending].any?
             .help.is-danger= f.object.errors[:ending].to_sentence
     .column
       = f.input :days_of_stay
-  .columns
-    .column.is-6
+
+  .columns.is-multiline
+    .column.is-12
+      = f.input :input_diagnosis, input_html: { class: "textarea" }
+    .column.is-12
+      = f.input :output_diagnosis, input_html: { class: "textarea" }
+    .column.is-12
       = f.input :reason_for_hospitalization, input_html: { class: "textarea" }
-    .column.is-6
+    .column.is-12
       = f.input :treatment, input_html: { class: "textarea" }
+    .column.is-12
+      = f.input :recommendations, input_html: { class: "textarea" }
 
   .buttons
     = link_to :back, class: "button is-link" do
