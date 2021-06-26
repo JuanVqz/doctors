@@ -38,11 +38,14 @@
               %th Paciente
               %td= @hospitalization.patient
             %tr
-              %th Inicio
+              %th= t "activerecord.attributes.hospitalization.starting"
               %td= @hospitalization.starting
             %tr
-              %th Final
+              %th= t "activerecord.attributes.hospitalization.ending"
               %td= @hospitalization.ending
+            %tr
+              %th Días de estancia
+              %td= @hospitalization.days_of_stay
 
   .column.is-6
     %p.has-text-grey-light.is-uppercase .
@@ -51,8 +54,14 @@
         %tr
           %thead
             %tr
-              %th Días de estancia
-              %td= @hospitalization.days_of_stay
+              %th= t "activerecord.attributes.hospitalization.input_diagnosis"
+              %td= @hospitalization.input_diagnosis
+            %tr
+              %th= t "activerecord.attributes.hospitalization.output_diagnosis"
+              %td= @hospitalization.output_diagnosis
+            %tr
+              %th= t "activerecord.attributes.hospitalization.recommendations"
+              %td= @hospitalization.recommendations
             %tr
               %th Razón de hospitalización
               %td= @hospitalization.reason_for_hospitalization

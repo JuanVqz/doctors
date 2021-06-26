@@ -5,6 +5,9 @@ FactoryBot.define do
     days_of_stay { "5" }
     reason_for_hospitalization { "MyText" }
     treatment { "MyText" }
+    input_diagnosis { "MyText" }
+    output_diagnosis { "MyText" }
+    recommendations { "MyText" }
 
     after :build do |hospitalization|
       if hospitalization.doctor.nil?

@@ -26,9 +26,15 @@
 
   .columns.is-multiline
     .column.is-12
+      = f.input :input_diagnosis, input_html: { class: "textarea" }
+    .column.is-12
+      = f.input :output_diagnosis, input_html: { class: "textarea" }
+    .column.is-12
       = f.input :reason_for_hospitalization, input_html: { class: "textarea" }
     .column.is-12
       = f.input :treatment, input_html: { class: "textarea" }
+    .column.is-12
+      = f.input :recommendations, input_html: { class: "textarea" }
 
   .buttons
     = link_to :back, class: "button is-link" do

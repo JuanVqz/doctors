@@ -316,6 +316,10 @@ es-MX:
         days_of_stay: "Días de Estadia"
         reason_for_hospitalization: "Procedimiento realizado"
         treatment: "Resumen"
+        recommendations: "Recomendaciones"
+        input_diagnosis: "Diagnostico de Ingreso"
+        output_diagnosis: "Diagnostico de Egreso"
+        recommendations: "Recomendaciones"
       hospital:
         name: "Nombre"
         description: "Descripción"

@@ -28,7 +28,7 @@ class HospitalizationsController < ApplicationController
     @hospitalization = current_user.hospitalizations.new(hospitalization_params)
 
     if @hospitalization.save
-      redirect_to @hospitalization, notice: 'Hospitalización creada correctamente.'
+      redirect_to @hospitalization, notice: "Hospitalización creada correctamente."
     else
       render :new
     end
@@ -36,7 +36,7 @@ class HospitalizationsController < ApplicationController
 
   def update
     if @hospitalization.update(hospitalization_params)
-      redirect_to @hospitalization, notice: 'Hospitalización actualizado correctamente.'
+      redirect_to @hospitalization, notice: "Hospitalización actualizado correctamente."
     else
       render :edit
     end
@@ -60,7 +60,8 @@ class HospitalizationsController < ApplicationController
     def hospitalization_params
       params.require(:hospitalization).permit(
         :starting, :ending, :days_of_stay, :reason_for_hospitalization,
-        :treatment, :doctor_id, :patient_id
+        :treatment, :doctor_id, :patient_id, :input_diagnosis, :output_diagnosis,
+        :recommendations
       )
     end
 end

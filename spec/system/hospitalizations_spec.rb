@@ -43,6 +43,9 @@ RSpec.describe "Hospitalization's flow", type: :system do
     fill_in "hospitalization_days_of_stay", with: "5"
     fill_in "hospitalization_reason_for_hospitalization", with: "Razon de la hospitalización"
     fill_in "hospitalization_treatment", with: "Tratamiento"
+    fill_in "hospitalization_input_diagnosis", with: "Diagnostico de entrada"
+    fill_in "hospitalization_output_diagnosis", with: "Diagnostico de salida"
+    fill_in "hospitalization_recommendations", with: "Recomendaciones"
 
     click_button "Crear Hospitalización"
   end
