@@ -311,9 +311,11 @@ es-MX:
         created_at: "Fecha de registro"
         file: "Archivo"
       hospitalization:
-        starting: "Inicio"
-        ending: "Final"
+        starting: "Fecha de Ingreso"
+        ending: "Fecha de Egreso"
         days_of_stay: "Días de Estadia"
+        reason_for_hospitalization: "Procedimiento realizado"
+        treatment: "Resumen"
       hospital:
         name: "Nombre"
         description: "Descripción"

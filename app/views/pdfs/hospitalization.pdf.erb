@@ -19,23 +19,23 @@
 <table class="table">
   <thead class="text-center">
     <tr>
-      <th>Fecha entrada</th>
+      <th><%= t "activerecord.attributes.hospitalization.starting" %></th>
       <td><%= @hospitalization.starting %></td>
     </tr>
     <tr>
-      <th>Fecha salida</th>
-      <td><%= @hospitalization.starting %></td>
+      <th><%= t "activerecord.attributes.hospitalization.ending" %></th>
+      <td><%= @hospitalization.ending %></td>
     </tr>
     <tr>
-      <th>Días de estadia</th>
+      <th><%= t "activerecord.attributes.hospitalization.days_of_stay" %></th>
       <td><%= @hospitalization.days_of_stay %></td>
     </tr>
     <tr>
-      <th>Razón de hospitalización</th>
+      <th><%= t "activerecord.attributes.hospitalization.reason_for_hospitalization" %></th>
       <td class="text-justify"><%= @hospitalization.reason_for_hospitalization %></td>
     </tr>
     <tr>
-      <th>Tratamiento</th>
+      <th><%= t "activerecord.attributes.hospitalization.treatment" %></th>
       <td class="text-justify"><%= @hospitalization.treatment %></td>
     </tr>
   </thead>
