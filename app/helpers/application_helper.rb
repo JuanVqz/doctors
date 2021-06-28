@@ -17,7 +17,9 @@ module ApplicationHelper
   end
 
   def referred_doctor_for_select
-    ReferredDoctor.all.map { |p| [p, p.id] }
+    return [] unless current_user.present?
+
+    ReferredDoctor.by_doctor(current_user.id).map { |p| [p, p.id] }
   end
 
   def states_for_select

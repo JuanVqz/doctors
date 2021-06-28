@@ -7,6 +7,8 @@ class ReferredDoctor < ApplicationRecord
 
   validates :full_name, :specialty, presence: true
 
+  scope :by_doctor, -> (doctor_id) { where(doctor_id: doctor_id) }
+
   delegate :street, :number, :colony, :postal_code, :municipality,
     :state, :country, to: :address, prefix: true, allow_nil: true
 

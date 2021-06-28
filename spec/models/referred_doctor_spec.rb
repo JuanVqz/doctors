@@ -5,6 +5,24 @@ RSpec.describe ReferredDoctor, type: :model do
   it { should have_one(:address).dependent(:destroy) }
   it { should have_many :hospitalizations }
 
+  describe "#by_doctor" do
+    let(:doctor) { create :doctor }
+    let(:another_doctor) { create :doctor, name: "Ramon" }
+    let(:referred_doctors) do
+      create_list :referred_doctor, 2, doctor: doctor
+    end
+    let(:another_referred_doctors) do
+      create_list :referred_doctor, 2, doctor: another_doctor
+    end
+
+    it "returns two referred doctor" do
+      referred_doctors
+      another_referred_doctors
+
+      expect(ReferredDoctor.by_doctor(doctor.id).count).to eq 2
+    end
+  end # describe #by_doctor
+
   context "validations" do
     let(:doctor) { create :doctor }
 
