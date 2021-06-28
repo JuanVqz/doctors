@@ -1,6 +1,7 @@
 class Hospitalization < ApplicationRecord
   belongs_to :doctor
   belongs_to :patient
+  belongs_to :referred_doctor, optional: true
 
   validates :starting, :ending, :patient, :days_of_stay, presence: true
   validates :days_of_stay, numericality: { greater_than: 0 }

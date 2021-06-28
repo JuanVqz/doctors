@@ -16,6 +16,10 @@ module ApplicationHelper
     Patient.all.map { |p| [p, p.id] }
   end
 
+  def referred_doctor_for_select
+    ReferredDoctor.all.map { |p| [p, p.id] }
+  end
+
   def states_for_select
     [
       "Aguascalientes", "Baja California", "Baja California Sur",

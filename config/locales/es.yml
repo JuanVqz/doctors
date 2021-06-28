@@ -139,13 +139,17 @@ es-MX:
       doctor:
         attributes:
           hospital:
-            required: "Hospital no puede estar en blanco"
+            required: "no puede estar en blanco"
       appoinment:
         attributes:
           doctor:
             required: "no puede estar en blanco"
           patient:
-            required: "Paciente no puede estar en blanco"
+            required: "no puede estar en blanco"
+      hospitalization:
+        attributes:
+          patient:
+            required: "no puede estar en blanco"
       referred_doctor:
         attributes:
           doctor:

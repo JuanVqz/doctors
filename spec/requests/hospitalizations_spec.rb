@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Hospitalizations", type: :request do
 
@@ -7,13 +7,15 @@ RSpec.describe "Hospitalizations", type: :request do
   let(:patient) do
     create :patient, doctors: [doctor], hospital_id: hospital.id
   end
+  let(:referred_doctor) { create :referred_doctor, doctor: doctor }
   let(:hospitalization) do
     create :hospitalization, doctor: doctor, patient: patient
   end
 
   before :each do
     allow(Hospital).to receive(:current_id).and_return hospital.id
-    allow_any_instance_of(ApplicationController).to receive(:current_hospital).and_return hospital
+    allow_any_instance_of(ApplicationController).to receive(:current_hospital)
+      .and_return hospital
     sign_in doctor
   end
 
@@ -37,6 +39,21 @@ RSpec.describe "Hospitalizations", type: :request do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe "POST /hospitalizations" do
+    let(:hospitalization_params) do
+      attributes_for(:hospitalization)
+        .merge(doctor_id: doctor.id,
+               patient_id: patient.id,
+               referred_doctor_id: referred_doctor.id)
+    end
+
+    it "creates a new Hospitalization with ReferredDoctor" do
+      post hospitalizations_path, params: { hospitalization: hospitalization_params }
+
+      expect(Hospitalization.last.referred_doctor_id).to eq referred_doctor.id
+    end
+  end # describe POST /hospitalizations
 
   describe "GET /hospitalizations/1/edit" do
     it "hospitalization edit" do

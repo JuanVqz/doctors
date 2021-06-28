@@ -3,25 +3,27 @@
   %p.has-text-grey-light.is-uppercase Datos de Hospitalización
   .columns
     .column
-      %label.label{ for: "hospitalization_patient_id" } Paciente
+      %label.label{ for: "hospitalization_patient" } Paciente
       = f.select :patient_id, options_for_select(patients_for_select, selected: params[:patient_id]), { prompt: "Seleccione un paciente" }, class: "select2"
-      - if f.object.errors[:patient_id].any?
-        .help.is-danger= f.object.errors[:patient_id].to_sentence
+      - if f.object.errors[:patient].any?
+        .help.is-danger= f.object.errors[:patient].to_sentence
     .column
-      .field
-        %label.label= t "activerecord.attributes.hospitalization.starting"
-        .control
-          = date_field("hospitalization", "starting", class: "input #{ f.object.errors[:starting].any? ? 'is-danger' : '' }")
-          - if f.object.errors[:starting].any?
-            .help.is-danger= f.object.errors[:starting].to_sentence
-    .column
-      .field
-        %label.label= t "activerecord.attributes.hospitalization.ending"
-        .control
-          = date_field("hospitalization", "ending", class: "input #{ f.object.errors[:starting].any? ? 'is-danger' : '' }")
-          - if f.object.errors[:ending].any?
-            .help.is-danger= f.object.errors[:ending].to_sentence
-    .column
+      %label.label{ for: "hospitalization_referred_doctor" } Doctor referido (opcional*)
+      = f.select :referred_doctor_id, options_for_select(referred_doctor_for_select, selected: params[:referred_doctor_id]), { prompt: "Seleccione un doctor" }, class: "select2"
+  .columns
+    .column.is-4
+      %label.label= t "activerecord.attributes.hospitalization.starting"
+      .control
+        = date_field("hospitalization", "starting", class: "input #{ f.object.errors[:starting].any? ? 'is-danger' : '' }")
+        - if f.object.errors[:starting].any?
+          .help.is-danger= f.object.errors[:starting].to_sentence
+    .column.is-4
+      %label.label= t "activerecord.attributes.hospitalization.ending"
+      .control
+        = date_field("hospitalization", "ending", class: "input #{ f.object.errors[:starting].any? ? 'is-danger' : '' }")
+        - if f.object.errors[:ending].any?
+          .help.is-danger= f.object.errors[:ending].to_sentence
+    .column.is-4
       = f.input :days_of_stay
 
   .columns.is-multiline

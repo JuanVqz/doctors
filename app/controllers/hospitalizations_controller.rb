@@ -61,7 +61,7 @@ class HospitalizationsController < ApplicationController
       params.require(:hospitalization).permit(
         :starting, :ending, :days_of_stay, :reason_for_hospitalization,
         :treatment, :doctor_id, :patient_id, :input_diagnosis, :output_diagnosis,
-        :recommendations
+        :recommendations, :referred_doctor_id
       )
     end
 end

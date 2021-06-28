@@ -31,9 +31,10 @@
       %table.table.is-hoverable.is-fullwidth
         %tr
           %thead
-            %tr
-              %th Doctor
-              %td= @hospitalization.doctor
+            - if @hospitalization.referred_doctor_id.present?
+              %tr
+                %th Doctor Referido
+                %td= @hospitalization.referred_doctor
             %tr
               %th Paciente
               %td= @hospitalization.patient

@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe ReferredDoctor, type: :model do
   it { should belong_to :doctor }
   it { should have_one(:address).dependent(:destroy) }
+  it { should have_many :hospitalizations }
 
   context "validations" do
     let(:doctor) { create :doctor }
