@@ -1,20 +1,15 @@
 require "rails_helper"
 
 RSpec.describe "Hospitalization's flow", type: :system do
-  before :each do
-    create_hospital_plan_medium
-    visit_sign_in_doctor
-    sign_in_doctor @hospital
-    create_patient
-    create_three_hospitalizations_for_patient
-    visit_patients_path
-    visit_patients_path
-    see_patient_name
-    click_link_details
-  end
-
   feature "Doctor can create an hospitalization" do
-    scenario "from patient list", js: true do
+    scenario "from patient list" do
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
+      create_patient doctor: @admin
+      create_three_hospitalizations_for_patient doctor: @admin
+      visit_patients_path
+      see_patient_name
+      click_link_details
       click_link_tab_hospitalizations
       click_link_new_hospitalization
       visit_new_hospitalization_with_patient_id_param

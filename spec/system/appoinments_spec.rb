@@ -1,19 +1,15 @@
 require "rails_helper"
 
 RSpec.describe "Medical Consultations flow", type: :system do
-  before :each do
-    create_hospital_plan_medium
-    visit_sign_in_doctor
-    sign_in_doctor @hospital
-    create_patient
-    create_three_appoinments_for_patient
-    visit_patients_path
-    see_patient_name
-    click_link_details
-  end
-
   feature "Doctor can create a medical consultation" do
-    scenario "from patients list", js: true do
+    scenario "from patients list" do
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
+      create_patient doctor: @admin
+      create_three_appoinments_for_patient doctor: @admin
+      visit_patients_path
+      see_patient_name
+      click_link_details
       click_link_tab_appoinments
       click_link_new_appoinment
       visit_new_appoinment_with_patient_id_param

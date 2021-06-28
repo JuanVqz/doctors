@@ -5,7 +5,7 @@ module Feature
     end
 
     def create_hospital_plan_medium
-      @hospital = create :hospital, :medium, subdomain: "ursula"
+      @hospital = create :hospital, :medium
       set_capybara_subdomain
     end
   end
