@@ -1,21 +1,21 @@
 require "rails_helper"
 
 RSpec.describe "Patient's flow", type: :system do
-  before :each do
-    create_hospital_plan_medium
-    visit_sign_in_doctor
-    sign_in_doctor @hospital
-    visit_patients_path
-    visit_new_patient
-  end
-
   feature "Doctor can create a patient" do
     scenario "with valid data", js: true do
+      create_hospital_plan_medium
+      sign_in_doctor @hospital
+      visit_patients_path
+      visit_new_patient
       create_new_patient "Marco"
       visit_show_patient
     end
 
     scenario "with invalid data", js: true do
+      create_hospital_plan_medium
+      sign_in_doctor @hospital
+      visit_patients_path
+      visit_new_patient
       create_new_patient ""
       expect(page).to have_content "Nombre no puede estar en blanco"
     end
@@ -23,12 +23,13 @@ RSpec.describe "Patient's flow", type: :system do
 
   feature "Doctor can edit a patient" do
     context "from show patient page" do
-      before :each do
+      scenario "with valid data", js: true do
+        create_hospital_plan_medium
+        sign_in_doctor @hospital
+        visit_patients_path
+        visit_new_patient
         create_new_patient "Marco"
         visit_show_patient
-      end
-
-      scenario "with valid data", js: true do
         click_link "Editar"
         fill_in "patient_name", with: "Marco update"
         click_button "Actualizar Paciente"
@@ -39,12 +40,13 @@ RSpec.describe "Patient's flow", type: :system do
 
   feature "Doctor can create an appoinment" do
     context "from patients#index" do
-      before :each do
+      scenario "redirect to new appoinment", js: true do
+        create_hospital_plan_medium
+        sign_in_doctor @hospital
+        visit_patients_path
+        visit_new_patient
         create_new_patient "Marco"
         visit_patients_path
-      end
-
-      scenario "redirect to new appoinment", js: true do
         find('a[data-tooltip="Nueva consulta"]').click
         expect(page).to have_content "REGISTRAR CONSULTA"
         expect(page).to have_content "Marco"
