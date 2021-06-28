@@ -22,7 +22,7 @@ module Feature
     end
 
     def visit_sign_in_doctor
-      visit new_user_session_url(host: "lvh.me", subdomain: @hospital.subdomain)
+      visit new_user_session_path
       expect(page).to have_current_path(new_user_session_path)
     end
 

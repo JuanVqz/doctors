@@ -7,8 +7,7 @@ RSpec.describe "Doctor's flow", type: :system do
 
   feature "Sign in doctor" do
     scenario "with valid subdomain" do
-      visit_sign_in_doctor
-      sign_in_admin_doctor @hospital
+      logged_in_as_an_admin_doctor
       visit_patients_path
     end
 
@@ -21,8 +20,7 @@ RSpec.describe "Doctor's flow", type: :system do
 
   feature "Create new Doctor" do
     scenario "with valid data" do
-      visit_sign_in_doctor
-      sign_in_admin_doctor @hospital
+      logged_in_as_an_admin_doctor
       visit_patients_path
       visit_new_doctor
       create_new_doctor "Pedro"
@@ -30,8 +28,7 @@ RSpec.describe "Doctor's flow", type: :system do
     end
 
     scenario "with invalid data" do
-      visit_sign_in_doctor
-      sign_in_admin_doctor @hospital
+      logged_in_as_an_admin_doctor
       visit_patients_path
       visit_new_doctor
       create_new_doctor ""
@@ -42,8 +39,7 @@ RSpec.describe "Doctor's flow", type: :system do
   feature "Update Doctor" do
     context "from show doctor page" do
       before :each do
-        visit_sign_in_doctor
-        sign_in_admin_doctor @hospital
+        logged_in_as_an_admin_doctor
         visit_patients_path
         visit_new_doctor
         create_new_doctor "Pedro"
@@ -60,8 +56,7 @@ RSpec.describe "Doctor's flow", type: :system do
 
     context "from index doctor page" do
       before :each do
-        visit_sign_in_doctor
-        sign_in_admin_doctor @hospital
+        logged_in_as_an_admin_doctor
         visit_patients_path
         visit_new_doctor
         create_new_doctor "Pedro"
@@ -112,11 +107,5 @@ RSpec.describe "Doctor's flow", type: :system do
     page.execute_script("$('#doctor_role').val('doctor')")
 
     click_button "Crear Doctor"
-  end
-
-  def visit_main_page
-    visit "http://ursula.lvh.me"
-    expect(page).to have_content @hospital.name
-    expect(page).to have_content "Iniciar sesión"
   end
 end
