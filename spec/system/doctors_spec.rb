@@ -21,8 +21,6 @@ RSpec.describe "Doctor's flow", type: :system do
     scenario "with valid data" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
-      visit_patients_path
-      visit_new_doctor
       create_new_doctor "Pedro"
       visit_show_doctor
     end
@@ -30,8 +28,6 @@ RSpec.describe "Doctor's flow", type: :system do
     scenario "with invalid data" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
-      visit_patients_path
-      visit_new_doctor
       create_new_doctor ""
       show_name_error
     end
@@ -42,8 +38,6 @@ RSpec.describe "Doctor's flow", type: :system do
       scenario "with valid data" do
         create_hospital_plan_medium
         sign_in_admin_doctor @hospital
-        visit_patients_path
-        visit_new_doctor
         create_new_doctor "Pedro"
         visit_show_doctor
         click_link "Editar"
@@ -57,8 +51,6 @@ RSpec.describe "Doctor's flow", type: :system do
       scenario "with valid data" do
         create_hospital_plan_medium
         sign_in_admin_doctor @hospital
-        visit_patients_path
-        visit_new_doctor
         create_new_doctor "Pedro"
         visit_show_doctor
         visit edit_doctor_path Doctor.last
@@ -84,13 +76,10 @@ RSpec.describe "Doctor's flow", type: :system do
     expect(page).to have_content "INFORMACIÓN DEL DOCTOR"
   end
 
-  def visit_new_doctor
-    click_link "Doctores"
-    click_link "Registrar Doctor"
-    expect(page).to have_current_path new_doctor_path
-  end
-
   def create_new_doctor name
+    visit new_doctor_path
+    expect(page).to have_current_path new_doctor_path
+
     fill_in "doctor_name", with: name
     fill_in "doctor_first_name", with: "Pérez"
     fill_in "doctor_last_name", with: "León"
