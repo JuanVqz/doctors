@@ -13,17 +13,26 @@ jobs:
     services:
       postgres:
         image: postgres:13-alpine
-        ports: ["5432:5432"]
+        ports:
+          - 5432:5432
         env:
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Set Timezone
+        run: sudo timedatectl set-timezone America/Mexico_City
 
-      - name: Set timezone to America/Mexico_City
-        uses: szenius/set-timezone@v1.0
-        with:
-          timezoneLinux: "America/Mexico_City"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # - name: Setup chrome driver
+      #   uses: nanasess/setup-chromedriver@master
+      # - run: |
+      #     export DISPLAY=:99
+      #     chromedriver --url-base=/wd/hub &
+      #     sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
 
       - name: Set up Ruby 2.7
         uses: ruby/setup-ruby@v1
@@ -35,12 +44,17 @@ jobs:
           key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gem-
-      - name: Bundle gems
+
+      - name: Bundle install
         run: |
           bundle config path vendor/bundle
           bundle config set without "production development"
           bundle config --local build.sassc --disable-march-tune-native
           bundle install --jobs 4 --retry 3
+      # - name: Bundle install
+      #   run: |
+      #     gem install bundler
+      #     bundle install --jobs 4 --retry 3
 
       - name: Get yarn cache
         id: yarn-cache
@@ -52,21 +66,68 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - name: Install Node modules
         run: yarn install --frozen-lockfile
 
-      - name: Add hosts to /etc/hosts
+      - name: Setup Database
         run: |
-          echo "127.0.0.1 lvh.me" | sudo tee -a /etc/hosts
-          echo "127.0.0.1 ursula.lvh.me" | sudo tee -a /etc/hosts
-
-      - name: Run Tests
+          cp config/database_ci.yml config/database.yml
+          bundle exec rake db:create
+          bundle exec rake db:schema:load
         env:
           DB_HOST: localhost
           DB_USER: postgres
           DB_PASSWORD: postgres
           RAILS_ENV: test
-          SECRET_KEY_BASE: we-dont-need-a-secret-here
-        run: |
-          bundle exec rake db:create db:schema:load
-          bundle exec rake spec
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+
+      - name: Run Requests Tests
+        if: always()
+        run: bundle exec rake spec/requests
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
+
+      - name: Run Models Tests
+        if: always()
+        run: bundle exec rake spec/models
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
+
+      - name: Run Policies Tests
+        if: always()
+        run: bundle exec rake spec/policies
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
+
+      - name: Run Routing Tests
+        if: always()
+        run: bundle exec rake spec/routing
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
+
+      - name: Run Views Tests
+        if: always()
+        run: bundle exec rake spec/views
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
+
+      - name: Run System Tests
+        if: always()
+        run: bundle exec rake spec/system
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
+
