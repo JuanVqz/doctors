@@ -4,6 +4,7 @@ RSpec.describe Hospitalization, type: :model do
 
   it { should belong_to :doctor }
   it { should belong_to :patient }
+  it { should belong_to(:referred_doctor).optional }
 
   it { should validate_presence_of :starting }
   it { should validate_presence_of :ending }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_26_220616) do
+ActiveRecord::Schema.define(version: 2021_06_27_185128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,8 +128,10 @@ ActiveRecord::Schema.define(version: 2021_06_26_220616) do
     t.text "input_diagnosis"
     t.text "output_diagnosis"
     t.text "recommendations"
+    t.bigint "referred_doctor_id"
     t.index ["doctor_id"], name: "index_hospitalizations_on_doctor_id"
     t.index ["patient_id"], name: "index_hospitalizations_on_patient_id"
+    t.index ["referred_doctor_id"], name: "index_hospitalizations_on_referred_doctor_id"
   end
 
   create_table "hospitals", force: :cascade do |t|
@@ -245,6 +247,7 @@ ActiveRecord::Schema.define(version: 2021_06_26_220616) do
   add_foreign_key "appoinments", "users", column: "patient_id"
   add_foreign_key "bentos", "users", column: "patient_id"
   add_foreign_key "clinic_histories", "users", column: "patient_id"
+  add_foreign_key "hospitalizations", "referred_doctors"
   add_foreign_key "hospitalizations", "users", column: "doctor_id"
   add_foreign_key "hospitalizations", "users", column: "patient_id"
   add_foreign_key "medical_consultations", "users", column: "doctor_id"
