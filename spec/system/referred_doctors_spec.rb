@@ -1,13 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Referred Doctor's flow", type: :system do
-  before :each do
-    create_hospital_plan_medium
-  end
-
   feature "Referred Doctor's Flow" do
     scenario "create a new referred doctor" do
-      logged_in_as_an_admin_doctor
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
       visit_referred_doctors_path
       when_i_submit_a_referred_doctor_form
       then_i_should_see_the_new_referred_doctor_information

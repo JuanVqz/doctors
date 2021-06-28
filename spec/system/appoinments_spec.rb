@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Medical Consultations flow", type: :system do
   before :each do
     create_hospital_plan_medium
-    logged_in_as_an_admin_doctor
+    sign_in_admin_doctor @hospital
     create_patient
     create_three_appoinments_for_patient
     visit_patients_path

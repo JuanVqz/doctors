@@ -7,7 +7,7 @@ RSpec.describe "Doctor's flow", type: :system do
 
   feature "Sign in doctor" do
     scenario "with valid subdomain" do
-      logged_in_as_an_admin_doctor
+      sign_in_admin_doctor @hospital
       visit_patients_path
     end
 
@@ -20,7 +20,7 @@ RSpec.describe "Doctor's flow", type: :system do
 
   feature "Create new Doctor" do
     scenario "with valid data" do
-      logged_in_as_an_admin_doctor
+      sign_in_admin_doctor @hospital
       visit_patients_path
       visit_new_doctor
       create_new_doctor "Pedro"
@@ -28,7 +28,7 @@ RSpec.describe "Doctor's flow", type: :system do
     end
 
     scenario "with invalid data" do
-      logged_in_as_an_admin_doctor
+      sign_in_admin_doctor @hospital
       visit_patients_path
       visit_new_doctor
       create_new_doctor ""
@@ -39,7 +39,7 @@ RSpec.describe "Doctor's flow", type: :system do
   feature "Update Doctor" do
     context "from show doctor page" do
       before :each do
-        logged_in_as_an_admin_doctor
+        sign_in_admin_doctor @hospital
         visit_patients_path
         visit_new_doctor
         create_new_doctor "Pedro"
@@ -56,7 +56,7 @@ RSpec.describe "Doctor's flow", type: :system do
 
     context "from index doctor page" do
       before :each do
-        logged_in_as_an_admin_doctor
+        sign_in_admin_doctor @hospital
         visit_patients_path
         visit_new_doctor
         create_new_doctor "Pedro"
