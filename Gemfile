@@ -36,7 +36,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "shoulda-matchers"
   gem "capybara"
-  gem "webdrivers"
+  gem "webdrivers", require: false
 end
 
 group :development do

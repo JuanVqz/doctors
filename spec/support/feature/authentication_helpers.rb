@@ -12,7 +12,7 @@ module Feature
 
     def sign_in_admin_doctor hospital
       @admin = create :doctor, hospital: hospital, role: "admin"
-      visit new_user_session_url(subdomain: hospital.subdomain, host: "lvh.me")
+      visit new_user_session_path
       expect(page).to have_current_path(new_user_session_path)
 
       fill_in "user_email", with: @admin.email
