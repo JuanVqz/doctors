@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Hospitalization's flow", type: :system do
   feature "Doctor can create an hospitalization" do
-    scenario "from patient list", js: true do
+    scenario "from patient list" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
       create_patient doctor: @admin

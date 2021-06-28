@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Patient's flow", type: :system do
   feature "Doctor can create a patient" do
-    scenario "with valid data", js: true do
+    scenario "with valid data" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
       visit_patients_path
@@ -11,7 +11,7 @@ RSpec.describe "Patient's flow", type: :system do
       visit_show_patient
     end
 
-    scenario "with invalid data", js: true do
+    scenario "with invalid data" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
       visit_patients_path
@@ -23,7 +23,7 @@ RSpec.describe "Patient's flow", type: :system do
 
   feature "Doctor can edit a patient" do
     context "from show patient page" do
-      scenario "with valid data", js: true do
+      scenario "with valid data" do
         create_hospital_plan_medium
         sign_in_admin_doctor @hospital
         visit_patients_path
@@ -40,7 +40,7 @@ RSpec.describe "Patient's flow", type: :system do
 
   feature "Doctor can create an appoinment" do
     context "from patients#index" do
-      scenario "redirect to new appoinment", js: true do
+      scenario "redirect to new appoinment" do
         create_hospital_plan_medium
         sign_in_admin_doctor @hospital
         visit_patients_path
