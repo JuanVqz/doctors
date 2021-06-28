@@ -57,8 +57,8 @@ jobs:
 
       - name: Add hosts to /etc/hosts
         run: |
-          sudo echo "0.0.0.0 ursula.lvh.me" | sudo tee -a /etc/hosts
-          sudo echo "127.0.0.1 ursula.lvh.me" | sudo tee -a /etc/hosts
+          echo "127.0.0.1 lvh.me" | sudo tee -a /etc/hosts
+          echo "127.0.0.1 ursula.lvh.me" | sudo tee -a /etc/hosts
 
       - name: Run Tests
         env:
@@ -67,8 +67,6 @@ jobs:
           DB_PASSWORD: postgres
           RAILS_ENV: test
           SECRET_KEY_BASE: we-dont-need-a-secret-here
-          # DOMINIO: http://localhost
-          # PORT: 3000
         run: |
           bundle exec rake db:create db:schema:load
           bundle exec rake spec

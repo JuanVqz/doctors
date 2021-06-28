@@ -5,16 +5,8 @@ RSpec.describe "Doctor's flow", type: :system do
     create_hospital_plan_medium
   end
 
-  feature "Visit main page with subdomain" do
-    scenario "Button Iniciar sesión" do
-      visit_main_page
-    end
-  end
-
   feature "Sign in doctor" do
     scenario "with valid subdomain" do
-      visit_main_page
-      click_link "Iniciar sesión"
       visit_sign_in_doctor
       sign_in_admin_doctor @hospital
       visit_patients_path
@@ -29,8 +21,6 @@ RSpec.describe "Doctor's flow", type: :system do
 
   feature "Create new Doctor" do
     scenario "with valid data" do
-      visit_main_page
-      click_link "Iniciar sesión"
       visit_sign_in_doctor
       sign_in_admin_doctor @hospital
       visit_patients_path
@@ -40,8 +30,6 @@ RSpec.describe "Doctor's flow", type: :system do
     end
 
     scenario "with invalid data" do
-      visit_main_page
-      click_link "Iniciar sesión"
       visit_sign_in_doctor
       sign_in_admin_doctor @hospital
       visit_patients_path
@@ -54,8 +42,6 @@ RSpec.describe "Doctor's flow", type: :system do
   feature "Update Doctor" do
     context "from show doctor page" do
       before :each do
-        visit_main_page
-        click_link "Iniciar sesión"
         visit_sign_in_doctor
         sign_in_admin_doctor @hospital
         visit_patients_path
@@ -74,8 +60,6 @@ RSpec.describe "Doctor's flow", type: :system do
 
     context "from index doctor page" do
       before :each do
-        visit_main_page
-        click_link "Iniciar sesión"
         visit_sign_in_doctor
         sign_in_admin_doctor @hospital
         visit_patients_path
