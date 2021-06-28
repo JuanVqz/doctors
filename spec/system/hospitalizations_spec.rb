@@ -4,9 +4,9 @@ RSpec.describe "Hospitalization's flow", type: :system do
   feature "Doctor can create an hospitalization" do
     scenario "from patient list", js: true do
       create_hospital_plan_medium
-      sign_in_doctor @hospital
-      create_patient doctor: @doctor
-      create_three_hospitalizations_for_patient doctor: @doctor
+      sign_in_admin_doctor @hospital
+      create_patient doctor: @admin
+      create_three_hospitalizations_for_patient doctor: @admin
       visit_patients_path
       see_patient_name
       click_link_details

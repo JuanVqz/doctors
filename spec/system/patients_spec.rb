@@ -4,7 +4,7 @@ RSpec.describe "Patient's flow", type: :system do
   feature "Doctor can create a patient" do
     scenario "with valid data", js: true do
       create_hospital_plan_medium
-      sign_in_doctor @hospital
+      sign_in_admin_doctor @hospital
       visit_patients_path
       visit_new_patient
       create_new_patient "Marco"
@@ -13,7 +13,7 @@ RSpec.describe "Patient's flow", type: :system do
 
     scenario "with invalid data", js: true do
       create_hospital_plan_medium
-      sign_in_doctor @hospital
+      sign_in_admin_doctor @hospital
       visit_patients_path
       visit_new_patient
       create_new_patient ""
@@ -25,7 +25,7 @@ RSpec.describe "Patient's flow", type: :system do
     context "from show patient page" do
       scenario "with valid data", js: true do
         create_hospital_plan_medium
-        sign_in_doctor @hospital
+        sign_in_admin_doctor @hospital
         visit_patients_path
         visit_new_patient
         create_new_patient "Marco"
@@ -42,7 +42,7 @@ RSpec.describe "Patient's flow", type: :system do
     context "from patients#index" do
       scenario "redirect to new appoinment", js: true do
         create_hospital_plan_medium
-        sign_in_doctor @hospital
+        sign_in_admin_doctor @hospital
         visit_patients_path
         visit_new_patient
         create_new_patient "Marco"
