@@ -1,6 +1,5 @@
 require "ffaker"
 
-# Hospitals
 puts "Creating Hospitals"
 fake_hospitals = [
   {
@@ -36,7 +35,6 @@ hospitals.each do |hospital|
   )
 end
 
-# Doctors
 puts "Creating Doctors"
 fake_doctors = [
   {
@@ -66,44 +64,56 @@ fake_doctors = [
 doctors = Doctor.create(fake_doctors)
 puts "Doctors #{doctors.size}"
 
-# Patients
 puts "Creating Patients"
-10.times do |n|
-  puts "#{n} - 10"
-  patient = Patient.create(
-    name: FFaker::NameMX.name, first_name: FFaker::Name.last_name,
-    last_name: FFaker::Name.last_name, birthday: "1989-09-19",
-    place_of_birth: "México", sex: "Masculino",
-    cellphone: FFaker::PhoneNumberMX.mobile_phone_number, height: 170,
-    weight: 80, blood_group: "ARH+", occupation: "Ocupacion #{n}",
-    allergies: FFaker::Lorem.word, pathological_background: FFaker::Lorem.phrase,
-    non_pathological_background: FFaker::Lorem.sentence,
-    gyneco_obstetric_background: FFaker::Lorem.word,
-    system_background: FFaker::Lorem.word,
-    family_inheritance_background: FFaker::Lorem.word,
-    physic_exploration: FFaker::Lorem.word, other_background: FFaker::Lorem.word,
-    created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
-    referred_by: FFaker::NameMX.name, hospital_id: Hospital.first.id
-  )
-
-  Address.create(
-    street: FFaker::Address.street_name, number: n,
-    colony: FFaker::Address.street_name, postal_code: FFaker::AddressMX.postal_code,
-    municipality: FFaker::AddressMX.municipality, state: FFaker::AddressMX.state,
-    country: FFaker::Address.country, addressable_type: "Patient",
-    addressable: patient
-  )
-
-  doctor = Doctor.unscoped.first
-  doctor.patients << patient
-
-  puts "Creating #{patient} Appoinments"
-  (1..10).each do
-    Appoinment.create(
-      reason: FFaker::Lorem.phrase, note: FFaker::HTMLIpsum.p,
-      prescription: FFaker::Lorem.paragraph, recommendations: FFaker::Lorem.paragraph,
+doctors.each do |doctor|
+  puts "=============================================================================================="
+  puts "Doctor: #{doctor.name} ID: #{doctor.id} Hospital: #{doctor.hospital} ID: #{doctor.hospital_id}"
+  10.times do |n|
+    puts "#{n} - 10"
+    patient = Patient.create(
+      name: FFaker::NameMX.name,
+      first_name: FFaker::Name.last_name,
+      last_name: FFaker::Name.last_name,
+      birthday: "1989-09-19",
+      place_of_birth: "México",
+      sex: "Masculino",
+      cellphone: FFaker::PhoneNumberMX.mobile_phone_number,
+      height: 170,
+      weight: 80,
+      blood_group: "ARH+",
+      occupation: "Ocupacion #{n}",
+      allergies: FFaker::Lorem.word,
+      pathological_background: FFaker::Lorem.phrase,
+      non_pathological_background: FFaker::Lorem.sentence,
+      gyneco_obstetric_background: FFaker::Lorem.word,
+      system_background: FFaker::Lorem.word,
+      family_inheritance_background: FFaker::Lorem.word,
+      physic_exploration: FFaker::Lorem.word,
+      other_background: FFaker::Lorem.word,
       created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
-      doctor: doctor, patient: patient
+      referred_by: FFaker::NameMX.name,
+      hospital_id: doctor.hospital_id
     )
+
+    Address.create(
+      street: FFaker::Address.street_name, number: n,
+      colony: FFaker::Address.street_name, postal_code: FFaker::AddressMX.postal_code,
+      municipality: FFaker::AddressMX.municipality, state: FFaker::AddressMX.state,
+      country: FFaker::Address.country, addressable_type: "Patient",
+      addressable: patient
+    )
+
+    # doctor = Doctor.unscoped.first
+    doctor.patients << patient
+
+    puts "Creating #{patient} Appoinments"
+    (1..10).each do
+      Appoinment.create(
+        reason: FFaker::Lorem.phrase, note: FFaker::HTMLIpsum.p,
+        prescription: FFaker::Lorem.paragraph, recommendations: FFaker::Lorem.paragraph,
+        created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
+        doctor: doctor, patient: patient
+      )
+    end
   end
 end
