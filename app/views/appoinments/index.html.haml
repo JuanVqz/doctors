@@ -12,6 +12,7 @@
   %table.table.is-hoverable.is-fullwidth
     %thead.is-uppercase
       %tr
+        %th #
         %th Fecha
         %th Paciente
         %th Motivo
@@ -19,6 +20,7 @@
     %tbody
       - @appoinments.each do |appoinment|
         %tr
+          %td= appoinment.id
           %td= l appoinment.created_at, format: :not_hour
           %td= appoinment.patient
           %td= truncate(appoinment.reason, lenght: 50)

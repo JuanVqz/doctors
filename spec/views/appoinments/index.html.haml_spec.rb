@@ -9,7 +9,7 @@ RSpec.describe "appoinments/index", type: :view do
   before(:each) do
     allow(Hospital).to receive(:current_id).and_return hospital.id
     assign(:appoinments, Kaminari.paginate_array([
-      Appoinment.create!(
+      @appoinment = Appoinment.create!(
         reason: "MyText",
         prescription: "MyText",
         cabinet_results: "MyText",
@@ -17,7 +17,7 @@ RSpec.describe "appoinments/index", type: :view do
         doctor_id: doctor.id,
         patient_id: patient.id
       ),
-      Appoinment.create!(
+      @appoinment_2 = Appoinment.create!(
         reason: "MyText",
         prescription: "MyText",
         cabinet_results: "MyText",
@@ -30,6 +30,10 @@ RSpec.describe "appoinments/index", type: :view do
 
   it "renders a list of medical_consultations" do
     render
-    assert_select "tr>td", :text => "Marco Chavez Castro".to_s, :count => 2
+    assert_select "tr>td", text: @appoinment.id.to_s, count: 1
+    assert_select "tr>td", text: @appoinment_2.id.to_s, count: 1
+
+    assert_select "tr>td", text: "MyText".to_s, count: 2
+    assert_select "tr>td", text: "Marco Chavez Castro".to_s, count: 2
   end
 end
