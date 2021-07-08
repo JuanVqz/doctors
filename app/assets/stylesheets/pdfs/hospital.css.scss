@@ -1,5 +1,9 @@
 body { font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
 
+.alwaysbreak { page-break-before: always; }
+.nobreak:before { clear:both; }
+.nobreak { page-break-inside: avoid; }
+
 .container {
   padding-top: 10px;
   margin: 0 auto;
@@ -29,6 +33,6 @@ body { font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
   float: right;
 }
 
-.alwaysbreak { page-break-before: always; }
-.nobreak:before { clear:both; }
-.nobreak { page-break-inside: avoid; }
+.margin-top-1-em {
+  margin-top: 1em;
+}

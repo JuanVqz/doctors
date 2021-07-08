@@ -1,22 +1,23 @@
-<h3 class="text-center">Hoja de egreso hospitalario</h3>
+<h3 class="text-center">Hoja de Egreso Hospitalario</h3>
 
 <table class="table">
   <thead class="text-center">
     <tr>
       <th>Doctor</th>
       <th>Paciente</th>
+      <th>Edad</th>
     </tr>
   </thead>
   <tbody class="text-center">
     <tr>
       <td><%= @hospitalization.doctor %></td>
       <td><%= @hospitalization.patient %></td>
+      <td><%= age_months @hospitalization.patient %></td>
     </tr>
   </tbody>
 </table>
 
-<h3 class="text-center">Detalle de la hospitalización</h3>
-<table class="table">
+<table class="table margin-top-1-em">
   <thead class="text-center">
     <tr>
       <th><%= t "activerecord.attributes.hospitalization.starting" %></th>
@@ -30,13 +31,40 @@
       <th><%= t "activerecord.attributes.hospitalization.days_of_stay" %></th>
       <td><%= @hospitalization.days_of_stay %></td>
     </tr>
+  </thead>
+</table>
+
+<table class="table margin-top-1-em">
+  <thead class="text-center">
+    <tr>
+      <th><%= t "activerecord.attributes.hospitalization.input_diagnosis" %></th>
+    </tr>
+    <tr>
+      <td class="text-justify"><%= @hospitalization.input_diagnosis %></td>
+    </tr>
+    <tr>
+      <th><%= t "activerecord.attributes.hospitalization.output_diagnosis" %></th>
+    </tr>
+    <tr>
+      <td class="text-justify"><%= @hospitalization.output_diagnosis %></td>
+    </tr>
     <tr>
       <th><%= t "activerecord.attributes.hospitalization.reason_for_hospitalization" %></th>
+    </tr>
+    <tr>
       <td class="text-justify"><%= @hospitalization.reason_for_hospitalization %></td>
     </tr>
     <tr>
       <th><%= t "activerecord.attributes.hospitalization.treatment" %></th>
+    </tr>
+    <tr>
       <td class="text-justify"><%= @hospitalization.treatment %></td>
+    </tr>
+    <tr>
+      <th><%= t "activerecord.attributes.hospitalization.recommendations" %></th>
+    </tr>
+    <tr>
+      <td class="text-justify"><%= @hospitalization.recommendations %></td>
     </tr>
   </thead>
 </table>
