@@ -15,6 +15,7 @@ RSpec.describe "/referred_doctors", type: :request do
     {
       full_name: "Licha Perez",
       specialty: "Odontólogo General",
+      phone_number: "555111111",
       doctor: doctor,
       address_attributes: {
         street: "Independencia",
