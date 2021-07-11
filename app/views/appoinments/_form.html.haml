@@ -52,15 +52,15 @@
 
   .columns
     .column
-      = label_tag "Archivo", nil, class: "label"
+      = label_tag "Archivos", nil, class: "label"
       .file.has-name.is-info
         %label.file-label
-          = f.file_field :file, id: "file_field", class: "file-input"
+          = f.file_field :files, multiple: true, direct_upload: true, class: "file-input"
           %span.file-cta
             %span.file-icon
               %i.fas.fa-upload
             %span.file-label
-              Seleccionar archivo
+              Seleccionar archivos
           %span.file-name
 
   .buttons

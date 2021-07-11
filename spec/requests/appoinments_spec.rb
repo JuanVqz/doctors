@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Appoinments", type: :request do
 
@@ -37,6 +37,21 @@ RSpec.describe "Appoinments", type: :request do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe "POST /appoinments" do
+    context "with valid params" do
+      let(:valid_attributes) do
+        attributes_for(:appoinment)
+      end
+
+      it "creates a new appoinment" do
+        params = { appoinment: valid_attributes.merge(patient_id: patient.id) }
+        expect {
+          post appoinments_path, params: params
+        }.to change(Appoinment, :count).by(1)
+      end
+    end # context with valid params
+  end # describe POST /appoinments
 
   describe "GET /appoinments/1/edit" do
     it "appoinments edit" do

@@ -67,6 +67,9 @@
       %table.table.is-hoverable.is-fullwidth
         %thead
           %tr
+            %th Receta No.
+            %td= @appoinment.id
+          %tr
             %th= t("activerecord.attributes.appoinment.height")
             %td= "#{@appoinment.height} cm."
           %tr
@@ -96,11 +99,13 @@
           %tr
             %th= t("activerecord.attributes.appoinment.cost")
             %td= number_to_currency @appoinment.cost
-          - if @appoinment.file.attached?
+          - if @appoinment.files.attached?
             %tr
-              %th= t("activerecord.attributes.appoinment.file")
+              %th= t("activerecord.attributes.appoinment.files")
               %td
-                = link_to @appoinment.file.filename,
-                  rails_blob_path(@appoinment.file, disposition: :preview),
-                  target: "_blank"
+          - if @appoinment.files.attached?
+            - @appoinment.files.each do |file|
+              %tr
+                %th= link_to file.filename, rails_blob_path(file, disposition: :preview), target: "_blank"
+                %td
 

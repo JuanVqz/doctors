@@ -24,10 +24,12 @@ FactoryBot.define do
       end
     end
 
-    trait :with_file do
+    trait :with_files do
       after :create do |appoinment|
-        file_path = Rails.root.join("spec", "support", "assets", "cv.pdf")
-        appoinment.file.attach(io: File.open(file_path), filename: "cv.pdf", content_type: "application/pdf")
+        cv1_path = Rails.root.join("spec/support/assets/cv.pdf")
+        cv2_path = Rails.root.join("spec/support/assets/cv.pdf")
+        appoinment.files.attach(io: File.open(cv1_path), filename: "cv.pdf", content_type: "application/pdf")
+        appoinment.files.attach(io: File.open(cv2_path), filename: "cv.pdf", content_type: "application/pdf")
       end
     end
   end

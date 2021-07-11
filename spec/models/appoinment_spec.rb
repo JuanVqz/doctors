@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Appoinment, type: :model do
   it { should belong_to :doctor }
   it { should belong_to :patient }
-  it { should have_one_attached :file }
+  it { should have_many_attached :files }
 
   it { should validate_presence_of :reason }
   it { should validate_presence_of :prescription }
@@ -16,18 +16,18 @@ RSpec.describe Appoinment, type: :model do
   it { should validate_numericality_of(:cost).is_greater_than_or_equal_to 0 }
 
   describe "#files" do
-    it "has a file" do
-      appoinment = create :appoinment, :with_file
+    it "has many files" do
+      appoinment = create :appoinment, :with_files
 
       expect(appoinment).to be_valid
-      expect(appoinment.file).to be_attached
+      expect(appoinment.files).to be_attached
     end
 
-    it "has not a file" do
+    it "has not many files" do
       appoinment = create :appoinment
 
       expect(appoinment).to be_valid
-      expect(appoinment.file).not_to be_attached
+      expect(appoinment.files).not_to be_attached
     end
   end # describe #file
 
