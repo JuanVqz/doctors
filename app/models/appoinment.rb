@@ -2,7 +2,7 @@ class Appoinment < ApplicationRecord
   belongs_to :doctor
   belongs_to :patient
 
-  has_one_attached :file
+  has_many_attached :files, dependent: :destroy
 
   validates :reason, :prescription, :patient, presence: true
   validates :heart_rate, :breathing_rate, :temperature, :glycaemia, :sat_02,
