@@ -2,6 +2,7 @@ class ReferredDoctor < ApplicationRecord
   belongs_to :doctor
   has_one :address, as: :addressable, dependent: :destroy
   has_many :hospitalizations
+  has_many :patient_referrals
 
   accepts_nested_attributes_for :address, allow_destroy: true
 

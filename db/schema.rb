@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_11_142229) do
+ActiveRecord::Schema.define(version: 2021_07_11_200010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,6 +181,22 @@ ActiveRecord::Schema.define(version: 2021_07_11_142229) do
     t.index ["patient_id"], name: "index_medical_consultations_on_patient_id"
   end
 
+  create_table "patient_referrals", force: :cascade do |t|
+    t.string "subject"
+    t.text "content"
+    t.integer "importance", default: 0, null: false
+    t.bigint "patient_id", null: false
+    t.bigint "doctor_id", null: false
+    t.bigint "referred_doctor_id", null: false
+    t.bigint "hospital_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_patient_referrals_on_doctor_id"
+    t.index ["hospital_id"], name: "index_patient_referrals_on_hospital_id"
+    t.index ["patient_id"], name: "index_patient_referrals_on_patient_id"
+    t.index ["referred_doctor_id"], name: "index_patient_referrals_on_referred_doctor_id"
+  end
+
   create_table "referred_doctors", force: :cascade do |t|
     t.string "full_name"
     t.string "specialty"
@@ -253,5 +269,9 @@ ActiveRecord::Schema.define(version: 2021_07_11_142229) do
   add_foreign_key "hospitalizations", "users", column: "patient_id"
   add_foreign_key "medical_consultations", "users", column: "doctor_id"
   add_foreign_key "medical_consultations", "users", column: "patient_id"
+  add_foreign_key "patient_referrals", "hospitals"
+  add_foreign_key "patient_referrals", "referred_doctors"
+  add_foreign_key "patient_referrals", "users", column: "doctor_id"
+  add_foreign_key "patient_referrals", "users", column: "patient_id"
   add_foreign_key "referred_doctors", "users", column: "doctor_id"
 end
