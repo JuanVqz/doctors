@@ -68,7 +68,7 @@ class ReferredDoctorsController < ApplicationController
 
   def referred_doctor_params
     params.require(:referred_doctor)
-      .permit(:full_name, :specialty, address_attributes: [
+      .permit(:full_name, :specialty, :phone_number, address_attributes: [
         :id, :street, :number, :colony, :postal_code, :municipality,
         :state, :country, :_destroy ],)
       .with_defaults(doctor: current_user)

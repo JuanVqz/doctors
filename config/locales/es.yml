@@ -330,6 +330,7 @@ es-MX:
       referred_doctor:
         full_name: "Nombre completo"
         specialty: "Especialidad"
+        phone_number: "Número Teléfonico"
   sessions:
     new:
       title: "Iniciar sesión"

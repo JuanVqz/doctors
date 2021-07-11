@@ -17,12 +17,14 @@
       %tr
         %th Nombre Completo
         %th Especialidad
+        %th Número Teléfonico
         %th.has-text-right Acciones
     %tbody
       - @referred_doctors.each do |referred_doctor|
         %tr
           %td= referred_doctor.full_name
           %td= referred_doctor.specialty
+          %td= call_to referred_doctor.phone_number
           %td
             .buttons.is-right
               = link_to referred_doctor, class: "button is-link" do

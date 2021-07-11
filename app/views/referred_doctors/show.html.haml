@@ -27,6 +27,9 @@
         %th Especialidad
         %td= @referred_doctor.specialty
       %tr
+        %th Número Teléfonico
+        %td= call_to(@referred_doctor.phone_number)
+      %tr
         %th Calle
         %td= @referred_doctor.address_street
       %tr

@@ -24,7 +24,7 @@ RSpec.describe ReferredDoctor, type: :model do
   end # describe #by_doctor
 
   context "validations" do
-    let(:doctor) { create :doctor }
+    let(:doctor) { build_stubbed :doctor }
 
     it "with valid attributes" do
       referred = build :referred_doctor, doctor: doctor
@@ -41,5 +41,27 @@ RSpec.describe ReferredDoctor, type: :model do
       expect(referred.errors["full_name"][0]).to eq "no puede estar en blanco"
       expect(referred.errors["specialty"][0]).to eq "no puede estar en blanco"
     end
+
+    context "#phone_number" do
+      it "doesn't accept non number digits" do
+        referred = build :referred_doctor, phone_number: "555-111-1111"
+
+        expect(referred).to be_invalid
+        expect(referred.errors["phone_number"][0]).to eq "acepta solo numeros"
+      end
+
+      it "accepts just 10 digits" do
+        referred = build :referred_doctor, phone_number: "123"
+
+        expect(referred).to be_invalid
+        expect(referred.errors["phone_number"][0]).to eq "longitud errónea (debe ser de 10 caracteres)"
+      end
+
+      it "allows phone number is blank" do
+        referred = build :referred_doctor, phone_number: ""
+
+        expect(referred).to be_valid
+      end
+    end # context #phone_number
   end # context validations
 end
