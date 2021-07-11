@@ -25,7 +25,6 @@ gem "kaminari"
 gem "pundit"
 gem "simple_form"
 gem "trix-rails", require: "trix"
-gem "unicorn"
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary", "0.12.3"
 
