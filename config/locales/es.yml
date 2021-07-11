@@ -154,6 +154,16 @@ es-MX:
         attributes:
           doctor:
             required: "no puede estar en blanco"
+      patient_referral:
+        attributes:
+          patient:
+            required: "no puede estar en blanco"
+          doctor:
+            required: "no puede estar en blanco"
+          referred_doctor:
+            required: "no puede estar en blanco"
+          hospital:
+            required: "no puede estar en blanco"
   helpers:
     select:
       prompt: Por favor selecciona
@@ -172,6 +182,9 @@ es-MX:
       referred_doctor:
         create: Crear Doctor
         update: Actualizar Doctor
+      patient_referral:
+        create: Crear Referencia de Paciente
+        update: Actualizar Referencia de Paciente
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
@@ -331,6 +344,14 @@ es-MX:
         full_name: "Nombre completo"
         specialty: "Especialidad"
         phone_number: "Número Teléfonico"
+      patient_referral:
+        doctor: "Remitente"
+        referred_doctor: "Destinatario"
+        patient: "Paciente"
+        subject: "Motivo de envio"
+        content: "Contenido"
+        importance: "Imporatancia"
+        created_at: "Fecha de registro"
   sessions:
     new:
       title: "Iniciar sesión"

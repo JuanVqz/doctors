@@ -20,6 +20,11 @@
         %span.icon
           %i.fa.fa-ambulance
         %span Hospitalizaciónes
+    %li
+      = link_to patient_referrals_path(subdomain: current_hospital.subdomain), class: active_for(patient_referrals_path) do
+        %span.icon
+          %i.fa.fa-share
+        %span Referencia de paciente
   - if is_admin?
     %p.menu-label
       CONFIGURACIÓN

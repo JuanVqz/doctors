@@ -11,6 +11,11 @@ es-MX:
     error_notification:
       default_message: "Por favor, revise los siguientes problemas:"
     labels:
+      patient_referral:
+        referred_doctor: "Destinatario"
+        subject: "Motivo de envio"
+        content: "Contenido"
+        importance: "Imporatancia"
       defaults:
         name: "Nombre"
         first_name: "Apellido Paterno"

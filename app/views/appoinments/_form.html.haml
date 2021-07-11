@@ -9,8 +9,8 @@
     .column.is-12
       %label.label{ for: "medical_consultation_patient_id" } Paciente
       = f.select :patient_id, options_for_select(patients_for_select, selected: params[:patient_id]), { prompt: "Seleccione un paciente" }, class: "select2"
-      - if f.object.errors[:patient_id].any?
-        .help.is-danger= f.object.errors[:patient_id].to_sentence
+      - if f.object.errors[:patient].any?
+        .help.is-danger= f.object.errors[:patient].to_sentence
 
     .column.is-12
       = f.input :reason
