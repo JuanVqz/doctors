@@ -20,11 +20,17 @@
       - @patient_referrals.each do |patient_referral|
         %tr
           %td= l patient_referral.created_at, format: :not_hour
+          %td= patient_referral.patient
           %td= patient_referral.doctor
           %td= patient_referral.referred_doctor
-          %td= patient_referral.hospital
           %td
             .buttons.is-right
+              = link_to patient_referral_path(patient_referral, format: "pdf"),
+                "data-tooltip": "Imprimir",
+                class: "button is-danger tooltip",
+                target: "_blank" do
+                %span.icon
+                  %i.fa.fa-print
               = link_to patient_referral, "data-tooltip": "Detalles", class: "button is-link tooltip" do
                 %span.icon
                   %i.fa.fa-eye

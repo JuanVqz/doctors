@@ -352,6 +352,7 @@ es-MX:
         content: "Contenido"
         importance: "Imporatancia"
         created_at: "Fecha de registro"
+        phone_number: "Número Teléfonico"
   sessions:
     new:
       title: "Iniciar sesión"
