@@ -4,12 +4,22 @@ class PatientReferralsController < ApplicationController
   # GET /patient_referrals
   # GET /patient_referrals.json
   def index
-    @patient_referrals = PatientReferral.page(params[:page])
+    @patient_referrals =
+      PatientReferral
+      .by_hospital(current_user.hospital_id)
+      .order(created_at: :desc)
+      .page(params[:page])
   end
 
   # GET /patient_referrals/1
   # GET /patient_referrals/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf { render pdf: patient_referral_name,
+                    template: "pdfs/patient_referral",
+                    layout: "pdfs/hospital" }
+    end
   end
 
   # GET /patient_referrals/new
@@ -24,7 +34,7 @@ class PatientReferralsController < ApplicationController
   # POST /patient_referrals
   # POST /patient_referrals.json
   def create
-    @patient_referral = current_user.patient_referrals.build(patient_referral_params)
+    @patient_referral = PatientReferral.new(patient_referral_params)
 
     respond_to do |format|
       if @patient_referral.save
@@ -70,6 +80,10 @@ private
   def patient_referral_params
     params.require(:patient_referral)
       .permit(:subject, :content, :importance, :patient_id, :referred_doctor_id)
-      .with_defaults(hospital_id: current_user.hospital_id)
+      .with_defaults(hospital_id: current_user.hospital_id, doctor_id: current_user.id)
+  end
+
+  def patient_referral_name
+    "#{@patient_referral.id}_#{@patient_referral.created_at.to_s(:number)}".upcase
   end
 end

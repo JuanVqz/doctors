@@ -5,7 +5,6 @@ class Doctor < User
   has_many :appoinments
   has_many :hospitalizations, -> { order(created_at: :desc) }
   has_many :referred_doctors
-  has_many :patient_referrals
 
   validates :name, :first_name, :last_name, :specialty, presence: true
   validate :role_error_message, if: :role_is_patient?

@@ -33,6 +33,9 @@
         %th=t("activerecord.attributes.patient_referral.referred_doctor")
         %td= @patient_referral.referred_doctor
       %tr
+        %th=t("activerecord.attributes.referred_doctor.phone_number")
+        %td= number_to_phone @patient_referral.referred_doctor.phone_number
+      %tr
         %th=t("activerecord.attributes.patient_referral.subject")
         %td= @patient_referral.subject
       %tr

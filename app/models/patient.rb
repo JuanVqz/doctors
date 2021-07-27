@@ -6,7 +6,6 @@ class Patient < User
   has_many :appoinments, -> { order(created_at: :desc) }
   has_many :hospitalizations, -> { order(created_at: :desc) }
   has_many :bentos
-  has_many :referred_doctors
 
   has_one_attached :avatar
 

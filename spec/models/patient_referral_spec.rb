@@ -31,4 +31,22 @@ RSpec.describe PatientReferral, type: :model do
       expect(patient_referral.errors["hospital"][0]).to eq "no puede estar en blanco"
     end
   end # describe #validations
+
+  describe "#scopes" do
+    context "#by_hospital(hospital_id)" do
+      let(:hospital_one) { create :hospital, :basic }
+      let(:hospital_two) { create :hospital, :basic }
+      let(:patient_referral_one_one) { create :patient_referral, hospital: hospital_one }
+      let(:patient_referral_one_two) { create :patient_referral, hospital: hospital_one }
+      let(:patient_referral_two_one) { create :patient_referral, hospital: hospital_two }
+
+      it "returns one patient referred" do
+        patient_referral_one_one
+        patient_referral_one_two
+        patient_referral_two_one
+
+        expect(PatientReferral.by_hospital(hospital_two.id)).to eq [patient_referral_two_one]
+      end
+    end # context #by_hospital(hospital_id)
+  end # describe #scopes
 end

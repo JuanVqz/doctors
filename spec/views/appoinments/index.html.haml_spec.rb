@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe "appoinments/index", type: :view do
   let(:hospital) { create :hospital, subdomain: "ursula" }
   let(:doctor) { create :doctor, hospital_id: hospital.id }
-
   let(:patient) { create :patient, doctors: [doctor], hospital_id: hospital.id }
 
   before(:each) do

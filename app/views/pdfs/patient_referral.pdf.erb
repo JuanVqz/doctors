@@ -1,0 +1,17 @@
+<p style="font-size: 1em;">
+  Hoja de Envío del Paciente: <%= @patient_referral.patient %>
+</p>
+
+<p style="font-size: 1em; font-weight: bold;">
+  A: <%= @patient_referral.referred_doctor %>
+</p>
+
+<div style="font-size: 11px;">
+  <p>Especialidad: <%= @patient_referral.referred_doctor.specialty %></p>
+  <p>Dirección: <%= @patient_referral.referred_doctor.address %></p>
+  <p>Tel: <%= number_to_phone @patient_referral.referred_doctor.phone_number %></p>
+  <p>Tipo de envío: <%= @patient_referral.importance %></p>
+  <p>Fecha: <%= l @patient_referral.created_at, format: :not_hour %></p>
+  <p>Motivo: <%= @patient_referral.subject %> </p>
+  <%= @patient_referral.content.html_safe %>
+</div>
