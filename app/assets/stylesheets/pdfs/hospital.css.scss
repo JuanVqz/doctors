@@ -1,38 +1,45 @@
-body { font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
+body { font-family: "Trebuchet MS", Helvetica, Arial, sans-serif; }
 
 .alwaysbreak { page-break-before: always; }
 .nobreak:before { clear:both; }
 .nobreak { page-break-inside: avoid; }
 
-.container {
-  padding-top: 10px;
-  margin: 0 auto;
-  width: 90%;
+.text-center {
+  text-align: center;
 }
 
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-.text-left { text-align: left; }
-.text-justify { text-align: justify; }
-
-.table {
-  border-collapse: collapse;
-  width: 100%;
+.text-right {
+  text-align: right;
 }
 
-.table td, .table th {
-  border: 1px solid #ddd;
-  padding: 2px;
+.text-left {
+  text-align: left;
 }
 
-.float-left {
-  float: left;
+.text-uppercase {
+  text-transform: uppercase;
 }
 
-.float-right {
-  float: right;
+.word-wrap-break-word {
+  word-wrap: break-word;
 }
 
-.margin-top-1-em {
-  margin-top: 1em;
+.font-weight-bold {
+  font-weight: bold;
 }
+
+.font-size-13-pt {
+  font-size: 13pt;
+}
+
+.font-size-11-px {
+  font-size: 11px;
+}
+
+.font-size-1-em {
+  font-size: 1em;
+}
+
+    .pre-line {
+      white-space: pre-line;
+    }

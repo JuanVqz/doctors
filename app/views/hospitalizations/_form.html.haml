@@ -28,15 +28,15 @@
 
   .columns.is-multiline
     .column.is-12
-      = f.input :input_diagnosis, input_html: { class: "textarea" }
+      = f.input :input_diagnosis, as: :trix_editor
     .column.is-12
-      = f.input :output_diagnosis, input_html: { class: "textarea" }
+      = f.input :output_diagnosis, as: :trix_editor
     .column.is-12
-      = f.input :reason_for_hospitalization, input_html: { class: "textarea" }
+      = f.input :reason_for_hospitalization, as: :trix_editor
     .column.is-12
-      = f.input :treatment, input_html: { class: "textarea" }
+      = f.input :treatment, as: :trix_editor
     .column.is-12
-      = f.input :recommendations, input_html: { class: "textarea" }
+      = f.input :recommendations, as: :trix_editor
 
   .buttons
     = link_to :back, class: "button is-link" do

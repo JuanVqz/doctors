@@ -1,5 +1,7 @@
 module PatientHelper
   def age patient
+    return if patient.birthday.nil?
+
     now = Date.current
     age = now.year - patient.birthday.year
     age -= 1 if now.yday < patient.birthday.yday
@@ -7,6 +9,8 @@ module PatientHelper
   end
 
   def age_months patient
+    return if patient.birthday.nil?
+
     now = Date.current
     year = now.year - patient.birthday.year
     year -= 1 if now.yday < patient.birthday.yday

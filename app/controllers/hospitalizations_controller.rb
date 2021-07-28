@@ -13,7 +13,9 @@ class HospitalizationsController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.pdf { render generar_pdf("hospitalization") }
+      format.pdf { render pdf: pdf_name,
+                    template: "pdfs/hospitalization",
+                    layout: "pdfs/hospital" }
     end
   end
 
