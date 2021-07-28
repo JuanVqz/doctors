@@ -1,70 +1,48 @@
-<h3 class="text-center">Hoja de Egreso Hospitalario</h3>
+<div class="font-size-11-px text-right">
+  <%= l @hospitalization.created_at, format: :normal %>
+</div>
+<p class="text-center">Hoja de Egreso Hospitalario</p>
 
-<table class="table">
-  <thead class="text-center">
-    <tr>
-      <th>Doctor</th>
-      <th>Paciente</th>
-      <th>Edad</th>
-    </tr>
-  </thead>
-  <tbody class="text-center">
-    <tr>
-      <td><%= @hospitalization.doctor %></td>
-      <td><%= @hospitalization.patient %></td>
-      <td><%= age_months @hospitalization.patient %></td>
-    </tr>
-  </tbody>
-</table>
+<div class="font-weight-bold">
+  <%= t "activerecord.attributes.hospitalization.patient" %>:
+</div>
+<p>
+ <%= @hospitalization.patient %>
+ <%= age_months @hospitalization.patient %>
+</p>
 
-<table class="table margin-top-1-em">
-  <thead class="text-center">
-    <tr>
-      <th><%= t "activerecord.attributes.hospitalization.starting" %></th>
-      <td><%= @hospitalization.starting %></td>
-    </tr>
-    <tr>
-      <th><%= t "activerecord.attributes.hospitalization.ending" %></th>
-      <td><%= @hospitalization.ending %></td>
-    </tr>
-    <tr>
-      <th><%= t "activerecord.attributes.hospitalization.days_of_stay" %></th>
-      <td><%= @hospitalization.days_of_stay %></td>
-    </tr>
-  </thead>
-</table>
+<div class="font-weight-bold">
+<%= t "activerecord.attributes.hospitalization.starting" %>:
+</div>
+<%= @hospitalization.starting %>
 
-<table class="table margin-top-1-em">
-  <thead class="text-center">
-    <tr>
-      <th><%= t "activerecord.attributes.hospitalization.input_diagnosis" %></th>
-    </tr>
-    <tr>
-      <td class="text-justify"><%= @hospitalization.input_diagnosis %></td>
-    </tr>
-    <tr>
-      <th><%= t "activerecord.attributes.hospitalization.output_diagnosis" %></th>
-    </tr>
-    <tr>
-      <td class="text-justify"><%= @hospitalization.output_diagnosis %></td>
-    </tr>
-    <tr>
-      <th><%= t "activerecord.attributes.hospitalization.reason_for_hospitalization" %></th>
-    </tr>
-    <tr>
-      <td class="text-justify"><%= @hospitalization.reason_for_hospitalization %></td>
-    </tr>
-    <tr>
-      <th><%= t "activerecord.attributes.hospitalization.treatment" %></th>
-    </tr>
-    <tr>
-      <td class="text-justify"><%= @hospitalization.treatment %></td>
-    </tr>
-    <tr>
-      <th><%= t "activerecord.attributes.hospitalization.recommendations" %></th>
-    </tr>
-    <tr>
-      <td class="text-justify"><%= @hospitalization.recommendations %></td>
-    </tr>
-  </thead>
-</table>
+<div class="font-weight-bold">
+<%= t "activerecord.attributes.hospitalization.ending" %>:
+</div>
+<%= @hospitalization.ending %>
+
+<div class="font-weight-bold">
+  <%= t "activerecord.attributes.hospitalization.input_diagnosis" %>:
+</div>
+<p><%= @hospitalization.input_diagnosis&.html_safe %></p>
+
+<div class="font-weight-bold">
+  <%= t "activerecord.attributes.hospitalization.output_diagnosis" %>:
+</div>
+<p><%= @hospitalization.output_diagnosis&.html_safe %></p>
+
+<div class="font-weight-bold">
+  <%= t "activerecord.attributes.hospitalization.reason_for_hospitalization" %>
+</div>
+<%= @hospitalization.reason_for_hospitalization&.html_safe %>
+
+<div class="font-weight-bold">
+  <%= t "activerecord.attributes.hospitalization.treatment" %>
+</div>
+<%= @hospitalization.treatment&.html_safe %>
+
+<div class="font-weight-bold">
+  <%= t "activerecord.attributes.hospitalization.recommendations" %>
+</div>
+<%= @hospitalization.recommendations&.html_safe %>
+

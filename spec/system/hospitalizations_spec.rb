@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Hospitalization's flow", type: :system do
   feature "Doctor can create an hospitalization" do
-    scenario "from patient list" do
+    scenario "from patient list", js: true do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
       create_patient doctor: @admin
@@ -32,15 +32,14 @@ RSpec.describe "Hospitalization's flow", type: :system do
 
   def create_new_hospitalization_with_preselected_patient
     see_patient_name
-    save_and_open_screenshot
     fill_in "hospitalization_starting", with: DateTime.current
     fill_in "hospitalization_ending", with: DateTime.current
     fill_in "hospitalization_days_of_stay", with: "5"
-    fill_in "hospitalization_reason_for_hospitalization", with: "Razon de la hospitalización"
-    fill_in "hospitalization_treatment", with: "Tratamiento"
-    fill_in "hospitalization_input_diagnosis", with: "Diagnostico de entrada"
-    fill_in "hospitalization_output_diagnosis", with: "Diagnostico de salida"
-    fill_in "hospitalization_recommendations", with: "Recomendaciones"
+    fill_in_trix_editor "hospitalization_reason_for_hospitalization", with: "Razon de la hospitalización"
+    fill_in_trix_editor "hospitalization_treatment", with: "Tratamiento"
+    fill_in_trix_editor "hospitalization_input_diagnosis", with: "Diagnostico de entrada"
+    fill_in_trix_editor "hospitalization_output_diagnosis", with: "Diagnostico de salida"
+    fill_in_trix_editor "hospitalization_recommendations", with: "Recomendaciones"
 
     click_button "Crear Hospitalización"
   end

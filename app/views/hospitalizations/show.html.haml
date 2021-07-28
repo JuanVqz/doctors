@@ -25,7 +25,28 @@
             %i.fa.fa-user
 
 .columns
-  .column.is-6
+  .column.is-9
+    %p.has-text-grey-light.is-uppercase .
+    .table-container
+      %table.table.is-hoverable.is-fullwidth
+        %tr
+          %thead
+            %tr
+              %th= t "activerecord.attributes.hospitalization.input_diagnosis"
+              %td= @hospitalization.input_diagnosis&.html_safe
+            %tr
+              %th= t "activerecord.attributes.hospitalization.output_diagnosis"
+              %td= @hospitalization.output_diagnosis&.html_safe
+            %tr
+              %th= t "activerecord.attributes.hospitalization.reason_for_hospitalization"
+              %td= @hospitalization.reason_for_hospitalization&.html_safe
+            %tr
+              %th= t "activerecord.attributes.hospitalization.treatment"
+              %td= @hospitalization.treatment&.html_safe
+            %tr
+              %th= t "activerecord.attributes.hospitalization.recommendations"
+              %td= @hospitalization.recommendations&.html_safe
+  .column.is-3
     %p.has-text-grey-light.is-uppercase Datos generales
     .table-container
       %table.table.is-hoverable.is-fullwidth
@@ -36,7 +57,7 @@
                 %th Doctor Referido
                 %td= @hospitalization.referred_doctor
             %tr
-              %th Paciente
+              %th= t "activerecord.attributes.hospitalization.patient"
               %td= @hospitalization.patient
             %tr
               %th= t "activerecord.attributes.hospitalization.starting"
@@ -45,31 +66,9 @@
               %th= t "activerecord.attributes.hospitalization.ending"
               %td= @hospitalization.ending
             %tr
-              %th Días de estancia
+              %th= t "activerecord.attributes.hospitalization.days_of_stay"
               %td= @hospitalization.days_of_stay
-
-  .column.is-6
-    %p.has-text-grey-light.is-uppercase .
-    .table-container
-      %table.table.is-hoverable.is-fullwidth
-        %tr
-          %thead
             %tr
-              %th= t "activerecord.attributes.hospitalization.input_diagnosis"
-              %td= @hospitalization.input_diagnosis
-            %tr
-              %th= t "activerecord.attributes.hospitalization.output_diagnosis"
-              %td= @hospitalization.output_diagnosis
-            %tr
-              %th= t "activerecord.attributes.hospitalization.recommendations"
-              %td= @hospitalization.recommendations
-            %tr
-              %th Razón de hospitalización
-              %td= @hospitalization.reason_for_hospitalization
-            %tr
-              %th Tratamiento
-              %td= @hospitalization.treatment
-            %tr
-              %th Fecha de registro
+              %th= t "activerecord.attributes.hospitalization.created_at"
               %td= l @hospitalization.created_at, format: :long
 

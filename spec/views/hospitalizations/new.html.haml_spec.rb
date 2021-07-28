@@ -24,8 +24,8 @@ RSpec.describe "hospitalizations/new", type: :view do
     assert_select "form[action=?][method=?]", hospitalizations_path, "post" do
       assert_select "select[name=?]", "hospitalization[patient_id]"
       assert_select "input[name=?]", "hospitalization[days_of_stay]"
-      assert_select "textarea[name=?]", "hospitalization[reason_for_hospitalization]"
-      assert_select "textarea[name=?]", "hospitalization[treatment]"
+      assert_select "trix-editor[input=?]", "hospitalization_reason_for_hospitalization"
+      assert_select "trix-editor[input=?]", "hospitalization_treatment"
     end
   end
 end
