@@ -3,27 +3,41 @@
 </div>
 <p class="text-center" style="padding-top: 50px;">Hoja de Egreso Hospitalario</p>
 
-<div class="font-weight-bold">
-  <%= t "activerecord.attributes.hospitalization.patient" %>:
-</div>
 <p>
- <%= @hospitalization.patient %>
- <%= age_months @hospitalization.patient %>
+  <div class="display-inline-block vertical-align-middle font-weight-bold">
+    <%= t "activerecord.attributes.hospitalization.patient" %>:
+  </div>
+  <div class="display-inline-block vertical-align-middle">
+    <%= @hospitalization.patient %>
+    <small><%= age_months @hospitalization.patient %></small>
+  </div>
 </p>
 
-<p class="font-weight-bold">
-<%= t "activerecord.attributes.hospitalization.starting" %>:
-<%= l @hospitalization.starting, format: :default %></div>
+<p>
+  <div class="display-inline-block vertical-align-middle font-weight-bold">
+  <%= t "activerecord.attributes.hospitalization.starting" %>:
+  </div>
+  <div class="display-inline-block vertical-align-middle">
+  <%= l @hospitalization.starting, format: :default %></div>
+  </div>
 </p>
 
-<p class="font-weight-bold">
-<%= t "activerecord.attributes.hospitalization.ending" %>:
-<%= l @hospitalization.ending, format: :default %>
+<p>
+  <div class="display-inline-block vertical-align-middle font-weight-bold">
+    <%= t "activerecord.attributes.hospitalization.ending" %>:
+  </div>
+  <div class="display-inline-block vertical-align-middle">
+    <%= l @hospitalization.ending, format: :default %>
+  </div>
 </p>
 
-<p class="font-weight-bold">
-<%= t "activerecord.attributes.hospitalization.days_of_stay" %>:
-<%= @hospitalization.days_of_stay %>
+<p>
+  <div style="width: 150px;" class="display-inline-block vertical-align-middle font-weight-bold">
+    <%= t "activerecord.attributes.hospitalization.days_of_stay" %>:
+  </div>
+  <div class="display-inline-block vertical-align-middle">
+    <%= @hospitalization.days_of_stay %>
+  </div>
 </p>
 
 <div class="font-weight-bold">
