@@ -338,6 +338,7 @@ es-MX:
         treatment: "Resumen"
         recommendations: "Recomendaciones"
         created_at: "Fecha de registro"
+        status: "Tipo"
       hospital:
         name: "Nombre"
         description: "Descripción"

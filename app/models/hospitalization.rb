@@ -1,4 +1,6 @@
 class Hospitalization < ApplicationRecord
+  enum status: ["Alta médica", "Alta voluntaria", "Traslado a otra unidad"]
+
   belongs_to :doctor
   belongs_to :patient
   belongs_to :referred_doctor, optional: true

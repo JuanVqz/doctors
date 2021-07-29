@@ -8,6 +8,7 @@ FactoryBot.define do
     input_diagnosis { "MyText" }
     output_diagnosis { "MyText" }
     recommendations { "MyText" }
+    status { "Alta voluntaria" }
 
     after :build do |hospitalization|
       if hospitalization.doctor.nil?
