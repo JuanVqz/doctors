@@ -51,6 +51,7 @@ RSpec.describe "Hospitalizations", type: :request do
     it "creates a new Hospitalization with ReferredDoctor" do
       post hospitalizations_path, params: { hospitalization: hospitalization_params }
 
+      expect(Hospitalization.last.status).to eq "Alta voluntaria"
       expect(Hospitalization.last.referred_doctor_id).to eq referred_doctor.id
     end
   end # describe POST /hospitalizations

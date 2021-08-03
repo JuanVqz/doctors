@@ -8,6 +8,9 @@
       - if f.object.errors[:patient].any?
         .help.is-danger= f.object.errors[:patient].to_sentence
     .column
+      = f.label :status, class: "label"
+      = f.select :status, options_for_select(statuses_for_select), {}, class: "select2"
+    .column
       %label.label{ for: "hospitalization_referred_doctor" } Doctor referido (opcional*)
       = f.select :referred_doctor_id, options_for_select(referred_doctor_for_select, selected: params[:referred_doctor_id]), { prompt: "Seleccione un doctor" }, class: "select2"
   .columns

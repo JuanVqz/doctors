@@ -1,6 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Hospitalization, type: :model do
+  it { should define_enum_for :status }
+
+  it do
+    should define_enum_for(:status).
+      with_values(["Alta médica", "Alta voluntaria", "Traslado a otra unidad"])
+  end
 
   it { should belong_to :doctor }
   it { should belong_to :patient }
