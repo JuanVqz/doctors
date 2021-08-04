@@ -329,8 +329,8 @@ es-MX:
         files: "Archivos"
       hospitalization:
         patient: "Paciente"
-        input_diagnosis: "DX de Ingreso"
-        output_diagnosis: "DX de Egreso"
+        input_diagnosis: "Diagnóstico de Ingreso"
+        output_diagnosis: "Diagnóstico de Egreso"
         starting: "Fecha de Ingreso"
         ending: "Fecha de Egreso"
         days_of_stay: "Días de Estadia"
