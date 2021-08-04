@@ -59,5 +59,7 @@
     <strong><%= t "activerecord.attributes.hospitalization.recommendations" %></strong>
     <%= @hospitalization.recommendations&.html_safe %>
   </div>
+
+  <div class="pt-6 has-text-right">Dr. <%= @hospitalization.doctor %></div>
 </div>
 
