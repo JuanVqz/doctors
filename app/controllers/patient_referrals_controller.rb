@@ -1,14 +1,14 @@
 class PatientReferralsController < ApplicationController
-  before_action :set_patient_referral, only: %i[ show edit update destroy ]
+  before_action :set_patient_referral, only: %i[show edit update destroy]
 
   # GET /patient_referrals
   # GET /patient_referrals.json
   def index
     @patient_referrals =
       PatientReferral
-      .by_hospital(current_user.hospital_id)
-      .order(created_at: :desc)
-      .page(params[:page])
+        .by_hospital(current_user.hospital_id)
+        .order(created_at: :desc)
+        .page(params[:page])
   end
 
   # GET /patient_referrals/1
@@ -16,9 +16,11 @@ class PatientReferralsController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.pdf { render pdf: patient_referral_name,
-                    template: "pdfs/patient_referral",
-                    layout: "pdfs/hospital" }
+      format.pdf {
+        render pdf: patient_referral_name,
+          template: "pdfs/patient_referral",
+          layout: "pdfs/hospital"
+      }
     end
   end
 
@@ -71,7 +73,7 @@ class PatientReferralsController < ApplicationController
     end
   end
 
-private
+  private
 
   def set_patient_referral
     @patient_referral = PatientReferral.find(params[:id])

@@ -1,7 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Patient", type: :request do
-
   let(:hospital) { create :hospital, :basic }
   let(:doctor) { create :doctor, hospital_id: hospital.id }
   let(:patient) do
@@ -48,6 +47,4 @@ RSpec.describe "Patient", type: :request do
       expect(response).to have_http_status(200)
     end
   end
-
 end
-

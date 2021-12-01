@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :role, presence: true
 
   devise :database_authenticatable, :registerable, :recoverable,
-         :rememberable, :validatable, :confirmable, :trackable
+    :rememberable, :validatable, :confirmable, :trackable
 
   def active_for_authentication?
     super && active?

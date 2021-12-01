@@ -1,7 +1,6 @@
- require "rails_helper"
+require "rails_helper"
 
 RSpec.describe "/referred_doctors", type: :request do
-
   let(:hospital) { create :hospital, :basic }
   let(:doctor) { create :doctor, :admin, hospital_id: hospital.id }
 
@@ -20,7 +19,7 @@ RSpec.describe "/referred_doctors", type: :request do
       address_attributes: {
         street: "Independencia",
         number: "19",
-        state: "Oaxaca",
+        state: "Oaxaca"
       }
     }
   end
@@ -29,7 +28,7 @@ RSpec.describe "/referred_doctors", type: :request do
     {
       full_name: nil,
       specialty: nil,
-      doctor: nil,
+      doctor: nil
     }
   end
 
@@ -68,13 +67,13 @@ RSpec.describe "/referred_doctors", type: :request do
     context "with valid parameters" do
       it "creates a new ReferredDoctor" do
         expect {
-          post referred_doctors_url, params: { referred_doctor: valid_attributes }
+          post referred_doctors_url, params: {referred_doctor: valid_attributes}
         }.to change(ReferredDoctor, :count).by(1)
-         .and change(Address, :count).by(1)
+          .and change(Address, :count).by(1)
       end
 
       it "redirects to the created referred_doctor" do
-        post referred_doctors_url, params: { referred_doctor: valid_attributes }
+        post referred_doctors_url, params: {referred_doctor: valid_attributes}
         expect(response).to redirect_to(referred_doctor_url(ReferredDoctor.last))
       end
     end
@@ -82,12 +81,12 @@ RSpec.describe "/referred_doctors", type: :request do
     context "with invalid parameters" do
       it "does not create a new ReferredDoctor" do
         expect {
-          post referred_doctors_url, params: { referred_doctor: invalid_attributes }
+          post referred_doctors_url, params: {referred_doctor: invalid_attributes}
         }.to change(ReferredDoctor, :count).by(0)
       end
 
       it "renders a successful response" do
-        post referred_doctors_url, params: { referred_doctor: invalid_attributes }
+        post referred_doctors_url, params: {referred_doctor: invalid_attributes}
         expect(response).to be_successful
       end
     end
@@ -103,14 +102,14 @@ RSpec.describe "/referred_doctors", type: :request do
 
       it "updates the requested referred_doctor" do
         referred_doctor = ReferredDoctor.create! valid_attributes
-        patch referred_doctor_url(referred_doctor), params: { referred_doctor: new_attributes }
+        patch referred_doctor_url(referred_doctor), params: {referred_doctor: new_attributes}
         referred_doctor.reload
         expect(referred_doctor.full_name).to eq "Licha Vazquez"
       end
 
       it "redirects to the referred_doctor" do
         referred_doctor = ReferredDoctor.create! valid_attributes
-        patch referred_doctor_url(referred_doctor), params: { referred_doctor: new_attributes }
+        patch referred_doctor_url(referred_doctor), params: {referred_doctor: new_attributes}
         referred_doctor.reload
         expect(response).to redirect_to(referred_doctor_url(referred_doctor))
       end
@@ -119,7 +118,7 @@ RSpec.describe "/referred_doctors", type: :request do
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         referred_doctor = ReferredDoctor.create! valid_attributes
-        patch referred_doctor_url(referred_doctor), params: { referred_doctor: invalid_attributes }
+        patch referred_doctor_url(referred_doctor), params: {referred_doctor: invalid_attributes}
         expect(response).to be_successful
       end
     end

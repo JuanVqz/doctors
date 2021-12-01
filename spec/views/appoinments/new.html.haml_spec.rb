@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "appoinments/new", type: :view do
   let(:hospital) { create :hospital, subdomain: "ursula" }

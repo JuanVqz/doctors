@@ -8,7 +8,7 @@ class HospitalsController < ApplicationController
 
   def update
     if @hospital.update(hospital_params)
-      redirect_to [:edit, @hospital], notice: 'Datos actualizados correctamente.'
+      redirect_to [:edit, @hospital], notice: "Datos actualizados correctamente."
     else
       render :edit
     end

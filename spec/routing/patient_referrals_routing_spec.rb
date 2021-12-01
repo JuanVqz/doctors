@@ -18,7 +18,6 @@ RSpec.describe PatientReferralsController, type: :routing do
       expect(get: "/patient_referrals/1/edit").to route_to("patient_referrals#edit", id: "1")
     end
 
-
     it "routes to #create" do
       expect(post: "/patient_referrals").to route_to("patient_referrals#create")
     end

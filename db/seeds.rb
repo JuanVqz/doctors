@@ -7,7 +7,7 @@ fake_hospitals = [
     description: "Salvando Vidas", tags: "Cirugía, Especialistas",
     about: "La fundación del Hospital Infantil de México",
     schedule: "Lunes a Viernes de 09:00 - 19:00"
-  },{
+  }, {
     name: "Hospital Gastroenterologia", subdomain: "rafaelaragon",
     description: "Salvando Vidas", tags: "Cirugía, Especialistas",
     about: "La fundación del Hospital Infantil de México",
@@ -107,7 +107,7 @@ doctors.each do |doctor|
     doctor.patients << patient
 
     puts "Creating #{patient} Appoinments"
-    (1..10).each do
+    10.times do
       Appoinment.create(
         reason: FFaker::Lorem.phrase, note: FFaker::HTMLIpsum.p,
         prescription: FFaker::Lorem.paragraph, recommendations: FFaker::Lorem.paragraph,

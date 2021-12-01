@@ -29,12 +29,12 @@ gem "wicked_pdf"
 gem "wkhtmltopdf-binary", "0.12.6.5"
 
 group :development, :test do
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "pry-rails"
-  gem "rspec-rails"
-  gem "factory_bot_rails"
-  gem "shoulda-matchers"
   gem "capybara"
+  gem "factory_bot_rails"
+  gem "pry"
+  gem "rspec-rails"
+  gem "shoulda-matchers"
+  gem "standard"
   gem "webdrivers", require: false
 end
 

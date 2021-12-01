@@ -22,10 +22,10 @@ class ApplicationController < ActionController::Base
       template: "pdfs/#{name}.pdf.erb",
       viewport_size: "1280x1024",
       header: {
-        html: { template: "layouts/pdfs/_header.pdf.erb" },
-        spacing: 20,
+        html: {template: "layouts/pdfs/_header.pdf.erb"},
+        spacing: 20
       },
-      footer: { html: { template: "layouts/pdfs/_footer.pdf.erb" } },
+      footer: {html: {template: "layouts/pdfs/_footer.pdf.erb"}},
       layout: "pdfs/hospital"
     }
   end

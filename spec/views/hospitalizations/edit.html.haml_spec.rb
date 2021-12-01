@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "hospitalizations/edit", type: :view do
   let(:hospital) { create :hospital, subdomain: "ursula" }
@@ -15,7 +15,7 @@ RSpec.describe "hospitalizations/edit", type: :view do
       reason_for_hospitalization: "Razon",
       treatment: "Tratamiento",
       doctor_id: doctor.id,
-      patient_id: patient.id,
+      patient_id: patient.id
     ))
   end
 

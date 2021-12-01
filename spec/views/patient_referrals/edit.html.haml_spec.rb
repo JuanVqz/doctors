@@ -21,7 +21,6 @@ RSpec.describe "patient_referrals/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", patient_referral_path(@patient_referral), "post" do
-
       assert_select "input[name=?]", "patient_referral[subject]"
 
       assert_select "input[name=?]", "patient_referral[content]"
