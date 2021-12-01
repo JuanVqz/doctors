@@ -13,9 +13,11 @@ class HospitalizationsController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.pdf { render pdf: pdf_name,
-                    template: "pdfs/hospitalization",
-                    layout: "pdfs/hospital" }
+      format.pdf {
+        render pdf: pdf_name,
+          template: "pdfs/hospitalization",
+          layout: "pdfs/hospital"
+      }
     end
   end
 
@@ -46,24 +48,24 @@ class HospitalizationsController < ApplicationController
 
   def destroy
     @hospitalization.destroy
-    redirect_to hospitalizations_url, notice: 'Hospitalizacion eliminada correctamente.'
+    redirect_to hospitalizations_url, notice: "Hospitalizacion eliminada correctamente."
   end
 
   private
 
-    def set_hospitalization
-      @hospitalization = Hospitalization.find(params[:id])
-    end
+  def set_hospitalization
+    @hospitalization = Hospitalization.find(params[:id])
+  end
 
-    def pdf_name
-      "#{@hospitalization.patient.name}_#{@hospitalization.id}_#{@hospitalization.created_at.to_s(:number)}".upcase
-    end
+  def pdf_name
+    "#{@hospitalization.patient.name}_#{@hospitalization.id}_#{@hospitalization.created_at.to_s(:number)}".upcase
+  end
 
-    def hospitalization_params
-      params.require(:hospitalization).permit(
-        :starting, :ending, :days_of_stay, :reason_for_hospitalization,
-        :treatment, :doctor_id, :patient_id, :input_diagnosis, :output_diagnosis,
-        :recommendations, :referred_doctor_id, :status
-      )
-    end
+  def hospitalization_params
+    params.require(:hospitalization).permit(
+      :starting, :ending, :days_of_stay, :reason_for_hospitalization,
+      :treatment, :doctor_id, :patient_id, :input_diagnosis, :output_diagnosis,
+      :recommendations, :referred_doctor_id, :status
+    )
+  end
 end

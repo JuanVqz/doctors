@@ -1,5 +1,5 @@
 class ReferredDoctorsController < ApplicationController
-  before_action :set_referred_doctor, only: %i[ show edit update destroy ]
+  before_action :set_referred_doctor, only: %i[show edit update destroy]
 
   # GET /referred_doctors
   # GET /referred_doctors.json
@@ -70,7 +70,8 @@ class ReferredDoctorsController < ApplicationController
     params.require(:referred_doctor)
       .permit(:full_name, :specialty, :phone_number, address_attributes: [
         :id, :street, :number, :colony, :postal_code, :municipality,
-        :state, :country, :_destroy ],)
+        :state, :country, :_destroy
+      ])
       .with_defaults(doctor: current_user)
   end
 end

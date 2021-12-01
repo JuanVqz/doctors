@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "Appoinments", type: :request do
-
   let(:hospital) { create :hospital, :basic }
   let(:doctor) { create :doctor, hospital_id: hospital.id }
   let(:patient) do
@@ -45,7 +44,7 @@ RSpec.describe "Appoinments", type: :request do
       end
 
       it "creates a new appoinment" do
-        params = { appoinment: valid_attributes.merge(patient_id: patient.id) }
+        params = {appoinment: valid_attributes.merge(patient_id: patient.id)}
         expect {
           post appoinments_path, params: params
         }.to change(Appoinment, :count).by(1)
@@ -59,5 +58,4 @@ RSpec.describe "Appoinments", type: :request do
       expect(response).to have_http_status(200)
     end
   end
-
 end

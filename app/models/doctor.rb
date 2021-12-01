@@ -16,6 +16,6 @@ class Doctor < User
   end
 
   def role_error_message
-    errors.add(:role, "no puede tener el rol paciente" )
+    errors.add(:role, "no puede tener el rol paciente")
   end
 end

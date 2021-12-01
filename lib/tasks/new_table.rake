@@ -8,7 +8,7 @@ namespace :new_table do
       doctor.medical_consultations.each do |mc|
         appoinment = create_appoinment(mc, doctor)
         if appoinment.errors.any?
-          puts "#{appoinment.errors.full_messages.join(",")}"
+          puts appoinment.errors.full_messages.join(",").to_s
           abort
         end
 
@@ -32,7 +32,7 @@ namespace :new_table do
       patient = update_patient p
       patient.save
       if patient.errors.any?
-        puts "#{patient.errors.full_messages.join(", ")}"
+        puts patient.errors.full_messages.join(", ").to_s
         abort
       end
       count += 1 if patient.persisted?
@@ -42,14 +42,14 @@ namespace :new_table do
   end
 
   def update_patient p
-    p.allergies                     = p.clinic_history.description_drug_addiction.to_s
-    p.pathological_background       = p.clinic_history.description_hypertension.to_s
-    p.non_pathological_background   = p.clinic_history.description_allergic.to_s
-    p.gyneco_obstetric_background   = p.clinic_history.description_traumatic.to_s
-    p.system_background             = p.clinic_history.description_traumatic.to_s
+    p.allergies = p.clinic_history.description_drug_addiction.to_s
+    p.pathological_background = p.clinic_history.description_hypertension.to_s
+    p.non_pathological_background = p.clinic_history.description_allergic.to_s
+    p.gyneco_obstetric_background = p.clinic_history.description_traumatic.to_s
+    p.system_background = p.clinic_history.description_traumatic.to_s
     p.family_inheritance_background = p.clinic_history.description_hereditary.to_s
-    p.physic_exploration            = p.clinic_history.description_surgical.to_s
-    p.other_background              = other_background(p.clinic_history)
+    p.physic_exploration = p.clinic_history.description_surgical.to_s
+    p.other_background = other_background(p.clinic_history)
     p
   end
 
@@ -72,14 +72,14 @@ namespace :new_table do
     note = build_note mc
     patient = Patient.unscoped.find mc.patient_id
     Appoinment.create(reason: mc.reason, note: note, prescription: mc.prescription,
-                      recommendations: mc.recommendation, doctor: doctor,
-                      patient: patient, imc: mc.imc, weight: mc.weight,
-                      height: mc.height, blood_pressure: mc.blood_pressure,
-                      heart_rate: mc.heart_rate, breathing_rate: mc.breathing_rate,
-                      temperature: mc.temperature, glycaemia: mc.glycaemia,
-                      sat_02: mc.sat_02, cost: mc.cost, cabinet_results: mc.lab_results,
-                      histopathology: mc.histopathology, created_at: mc.created_at,
-                      updated_at: mc.updated_at)
+      recommendations: mc.recommendation, doctor: doctor,
+      patient: patient, imc: mc.imc, weight: mc.weight,
+      height: mc.height, blood_pressure: mc.blood_pressure,
+      heart_rate: mc.heart_rate, breathing_rate: mc.breathing_rate,
+      temperature: mc.temperature, glycaemia: mc.glycaemia,
+      sat_02: mc.sat_02, cost: mc.cost, cabinet_results: mc.lab_results,
+      histopathology: mc.histopathology, created_at: mc.created_at,
+      updated_at: mc.updated_at)
   end
 
   def build_note mc

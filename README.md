@@ -1,6 +1,7 @@
 # ASISTENCIA CLINICA
 
 [![build](https://github.com/JuanVqz/doctors/actions/workflows/push.yml/badge.svg)](https://github.com/JuanVqz/doctors/actions/workflows/push.yml)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 
 Es un sistema donde las instituciones clinicas podran registrar doctores para
 tomar consultas de los pacientes y conservar el historial clinico.

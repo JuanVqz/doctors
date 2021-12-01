@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Hospitals", type: :request do
   let(:hospital) { create :hospital, :basic }

@@ -9,12 +9,12 @@ RSpec.describe "referred_doctors/index", type: :view do
       ReferredDoctor.create!(
         full_name: "Full Name",
         specialty: "Specialty",
-        doctor: doctor,
+        doctor: doctor
       ),
       ReferredDoctor.create!(
         full_name: "Full Name",
         specialty: "Specialty",
-        doctor: doctor,
+        doctor: doctor
       )
     ]).page(1))
   end

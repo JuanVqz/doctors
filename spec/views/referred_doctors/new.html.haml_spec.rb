@@ -13,7 +13,6 @@ RSpec.describe "referred_doctors/new", type: :view do
     render
 
     assert_select "form[action=?][method=?]", referred_doctors_path, "post" do
-
       assert_select "input[name=?]", "referred_doctor[full_name]"
 
       assert_select "input[name=?]", "referred_doctor[specialty]"

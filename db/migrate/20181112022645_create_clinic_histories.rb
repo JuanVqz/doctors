@@ -11,7 +11,7 @@ class CreateClinicHistories < ActiveRecord::Migration[5.2]
       t.text :description_hereditary
       t.text :description_cancer
       t.text :description_other
-      t.references :patient, foreign_key: { to_table: :users }
+      t.references :patient, foreign_key: {to_table: :users}
 
       t.timestamps
     end

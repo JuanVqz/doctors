@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe DoctorPolicy do
   let(:hospital) { create :hospital, subdomain: "ursula" }
@@ -26,7 +26,7 @@ RSpec.describe DoctorPolicy do
       let(:policy_scope) { DoctorPolicy::Scope.new(doctor, Doctor).resolve }
 
       it "responds raise error" do
-        expect{ policy_scope }.to raise_error Pundit::NotAuthorizedError
+        expect { policy_scope }.to raise_error Pundit::NotAuthorizedError
       end
     end
   end

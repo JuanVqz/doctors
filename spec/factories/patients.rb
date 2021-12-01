@@ -32,6 +32,5 @@ FactoryBot.define do
         patient.avatar.attach(io: File.open(file_path), filename: "avatar.jpg", content_type: "image/jpg")
       end
     end
-
   end
 end

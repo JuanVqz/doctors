@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe PatientHelper, type: :helper do
-
   describe "#age" do
     context "when birthday's patient is present" do
       let(:patient) { create :patient, birthday: "1989-09-19" }

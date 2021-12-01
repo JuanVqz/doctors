@@ -92,5 +92,4 @@ RSpec.describe "Patient's flow", type: :system do
     click_link "Registrar Paciente"
     expect(page).to have_content "REGISTRAR PACIENTE"
   end
-
 end

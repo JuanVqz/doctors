@@ -18,7 +18,6 @@ RSpec.describe AppoinmentsController, type: :routing do
       expect(get: "/appoinments/1/edit").to route_to("appoinments#edit", id: "1")
     end
 
-
     it "routes to #create" do
       expect(post: "/appoinments").to route_to("appoinments#create")
     end

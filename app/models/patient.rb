@@ -32,12 +32,12 @@ class Patient < User
 
   def clinic_history?
     allergies.present? ||
-    pathological_background.present? ||
-    non_pathological_background.present? ||
-    gyneco_obstetric_background.present? ||
-    system_background.present? ||
-    family_inheritance_background.present? ||
-    physic_exploration.present? ||
-    other_background.present?
+      pathological_background.present? ||
+      non_pathological_background.present? ||
+      gyneco_obstetric_background.present? ||
+      system_background.present? ||
+      family_inheritance_background.present? ||
+      physic_exploration.present? ||
+      other_background.present?
   end
 end

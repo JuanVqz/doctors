@@ -8,7 +8,7 @@ RSpec.describe "referred_doctors/show", type: :view do
     @referred_doctor = assign(:referred_doctor, ReferredDoctor.create!(
       full_name: "Full Name",
       specialty: "Specialty",
-      doctor: doctor,
+      doctor: doctor
     ))
   end
 

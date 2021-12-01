@@ -8,7 +8,7 @@ RSpec.describe "referred_doctors/edit", type: :view do
     @referred_doctor = assign(:referred_doctor, ReferredDoctor.create!(
       full_name: "MyString",
       specialty: "MyString",
-      doctor: doctor,
+      doctor: doctor
     ))
   end
 
@@ -16,7 +16,6 @@ RSpec.describe "referred_doctors/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", referred_doctor_path(@referred_doctor), "post" do
-
       assert_select "input[name=?]", "referred_doctor[full_name]"
 
       assert_select "input[name=?]", "referred_doctor[specialty]"

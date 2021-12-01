@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "hospitalizations/new", type: :view do
   let(:hospital) { create :hospital, subdomain: "ursula" }
@@ -8,13 +8,13 @@ RSpec.describe "hospitalizations/new", type: :view do
 
   before(:each) do
     assign(:hospitalization, Hospitalization.new(
-      :starting => "2018-11-10",
-      :ending => "2018-11-12",
-      :days_of_stay => "2.0",
-      :reason_for_hospitalization => "Razon",
-      :treatment => "Tratamiento",
-      :doctor_id => doctor.id,
-      :patient_id => patient.id,
+      starting: "2018-11-10",
+      ending: "2018-11-12",
+      days_of_stay: "2.0",
+      reason_for_hospitalization: "Razon",
+      treatment: "Tratamiento",
+      doctor_id: doctor.id,
+      patient_id: patient.id
     ))
   end
 

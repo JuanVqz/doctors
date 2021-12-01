@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe ApplicationRecord, type: :model do
-
   describe ".recent" do
     context "order by created_at desc" do
       let(:hospitalization) { create :hospitalization }
@@ -26,5 +25,4 @@ RSpec.describe ApplicationRecord, type: :model do
       end
     end
   end
-
 end

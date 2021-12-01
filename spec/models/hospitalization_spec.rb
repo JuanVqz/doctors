@@ -4,8 +4,8 @@ RSpec.describe Hospitalization, type: :model do
   it { should define_enum_for :status }
 
   it do
-    should define_enum_for(:status).
-      with_values(["Alta médica", "Alta voluntaria", "Traslado a otra unidad"])
+    should define_enum_for(:status)
+      .with_values(["Alta médica", "Alta voluntaria", "Traslado a otra unidad"])
   end
 
   it { should belong_to :doctor }
@@ -96,5 +96,4 @@ RSpec.describe Hospitalization, type: :model do
       end
     end
   end
-
 end

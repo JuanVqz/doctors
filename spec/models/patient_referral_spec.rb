@@ -13,7 +13,7 @@ RSpec.describe PatientReferral, type: :model do
     let(:hospital) { build_stubbed :hospital }
 
     it "is valid" do
-      patient_referral = build :patient_referral, doctor:doctor,
+      patient_referral = build :patient_referral, doctor: doctor,
         referred_doctor: referred_doctor, hospital: hospital
 
       expect(patient_referral).to be_valid

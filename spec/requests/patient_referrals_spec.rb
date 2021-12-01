@@ -1,4 +1,4 @@
- require "rails_helper"
+require "rails_helper"
 
 RSpec.describe "/patient_referrals", type: :request do
   let(:hospital) { create :hospital }
@@ -30,7 +30,7 @@ RSpec.describe "/patient_referrals", type: :request do
       importance: "electivo",
       patient_id: nil,
       referred_doctor_id: nil,
-      hospital_id: nil,
+      hospital_id: nil
     }
   end
 
@@ -69,12 +69,12 @@ RSpec.describe "/patient_referrals", type: :request do
     context "with valid parameters" do
       it "creates a new PatientReferral" do
         expect {
-          post patient_referrals_url, params: { patient_referral: valid_attributes }
+          post patient_referrals_url, params: {patient_referral: valid_attributes}
         }.to change(PatientReferral, :count).by(1)
       end
 
       it "redirects to the created patient_referral" do
-        post patient_referrals_url, params: { patient_referral: valid_attributes }
+        post patient_referrals_url, params: {patient_referral: valid_attributes}
         expect(response).to redirect_to(patient_referral_url(PatientReferral.last))
       end
     end
@@ -82,12 +82,12 @@ RSpec.describe "/patient_referrals", type: :request do
     context "with invalid parameters" do
       it "does not create a new PatientReferral" do
         expect {
-          post patient_referrals_url, params: { patient_referral: invalid_attributes }
+          post patient_referrals_url, params: {patient_referral: invalid_attributes}
         }.to change(PatientReferral, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post patient_referrals_url, params: { patient_referral: invalid_attributes }
+        post patient_referrals_url, params: {patient_referral: invalid_attributes}
         expect(response).to be_successful
       end
     end
@@ -103,14 +103,14 @@ RSpec.describe "/patient_referrals", type: :request do
 
       it "updates the requested patient_referral" do
         patient_referral = PatientReferral.create! valid_attributes
-        patch patient_referral_url(patient_referral), params: { patient_referral: new_attributes }
+        patch patient_referral_url(patient_referral), params: {patient_referral: new_attributes}
         patient_referral.reload
         expect(patient_referral.subject).to eq "New Subject"
       end
 
       it "redirects to the patient_referral" do
         patient_referral = PatientReferral.create! valid_attributes
-        patch patient_referral_url(patient_referral), params: { patient_referral: new_attributes }
+        patch patient_referral_url(patient_referral), params: {patient_referral: new_attributes}
         patient_referral.reload
         expect(response).to redirect_to(patient_referral_url(patient_referral))
       end
@@ -119,7 +119,7 @@ RSpec.describe "/patient_referrals", type: :request do
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         patient_referral = PatientReferral.create! valid_attributes
-        patch patient_referral_url(patient_referral), params: { patient_referral: invalid_attributes }
+        patch patient_referral_url(patient_referral), params: {patient_referral: invalid_attributes}
         expect(response).to be_successful
       end
     end
