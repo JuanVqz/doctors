@@ -108,8 +108,8 @@ GEM
       railties (>= 5.0.0)
     ffaker (2.19.0)
     ffi (1.15.4)
-    font-awesome-sass (5.15.1)
-      sassc (>= 1.11)
+    font-awesome-rails (4.7.0.7)
+      railties (>= 3.2, < 7)
     globalid (1.0.0)
       activesupport (>= 5.0)
     haml (5.2.1)
@@ -311,7 +311,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   ffaker
-  font-awesome-sass (~> 5.15.1)
+  font-awesome-rails
   haml-rails (~> 2.0)
   jbuilder (~> 2.5)
   jquery-rails
@@ -321,7 +321,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 5.5)
   pundit
-  rails (~> 6.1.4)
+  rails (= 6.1.4.1)
   rspec-rails
   sass-rails (~> 6.0)
   shoulda-matchers

@@ -1,6 +1,6 @@
-//= require plugins/autosize
-//= require plugins/select2
-//= require plugins/bulma-tagsinput
+#= require plugins/autosize
+#= require plugins/select2
+#= require plugins/bulma-tagsinput
 
 ready =->
   startBulmaTagsInput()

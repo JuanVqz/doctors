@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.3"
 
-gem "rails", "~> 6.1.4"
+gem "rails", "6.1.4.1"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 5.5"
 gem "sass-rails", "~> 6.0"
@@ -18,7 +18,7 @@ gem "bulma-rails", "~> 0.9.2"
 gem "cocoon"
 gem "devise"
 gem "ffaker"
-gem "font-awesome-sass", "~> 5.15.1"
+gem "font-awesome-rails"
 gem "haml-rails", "~>2.0"
 gem "jquery-rails"
 gem "kaminari"

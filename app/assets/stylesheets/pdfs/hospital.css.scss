@@ -1,4 +1,6 @@
-@import "bulma";
+/*
+ *= require "bulma"
+ */
 
 .alwaysbreak { page-break-before: always; }
 .nobreak:before { clear:both; }
