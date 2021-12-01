@@ -14,7 +14,7 @@ gem "jbuilder", "~> 2.5"
 gem "bootsnap", ">= 1.1.0", require: false
 
 gem "bulma-extensions-rails"
-gem "bulma-rails", "~> 0.9.1"
+gem "bulma-rails", "~> 0.9.2"
 gem "cocoon"
 gem "devise"
 gem "ffaker"
