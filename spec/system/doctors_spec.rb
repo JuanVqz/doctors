@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Doctor's flow", type: :system do
+  before do
+    driven_by(:selenium_chrome_headless)
+  end
+
   feature "Sign in doctor" do
     scenario "with valid subdomain" do
       create_hospital_plan_medium

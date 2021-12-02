@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Medical Consultations flow", type: :system do
+  before do
+    driven_by(:selenium_chrome_headless)
+  end
+
   feature "Doctor can create a medical consultation" do
     scenario "from patients list" do
       create_hospital_plan_medium
