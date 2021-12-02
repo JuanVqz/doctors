@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Patient's flow", type: :system do
+  before do
+    driven_by(:selenium_chrome_headless)
+  end
+
   feature "Doctor can create a patient" do
     scenario "with valid data" do
       create_hospital_plan_medium
