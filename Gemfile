@@ -35,7 +35,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "shoulda-matchers"
   gem "standard"
-  gem "webdrivers", require: false
+  gem "webdrivers", "5.0", require: false
 end
 
 group :development do

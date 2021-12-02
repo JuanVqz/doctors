@@ -82,6 +82,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - name: Standardize
         run: bundle exec standardrb
 
@@ -89,8 +90,7 @@ jobs:
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:password@localhost:5432/doctors_test
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-          TZ: America/New_York
+          TZ: America/Mexico_City
         run: |
           bin/rails db:create
           bin/rails db:schema:load
