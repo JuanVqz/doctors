@@ -19,7 +19,7 @@ RSpec.describe "Appoinments", type: :request do
   describe "GET /appoinments" do
     it "List of appoinments" do
       get appoinments_path
-      expect(response).to have_http_status(400)
+      expect(response).to have_http_status(200)
     end
   end
 
