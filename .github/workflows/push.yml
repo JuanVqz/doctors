@@ -77,7 +77,6 @@ jobs:
           POSTGRES_PASSWORD: postgres
 
       - name: Run Requests Tests
-        if: always()
         run: bundle exec rake spec/requests
         env:
           POSTGRES_USER: postgres
@@ -85,7 +84,6 @@ jobs:
           RAILS_ENV: test
 
       - name: Run Models Tests
-        if: always()
         run: bundle exec rake spec/models
         env:
           POSTGRES_USER: postgres
@@ -93,7 +91,6 @@ jobs:
           RAILS_ENV: test
 
       - name: Run Policies Tests
-        if: always()
         run: bundle exec rake spec/policies
         env:
           POSTGRES_USER: postgres
@@ -101,7 +98,6 @@ jobs:
           RAILS_ENV: test
 
       - name: Run Routing Tests
-        if: always()
         run: bundle exec rake spec/routing
         env:
           POSTGRES_USER: postgres
@@ -109,7 +105,6 @@ jobs:
           RAILS_ENV: test
 
       - name: Run Views Tests
-        if: always()
         run: bundle exec rake spec/views
         env:
           POSTGRES_USER: postgres
@@ -117,7 +112,6 @@ jobs:
           RAILS_ENV: test
 
       - name: Run System Tests
-        if: always()
         run: bundle exec rake spec/system
         env:
           POSTGRES_USER: postgres
