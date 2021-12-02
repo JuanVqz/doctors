@@ -1,23 +1,59 @@
 name: build
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
+  install-cache:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    strategy:
+      matrix:
+        node-version: [14]
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Cache yarn dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: |
+          yarn install --force --non-interactive
   test:
     runs-on: ubuntu-latest
+    needs: install-cache
+    timeout-minutes: 10
 
     services:
-      postgres:
-        image: postgres:13-alpine
-        ports:
-          - 5432:5432
+      db:
+        image: postgres:10.13
+        ports: ["5432:5432"]
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: password
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -25,96 +61,37 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: Set Timezone
-        run: sudo timedatectl set-timezone America/Mexico_City
-
-      - name: Checkout repository
+      - name: Checkout Commit
         uses: actions/checkout@v2
 
-      - name: Set up Ruby 2.7
+      - name: Install Ruby
         uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
 
-      - name: Cache Ruby gems
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Restore yarn dependencies
         uses: actions/cache@v2
+        id: cache-dependencies
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gem-
-
-      - name: Bundle install
-        run: |
-          bundle config path vendor/bundle
-          bundle config set without "production development"
-          bundle config --local build.sassc --disable-march-tune-native
-          bundle install --jobs 4 --retry 3
-
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
+          path: node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+      - name: Standardize
+        run: bundle exec standardrb
 
-      - name: Install Node modules
-        run: yarn install --frozen-lockfile
-
-      - name: Setup Database
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:password@localhost:5432/doctors_test
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          TZ: America/New_York
         run: |
-          cp config/database_ci.yml config/database.yml
-          bundle exec rake db:create
-          bundle exec rake db:schema:load
-        env:
-          DB_HOST: localhost
-          DB_USER: postgres
-          DB_PASSWORD: postgres
-          RAILS_ENV: test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-
-      - name: Run Requests Tests
-        run: bundle exec rake spec/requests
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          RAILS_ENV: test
-
-      - name: Run Models Tests
-        run: bundle exec rake spec/models
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          RAILS_ENV: test
-
-      - name: Run Policies Tests
-        run: bundle exec rake spec/policies
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          RAILS_ENV: test
-
-      - name: Run Routing Tests
-        run: bundle exec rake spec/routing
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          RAILS_ENV: test
-
-      - name: Run Views Tests
-        run: bundle exec rake spec/views
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          RAILS_ENV: test
-
-      - name: Run System Tests
-        run: bundle exec rake spec/system
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          RAILS_ENV: test
-
+          bin/rails db:create
+          bin/rails db:schema:load
+          bin/rake
