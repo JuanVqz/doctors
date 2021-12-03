@@ -36,6 +36,7 @@ group :development, :test do
   gem "shoulda-matchers"
   gem "standard"
   gem "webdrivers", "5.0", require: false
+  gem "simplecov", require: false
 end
 
 group :development do
