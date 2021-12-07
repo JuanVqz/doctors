@@ -18,6 +18,7 @@ tomar consultas de los pacientes y conservar el historial clinico.
 git clone https://JuanVqz@bitbucket.org/JuanVqz/doctors.git
 cd doctors
 bundle install
+bin/setup
 ```
 
 ## Ejecutar servidor
@@ -109,6 +110,18 @@ cap production unicorn:start
 ```
 
 ## Desarrollo
+
+### Ejecuta pruebas
+
+```bash
+rake
+```
+
+### Ejecutar standardrb
+
+```bash
+bundle exec standardrb
+```
 
 Si esta interesado en contribuir al desarrollo comprando un subdominio en
 [asistencia clinica](https://asistenciaclinica.com/) puede [contactarnos.](https://github.com/JuanVqz)
