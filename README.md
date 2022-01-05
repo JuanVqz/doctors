@@ -8,9 +8,9 @@ tomar consultas de los pacientes y conservar el historial clinico.
 
 ## Requisitos
 
-- ruby 2.7.2
-- rails 6.0
-- postgres
+- ruby 2.7.4
+- rails 6.1.4
+- postgres 13
 
 ## Instalación
 
@@ -79,7 +79,7 @@ rake import:doctor_name:medical_consultation
 
 ## Deploy
 
-### Reiniciar base de datos
+### Reiniciar base de datos | Warning: Perderá toda la información
 
 ```bash
 heroku restart; heroku pg:reset DATABASE --confirm asistenciaclinica;
@@ -88,7 +88,7 @@ heroku run rails db:seed
 heroku run rails console
 ```
 
-## Deploy (deprecado)
+#### Deploy (deprecado)
 
 Antes de realizar el deploy puedes verificar los requisitos con:
 
