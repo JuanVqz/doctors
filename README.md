@@ -30,12 +30,16 @@ iniciar el servidor
 
 ```sh
 rails server
+# or  gem install foreman
+foreman start -f Procfile.dev
 ```
 
 visitar la ruta
 
-```
+```bash
 http://stark-headland-73197.lvh.me:3000
+# or if with foreman
+http://stark-headland-73197.lvh.me:5000
 ```
 
 e iniciar sesión con el doctor (administrador)
