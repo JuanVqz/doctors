@@ -7,7 +7,6 @@ gem "rails", "6.1.4.4"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 5.5"
 gem "uglifier", ">= 1.3.0"
-gem "coffee-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.11"
 gem "bootsnap", ">= 1.1.0", require: false
