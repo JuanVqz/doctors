@@ -2,7 +2,6 @@ class PatientReferralsController < ApplicationController
   before_action :set_patient_referral, only: %i[show edit update destroy]
 
   # GET /patient_referrals
-  # GET /patient_referrals.json
   def index
     @patient_referrals =
       PatientReferral
@@ -12,7 +11,6 @@ class PatientReferralsController < ApplicationController
   end
 
   # GET /patient_referrals/1
-  # GET /patient_referrals/1.json
   def show
     respond_to do |format|
       format.html
@@ -34,42 +32,34 @@ class PatientReferralsController < ApplicationController
   end
 
   # POST /patient_referrals
-  # POST /patient_referrals.json
   def create
     @patient_referral = PatientReferral.new(patient_referral_params)
 
     respond_to do |format|
       if @patient_referral.save
         format.html { redirect_to @patient_referral, notice: "Referencia del paciente creada correctamente." }
-        format.json { render :show, status: :created, location: @patient_referral }
       else
         format.html { render :new }
-        format.json { render json: @patient_referral.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /patient_referrals/1
-  # PATCH/PUT /patient_referrals/1.json
   def update
     respond_to do |format|
       if @patient_referral.update(patient_referral_params)
         format.html { redirect_to @patient_referral, notice: "Referenca del paciente actualizada correctamente." }
-        format.json { render :show, status: :ok, location: @patient_referral }
       else
         format.html { render :edit }
-        format.json { render json: @patient_referral.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /patient_referrals/1
-  # DELETE /patient_referrals/1.json
   def destroy
     @patient_referral.destroy
     respond_to do |format|
       format.html { redirect_to patient_referrals_url, notice: "Referenca del paciente eliminado correctamente." }
-      format.json { head :no_content }
     end
   end
 
