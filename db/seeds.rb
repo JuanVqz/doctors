@@ -66,7 +66,7 @@ puts "Doctors #{doctors.size}"
 
 puts "Creating Patients"
 doctors.each do |doctor|
-  puts "=============================================================================================="
+  puts "======================================================================="
   puts "Doctor: #{doctor.name} ID: #{doctor.id} Hospital: #{doctor.hospital} ID: #{doctor.hospital_id}"
   10.times do |n|
     puts "#{n} - 10"

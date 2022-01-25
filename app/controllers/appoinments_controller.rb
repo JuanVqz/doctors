@@ -34,10 +34,8 @@ class AppoinmentsController < ApplicationController
     respond_to do |format|
       if @appoinment.save
         format.html { redirect_to @appoinment, notice: "Consulta creada correctamente." }
-        format.json { render :show, status: :created, location: @appoinment }
       else
         format.html { render :new }
-        format.json { render json: @appoinment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,10 +44,8 @@ class AppoinmentsController < ApplicationController
     respond_to do |format|
       if @appoinment.update(appoinment_params)
         format.html { redirect_to @appoinment, notice: "Consulta actualizada correctamente." }
-        format.json { render :show, status: :ok, location: @appoinment }
       else
         format.html { render :edit }
-        format.json { render json: @appoinment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,7 +54,6 @@ class AppoinmentsController < ApplicationController
     @appoinment.destroy
     respond_to do |format|
       format.html { redirect_to appoinments_url, notice: "Consulta eliminada correctamente." }
-      format.json { head :no_content }
     end
   end
 
