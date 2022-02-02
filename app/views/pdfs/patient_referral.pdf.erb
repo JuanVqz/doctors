@@ -1,27 +1,27 @@
 <div class="container">
-  <div class="has-text-right">
-    Fecha de envío <%= l @patient_referral.created_at, format: :normal %>
+  <div style="padding-top: 50px;">
+    <div class="text-right">
+      Fecha de envío <%= l @patient_referral.created_at, format: :normal %>
+    </div>
+
+    <strong class="text-uppercase">Hoja de envío</strong>
   </div>
 
-  <div style="padding-top: 50px;" class="has-text-centered">Hoja de envío</div>
+  <div><strong>Paciente: </strong><%= @patient_referral.patient %></div>
+  <div><strong>Edad: </strong><%= age_months @patient_referral.patient %></div>
+  <div><strong>A: </strong> <%= @patient_referral.referred_doctor %></div>
+  <div><strong>Especialidad: </strong> <%= @patient_referral.referred_doctor.specialty %></div>
+  <div><strong>Dirección: </strong> <%= @patient_referral.referred_doctor.address %></div>
+  <div><strong>Tel: </strong> <%= number_to_phone @patient_referral.referred_doctor.phone_number %></div>
+  <div><strong>Tipo de envío: </strong> <%= @patient_referral.importance %></div>
 
-  <div class="content">
-    <div>Paciente: <%= @patient_referral.patient %></div>
-    <div>Edad: <%= age_months @patient_referral.patient %></div>
-    <div class="has-text-weight-bold">A: <%= @patient_referral.referred_doctor %></div>
-    <div>Especialidad: <%= @patient_referral.referred_doctor.specialty %></div>
-    <div>Dirección: <%= @patient_referral.referred_doctor.address %></div>
-    <div>Tel: <%= number_to_phone @patient_referral.referred_doctor.phone_number %></div>
-    <div>Tipo de envío: <%= @patient_referral.importance %></div>
+  <div>
+    <strong>Motivo de envio: </strong>
+    <%= @patient_referral.subject.html_safe %>
   </div>
 
-  <div class="content">
-    Motivo de envio:<br/>
-    <%= @patient_referral.subject %>
+  <div>
+    <strong>Diagnóstico de envio: </strong>
+    <%= @patient_referral.content.html_safe %>
   </div>
-
-  Diagnóstico de envio:<br/>
-  <%= @patient_referral.content.html_safe %>
 </div>
-
-

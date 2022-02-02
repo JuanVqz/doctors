@@ -3,6 +3,29 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
   <title><%= current_hospital.name %></title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container > div {
+      padding-top: 5px;
+      word-wrap: break-word;
+    }
+
+    .text-uppercase {
+      text-transform: uppercase;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <%= yield %>
