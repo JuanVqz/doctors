@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container font-17-px">
   <div style="padding-top: 50px;">
     <div class="text-right">
       Fecha de envío <%= l @patient_referral.created_at, format: :normal %>
@@ -20,7 +20,7 @@
     <%= @patient_referral.subject.html_safe %>
   </div>
 
-  <div>
+  <div class="text-justify">
     <strong>Diagnóstico de envio: </strong>
     <%= @patient_referral.content.html_safe %>
   </div>

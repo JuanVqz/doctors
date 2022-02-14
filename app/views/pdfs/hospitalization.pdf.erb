@@ -1,65 +1,63 @@
-<div class="container">
-  <div class="has-text-right">
-    <%= l @hospitalization.created_at, format: :normal %>
+<div class="container font-17-px">
+  <div style="padding-top: 50px;">
+    <div class="text-right">
+      <%= l @hospitalization.created_at, format: :normal %>
+    </div>
+
+    <strong class="text-uppercase">Hoja de Egreso Hospitalario</strong>
   </div>
 
-  <div class="content mt-6">
-    <div class="has-text-centered">Hoja de Egreso Hospitalario</p>
+  <div>
+    <strong><%= t "activerecord.attributes.hospitalization.patient" %>:</strong>
+    <%= @hospitalization.patient %>
+    <small><%= age_months @hospitalization.patient %></small>
   </div>
 
-  <div class="content">
-    <strong>
-      <%= t "activerecord.attributes.hospitalization.patient" %>:
-      <%= @hospitalization.patient %>
-      <small><%= age_months @hospitalization.patient %></small>
-    </strong>
-
-    <div>
-      <%= t "activerecord.attributes.hospitalization.starting" %>:
-      <%= l @hospitalization.starting, format: :default %>
-    </div>
-
-    <strong>
-      <%= t "activerecord.attributes.hospitalization.ending" %>:
-      <%= l @hospitalization.ending, format: :default %>
-    </strong>
-
-    <div>
-      <%= t "activerecord.attributes.hospitalization.days_of_stay" %>:
-      <%= @hospitalization.days_of_stay&.to_i %>
-    </div>
-
-    <strong>
-      <%= t "activerecord.attributes.hospitalization.status" %>:
-      <%= @hospitalization.status %>
-    </strong>
-
-    <div>
-      <%= t "activerecord.attributes.hospitalization.input_diagnosis" %>:
-      <%= @hospitalization.input_diagnosis&.html_safe %>
-    </div>
-
-    <strong>
-      <%= t "activerecord.attributes.hospitalization.output_diagnosis" %>:
-      <%= @hospitalization.output_diagnosis&.html_safe %>
-    </strong>
-
-    <div>
-      <%= t "activerecord.attributes.hospitalization.reason_for_hospitalization" %>
-      <%= @hospitalization.reason_for_hospitalization&.html_safe %>
-    </div>
+  <div>
+    <strong><%= t "activerecord.attributes.hospitalization.starting" %>:</strong>
+    <%= l @hospitalization.starting, format: :default %>
   </div>
 
-  <div class="content has-text-justified">
+  <div>
+    <strong><%= t "activerecord.attributes.hospitalization.ending" %>:</strong>
+    <%= l @hospitalization.ending, format: :default %>
+  </div>
+
+  <div>
+    <strong><%= t "activerecord.attributes.hospitalization.days_of_stay" %>:</strong>
+    <%= @hospitalization.days_of_stay&.to_i %>
+  </div>
+
+  <div>
+    <strong><%= t "activerecord.attributes.hospitalization.status" %>:</strong>
+    <%= @hospitalization.status %>
+  </div>
+
+  <div>
+    <strong><%= t "activerecord.attributes.hospitalization.input_diagnosis" %>:</strong>
+    <%= @hospitalization.input_diagnosis&.html_safe %>
+  </div>
+
+  <div>
+    <strong><%= t "activerecord.attributes.hospitalization.output_diagnosis" %>:</strong>
+    <%= @hospitalization.output_diagnosis&.html_safe %>
+  </div>
+
+  <div>
+    <strong><%= t "activerecord.attributes.hospitalization.reason_for_hospitalization" %></strong>
+    <%= @hospitalization.reason_for_hospitalization&.html_safe %>
+  </div>
+
+  <div class="text-justify" style="padding-top: 1em;">
     <strong><%= t "activerecord.attributes.hospitalization.treatment" %></strong>
     <%= @hospitalization.treatment&.html_safe %>
   </div>
 
-  <div class="content has-text-justified">
+  <div class="text-justify" style="padding-top: 1em;">
     <strong><%= t "activerecord.attributes.hospitalization.recommendations" %></strong>
     <%= @hospitalization.recommendations&.html_safe %>
   </div>
 
-  <div class="pt-6 has-text-right">Dr. <%= @hospitalization.doctor %></div>
+  <div style="padding-top: 5em;" class="text-right">Dr. <%= @hospitalization.doctor %></div>
 </div>
 
