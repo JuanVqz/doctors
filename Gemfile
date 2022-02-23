@@ -5,7 +5,7 @@ ruby "2.7.4"
 
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bulma-extensions-rails"
-gem "bulma-rails", "~> 0.9.2"
+gem "bulma-rails", "~> 0.9.3"
 gem "cocoon"
 gem "devise"
 gem "font-awesome-rails"
