@@ -6,4 +6,8 @@ module AppoinmentsHelper
       "#{appoinment.temperature}°C"
     end
   end
+
+  def selected_appoinnment_patient(appoinment)
+    appoinment.patient_id.presence || params[:patient_id]
+  end
 end

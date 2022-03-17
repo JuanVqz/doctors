@@ -22,7 +22,8 @@ class AppoinmentsController < ApplicationController
   end
 
   def new
-    @appoinment = Appoinment.new
+    @appoinment =
+      Appoinment.new(patient: Patient.find_by(id: params[:patient_id]))
   end
 
   def edit

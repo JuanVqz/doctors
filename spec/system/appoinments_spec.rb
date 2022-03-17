@@ -9,7 +9,7 @@ RSpec.describe "Medical Consultations flow", type: :system do
     scenario "from patients list" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
-      create_patient doctor: @admin
+      create_patient doctors: [@admin]
       create_three_appoinments_for_patient doctor: @admin
       visit_patients_path
       see_patient_name
@@ -19,6 +19,26 @@ RSpec.describe "Medical Consultations flow", type: :system do
       visit_new_appoinment_with_patient_id_param
       create_new_appoinment_with_preselected_patient
       visit_appoinment_show
+    end
+  end
+
+  feature "when the doctor doesn't enter a required field and an error is throw the patient is changed (it shouldn't) to the first patient" do
+    scenario "from patients list", :js do
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
+      create_another_patient
+      create_patient name: "Zac", doctors: [@admin]
+      visit_patients_path
+      click_first_new_appoinment
+      expect(page).to have_current_path new_appoinment_path(patient_id: @patient.id)
+      when_i_submit_the_form
+      expect(page).to have_current_path appoinments_path
+      create_new_appoinment_with_preselected_patient
+      visit_appoinment_show
+      within "td#appoinment-patient" do
+        expect(page).to have_no_content @other_patient.to_s
+        expect(page).to have_content @patient.to_s
+      end
     end
   end
 
@@ -52,6 +72,10 @@ RSpec.describe "Medical Consultations flow", type: :system do
     fill_in "appoinment_cabinet_results", with: "Resultados de Laboratorio"
     fill_in "appoinment_histopathology", with: "histopatologia"
 
+    when_i_submit_the_form
+  end
+
+  def when_i_submit_the_form
     click_button "Crear Consulta"
   end
 
@@ -59,5 +83,13 @@ RSpec.describe "Medical Consultations flow", type: :system do
     expect(page).to have_current_path appoinment_path Appoinment.last
     expect(page).to have_content "INFORMACIÓN DE LA CONSULTA"
     see_patient_name
+  end
+
+  def create_another_patient
+    @other_patient = create_patient name: "Stefani", doctors: [@admin]
+  end
+
+  def click_first_new_appoinment
+    first('a[data-tooltip="Nueva consulta"]').click
   end
 end
