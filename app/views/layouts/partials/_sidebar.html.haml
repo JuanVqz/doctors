@@ -1,4 +1,7 @@
 %aside.menu
+  .field
+    .control
+      = select_tag :patient_id, options_for_select(patients_for_select), { prompt: "Buscar Paciente", class: "select2" }
   %p.menu-label
     MENÚ
   %ul.menu-list
