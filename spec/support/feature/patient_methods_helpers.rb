@@ -6,8 +6,8 @@ module Feature
       expect(page).to have_current_path(patients_path)
     end
 
-    def create_patient doctor:
-      @patient = create :patient, name: "Marco", doctors: [doctor]
+    def create_patient options
+      @patient = create :patient, options
     end
 
     def create_three_hospitalizations_for_patient doctor:

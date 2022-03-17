@@ -1,4 +1,5 @@
 -# frozen_string_literal: true
+
 = simple_form_for(@appoinment) do |f|
   #patient_info.columns.is-multiline.display-none
     .column
@@ -8,7 +9,11 @@
   .columns.is-multiline
     .column.is-12
       %label.label{ for: "medical_consultation_patient_id" } Paciente
-      = f.select :patient_id, options_for_select(patients_for_select, selected: params[:patient_id]), { prompt: "Seleccione un paciente" }, class: "select2"
+      = f.select :patient_id,
+        options_for_select(patients_for_select,
+                           selected: selected_appoinnment_patient(f.object)),
+        { prompt: "Seleccione un paciente" },
+        class: "select2"
       - if f.object.errors[:patient].any?
         .help.is-danger= f.object.errors[:patient].to_sentence
 

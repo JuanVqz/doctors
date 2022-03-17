@@ -36,7 +36,7 @@
           %tr
             %th= t("activerecord.attributes.appoinment.patient")
           %tr
-            %td= "#{@appoinment.patient} - #{age_months(@appoinment.patient)}"
+            %td#appoinment-patient= "#{@appoinment.patient} - #{age_months(@appoinment.patient)}"
           %tr
             %th= t("activerecord.attributes.appoinment.reason")
           %tr
