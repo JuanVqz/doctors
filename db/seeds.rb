@@ -119,10 +119,9 @@ doctors.each do |doctor|
 end
 
 fake_referred_doctors = [
-  { full_name: FFaker::NameMX.unique.full_name, specialty: FFaker::Skill.unique.specialty, },
-  { full_name: FFaker::NameMX.unique.full_name, specialty: FFaker::Skill.unique.specialty, },
+  {full_name: FFaker::NameMX.unique.full_name, specialty: FFaker::Skill.unique.specialty},
+  {full_name: FFaker::NameMX.unique.full_name, specialty: FFaker::Skill.unique.specialty}
 ]
 referred_doctors =
   doctors.map { |doctor| doctor.referred_doctors.create!(fake_referred_doctors) }
 puts "Referred Doctors #{referred_doctors.size}"
-

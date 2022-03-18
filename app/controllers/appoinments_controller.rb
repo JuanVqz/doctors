@@ -5,11 +5,11 @@ class AppoinmentsController < ApplicationController
   def index
     @appoinments =
       Appoinment
-      .includes(:patient)
-      .per_doctor(current_user.id)
-      .search(params[:query])
-      .recent
-      .page(params[:page])
+        .includes(:patient)
+        .per_doctor(current_user.id)
+        .search(params[:query])
+        .recent
+        .page(params[:page])
   end
 
   def show

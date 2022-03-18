@@ -66,7 +66,7 @@ RSpec.describe ReferredDoctor, type: :model do
   end # context validations
 
   describe ".search" do
-    let(:doctor) { create :doctor}
+    let(:doctor) { create :doctor }
     let(:edgardo) do
       create :referred_doctor,
         full_name: "Edgardo Gonzalez",
