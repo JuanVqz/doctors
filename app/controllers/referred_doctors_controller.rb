@@ -3,7 +3,12 @@ class ReferredDoctorsController < ApplicationController
 
   # GET /referred_doctors
   def index
-    @referred_doctors = current_user.referred_doctors.page(params[:page])
+    @referred_doctors =
+      ReferredDoctor
+      .search(params[:query])
+      .by_doctor(current_user.id)
+      .order(:full_name)
+      .page(params[:page])
   end
 
   # GET /referred_doctors/1

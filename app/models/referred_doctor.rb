@@ -15,6 +15,10 @@ class ReferredDoctor < ApplicationRecord
   delegate :street, :number, :colony, :postal_code, :municipality,
     :state, :country, to: :address, prefix: true, allow_nil: true
 
+  def self.search(query)
+    where("full_name ILIKE ? OR specialty ILIKE ? OR phone_number ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
+  end
+
   def to_s
     full_name.to_s.titleize
   end
