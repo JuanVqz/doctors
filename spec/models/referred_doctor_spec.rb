@@ -64,4 +64,61 @@ RSpec.describe ReferredDoctor, type: :model do
       end
     end # context #phone_number
   end # context validations
+
+  describe ".search" do
+    let(:doctor) { create :doctor}
+    let(:edgardo) do
+      create :referred_doctor,
+        full_name: "Edgardo Gonzalez",
+        specialty: "Dentista",
+        phone_number: 9999999999,
+        doctor: doctor
+    end
+    let(:david) do
+      create :referred_doctor,
+        full_name: "David Zepeda",
+        specialty: "General",
+        phone_number: 5555555555,
+        doctor: doctor
+    end
+
+    context "search by full_name" do
+      it "returns one referred doctor" do
+        edgardo
+        david
+
+        expect(ReferredDoctor.search(edgardo.full_name).count).to eq 1
+      end
+
+      it "returns zero" do
+        expect(ReferredDoctor.search("Foo").count).to be_zero
+      end
+    end # context search by full_name
+
+    context "search by specialty" do
+      it "returns one referred doctor" do
+        edgardo
+        david
+
+        expect(ReferredDoctor.search(david.specialty).count).to eq 1
+      end
+
+      it "returns zero" do
+        expect(ReferredDoctor.search("Foo").count).to be_zero
+      end
+    end # context search by specialty
+
+    context "search by phone_number" do
+      it "returns one referred doctor" do
+        edgardo
+        david
+
+        expect(ReferredDoctor.search(edgardo.phone_number).count).to eq 1
+      end
+
+      it "returns zero" do
+        expect(ReferredDoctor.search(333333333).count).to be_zero
+      end
+    end # context search by phone_number
+  end # describe .search
 end
