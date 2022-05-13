@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:12.5-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+  web:
+    build: .
+    command: bash -c "rm -rf /code/tmp/pids && rails s -b '0.0.0.0'"
+    volumes:
+      - .:/code
+    ports:
+      - 3000:3000
+    environment:
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: password
+    depends_on:
+      - db
+volumes:
+  db_data:

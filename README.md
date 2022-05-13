@@ -12,6 +12,15 @@ tomar consultas de los pacientes y conservar el historial clinico.
 - rails 6.1.4
 - postgres 13
 
+## Instalación con docker
+
+```sh
+git clone https://JuanVqz@bitbucket.org/JuanVqz/doctors.git
+cd doctors
+docker-compose up -d
+docker-compose run --rm web rails db:setup
+```
+
 ## Instalación
 
 ```sh
