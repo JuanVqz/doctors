@@ -17,8 +17,8 @@ tomar consultas de los pacientes y conservar el historial clinico.
 ```sh
 git clone https://JuanVqz@bitbucket.org/JuanVqz/doctors.git
 cd doctors
-docker-compose up -d
-docker-compose run --rm web rails db:setup
+./bin/setup_docker
+./bin/dev
 ```
 
 ## Instalación

@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+require "fileutils"
+
+# path to your application root.
+APP_ROOT = File.expand_path("..", __dir__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+FileUtils.chdir APP_ROOT do
+  puts "== Installing dependencies =="
+  system! "docker-compose build"
+
+  puts "\n== Preparing database =="
+  system! "docker-compose run --rm web rails db:prepare"
+
+  puts "\n== Removing old logs and tempfiles =="
+  system! "docker-compose run --rm web rails log:clear tmp:clear"
+
+  puts "\n== Now, run ./bin/dev to start the application server =="
+  system! "docker-compose down"
+end
+
