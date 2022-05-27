@@ -5,7 +5,7 @@ end
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.4"
+ruby IO.readlines(".ruby-version")[0].strip
 
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bulma-extensions-rails"

@@ -8,7 +8,7 @@ WORKDIR /code
 # run commands for building or running the image.
 USER root
 
-COPY Gemfile* ./
+COPY .ruby-version Gemfile* ./
 RUN gem install bundler:"$(tail -n 1 Gemfile.lock)" && gem install foreman
 RUN BUNDLE_GEMFILE=${BUNDLE_GEMFILE} bundle install
 
