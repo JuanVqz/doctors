@@ -1,4 +1,4 @@
-name: build
+name: next rails application
 on:
   push:
     branches:
@@ -9,12 +9,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  run-tests:
     runs-on: ubuntu-latest
     services:
       db:
         image: postgres:10.13
-        ports: ["5432:5432"]
+        ports:
+          - 5432:5432
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
@@ -24,15 +25,16 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-      - name: checkout commit
-        uses: actions/checkout@v2
-      - name: install ruby
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: standardize
+      - name: Install dependencies
+        run: BUNDLE_GEMFILE=Gemfile.next bundle install
+      - name: Run standardrb
         run: bundle exec standardrb
-      - name: run tests
+      - name: Run test suite
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:password@localhost:5432/doctors_test
@@ -41,3 +43,4 @@ jobs:
           bin/rails db:create
           bin/rails db:schema:load
           bin/rake
+
