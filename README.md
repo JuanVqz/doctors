@@ -46,7 +46,6 @@ docker-compose up next
 docker-compose run --rm next bash
 ```
 
-
 ## Importar información (opcional)
 
 Los Doctores que utilizan nuestro servicio habian usado un sistema llamado Bento.
