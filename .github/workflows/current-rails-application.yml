@@ -30,7 +30,7 @@ jobs:
         with:
           bundler-cache: true
       - name: Install dependencies
-        run: bundle install
+        run: BUNDLE_GEMFILE=Gemfile.next bundle install
       - name: Run standardrb
         run: bundle exec standardrb
       - name: Run test suite
