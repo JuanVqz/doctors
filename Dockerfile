@@ -1,4 +1,4 @@
-FROM circleci/ruby:2.7.4-node-browsers
+FROM circleci/ruby:2.7.5-node-browsers
 
 ARG BUNDLE_GEMFILE=Gemfile
 
