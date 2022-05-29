@@ -23,7 +23,7 @@ gem "pundit"
 if next?
   gem "rails", "7.0.3"
 else
-  gem "rails", "7.0"
+  gem "rails", "7.0.3"
 end
 gem "sprockets-rails"
 gem "simple_form"
