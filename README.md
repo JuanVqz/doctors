@@ -12,50 +12,38 @@ tomar consultas de los pacientes y conservar el historial clinico.
 - rails 6.1.4
 - postgres 13
 
-## Instalación con docker
+## Instalación
+
+Es necesario utilizar `lvh.me:300` para ingresar a los subdominio desde el ambiente
+de desarrollo, si ejecuta las semillas existe un subdominio `demo`
+y debes ingresar de la siguiente manera.
 
 ```sh
 git clone https://JuanVqz@bitbucket.org/JuanVqz/doctors.git
 cd doctors
-docker-compose up -d
+docker-compose up
 docker-compose run --rm web rails db:setup
 ```
 
-## Instalación
-
-```sh
-git clone https://JuanVqz@bitbucket.org/JuanVqz/doctors.git
-cd doctors
-bundle install
-```
-
-## Ejecutar servidor
-
-Es necesario utilizar `lvh.me:300` para ingresar a los subdominio desde el ambiente
-de desarrollo, si ejecuta las semillas existe un subdominio `stark-headland-73197`
-y debes ingresar de la siguiente manera.
-
-iniciar el servidor
-
-```sh
-rails server
-# or  gem install foreman
-foreman start -f Procfile.dev
-```
-
-visitar la ruta
+ahora puedes visitar la siguiente ruta
 
 ```bash
-http://stark-headland-73197.lvh.me:3000
-# or if with foreman
-http://stark-headland-73197.lvh.me:5000
+http://demo.lvh.me:3000
 ```
 
 e iniciar sesión con el doctor (administrador)
 
 ```
-usuario: pedrouno@gmail.com
+usuario: cero@gmail.com
 contraseña: 123456
+```
+
+## Build next rails config
+
+```
+docker-compose build --build-arg BUNDLE_GEMFILE=Gemfile.next next
+docker-compose up next
+docker-compose run --rm next bash
 ```
 
 ## Importar información (opcional)

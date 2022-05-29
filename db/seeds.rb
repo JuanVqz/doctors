@@ -3,22 +3,22 @@ require "ffaker"
 puts "Creating Hospitals"
 fake_hospitals = [
   {
-    name: "Hospital Pediatrico", subdomain: "stark-headland-73197",
+    name: "Hospital Pediatrico", subdomain: "demo",
     description: "Salvando Vidas", tags: "Cirugía, Especialistas",
     about: "La fundación del Hospital Infantil de México",
     schedule: "Lunes a Viernes de 09:00 - 19:00"
   }, {
-    name: "Hospital Gastroenterologia", subdomain: "rafaelaragon",
+    name: "Hospital Gastroenterologia", subdomain: "uno",
     description: "Salvando Vidas", tags: "Cirugía, Especialistas",
     about: "La fundación del Hospital Infantil de México",
     schedule: "Lunes a Viernes de 09:00 - 19:00"
   }, {
-    name: "Hospital Ginecologia", subdomain: "carloscervantes",
+    name: "Hospital Ginecologia", subdomain: "dos",
     description: "Salvando Vidas", tags: "Cirugía, Especialistas",
     about: "La fundación del Hospital Infantil de México",
     schedule: "Lunes a Viernes de 09:00 - 19:00"
   }, {
-    name: "Sto Domingo de Guzmán", subdomain: "edgardogonzalez",
+    name: "Sto Domingo de Guzmán", subdomain: "tres",
     description: "Salvando Vidas", tags: "Cirugía, Especialistas",
     about: "La fundación del Hospital Infantil de México",
     schedule: "Lunes a Viernes de 09:00 - 19:00"
@@ -38,26 +38,26 @@ end
 puts "Creating Doctors"
 fake_doctors = [
   {
-    name: "Pedro", first_name: "Ramírez", last_name: "Sánchez",
-    specialty: "Cirujano Plastico", email: "pedrouno@gmail.com",
+    name: "Pedro", first_name: "Demo", last_name: "Demo",
+    specialty: "Cirujano Plastico", email: "cero@gmail.com",
     password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
-    hospital_id: Hospital.find_by(subdomain: "stark-headland-73197").id,
+    hospital_id: Hospital.find_by(subdomain: "demo").id,
     role: "admin"
   }, {
-    name: "Rafael", first_name: "Aragon", last_name: "Soto",
-    specialty: "Cirujano Plastico", email: "drrafaelaragon@gmail.com",
+    name: "Rafael", first_name: "Uno", last_name: "Uno",
+    specialty: "Cirujano Plastico", email: "uno@gmail.com",
     password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
-    hospital_id: Hospital.find_by(subdomain: "rafaelaragon").id, role: "admin"
+    hospital_id: Hospital.find_by(subdomain: "uno").id, role: "admin"
   }, {
-    name: "Carlos", first_name: "Cervantes", last_name: "Garcia",
-    specialty: "Cirujano Plastico", email: "carpo123@gmail.com",
+    name: "Carlos", first_name: "Dos", last_name: "Dos",
+    specialty: "Cirujano Plastico", email: "dos@gmail.com",
     password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
-    hospital_id: Hospital.find_by(subdomain: "carloscervantes").id, role: "admin"
+    hospital_id: Hospital.find_by(subdomain: "dos").id, role: "admin"
   }, {
-    name: "Edgardo", first_name: "Gonzalez", last_name: "Ramos",
-    specialty: "Cirujano Plastico", email: "ramos.surgery@gmail.com",
+    name: "Edgardo", first_name: "Tres", last_name: "Tres",
+    specialty: "Cirujano Plastico", email: "tres@gmail.com",
     password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
-    hospital_id: Hospital.find_by(subdomain: "edgardogonzalez").id, role: "admin"
+    hospital_id: Hospital.find_by(subdomain: "tres").id, role: "admin"
   }
 ]
 

@@ -28,8 +28,8 @@ FactoryBot.define do
 
     trait :with_avatar do
       after :create do |patient|
-        file_path = Rails.root.join("spec", "support", "assets", "avatar.jpg")
-        patient.avatar.attach(io: File.open(file_path), filename: "avatar.jpg", content_type: "image/jpg")
+        file_path = Rails.root.join("spec/support/assets/avatar.jpg")
+        patient.avatar.attach(io: File.open(file_path), filename: "avatar.jpg", content_type: "image/jpeg")
       end
     end
   end

@@ -1,7 +1,11 @@
+def next?
+  File.basename(__FILE__) == "Gemfile.next"
+end
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.4"
+ruby IO.readlines(".ruby-version")[0].strip
 
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bulma-extensions-rails"
@@ -16,7 +20,12 @@ gem "kaminari"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 5.6"
 gem "pundit"
-gem "rails", "6.1.4.6"
+if next?
+  gem "rails", "7.0"
+  gem "sprockets-rails"
+else
+  gem "rails", "6.1.4.6"
+end
 gem "simple_form"
 gem "trix-rails", require: "trix"
 gem "turbolinks", "~> 5"
@@ -33,12 +42,16 @@ group :development, :test do
   gem "simplecov", require: false
   gem "standard"
   gem "webdrivers", "5.0", require: false
+  gem "next_rails"
 end
 
 group :development do
   gem "listen", ">= 3.0.5", "< 3.8"
-  gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
+  if next?
+    gem "spring", "3.0.0"
+  else
+    gem "spring"
+  end
   gem "web-console", ">= 3.3.0"
 end
 
