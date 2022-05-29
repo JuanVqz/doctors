@@ -21,11 +21,11 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 5.6"
 gem "pundit"
 if next?
-  gem "rails", "7.0"
-  gem "sprockets-rails"
+  gem "rails", "7.0.3"
 else
-  gem "rails", "6.1.4.6"
+  gem "rails", "7.0"
 end
+gem "sprockets-rails"
 gem "simple_form"
 gem "trix-rails", require: "trix"
 gem "turbolinks", "~> 5"
@@ -47,11 +47,7 @@ end
 
 group :development do
   gem "listen", ">= 3.0.5", "< 3.8"
-  if next?
-    gem "spring", "3.0.0"
-  else
-    gem "spring"
-  end
+  gem "spring", "3.0.0"
   gem "web-console", ">= 3.3.0"
 end
 
