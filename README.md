@@ -1,6 +1,7 @@
 # ASISTENCIA CLINICA
 
-[![build](https://github.com/JuanVqz/doctors/actions/workflows/push.yml/badge.svg)](https://github.com/JuanVqz/doctors/actions/workflows/push.yml)
+[![current rails build](https://github.com/JuanVqz/doctors/actions/workflows/current-rails-app.yml/badge.svg)](https://github.com/JuanVqz/doctors/actions/workflows/current-rails-app.yml)
+[![next rails build](https://github.com/JuanVqz/doctors/actions/workflows/next-rails-app.yml/badge.svg)](https://github.com/JuanVqz/doctors/actions/workflows/next-rails-app.yml)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 
 Es un sistema donde las instituciones clinicas podran registrar doctores para
