@@ -21,9 +21,9 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 5.6"
 gem "pundit"
 if next?
-  gem "rails", "7.0.3"
+  gem "rails", "~> 7.0.3"
 else
-  gem "rails", "7.0"
+  gem "rails", "7.0.3"
 end
 gem "sprockets-rails"
 gem "simple_form"
