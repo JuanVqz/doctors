@@ -47,7 +47,7 @@ end
 
 group :development do
   gem "listen", ">= 3.0.5", "< 3.8"
-  gem "spring", "3.0.0"
+  gem "spring", "4.0.0"
   gem "web-console", ">= 3.3.0"
 end
 
