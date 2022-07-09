@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_29_132607) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_07_09_053018) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_132607) do
     t.string "content_type"
     t.text "metadata"
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
+    t.string "checksum"
     t.datetime "created_at", null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
@@ -190,8 +189,8 @@ ActiveRecord::Schema.define(version: 2021_07_29_132607) do
     t.bigint "doctor_id", null: false
     t.bigint "referred_doctor_id", null: false
     t.bigint "hospital_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_patient_referrals_on_doctor_id"
     t.index ["hospital_id"], name: "index_patient_referrals_on_hospital_id"
     t.index ["patient_id"], name: "index_patient_referrals_on_patient_id"
@@ -202,8 +201,8 @@ ActiveRecord::Schema.define(version: 2021_07_29_132607) do
     t.string "full_name"
     t.string "specialty"
     t.bigint "doctor_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "phone_number"
     t.index ["doctor_id"], name: "index_referred_doctors_on_doctor_id"
   end
