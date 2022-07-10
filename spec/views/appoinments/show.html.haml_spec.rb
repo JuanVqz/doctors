@@ -6,7 +6,7 @@ RSpec.describe "appoinments/show", type: :view do
 
   let(:patient) { create :patient, doctors: [doctor], hospital_id: hospital.id }
 
-  before(:each) do
+  before do
     allow(Hospital).to receive(:current_id).and_return hospital.id
     @appoinment = assign(:appoinment, Appoinment.create!(
       reason: "MyText",

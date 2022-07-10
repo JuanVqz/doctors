@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "hospitals/edit", type: :view do
-  before :each do
+  before do
     @hospital = assign(:hospital, Hospital.create!(
       name: "Santa Ursula",
       subdomain: "santa_ursula",

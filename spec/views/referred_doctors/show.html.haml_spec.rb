@@ -4,7 +4,7 @@ RSpec.describe "referred_doctors/show", type: :view do
   let(:hospital) { create :hospital, subdomain: "ursula" }
   let(:doctor) { create :doctor, hospital_id: hospital.id }
 
-  before(:each) do
+  before do
     @referred_doctor = assign(:referred_doctor, ReferredDoctor.create!(
       full_name: "Full Name",
       specialty: "Specialty",

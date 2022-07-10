@@ -4,7 +4,7 @@ RSpec.describe "patients/show", type: :view do
   let(:hospital) { create :hospital, subdomain: "ursula" }
   let(:doctor) { create :doctor, hospital_id: hospital.id }
 
-  before(:each) do
+  before do
     allow(Hospital).to receive(:current_id).and_return hospital.id
     @patient = assign(:patient, Patient.create!(
       name: "Marco",

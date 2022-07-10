@@ -16,7 +16,7 @@ namespace :import do
         first_name = row["4"].blank? ? "Apellido Paterno" : row["4"].strip
         last_name = row["5"].blank? ? "Apellido Materno" : row["5"].strip
         blood_group = row["6"].blank? ? "" : row["6"].strip
-        birthday = row["7/e"].blank? ? "19-09-1989" : row["7/e"]
+        birthday = row["7/e"].presence || "19-09-1989"
         place_of_birth = row["8"].blank? ? "Oaxaca" : row["8"].strip
         height = row["10"].blank? ? 0 : row["10"].strip
         weight = row["11"].blank? ? 0 : row["11"].strip
@@ -45,7 +45,7 @@ namespace :import do
           patient = Patient.create(name: name, first_name: first_name, last_name: last_name,
             birthday: birthday, height: height, weight: weight, blood_group: blood_group,
             occupation: occupation, referred_by: referred_by, place_of_birth: place_of_birth,
-            sex: sex, created_at: created_at, updated_at: updated_at, confirmed_at: Time.now,
+            sex: sex, created_at: created_at, updated_at: updated_at, confirmed_at: Time.zone.now,
             hospital_id: hospital_id)
           puts patient.errors.full_messages.join(",").to_s if patient.errors.any?
 
@@ -147,7 +147,7 @@ namespace :import do
         first_name = row["Data/4"].present? ? row["Data/4"].strip : "Apellido Paterno"
         last_name = row["Data/5"].present? ? row["Data/5"].strip : "Apellido Materno"
         blood_group = row["Data/6"].present? ? row["Data/6"].strip : ""
-        birthday = row["Data/7/e"].present? ? row["Data/7/e"] : "19-09-1989"
+        birthday = row["Data/7/e"].presence || "19-09-1989"
         place_of_birth = row["Data/8"].present? ? row["Data/8"].strip : "Oaxaca"
         marital_status = row["Data/9"].present? ? row["Data/9"].strip : ""
         referred_by = row["Data/10"].present? ? row["Data/10"].strip : ""
@@ -166,7 +166,7 @@ namespace :import do
           patient = Patient.create(name: name, first_name: first_name, last_name: last_name,
             birthday: birthday, height: height, weight: weight, blood_group: blood_group,
             occupation: occupation, referred_by: referred_by, place_of_birth: place_of_birth,
-            sex: sex, created_at: created_at, updated_at: updated_at, confirmed_at: Time.now,
+            sex: sex, created_at: created_at, updated_at: updated_at, confirmed_at: Time.zone.now,
             hospital_id: hospital_id)
           puts patient.errors.full_messages.join(",").to_s if patient.errors.any?
 
@@ -255,17 +255,17 @@ namespace :import do
       CSV.foreach(patients_file, headers: true) do |row|
         expedient = row["expedient"].to_i
         name = "#{row["nombre_1"]} #{row["nombre_2"]}".strip
-        first_name = row["apellido_paterno"].present? ? row["apellido_paterno"] : "Apellido Paterno"
-        last_name = row["apellido_materno"].present? ? row["apellido_materno"] : "Apellido Materno"
+        first_name = row["apellido_paterno"].presence || "Apellido Paterno"
+        last_name = row["apellido_materno"].presence || "Apellido Materno"
 
         if row["fecha_ingreso"].present?
           month, day, year = row["fecha_ingreso"].split("/")
-          created_at = Time.parse "#{day}-#{month}-#{year}"
+          created_at = Time.zone.parse "#{day}-#{month}-#{year}"
         else
           created_at = Date.current
         end
 
-        birthday = row["nacimiento"].present? ? Time.parse(row["nacimiento"]) : "19-09-1989"
+        birthday = row["nacimiento"].present? ? Time.zone.parse(row["nacimiento"]) : "19-09-1989"
         colonia = row["colonia"]
         domicilio = row["domicilio"]
         telefono = row["telefono"]
@@ -282,7 +282,7 @@ namespace :import do
 
           patient = Patient.create(name: name, first_name: first_name,
             last_name: last_name, birthday: birthday, created_at: created_at,
-            updated_at: created_at, confirmed_at: Time.now,
+            updated_at: created_at, confirmed_at: Time.zone.now,
             hospital_id: hospital_id)
           puts patient.errors.full_messages.join(",").to_s if patient.errors.any?
 
@@ -305,11 +305,11 @@ namespace :import do
             expedient_id = fila["expedient_id"].present? ? fila["expedient_id"].to_i : nil
             if expedient_id.present?
               if expedient == expedient_id
-                fecha = fila["fecha"].present? ? fila["fecha"] : DateTime.now
+                fecha = fila["fecha"].presence || DateTime.now
                 sexo = "Masculino"
                 diagnostico = fila["diagnostico"]
                 observacion = fila["observacion"]
-                prescription = fila["nota_medica"].present? ? fila["nota_medica"] : "IMPORTACIÓN"
+                prescription = fila["nota_medica"].presence || "IMPORTACIÓN"
                 weight = fila["PESO"].present? ? fila["PESO"].to_f : 0
                 height = fila["TALLA"].present? ? fila["TALLA"].to_f : 0
                 imc = fila["IMC"].present? ? fila["IMC"].to_f : 0

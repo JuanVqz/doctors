@@ -1,11 +1,11 @@
 class Hospitalization < ApplicationRecord
-  enum status: ["Alta médica", "Alta voluntaria", "Traslado a otra unidad"]
+  enum status: {"Alta m\u00E9dica" => 0, "Alta voluntaria" => 1, "Traslado a otra unidad" => 2}
 
   belongs_to :doctor
   belongs_to :patient
   belongs_to :referred_doctor, optional: true
 
-  validates :starting, :ending, :patient, :days_of_stay, presence: true
+  validates :starting, :ending, :days_of_stay, presence: true
   validates :days_of_stay, numericality: {greater_than: 0}
 
   scope :per_doctor, ->(doctor_id) { where(doctor_id: doctor_id) }

@@ -4,7 +4,7 @@ RSpec.describe Hospitalization, type: :model do
   it { should define_enum_for :status }
 
   it do
-    should define_enum_for(:status)
+    expect(subject).to define_enum_for(:status)
       .with_values(["Alta médica", "Alta voluntaria", "Traslado a otra unidad"])
   end
 
@@ -36,21 +36,21 @@ RSpec.describe Hospitalization, type: :model do
       create_list :hospitalization, 3, doctor: doctor_two, patient: patient_two
     end
 
-    before :each do
+    before do
       hospitalizations_one
       hospitalization_two
     end
 
     it ".per_doctor" do
-      expect(Hospitalization.per_doctor(doctor_one.id).count).to eq 5
+      expect(described_class.per_doctor(doctor_one.id).count).to eq 5
     end
 
     it ".per_patient" do
-      expect(Hospitalization.per_patient(patient_one.id).count).to eq 5
+      expect(described_class.per_patient(patient_one.id).count).to eq 5
     end
 
     it ".by_doctor_and_patient" do
-      expect(Hospitalization.by_doctor_and_patient(doctor_one.id, patient_one.id).count).to eq 5
+      expect(described_class.by_doctor_and_patient(doctor_one.id, patient_one.id).count).to eq 5
     end
   end
 
@@ -80,19 +80,19 @@ RSpec.describe Hospitalization, type: :model do
         treatment: "Tratamiento 2", days_of_stay: 10.0, patient: mateo
     end
 
-    before :each do
+    before do
       [hospitalization_one, hospitalization_two, hospitalization_three]
     end
 
     context "when search for reason_for_hospitalization 'RaZón'" do
       it "returns 1" do
-        expect(Hospitalization.search("RaZón").count).to eq 1
+        expect(described_class.search("RaZón").count).to eq 1
       end
     end
 
     context "when search for treatment 'TraTamIentO'" do
       it "returns 2" do
-        expect(Hospitalization.search("TraTamIentO").count).to eq 2
+        expect(described_class.search("TraTamIentO").count).to eq 2
       end
     end
   end

@@ -6,7 +6,7 @@ RSpec.describe "hospitalizations/new", type: :view do
 
   let(:patient) { create :patient, doctors: [doctor], hospital_id: hospital.id }
 
-  before(:each) do
+  before do
     assign(:hospitalization, Hospitalization.new(
       starting: "2018-11-10",
       ending: "2018-11-12",

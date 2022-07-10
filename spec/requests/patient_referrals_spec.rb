@@ -2,16 +2,6 @@ require "rails_helper"
 
 RSpec.describe "/patient_referrals", type: :request do
   let(:hospital) { create :hospital }
-  let(:doctor) { create :doctor, hospital: hospital }
-  let(:patient) { create :patient, doctors: [doctor] }
-  let(:referred_doctor) { create :referred_doctor, doctor: doctor }
-
-  before :each do
-    allow(Hospital).to receive(:current_id).and_return hospital.id
-    allow_any_instance_of(ApplicationController).to receive(:current_hospital).and_return hospital
-    sign_in doctor
-  end
-
   let(:valid_attributes) do
     {
       subject: "Subject",
@@ -22,7 +12,6 @@ RSpec.describe "/patient_referrals", type: :request do
       hospital_id: hospital.id
     }
   end
-
   let(:invalid_attributes) do
     {
       subject: "",
@@ -32,6 +21,15 @@ RSpec.describe "/patient_referrals", type: :request do
       referred_doctor_id: nil,
       hospital_id: nil
     }
+  end
+  let(:doctor) { create :doctor, hospital: hospital }
+  let(:patient) { create :patient, doctors: [doctor] }
+  let(:referred_doctor) { create :referred_doctor, doctor: doctor }
+
+  before do
+    allow(Hospital).to receive(:current_id).and_return hospital.id
+    allow_any_instance_of(ApplicationController).to receive(:current_hospital).and_return hospital
+    sign_in doctor
   end
 
   describe "GET /index" do
@@ -83,7 +81,7 @@ RSpec.describe "/patient_referrals", type: :request do
       it "does not create a new PatientReferral" do
         expect {
           post patient_referrals_url, params: {patient_referral: invalid_attributes}
-        }.to change(PatientReferral, :count).by(0)
+        }.not_to change(PatientReferral, :count)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do

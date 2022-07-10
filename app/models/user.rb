@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   default_scope { where(hospital_id: Hospital.current_id) }
 
-  enum role: [:patient, :doctor, :admin]
+  enum role: {patient: 0, doctor: 1, admin: 2}
 
   validates :role, presence: true
 

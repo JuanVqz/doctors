@@ -2,14 +2,6 @@ require "rails_helper"
 
 RSpec.describe "/referred_doctors", type: :request do
   let(:hospital) { create :hospital, :basic }
-  let(:doctor) { create :doctor, :admin, hospital_id: hospital.id }
-
-  before :each do
-    allow(Hospital).to receive(:current_id).and_return hospital.id
-    allow_any_instance_of(ApplicationController).to receive(:current_hospital).and_return hospital
-    sign_in doctor
-  end
-
   let(:valid_attributes) do
     {
       full_name: "Licha Perez",
@@ -23,13 +15,19 @@ RSpec.describe "/referred_doctors", type: :request do
       }
     }
   end
-
   let(:invalid_attributes) do
     {
       full_name: nil,
       specialty: nil,
       doctor: nil
     }
+  end
+  let(:doctor) { create :doctor, :admin, hospital_id: hospital.id }
+
+  before do
+    allow(Hospital).to receive(:current_id).and_return hospital.id
+    allow_any_instance_of(ApplicationController).to receive(:current_hospital).and_return hospital
+    sign_in doctor
   end
 
   describe "GET /index" do
@@ -82,7 +80,7 @@ RSpec.describe "/referred_doctors", type: :request do
       it "does not create a new ReferredDoctor" do
         expect {
           post referred_doctors_url, params: {referred_doctor: invalid_attributes}
-        }.to change(ReferredDoctor, :count).by(0)
+        }.not_to change(ReferredDoctor, :count)
       end
 
       it "renders a successful response" do

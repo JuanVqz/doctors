@@ -1,6 +1,6 @@
 require "ffaker"
 
-puts "Creating Hospitals"
+Rails.logger.debug "Creating Hospitals"
 fake_hospitals = [
   {
     name: "Hospital Pediatrico", subdomain: "demo",
@@ -26,7 +26,7 @@ fake_hospitals = [
 ]
 
 hospitals = Hospital.create(fake_hospitals)
-puts "Hospitals #{hospitals.size}"
+Rails.logger.debug { "Hospitals #{hospitals.size}" }
 
 hospitals.each do |hospital|
   Address.create(
@@ -35,41 +35,41 @@ hospitals.each do |hospital|
   )
 end
 
-puts "Creating Doctors"
+Rails.logger.debug "Creating Doctors"
 fake_doctors = [
   {
     name: "Pedro", first_name: "Demo", last_name: "Demo",
     specialty: "Cirujano Plastico", email: "cero@gmail.com",
-    password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
+    password: "123456", password_confirmation: "123456", confirmed_at: Time.zone.now,
     hospital_id: Hospital.find_by(subdomain: "demo").id,
     role: "admin"
   }, {
     name: "Rafael", first_name: "Uno", last_name: "Uno",
     specialty: "Cirujano Plastico", email: "uno@gmail.com",
-    password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
+    password: "123456", password_confirmation: "123456", confirmed_at: Time.zone.now,
     hospital_id: Hospital.find_by(subdomain: "uno").id, role: "admin"
   }, {
     name: "Carlos", first_name: "Dos", last_name: "Dos",
     specialty: "Cirujano Plastico", email: "dos@gmail.com",
-    password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
+    password: "123456", password_confirmation: "123456", confirmed_at: Time.zone.now,
     hospital_id: Hospital.find_by(subdomain: "dos").id, role: "admin"
   }, {
     name: "Edgardo", first_name: "Tres", last_name: "Tres",
     specialty: "Cirujano Plastico", email: "tres@gmail.com",
-    password: "123456", password_confirmation: "123456", confirmed_at: Time.now,
+    password: "123456", password_confirmation: "123456", confirmed_at: Time.zone.now,
     hospital_id: Hospital.find_by(subdomain: "tres").id, role: "admin"
   }
 ]
 
 doctors = Doctor.create(fake_doctors)
-puts "Doctors #{doctors.size}"
+Rails.logger.debug { "Doctors #{doctors.size}" }
 
-puts "Creating Patients"
+Rails.logger.debug "Creating Patients"
 doctors.each do |doctor|
-  puts "======================================================================="
-  puts "Doctor: #{doctor.name} ID: #{doctor.id} Hospital: #{doctor.hospital} ID: #{doctor.hospital_id}"
+  Rails.logger.debug "======================================================================="
+  Rails.logger.debug { "Doctor: #{doctor.name} ID: #{doctor.id} Hospital: #{doctor.hospital} ID: #{doctor.hospital_id}" }
   10.times do |n|
-    puts "#{n} - 10"
+    Rails.logger.debug { "#{n} - 10" }
     patient = Patient.create(
       name: FFaker::NameMX.name,
       first_name: FFaker::Name.last_name,
@@ -106,7 +106,7 @@ doctors.each do |doctor|
     # doctor = Doctor.unscoped.first
     doctor.patients << patient
 
-    puts "Creating #{patient} Appoinments"
+    Rails.logger.debug { "Creating #{patient} Appoinments" }
     10.times do
       Appoinment.create(
         reason: FFaker::Lorem.phrase, note: FFaker::HTMLIpsum.p,
@@ -124,4 +124,4 @@ fake_referred_doctors = [
 ]
 referred_doctors =
   doctors.map { |doctor| doctor.referred_doctors.create!(fake_referred_doctors) }
-puts "Referred Doctors #{referred_doctors.size}"
+Rails.logger.debug { "Referred Doctors #{referred_doctors.size}" }

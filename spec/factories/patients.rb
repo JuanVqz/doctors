@@ -16,7 +16,7 @@ FactoryBot.define do
     sex { "Masculino" }
     role { "patient" }
     type { "Patient" }
-    confirmed_at { Time.now }
+    confirmed_at { Time.zone.now }
 
     after :build do |patient|
       if patient.doctors.nil?

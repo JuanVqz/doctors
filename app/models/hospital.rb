@@ -1,7 +1,7 @@
 class Hospital < ApplicationRecord
   cattr_accessor :current_id
 
-  enum plan: [:basic, :medium]
+  enum plan: {basic: 0, medium: 1}
 
   has_one :address, as: :addressable, dependent: :destroy
   has_many :doctors, dependent: :destroy

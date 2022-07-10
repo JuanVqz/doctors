@@ -1,5 +1,5 @@
 class PatientReferral < ApplicationRecord
-  enum importance: [:electivo, :urgente]
+  enum importance: {electivo: 0, urgente: 1}
 
   belongs_to :patient
   belongs_to :doctor
