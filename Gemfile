@@ -25,8 +25,8 @@ if next?
 else
   gem "rails", "7.0.3"
 end
-gem "sprockets-rails"
 gem "simple_form"
+gem "sprockets-rails"
 gem "trix-rails", require: "trix"
 gem "turbolinks", "~> 5"
 gem "wicked_pdf"
@@ -36,17 +36,21 @@ group :development, :test do
   gem "capybara"
   gem "factory_bot_rails"
   gem "ffaker"
+  gem "next_rails"
   gem "pry"
   gem "rspec-rails"
+  gem "rubocop"
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
   gem "shoulda-matchers"
   gem "simplecov", require: false
   gem "standard"
   gem "webdrivers", "5.0", require: false
-  gem "next_rails"
 end
 
 group :development do
   gem "listen", ">= 3.0.5", "< 3.8"
+  gem "overcommit"
   gem "spring", "4.0.0"
   gem "web-console", ">= 3.3.0"
 end

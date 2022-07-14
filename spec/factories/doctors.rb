@@ -9,7 +9,7 @@ FactoryBot.define do
     password { "123456" }
     type { "Doctor" }
     role { "admin" }
-    confirmed_at { Time.now }
+    confirmed_at { Time.zone.now }
     association :hospital, factory: :hospital
   end
 

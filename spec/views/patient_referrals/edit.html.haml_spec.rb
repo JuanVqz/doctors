@@ -6,7 +6,7 @@ RSpec.describe "patient_referrals/edit", type: :view do
   let(:patient) { create :patient, doctors: [doctor] }
   let(:referred_doctor) { create :referred_doctor, doctor: doctor }
 
-  before(:each) do
+  before do
     @patient_referral = assign(:patient_referral, PatientReferral.create!(
       subject: "MyString",
       content: "MyText",

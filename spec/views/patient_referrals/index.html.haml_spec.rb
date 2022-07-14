@@ -6,7 +6,7 @@ RSpec.describe "patient_referrals/index", type: :view do
   let(:patient) { create :patient, doctors: [doctor] }
   let(:referred_doctor) { create :referred_doctor, doctor: doctor }
 
-  before(:each) do
+  before do
     assign(:patient_referrals, Kaminari.paginate_array([
       PatientReferral.create!(
         subject: "Subject",

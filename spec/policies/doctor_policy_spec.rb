@@ -1,15 +1,15 @@
 require "rails_helper"
 
 RSpec.describe DoctorPolicy do
+  subject { described_class }
+
   let(:hospital) { create :hospital, subdomain: "ursula" }
   let(:admin) { create :doctor, role: "admin", hospital: hospital }
   let(:doctor) { create :doctor, role: "doctor", hospital: hospital }
   let(:doctors) { create_list :doctor, 4, hospital: hospital }
 
-  subject { described_class }
-
   permissions ".scope" do
-    before :each do
+    before do
       allow(Hospital).to receive(:current_id).and_return hospital.id
       doctors
     end
@@ -38,7 +38,7 @@ RSpec.describe DoctorPolicy do
     end
 
     it "denies access if doctor is doctor" do
-      expect(subject).to_not permit(doctor, Doctor.new)
+      expect(subject).not_to permit(doctor, Doctor.new)
     end
   end
 
@@ -48,7 +48,7 @@ RSpec.describe DoctorPolicy do
     end
 
     it "denies access if doctor is doctor" do
-      expect(subject).to_not permit(doctor, admin)
+      expect(subject).not_to permit(doctor, admin)
     end
   end
 end

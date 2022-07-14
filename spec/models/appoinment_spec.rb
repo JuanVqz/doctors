@@ -78,13 +78,15 @@ RSpec.describe Appoinment, type: :model do
 
     context "search by reason, note or prescription" do
       it "returns one matches" do
-        expect(Appoinment.search("RaZón").count).to eq 1
+        expect(described_class.search("RaZón").count).to eq 1
       end
+
       it "returns two matches" do
-        expect(Appoinment.search("PracTicA").count).to eq 2
+        expect(described_class.search("PracTicA").count).to eq 2
       end
+
       it "returns one matches" do
-        expect(Appoinment.search("ImpriMir").count).to eq 1
+        expect(described_class.search("ImpriMir").count).to eq 1
       end
     end
   end
@@ -108,15 +110,15 @@ RSpec.describe Appoinment, type: :model do
     end
 
     it ".per_doctor" do
-      expect(Appoinment.per_doctor(doctor_one.id).count).to eq 5
+      expect(described_class.per_doctor(doctor_one.id).count).to eq 5
     end
 
     it ".per_patient" do
-      expect(Appoinment.per_patient(patient_one.id).count).to eq 5
+      expect(described_class.per_patient(patient_one.id).count).to eq 5
     end
 
     it ".by_doctor_and_patient" do
-      expect(Appoinment.by_doctor_and_patient(doctor_one.id, patient_one.id).count).to eq 5
+      expect(described_class.by_doctor_and_patient(doctor_one.id, patient_one.id).count).to eq 5
     end
   end
 end

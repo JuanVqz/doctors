@@ -31,8 +31,8 @@ jobs:
           bundler-cache: true
       - name: Install dependencies
         run: bundle install
-      - name: Run standardrb
-        run: bundle exec standardrb
+      - name: Run rubocop
+        run: bundle exec rubocop
       - name: Run test suite
         env:
           RAILS_ENV: test

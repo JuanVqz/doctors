@@ -4,7 +4,7 @@ RSpec.describe "referred_doctors/index", type: :view do
   let(:hospital) { create :hospital, subdomain: "ursula" }
   let(:doctor) { create :doctor, hospital_id: hospital.id }
 
-  before(:each) do
+  before do
     assign(:referred_doctors, Kaminari.paginate_array([
       ReferredDoctor.create!(
         full_name: "Full Name",

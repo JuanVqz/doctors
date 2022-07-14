@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def referred_doctor_for_select
-    return [] unless current_user.present?
+    return [] if current_user.blank?
 
     ReferredDoctor.by_doctor(current_user.id).map { |p| [p, p.id] }
   end

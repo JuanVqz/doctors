@@ -8,7 +8,7 @@ class ReferredDoctor < ApplicationRecord
 
   validates :full_name, :specialty, presence: true
   validates :phone_number, format: {with: /\A\d+\z/, message: "acepta solo numeros"}, allow_blank: true
-  validates_length_of :phone_number, is: 10, allow_blank: true
+  validates :phone_number, length: {is: 10, allow_blank: true}
 
   scope :by_doctor, ->(doctor_id) { where(doctor_id: doctor_id) }
 

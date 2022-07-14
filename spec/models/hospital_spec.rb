@@ -16,11 +16,11 @@ RSpec.describe Hospital, type: :model do
       let(:hospital) { create :hospital, plan: :basic }
 
       it "returns true" do
-        expect(hospital.basic?).to be_truthy
+        expect(hospital).to be_basic
       end
 
       it "returns false" do
-        expect(hospital.medium?).to be_falsey
+        expect(hospital).not_to be_medium
       end
     end
 
@@ -28,11 +28,11 @@ RSpec.describe Hospital, type: :model do
       let(:hospital) { create :hospital, plan: :medium }
 
       it "returns true" do
-        expect(hospital.medium?).to be_truthy
+        expect(hospital).to be_medium
       end
 
       it "returns false" do
-        expect(hospital.basic?).to be_falsey
+        expect(hospital).not_to be_basic
       end
     end
   end

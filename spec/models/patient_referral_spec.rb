@@ -4,7 +4,7 @@ RSpec.describe PatientReferral, type: :model do
   it { should define_enum_for(:importance) }
 
   it do
-    should define_enum_for(:importance).with_values([:electivo, :urgente])
+    expect(subject).to define_enum_for(:importance).with_values([:electivo, :urgente])
   end
 
   describe "#validations" do
@@ -33,7 +33,7 @@ RSpec.describe PatientReferral, type: :model do
   end # describe #validations
 
   describe "#scopes" do
-    context "#by_hospital(hospital_id)" do
+    describe "#by_hospital(hospital_id)" do
       let(:hospital_one) { create :hospital, :basic }
       let(:hospital_two) { create :hospital, :basic }
       let(:patient_referral_one_one) { create :patient_referral, hospital: hospital_one }
@@ -45,7 +45,7 @@ RSpec.describe PatientReferral, type: :model do
         patient_referral_one_two
         patient_referral_two_one
 
-        expect(PatientReferral.by_hospital(hospital_two.id)).to eq [patient_referral_two_one]
+        expect(described_class.by_hospital(hospital_two.id)).to eq [patient_referral_two_one]
       end
     end # context #by_hospital(hospital_id)
   end # describe #scopes
