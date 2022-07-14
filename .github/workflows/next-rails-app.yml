@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: BUNDLE_GEMFILE=Gemfile.next bundle install
       - name: Run rubocop
-        run: bundle exec rubocop -c ./.rubocop_todo.yml
+        run: bundle exec rubocop
       - name: Run test suite
         env:
           RAILS_ENV: test
