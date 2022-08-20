@@ -22,8 +22,8 @@ y debes ingresar de la siguiente manera.
 ```sh
 git clone https://JuanVqz@bitbucket.org/JuanVqz/doctors.git
 cd doctors
-docker-compose up
 docker-compose run --rm web rails db:setup
+docker-compose up
 ```
 
 ahora puedes visitar la siguiente ruta
