@@ -43,7 +43,6 @@ group :development, :test do
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "shoulda-matchers"
-  gem "simplecov", require: false
   gem "standard"
   gem "webdrivers", "5.0", require: false
 end
@@ -53,6 +52,11 @@ group :development do
   gem "overcommit"
   gem "spring", "4.0.0"
   gem "web-console", ">= 3.3.0"
+end
+
+group :development, :test do
+  gem "simplecov", require: false
+  gem "simplecov-json", require: false
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

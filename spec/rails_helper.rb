@@ -1,5 +1,13 @@
-require "simplecov"
-SimpleCov.start "rails"
+if ENV["COVERAGE"] == "true"
+  require "simplecov"
+  require 'simplecov-json'
+  SimpleCov.start "rails"
+
+  SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
+    SimpleCov::Formatter::HTMLFormatter,
+    SimpleCov::Formatter::JSONFormatter
+  ])
+end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require "spec_helper"
