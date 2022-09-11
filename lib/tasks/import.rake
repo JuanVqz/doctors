@@ -2,10 +2,10 @@ require "csv"
 
 namespace :import do
 
-  namespace :rafael_aragon do
+  namespace :doctor_name do
     desc "Import Patients from CSV"
     task patients: :environment do
-      filename = File.join Rails.root, "lib/tasks/info/rafael_aragon/patients.csv"
+      filename = File.join Rails.root, "lib/tasks/info/doctor_name/patients.csv"
       counter  = 0
       doctor   = Doctor.unscoped.find_by(email: "drrafaelaragon@gmail.com")
       hospital = Hospital.find_by(subdomain: "rafaelaragon")
