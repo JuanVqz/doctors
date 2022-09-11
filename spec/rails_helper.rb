@@ -1,5 +1,8 @@
-require "simplecov"
-SimpleCov.start "rails"
+if ENV["COVERAGE"] == "true"
+  require "simplecov"
+  SimpleCov.start "rails"
+  puts "Using SimpleCov v#{SimpleCov::VERSION}"
+end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require "spec_helper"

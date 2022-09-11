@@ -1,0 +1,21 @@
+name: Skunk
+on: [push, pull_request]
+
+jobs:
+  skunk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+      - name: Run test suite with COVERAGE=true
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          COVERAGE=true bundle exec rake
+      - name: Run Skunk on Project
+        run: |
+          gem install skunk
+          echo "Executing within main branch"
+          skunk
