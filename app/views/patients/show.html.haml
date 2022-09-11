@@ -16,7 +16,7 @@
             %i.fa.fa-edit
           %span Editar
 
-        = link_to new_medical_consultation_path(patient_id: @patient.id), id: "new_medical_consultation_path", class: "button is-default" do
+        = link_to new_appoinment_path(patient_id: @patient.id), id: "new_appoinment_path", class: "button is-default" do
           %span.icon
             %i.fa.fa-book
           %span Nueva Consulta
@@ -42,11 +42,11 @@
         %span.icon.is-small
           %i.fas.fa-history
         %span Historial Clinico
-    %li{ "data-tab": "medical_consultations" }
+    %li{ "data-tab": "appoinments" }
       %a
         %span.icon.is-small
           %i.fas.fa-book
-        %span#my_medical_consultations
+        %span#appoinments
           Consultas Medicas
     %li{ "data-tab": "hospitalizations" }
       %a
@@ -62,8 +62,8 @@
     = render "patients/address"
   %span{ "data-content": "clinic_history" }
     = render "patients/clinic_history"
-  %span{ "data-content": "medical_consultations" }
-    = render "patients/medical_consultations"
+  %span{ "data-content": "appoinments" }
+    = render "patients/appoinments"
   %span{ "data-content": "hospitalizations" }
     = render "patients/hospitalizations"
 

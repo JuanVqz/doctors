@@ -1,82 +1,127 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-require 'ffaker'
+require "ffaker"
 
-# Hospitals
-puts "Creating Hospitals"
-hospital_one = Hospital.where(
-  name: "Hospital Pediatrico", subdomain: "stark-headland-73197",
-  description: "Salvando Vidas", tags: "Cirugía general gastrointestinal,Cirugía con laparoscópica avanzada,Enfermedades del aparato digestivo,Clínica de hernias,Tiroides y paratiroide,Estómago,Enfermedad  por reflujo gastroesofágico,Esófago,Hígado,Vesícula biliar,Apéndice",
-  about: "La fundación del Hospital Infantil de México, primero de los actuales Institutos Nacionales de Salud, dio inicio, sin duda, de la modernidad del sistema de salud en México.",
-  schedule: "Lunes a Viernes de 09:00 - 19:00"
-).first_or_create
+Rails.logger.debug "Creating Hospitals"
+fake_hospitals = [
+  {
+    name: "Hospital Pediatrico", subdomain: "demo",
+    description: "Salvando Vidas", tags: "Cirugía, Especialistas",
+    about: "La fundación del Hospital Infantil de México",
+    schedule: "Lunes a Viernes de 09:00 - 19:00"
+  }, {
+    name: "Hospital Gastroenterologia", subdomain: "uno",
+    description: "Salvando Vidas", tags: "Cirugía, Especialistas",
+    about: "La fundación del Hospital Infantil de México",
+    schedule: "Lunes a Viernes de 09:00 - 19:00"
+  }, {
+    name: "Hospital Ginecologia", subdomain: "dos",
+    description: "Salvando Vidas", tags: "Cirugía, Especialistas",
+    about: "La fundación del Hospital Infantil de México",
+    schedule: "Lunes a Viernes de 09:00 - 19:00"
+  }, {
+    name: "Sto Domingo de Guzmán", subdomain: "tres",
+    description: "Salvando Vidas", tags: "Cirugía, Especialistas",
+    about: "La fundación del Hospital Infantil de México",
+    schedule: "Lunes a Viernes de 09:00 - 19:00"
+  }
+]
 
-Address.create(
-  street: "Emiliano Zapata", number: "Int 10", colony: "Reforma",
-  municipality: "Oaxaca de Juárez", addressable: hospital_one
-)
+hospitals = Hospital.create(fake_hospitals)
+Rails.logger.debug { "Hospitals #{hospitals.size}" }
 
-# Doctors
-puts "Creating Doctors"
-doctor_one = Doctor.create(
-  name: "Pedro", first_name: "Ramírez", last_name: "Sánchez",
-  specialty: "Cirujano Plastico", email: "pedrouno@gmail.com", password: "123456",
-  password_confirmation: "123456", confirmed_at: Time.now,
-  hospital_id: hospital_one.id, role: "admin"
-)
-
-# Patients
-puts "Creating Patients"
-30.times do |n|
-  puts "#{n} - 30"
-  patient = Patient.create(
-    name: FFaker::NameMX.name, first_name: FFaker::Name.last_name,
-    last_name: FFaker::Name.last_name, birthday: "1989-09-19",
-    place_of_birth: "México", sex: "Masculino",
-    cellphone: FFaker::PhoneNumberMX.mobile_phone_number, height: 170,
-    weight: 80, blood_group: "ARH+", occupation: "Ocupacion #{n}",
-    created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
-    referred_by: FFaker::NameMX.name, hospital_id: hospital_one.id
-  )
-
+hospitals.each do |hospital|
   Address.create(
-    street: FFaker::Address.street_name, number: n,
-    colony: FFaker::Address.street_name, postal_code: FFaker::AddressMX.postal_code,
-    municipality: FFaker::AddressMX.municipality, state: FFaker::AddressMX.state,
-    country: FFaker::Address.country, addressable_type: "Patient",
-    addressable: patient
+    street: "Emiliano Zapata", number: "Int 10", colony: "Reforma",
+    municipality: "Oaxaca de Juárez", addressable: hospital
   )
+end
 
-  ClinicHistory.create(
-    description_diabetes: FFaker::Lorem.phrase, description_hypertension: FFaker::Lorem.word,
-    description_allergic: FFaker::Lorem.phrase, description_traumatic: FFaker::Lorem.word,
-    description_transfusion: FFaker::Lorem.phrase, description_surgical: FFaker::Lorem.word,
-    description_drug_addiction: FFaker::Lorem.phrase, description_hereditary: FFaker::Lorem.phrase,
-    description_cancer: FFaker::Lorem.phrase, description_other: FFaker::Lorem.word,
-    patient: patient
-  )
+Rails.logger.debug "Creating Doctors"
+fake_doctors = [
+  {
+    name: "Pedro", first_name: "Demo", last_name: "Demo",
+    specialty: "Cirujano Plastico", email: "cero@gmail.com",
+    password: "123456", password_confirmation: "123456", confirmed_at: Time.zone.now,
+    hospital_id: Hospital.find_by(subdomain: "demo").id,
+    role: "admin"
+  }, {
+    name: "Rafael", first_name: "Uno", last_name: "Uno",
+    specialty: "Cirujano Plastico", email: "uno@gmail.com",
+    password: "123456", password_confirmation: "123456", confirmed_at: Time.zone.now,
+    hospital_id: Hospital.find_by(subdomain: "uno").id, role: "admin"
+  }, {
+    name: "Carlos", first_name: "Dos", last_name: "Dos",
+    specialty: "Cirujano Plastico", email: "dos@gmail.com",
+    password: "123456", password_confirmation: "123456", confirmed_at: Time.zone.now,
+    hospital_id: Hospital.find_by(subdomain: "dos").id, role: "admin"
+  }, {
+    name: "Edgardo", first_name: "Tres", last_name: "Tres",
+    specialty: "Cirujano Plastico", email: "tres@gmail.com",
+    password: "123456", password_confirmation: "123456", confirmed_at: Time.zone.now,
+    hospital_id: Hospital.find_by(subdomain: "tres").id, role: "admin"
+  }
+]
 
-  doctor_one.patients << patient
+doctors = Doctor.create(fake_doctors)
+Rails.logger.debug { "Doctors #{doctors.size}" }
 
-  (1..20).each do
-    MedicalConsultation.create(
-      reason: FFaker::Lorem.phrase, subjetive: FFaker::Lorem.phrase,
-      objetive: FFaker::Lorem.phrase, prescription: FFaker::Lorem.phrase,
-      plan: FFaker::Lorem.paragraph, diagnosis: FFaker::Lorem.paragraph,
+Rails.logger.debug "Creating Patients"
+doctors.each do |doctor|
+  Rails.logger.debug "======================================================================="
+  Rails.logger.debug { "Doctor: #{doctor.name} ID: #{doctor.id} Hospital: #{doctor.hospital} ID: #{doctor.hospital_id}" }
+  10.times do |n|
+    Rails.logger.debug { "#{n} - 10" }
+    patient = Patient.create(
+      name: FFaker::NameMX.name,
+      first_name: FFaker::Name.last_name,
+      last_name: FFaker::Name.last_name,
+      birthday: "1989-09-19",
+      place_of_birth: "México",
+      sex: "Masculino",
+      cellphone: FFaker::PhoneNumberMX.mobile_phone_number,
+      height: 170,
+      weight: 80,
+      blood_group: "ARH+",
+      occupation: "Ocupacion #{n}",
+      allergies: FFaker::Lorem.word,
+      pathological_background: FFaker::Lorem.phrase,
+      non_pathological_background: FFaker::Lorem.sentence,
+      gyneco_obstetric_background: FFaker::Lorem.word,
+      system_background: FFaker::Lorem.word,
+      family_inheritance_background: FFaker::Lorem.word,
+      physic_exploration: FFaker::Lorem.word,
+      other_background: FFaker::Lorem.word,
       created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
-      doctor: doctor_one, patient: patient
+      referred_by: FFaker::NameMX.name,
+      hospital_id: doctor.hospital_id
     )
 
-    Hospitalization.create(
-      starting: "2018-12-10", ending: "2018-12-15",
-      days_of_stay: 5, doctor: doctor_one,
-      created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
-      patient: patient
+    Address.create(
+      street: FFaker::Address.street_name, number: n,
+      colony: FFaker::Address.street_name, postal_code: FFaker::AddressMX.postal_code,
+      municipality: FFaker::AddressMX.municipality, state: FFaker::AddressMX.state,
+      country: FFaker::Address.country, addressable_type: "Patient",
+      addressable: patient
     )
+
+    # doctor = Doctor.unscoped.first
+    doctor.patients << patient
+
+    Rails.logger.debug { "Creating #{patient} Appoinments" }
+    10.times do
+      Appoinment.create(
+        reason: FFaker::Lorem.phrase, note: FFaker::HTMLIpsum.p,
+        prescription: FFaker::Lorem.paragraph, recommendations: FFaker::Lorem.paragraph,
+        created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
+        doctor: doctor, patient: patient
+      )
+    end
   end
 end
+
+fake_referred_doctors = [
+  {full_name: FFaker::NameMX.unique.full_name, specialty: FFaker::Skill.unique.specialty},
+  {full_name: FFaker::NameMX.unique.full_name, specialty: FFaker::Skill.unique.specialty}
+]
+referred_doctors =
+  doctors.map { |doctor| doctor.referred_doctors.create!(fake_referred_doctors) }
+Rails.logger.debug { "Referred Doctors #{referred_doctors.size}" }

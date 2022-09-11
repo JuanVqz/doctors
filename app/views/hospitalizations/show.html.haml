@@ -25,41 +25,53 @@
             %i.fa.fa-user
 
 .columns
-  .column.is-6
-    %p.has-text-grey-light.is-uppercase Datos generales
-    .table-container
-      %table.table.is-hoverable.is-fullwidth
-        %tr
-          %thead
-            %tr
-              %th Doctor
-              %td= @hospitalization.doctor
-            %tr
-              %th Paciente
-              %td= @hospitalization.patient
-            %tr
-              %th Inicio
-              %td= @hospitalization.starting
-            %tr
-              %th Final
-              %td= @hospitalization.ending
-
-  .column.is-6
+  .column.is-9
     %p.has-text-grey-light.is-uppercase .
     .table-container
       %table.table.is-hoverable.is-fullwidth
         %tr
           %thead
             %tr
-              %th Días de estancia
+              %th= t "activerecord.attributes.hospitalization.input_diagnosis"
+              %td= @hospitalization.input_diagnosis&.html_safe
+            %tr
+              %th= t "activerecord.attributes.hospitalization.output_diagnosis"
+              %td= @hospitalization.output_diagnosis&.html_safe
+            %tr
+              %th= t "activerecord.attributes.hospitalization.reason_for_hospitalization"
+              %td= @hospitalization.reason_for_hospitalization&.html_safe
+            %tr
+              %th= t "activerecord.attributes.hospitalization.treatment"
+              %td= @hospitalization.treatment&.html_safe
+            %tr
+              %th= t "activerecord.attributes.hospitalization.recommendations"
+              %td= @hospitalization.recommendations&.html_safe
+  .column.is-3
+    %p.has-text-grey-light.is-uppercase Datos generales
+    .table-container
+      %table.table.is-hoverable.is-fullwidth
+        %tr
+          %thead
+            - if @hospitalization.referred_doctor_id.present?
+              %tr
+                %th Doctor Referido
+                %td= @hospitalization.referred_doctor
+            %tr
+              %th= t "activerecord.attributes.hospitalization.patient"
+              %td= @hospitalization.patient
+            %tr
+              %th= t "activerecord.attributes.hospitalization.status"
+              %td= @hospitalization.status
+            %tr
+              %th= t "activerecord.attributes.hospitalization.starting"
+              %td= @hospitalization.starting
+            %tr
+              %th= t "activerecord.attributes.hospitalization.ending"
+              %td= @hospitalization.ending
+            %tr
+              %th= t "activerecord.attributes.hospitalization.days_of_stay"
               %td= @hospitalization.days_of_stay
             %tr
-              %th Razón de hospitalización
-              %td= @hospitalization.reason_for_hospitalization
-            %tr
-              %th Tratamiento
-              %td= @hospitalization.treatment
-            %tr
-              %th Fecha de registro
+              %th= t "activerecord.attributes.hospitalization.created_at"
               %td= l @hospitalization.created_at, format: :long
 

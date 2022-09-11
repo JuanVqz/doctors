@@ -5,6 +5,7 @@ RSpec.describe Patient, type: :model do
   it { should have_one(:address).dependent(:destroy) }
   it { should have_and_belong_to_many :doctors }
   it { should have_many :medical_consultations }
+  it { should have_many :appoinments }
   it { should have_many :hospitalizations }
   it { should have_many :bentos }
 
@@ -14,6 +15,22 @@ RSpec.describe Patient, type: :model do
   it { should validate_presence_of :name }
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :birthday }
+
+  describe "#avatar" do
+    it "has an avatar" do
+      patient = create :patient, :with_avatar
+
+      expect(patient).to be_valid
+      expect(patient.avatar).to be_attached
+    end
+
+    it "has not an avatar" do
+      patient = create :patient
+
+      expect(patient).to be_valid
+      expect(patient.avatar).not_to be_attached
+    end
+  end
 
   describe ".search" do
     let(:hospital) { create :hospital }
@@ -38,48 +55,48 @@ RSpec.describe Patient, type: :model do
     context "when search for name 'jUaN'" do
       it "returns nothing" do
         [jose, josue]
-        expect(Patient.search("jUaN").count).to eq 0
+        expect(described_class.search("jUaN").count).to eq 0
       end
 
       it "returns 2" do
         [jose, juan, juanito, josue]
-        expect(Patient.search("jUaN").count).to eq 2
+        expect(described_class.search("jUaN").count).to eq 2
       end
     end
 
     context "when search for first_name 'PéRez'" do
       it "returns nothing" do
         [juan, juanito, josue]
-        expect(Patient.search("PéRez").count).to eq 0
+        expect(described_class.search("PéRez").count).to eq 0
       end
 
       it "returns 1" do
         [jose, juan, juanito, josue]
-        expect(Patient.search("PéRez").count).to eq 1
+        expect(described_class.search("PéRez").count).to eq 1
       end
     end
 
     context "when search for last_name 'RioS'" do
       it "returns nothing" do
         [jose, juan, juanito]
-        expect(Patient.search("RioS").count).to eq 0
+        expect(described_class.search("RioS").count).to eq 0
       end
 
       it "returns 1" do
         [jose, juan, juanito, josue]
-        expect(Patient.search("RioS").count).to eq 1
+        expect(described_class.search("RioS").count).to eq 1
       end
     end
 
     context "when search for full_name 'Josué Garcia Rios'" do
       it "returns nothing" do
         [jose, juan, juanito]
-        expect(Patient.search("JoSué GarCia RiOs").count).to eq 0
+        expect(described_class.search("JoSué GarCia RiOs").count).to eq 0
       end
 
       it "returns 1" do
         [jose, juan, juanito, josue]
-        expect(Patient.search("JoSué GarCia RiOs").count).to eq 1
+        expect(described_class.search("JoSué GarCia RiOs").count).to eq 1
       end
     end
   end

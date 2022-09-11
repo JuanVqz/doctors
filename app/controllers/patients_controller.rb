@@ -1,13 +1,13 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_patient, only: [:show, :edit, :update, :weight]
+  before_action :set_patient, only: [:show, :edit, :update, :appoinments]
+  before_action :set_appoinments, only: [:show, :appoinments]
 
   def index
     @patients = Patient.recent.search(params[:query]).page(params[:page])
   end
 
   def show
-    set_medical_consultations
     set_hospitalizations
   end
 
@@ -22,6 +22,7 @@ class PatientsController < ApplicationController
     @patient = Patient.new patient_params
 
     if @patient.save
+      @patient.avatar.attach(params[:patient][:avatar])
       current_user.patients << @patient
       redirect_to patient_path(@patient), notice: "Paciente creado correctamente."
     else
@@ -40,14 +41,21 @@ class PatientsController < ApplicationController
   def weight
   end
 
+  def appoinments
+    respond_to do |format|
+      format.js
+      format.pdf { render generar_pdf("appoinments") }
+    end
+  end
+
   private
 
   def set_patient
     @patient = Patient.find(params[:id])
   end
 
-  def set_medical_consultations
-    @medical_consultations = MedicalConsultation.by_doctor_and_patient(current_user.id, @patient.id)
+  def set_appoinments
+    @appoinments = Appoinment.by_doctor_and_patient(current_user.id, @patient.id)
       .recent
       .page(params[:page])
   end
@@ -62,7 +70,11 @@ class PatientsController < ApplicationController
     params.require(:patient).permit(
       :name, :first_name, :last_name, :birthday, :height,
       :weight, :blood_group, :occupation, :referred_by,
-      :place_of_birth, :sex, :cellphone,
+      :place_of_birth, :sex, :cellphone, :marital_status,
+      :comments, :avatar, :allergies, :pathological_background,
+      :non_pathological_background, :gyneco_obstetric_background,
+      :system_background, :family_inheritance_background,
+      :physic_exploration, :other_background,
       address_attributes: [
         :id, :street, :number, :colony, :postal_code, :municipality,
         :state, :country, :_destroy
@@ -75,5 +87,9 @@ class PatientsController < ApplicationController
         :description_other, :patien_id, :_destroy
       ]
     )
+  end
+
+  def pdf_name
+    "#{@patient.name}_#{@patient.id}_#{@patient.created_at.to_s(:number)}".upcase
   end
 end

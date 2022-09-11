@@ -3,8 +3,11 @@ class Patient < User
   has_one :address, as: :addressable, dependent: :destroy
   has_and_belongs_to_many :doctors, join_table: "doctors_patients"
   has_many :medical_consultations, -> { order(created_at: :desc) }
+  has_many :appoinments, -> { order(created_at: :desc) }
   has_many :hospitalizations, -> { order(created_at: :desc) }
   has_many :bentos
+
+  has_one_attached :avatar
 
   accepts_nested_attributes_for :clinic_history, allow_destroy: true
   accepts_nested_attributes_for :address, allow_destroy: true
@@ -25,5 +28,16 @@ class Patient < User
 
   def password_required?
     false
+  end
+
+  def clinic_history?
+    allergies.present? ||
+      pathological_background.present? ||
+      non_pathological_background.present? ||
+      gyneco_obstetric_background.present? ||
+      system_background.present? ||
+      family_inheritance_background.present? ||
+      physic_exploration.present? ||
+      other_background.present?
   end
 end

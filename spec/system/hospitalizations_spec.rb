@@ -1,20 +1,19 @@
 require "rails_helper"
 
 RSpec.describe "Hospitalization's flow", type: :system do
-  before :each do
-    create_hospital_plan_medium
-    visit_sign_in_doctor
-    sign_in_doctor @hospital
-    create_patient
-    create_hospitalizations_for_patient
-    visit_patients_path
-    visit_patients_path
-    see_patient_name
-    click_link_details
+  before do
+    driven_by(:selenium_chrome_headless)
   end
 
-  feature "Doctor can create a hospitalization" do
-    scenario "from patient list" do
+  feature "Doctor can create an hospitalization" do
+    scenario "from patient list", js: true do
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
+      create_patient doctors: [@admin]
+      create_three_hospitalizations_for_patient doctor: @admin
+      visit_patients_path
+      see_patient_name
+      click_link_details
       click_link_tab_hospitalizations
       click_link_new_hospitalization
       visit_new_hospitalization_with_patient_id_param
@@ -24,7 +23,7 @@ RSpec.describe "Hospitalization's flow", type: :system do
   end
 
   def click_link_tab_hospitalizations
-    find(:css, '#my_hospitalizations').click
+    find(:css, "#my_hospitalizations").click
   end
 
   def click_link_new_hospitalization
@@ -37,11 +36,14 @@ RSpec.describe "Hospitalization's flow", type: :system do
 
   def create_new_hospitalization_with_preselected_patient
     see_patient_name
-    fill_in "hospitalization_starting", with: "11-11-2018"
-    fill_in "hospitalization_ending", with: "15-11-2018"
+    fill_in "hospitalization_starting", with: DateTime.current
+    fill_in "hospitalization_ending", with: DateTime.current
     fill_in "hospitalization_days_of_stay", with: "5"
-    fill_in "hospitalization_reason_for_hospitalization", with: "Razon de la hospitalización"
-    fill_in "hospitalization_treatment", with: "Tratamiento"
+    fill_in_trix_editor "hospitalization_reason_for_hospitalization", with: "Razon de la hospitalización"
+    fill_in_trix_editor "hospitalization_treatment", with: "Tratamiento"
+    fill_in_trix_editor "hospitalization_input_diagnosis", with: "Diagnostico de entrada"
+    fill_in_trix_editor "hospitalization_output_diagnosis", with: "Diagnostico de salida"
+    fill_in_trix_editor "hospitalization_recommendations", with: "Recomendaciones"
 
     click_button "Crear Hospitalización"
   end

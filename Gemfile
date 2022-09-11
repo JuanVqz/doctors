@@ -1,55 +1,58 @@
+def next?
+  File.basename(__FILE__) == "Gemfile.next"
+end
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.5.3"
+ruby IO.readlines(".ruby-version")[0].strip
 
-gem "rails", "~> 5.2.2"
-gem "pg", ">= 0.18", "< 2.0"
-gem "puma", "~> 3.11"
-gem "sass-rails", "~> 5.0"
-gem "uglifier", ">= 1.3.0"
-gem "coffee-rails", "~> 4.2"
-gem "turbolinks", "~> 5"
-gem "jbuilder", "~> 2.5"
 gem "bootsnap", ">= 1.1.0", require: false
-
 gem "bulma-extensions-rails"
-gem "bulma-rails", "~> 0.7.1"
+gem "bulma-rails", "~> 0.9.3"
 gem "cocoon"
 gem "devise"
-gem "ffaker"
-gem "font-awesome-sass", "~> 5.3.1"
-gem "haml-rails", "~>1.0"
+gem "font-awesome-rails"
+gem "haml-rails", "~> 2.0"
+gem "jbuilder", "~> 2.11"
 gem "jquery-rails"
 gem "kaminari"
+gem "pg", ">= 0.18", "< 2.0"
+gem "puma", "~> 5.6"
 gem "pundit"
+if next?
+  gem "rails", "7.0.3.1"
+else
+  gem "rails", "~> 7.0.3"
+end
 gem "simple_form"
+gem "sprockets-rails"
 gem "trix-rails", require: "trix"
-gem "unicorn"
+gem "turbolinks", "~> 5"
 gem "wicked_pdf"
-gem "wkhtmltopdf-binary", "0.12.3"
+gem "wkhtmltopdf-binary", "0.12.6.5"
 
 group :development, :test do
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "pry-rails", "~> 0.3.6"
-  gem "rspec-rails", "~> 3.7", ">= 3.7.2"
-  gem "factory_bot_rails", "~> 4.8", ">= 4.8.2"
-  gem "shoulda-matchers", "~> 3.1", ">= 3.1.2"
   gem "capybara"
-  gem "webdrivers", "~> 4.0"
+  gem "factory_bot_rails"
+  gem "ffaker"
+  gem "next_rails"
+  gem "pry"
+  gem "rspec-rails"
+  gem "rubocop"
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
+  gem "shoulda-matchers"
+  gem "simplecov", require: false
+  gem "standard"
+  gem "webdrivers", "5.0", require: false
 end
 
 group :development do
+  gem "listen", ">= 3.0.5", "< 3.8"
+  gem "overcommit"
+  gem "spring", "4.0.0"
   gem "web-console", ">= 3.3.0"
-  gem "listen", ">= 3.0.5", "< 3.2"
-  gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
-  gem "capistrano"
-  gem "capistrano-rails"
-  gem "capistrano-rails-console"
-  gem "capistrano-rbenv"
-  gem "capistrano3-unicorn"
-  gem "capistrano-rake"
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

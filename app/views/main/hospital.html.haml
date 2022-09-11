@@ -1,10 +1,10 @@
-%section.hero.is-hospital.is-fullheight
+%section.hero.is-fullheight.has-background-primary
   .hero-head
     %nav.navbar
       .container
         .navbar-brand
           = link_to root_url(subdomain: current_hospital.subdomain), class: "navbar-item" do
-            %h1.title.has-text-white
+            %h1.title
               = current_hospital.name
           %span.navbar-burger.burger{ "data-target": "navMenu" }
             %span
@@ -24,7 +24,7 @@
               %span Iniciar sesión
   .hero-body
     .container
-      %h1.title.has-text-white
+      %h1.title
         = current_hospital.description
 
 %section.hero.has-background-white.is-fullheight
@@ -65,22 +65,26 @@
           %pre
             = current_hospital.schedule
 
-%footer.footer.has-background-white
+%footer.footer
   .content
     .columns.has-text-centered
       .column.is-6
         .buttons.is-centered
           = link_to current_hospital.maps, class: "button is-danger", target: "_blank" do
             %span.icon
-              %i.fas.fa-2x.fa-street-view
+              %i.fa.fa-2x.fa-street-view
           = link_to current_hospital.linkedin, class: "button is-link", target: "_blank" do
             %span.icon
-              %i.fab.fa-2x.fa-linkedin
+              %i.fa.fa-2x.fa-linkedin
           = link_to current_hospital.facebook, class: "button is-link", target: "_blank" do
             %span.icon
-              %i.fab.fa-2x.fa-facebook
+              %i.fa.fa-2x.fa-facebook
           = link_to current_hospital.twitter, class: "button is-info", target: "_blank" do
             %span.icon
-              %i.fab.fa-2x.fa-twitter
+              %i.fa.fa-2x.fa-twitter
       .column.is-6
-        = link_to "Powered by @javasgon", "https://twitter.com/javasgon", target: "_blank"
+        = link_to "Hecho por @javasgon", "https://twitter.com/javasgon", target: "_blank"
+  .content
+    .column.has-text-centered
+      Todos los derechos son reservados 2018 -
+      = Time.now.year

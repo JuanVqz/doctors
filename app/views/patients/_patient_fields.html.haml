@@ -17,16 +17,69 @@
   .column.is-3
     = f.input :place_of_birth
   .column.is-3
-    = f.input :height, placeholder: "Altura en centimetros"
-  .column.is-3
-    = f.input :weight, placeholder: "Peso en kilogramos"
+    .columns
+      .column
+        = f.input :height, placeholder: "Centimetros"
+      .column
+        = f.input :weight, placeholder: "Kilogramos"
   .column.is-3
     %label.label{ for: "patient_blood_group" } Grupo sanguíneo
     = f.select :blood_group, options_for_select(blood_groups_for_select), { prompt: "Seleccione un grupo sanguíneo" }, class: "select2"
   .column.is-3
     %label.label{ for: "patient_sex" } Sexo
-    = f.select :sex, options_for_select(sexos_for_select), { prompt: "Seleccione el sexo" }, class: "select2"
+    = f.select :sex, options_for_select(sexos_for_select), { prompt: "Seleccionar sexo" }, class: "select2"
   .column.is-3
     = f.input :cellphone
   .column.is-3
+    = f.input :marital_status
+  .column.is-3
+    = f.input :comments
+  .column.is-3
     = f.input :referred_by
+  - if @patient.avatar.attached?
+    .column.is-3
+      = label_tag "Foto", nil, class: "label"
+      #show_name_uploading.file.has-name.is-info
+        %label.file-label
+          = f.file_field :avatar, class: "file-input"
+          %span.file-cta
+            %span.file-icon
+              %i.fas.fa-upload
+            %span.file-label
+              Seleccionar archivo
+          %span.file-name
+    .column.is-3
+      %figure.image.is-64x64
+        = image_tag url_for(@patient.avatar)
+  - else
+    .column.is-6
+      = label_tag "Foto", nil, class: "label"
+      #show_name_uploading.file.has-name.is-info
+        %label.file-label
+          = f.file_field :avatar, id: "file_field", class: "file-input"
+          %span.file-cta
+            %span.file-icon
+              %i.fas.fa-upload
+            %span.file-label
+              Seleccionar archivo
+          %span.file-name
+
+%p.has-text-grey-light.is-uppercase Historial Clinico
+.columns.is-multiline
+  .column.is-6
+    = f.input :allergies
+  .column.is-6
+    = f.input :pathological_background
+  .column.is-6
+    = f.input :non_pathological_background
+  .column.is-6
+    = f.input :gyneco_obstetric_background
+  .column.is-6
+    = f.input :system_background
+  .column.is-6
+    = f.input :family_inheritance_background
+  .column.is-6
+    = f.input :physic_exploration
+  .column.is-6
+    = f.input :other_background
+

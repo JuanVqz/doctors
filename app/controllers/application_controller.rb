@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Pundit
+  include Pundit::Authorization
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   layout :layout_by_resource
 
@@ -21,9 +21,11 @@ class ApplicationController < ActionController::Base
       page_size: "Letter",
       template: "pdfs/#{name}.pdf.erb",
       viewport_size: "1280x1024",
-      margin: { top: "30", bottom: "20" },
-      header: { html: { template: "layouts/pdfs/_header.pdf.erb" } },
-      footer: { html: { template: "layouts/pdfs/_footer.pdf.erb" } },
+      header: {
+        html: {template: "layouts/pdfs/_header.pdf.erb"},
+        spacing: 20
+      },
+      footer: {html: {template: "layouts/pdfs/_footer.pdf.erb"}},
       layout: "pdfs/hospital"
     }
   end
@@ -36,7 +38,7 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:alert] = "Usuario no autorizado para realizar esta acción!"
-    redirect_to(request.referrer || root_path)
+    redirect_to(request.referer || root_path)
   end
 
   def layout_by_resource

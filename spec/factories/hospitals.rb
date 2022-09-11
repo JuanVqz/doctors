@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :hospital do
     sequence(:name) { |n| "Santa Ursula #{n}" }
-    sequence(:subdomain) { |n| "santa#{n}" }
+    sequence(:subdomain) { |n| "ursula#{n}" }
     description { "Es un hospital seguro" }
     about { "Algo acerca del doctor" }
     schedule { "Lunes a Viernes de 09:00 - 19:00" }

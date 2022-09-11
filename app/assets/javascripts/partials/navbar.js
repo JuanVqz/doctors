@@ -1,11 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.querySelector('.burger')) {
-    let burger = document.querySelector('.burger')
-    let nav = document.querySelector('#navMenu')
+document.addEventListener("DOMContentLoaded", function () {
+  if (document.querySelector(".burger")) {
+    let burger = document.querySelector(".burger");
+    let nav = document.querySelector("#navMenu");
 
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('is-active')
-      nav.classList.toggle('is-active')
-    })
+    burger.addEventListener("click", function () {
+      burger.classList.toggle("is-active");
+      nav.classList.toggle("is-active");
+    });
   }
-})
+});

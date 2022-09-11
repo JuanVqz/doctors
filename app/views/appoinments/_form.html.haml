@@ -1,0 +1,77 @@
+-# frozen_string_literal: true
+
+= simple_form_for(@appoinment) do |f|
+  #patient_info.columns.is-multiline.display-none
+    .column
+      #patient_age
+    .column.has-text-danger
+      #patient_allergies
+  .columns.is-multiline
+    .column.is-12
+      %label.label{ for: "medical_consultation_patient_id" } Paciente
+      = f.select :patient_id,
+        options_for_select(patients_for_select,
+                           selected: selected_appoinnment_patient(f.object)),
+        { prompt: "Seleccione un paciente" },
+        class: "select2"
+      - if f.object.errors[:patient].any?
+        .help.is-danger= f.object.errors[:patient].to_sentence
+
+    .column.is-12
+      = f.input :reason
+    .column.is-12
+      = f.input :note, as: :trix_editor
+    .column.is-12
+      = f.input :prescription, as: :trix_editor
+    .column.is-12
+      = f.input :recommendations, as: :trix_editor
+    .column.is-12
+      = f.input :cabinet_results
+    .column.is-12
+      = f.input :histopathology
+
+  .columns.is-multiline
+    .column
+      = f.input :blood_pressure
+    .column
+      = f.input :heart_rate
+    .column
+      = f.input :breathing_rate
+    .column
+      = f.input :temperature
+    .column
+      = f.input :glycaemia
+    .column
+      = f.input :sat_02
+
+  .columns.is-multiline
+    .column
+      = f.input :height
+    .column
+      = f.input :weight
+    .column
+      = f.input :imc, readonly: true
+      %p#imc_text.help
+    .column
+      = f.input :cost
+
+  .columns
+    .column
+      = label_tag "Archivos", nil, class: "label"
+      .file.has-name.is-info
+        %label.file-label
+          = f.file_field :files, multiple: true, direct_upload: true, class: "file-input"
+          %span.file-cta
+            %span.file-icon
+              %i.fas.fa-upload
+            %span.file-label
+              Seleccionar archivos
+          %span.file-name
+
+  .buttons
+    = link_to :back, class: "button is-link" do
+      %span.icon
+        %i.fa.fa-arrow-left
+      %span Regresar
+    = f.button :submit
+

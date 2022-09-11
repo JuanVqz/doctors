@@ -11,10 +11,12 @@ FactoryBot.define do
     referred_by { "Pedro Ramos" }
     place_of_birth { "Oaxaca de Juárez" }
     cellphone { "951 123 4567" }
+    marital_status { "Soltero" }
+    comments { "Algo que decir" }
     sex { "Masculino" }
     role { "patient" }
     type { "Patient" }
-    confirmed_at { Time.now }
+    confirmed_at { Time.zone.now }
 
     after :build do |patient|
       if patient.doctors.nil?
@@ -22,6 +24,13 @@ FactoryBot.define do
       end
       patient.clinic_history = build :clinic_history
       patient.address = build :address
+    end
+
+    trait :with_avatar do
+      after :create do |patient|
+        file_path = Rails.root.join("spec/support/assets/avatar.jpg")
+        patient.avatar.attach(io: File.open(file_path), filename: "avatar.jpg", content_type: "image/jpeg")
+      end
     end
   end
 end

@@ -1,0 +1,16 @@
+-# frozen_string_literal: true
+= simple_form_for(@referred_doctor) do |f|
+  .columns.is-multiline
+    .column.is-6= f.input :full_name
+    .column.is-4= f.input :specialty
+    .column.is-2= f.input :phone_number, as: :numeric
+
+  %p.has-text-grey-light.is-uppercase Domicilio
+  = render "addresses/address_fields", f: f
+
+  .buttons
+    = link_to :back, class: "button is-link" do
+      %span.icon
+        %i.fa.fa-arrow-left
+      %span Regresar
+    = f.button :submit

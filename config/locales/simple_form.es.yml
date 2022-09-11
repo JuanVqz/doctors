@@ -1,16 +1,21 @@
 es-MX:
   simple_form:
-    "yes": 'Sí'
-    "no": 'No'
+    "yes": "Sí"
+    "no": "No"
     required:
-      text: 'requerido'
-      mark: '*'
+      text: "requerido"
+      mark: "*"
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Por favor, revise los siguientes problemas:"
     labels:
+      patient_referral:
+        referred_doctor: "Destinatario"
+        subject: "Motivo de envio"
+        content: "Contenido"
+        importance: "Imporatancia"
       defaults:
         name: "Nombre"
         first_name: "Apellido Paterno"
@@ -27,61 +32,41 @@ es-MX:
         municipality: "Municipio"
         state: "Estado"
         contry: "País"
-        reason: "Motivo de Consulta"
-        subjetive: "Subjetivo"
-        objetive: "Objetivo"
-        plan: "Plan"
-        diagnosis: "Diagnostico"
-        treatment: "Tratamiento"
-        observations: "Observaciones"
+        note: "Nota Medica"
         prescription: "Receta"
-        lab_results: "Resultados de Laboratorio"
+        cabinet_results: "Resultados de gabinete"
         histopathology: "Histopatologia"
         comments: "Comentarios"
-        blood_pressure: "Presion Arterial"
         place_of_birth: "Lugar de Nacimiento"
         sex: "Sexo"
+        marital_status: "Estado Civil"
         cellphone: "Celular"
-        starting: "Inicio"
-        ending: "Final"
+        starting: "Fecha de Ingreso"
+        ending: "Fecha de Egreso"
+        input_diagnosis: "Diagnóstico de Ingreso"
+        output_diagnosis: "Diagnóstico de Egreso"
         days_of_stay: "Días de Estadia"
-        reason_for_hospitalization: "Razón de Hospitalización"
-        treatment: "Tratamiento"
+        reason_for_hospitalization: "Procedimiento realizado"
         doctor: "Doctor"
         patient: "Paciente"
-        description_diabetes: "Motivo de Diabetes"
-        description_hypertension: "Motivo de Hipertensión"
-        description_allergic: "Motivo de Alergia"
-        description_traumatic: "Motivo de Traumátismo"
-        description_transfusion: "Motivo de Transfusión"
-        description_surgical: "Motivo Quirúrgico"
-        description_drug_addiction: "Motivo Toxicomanías"
-        description_hereditary: "Motivo Hereditario"
-        description_cancer: "Motivo de Cancer"
-        description_other: "Otro Motivo"
+        allergies: "Alergias"
+        pathological_background: "Antecedentes personales patológicos"
+        non_pathological_background: "Antecedentes personales no patológicos"
+        gyneco_obstetric_background: "Antecedentes gineco-obstetricos"
+        system_background: "Interrogatorio por aparatos y sistemas"
+        family_inheritance_background: "Antecedentes heredo-familiares"
+        physic_exploration: "Exploración fisica"
+        other_background: "Otros Motivos"
         description: "Descripción"
         maps: "Mapa"
         about: "Acerca de"
         schedule: "Horario"
         tags: "Expertos en"
-
-    # Examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
-    # include_blanks:
-    #   defaults:
-    #     age: 'Rather not say'
-    # prompts:
-    #   defaults:
-    #     age: 'Select your age'
-
+        blood_pressure: "T. A."
+        heart_rate: "F. C."
+        breathing_rate: "F. R."
+        temperature: "Temp."
+        glycaemia: "Gluc. Cap."
+        sat_02: "SAT. 02"
+        cost: "Costo de la consulta"
+        recommendations: "Recomendaciones"

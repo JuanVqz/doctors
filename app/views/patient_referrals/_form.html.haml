@@ -1,0 +1,37 @@
+-# frozen_string_literal: true
+= simple_form_for(@patient_referral) do |f|
+  .columns.is-multiline
+    .column.is-3
+      = label_tag :doctor, "Remitente", class: "label"
+      = current_user if user_signed_in?
+    .column.is-3
+      = f.label :referred_doctor_id, "Destinatario", class: "label"
+      = f.select :referred_doctor_id,
+        options_for_select(referred_doctor_for_select, selected: params[:referred_doctor_id]),
+        { prompt: "Seleccione un doctor" },
+        class: "select2"
+      - if f.object.errors[:referred_doctor].any?
+        .help.is-danger= f.object.errors[:referred_doctor].to_sentence
+    .column.is-3
+      = f.label :patient_id, "Paciente", class: "label"
+      = f.select :patient_id,
+        options_for_select(patients_for_select, selected: params[:patient_id]),
+        { prompt: "Seleccione un paciente" },
+        class: "select2"
+      - if f.object.errors[:patient].any?
+        .help.is-danger= f.object.errors[:patient].to_sentence
+    .column.is-3
+      = f.label :importance, class: "label"
+      = f.select :importance, options_for_select(importances_for_select), {}, class: "select2"
+    .column.is-12
+      = f.input :subject
+    .column.is-12
+      = f.input :content, as: :trix_editor
+
+  .buttons
+    = link_to :back, class: "button is-link" do
+      %span.icon
+        %i.fa.fa-arrow-left
+      %span Regresar
+
+    = f.button :submit

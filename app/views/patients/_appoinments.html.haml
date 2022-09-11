@@ -1,0 +1,16 @@
+.table-container
+  %table.table.is-hoverable.is-fullwidth
+    %thead.is-uppercase
+      %tr
+        %th Fecha
+        %th Motivo
+        %th Receta
+        %th.has-text-right Acciones
+    %tbody#appoinments
+      = render @appoinments
+    %tfoot
+      %tr
+        %th{ colspan: 4 }
+          #pag_appoinments
+            = paginate @appoinments, remote: true
+

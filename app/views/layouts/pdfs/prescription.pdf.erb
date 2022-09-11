@@ -2,12 +2,8 @@
 <html lang="es">
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-  <title>Consulta Medica de <%= @medical_consultation.patient %></title>
+  <title>Consulta Medica de <%= @appoinment.patient %></title>
   <style>
-    pre {
-      font-size: 11px;
-    }
-
     .container {
       display: flex;
       flex-direction: column;
@@ -28,6 +24,26 @@
 
     .text-right {
       text-align: right;
+    }
+
+    .text-size-13 {
+      text-size: 13pt;
+    }
+
+    .text-size-11 {
+      font-size: 11px;
+    }
+
+    .text-size-9 {
+      font-size: 9px;
+    }
+
+    .text-justify {
+      text-align: justify;
+    }
+
+    .pre-line {
+      white-space: pre-line;
     }
   </style>
 </head>

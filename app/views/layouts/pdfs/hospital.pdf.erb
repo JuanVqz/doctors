@@ -2,12 +2,40 @@
 <html lang="es">
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-  <%= wicked_pdf_stylesheet_link_tag 'pdfs/hospital' %>
   <title><%= current_hospital.name %></title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container > div {
+      padding-top: 5px;
+      word-wrap: break-word;
+    }
+
+    .text-uppercase {
+      text-transform: uppercase;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-justify {
+      text-align: justify;
+    }
+
+    .font-17-px {
+      font-size: 17px;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <%= yield %>
-  </div>
+  <%= yield %>
 </body>
 </html>

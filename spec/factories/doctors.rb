@@ -8,7 +8,8 @@ FactoryBot.define do
     sequence(:email) { |n| "doctor#{n}@gmail.com" }
     password { "123456" }
     type { "Doctor" }
-    confirmed_at { Time.now }
+    role { "admin" }
+    confirmed_at { Time.zone.now }
     association :hospital, factory: :hospital
   end
 

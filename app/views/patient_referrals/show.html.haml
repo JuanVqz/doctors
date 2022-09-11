@@ -1,0 +1,43 @@
+%nav.level
+  .level-left
+    .level-item
+      %span.icon
+        %i.fa.fa-share
+      %span.is-uppercase información de la referencia del paciente
+  .level-right
+    .level-item
+      .buttons
+        = link_to patient_referrals_path, class: "button is-link" do
+          %span.icon
+            %i.fa.fa-arrow-left
+          %span Regresar
+
+        = link_to [:edit, @patient_referral], class: "button is-warning" do
+          %span.icon
+            %i.fa.fa-edit
+          %span Editar
+
+.table-container
+  %table.table.is-hoverable.is-fullwidth
+    %thead
+      %tr
+        %th=t("activerecord.attributes.patient_referral.created_at")
+        %td= l @patient_referral.created_at, format: :not_hour
+      %tr
+        %th=t("activerecord.attributes.patient_referral.patient")
+        %td= @patient_referral.patient
+      %tr
+        %th=t("activerecord.attributes.patient_referral.doctor")
+        %td= @patient_referral.doctor
+      %tr
+        %th=t("activerecord.attributes.patient_referral.referred_doctor")
+        %td= @patient_referral.referred_doctor
+      %tr
+        %th=t("activerecord.attributes.referred_doctor.phone_number")
+        %td= number_to_phone @patient_referral.referred_doctor.phone_number
+      %tr
+        %th=t("activerecord.attributes.patient_referral.subject")
+        %td= @patient_referral.subject
+      %tr
+        %th=t("activerecord.attributes.patient_referral.content")
+        %td= @patient_referral.content.html_safe

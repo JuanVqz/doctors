@@ -1,7 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Hospital, type: :model do
   it { should have_one(:address).dependent(:destroy) }
+  it { should have_many(:doctors).dependent(:destroy) }
 
   it { should accept_nested_attributes_for(:address).allow_destroy(true) }
 
@@ -15,11 +16,11 @@ RSpec.describe Hospital, type: :model do
       let(:hospital) { create :hospital, plan: :basic }
 
       it "returns true" do
-        expect(hospital.basic?).to be_truthy
+        expect(hospital).to be_basic
       end
 
       it "returns false" do
-        expect(hospital.medium?).to be_falsey
+        expect(hospital).not_to be_medium
       end
     end
 
@@ -27,11 +28,11 @@ RSpec.describe Hospital, type: :model do
       let(:hospital) { create :hospital, plan: :medium }
 
       it "returns true" do
-        expect(hospital.medium?).to be_truthy
+        expect(hospital).to be_medium
       end
 
       it "returns false" do
-        expect(hospital.basic?).to be_falsey
+        expect(hospital).not_to be_basic
       end
     end
   end

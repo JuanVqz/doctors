@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:12.5-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+  web: &web
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - 3000:3000
+    environment: &envs
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: password
+    command: bash -c "rm -rf /code/tmp/pids && foreman start -f Procfile.dev"
+    depends_on:
+      - db
+  next:
+    <<: *web
+    command: bash -c "rm -rf /code/tmp/pids && foreman start -f Procfile.dev"
+    environment:
+      <<: *envs
+      BUNDLE_GEMFILE: Gemfile.next
+volumes:
+  db_data:

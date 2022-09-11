@@ -1,0 +1,20 @@
+<div class="text-right" style="padding-top: 50px; padding-right: 130px">
+  <strong class="text-uppercase text-size-13">
+    <%= @appoinment.patient %>
+    <%= age_months(@appoinment.patient) %>
+  </strong>
+
+  <div class="font-size-9">
+    <%= l @appoinment.created_at, format: :normal %>
+  </div>
+
+  <div class="font-size-9">
+    Receta No. <%= @appoinment.id %>
+  </div>
+</div>
+
+<div style="padding-top:10px;">
+  <%= raw @appoinment.prescription %>
+  <p>RECOMENDACIONES</p>
+  <%= raw @appoinment.recommendations %>
+</div>

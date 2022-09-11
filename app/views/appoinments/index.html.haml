@@ -1,0 +1,43 @@
+%nav.level
+  .level-left
+    .level-item
+      = render "shared/search", search_path: appoinments_path, placeholder: "Consultas"
+  .level-right
+    .level-item
+      = link_to [:new, :appoinment], class: "button is-link" do
+        %span.icon
+          %i.fa.fa-plus
+        %span Registrar Consulta
+.table-container
+  %table.table.is-hoverable.is-fullwidth
+    %thead.is-uppercase
+      %tr
+        %th #
+        %th Fecha
+        %th Paciente
+        %th Motivo
+        %th.has-text-right Acciones
+    %tbody
+      - @appoinments.each do |appoinment|
+        %tr
+          %td= appoinment.id
+          %td= l appoinment.created_at, format: :not_hour
+          %td= appoinment.patient
+          %td= truncate(appoinment.reason, lenght: 50)
+          %td
+            .buttons.is-right
+              = link_to appoinment_path(appoinment, format: "pdf"), "data-tooltip": "Imprimir", class: "button is-danger tooltip", target: "_blank" do
+                %span.icon
+                  %i.fa.fa-print
+
+              = link_to appoinment, "data-tooltip": "Detalles", class: "button is-link tooltip" do
+                %span.icon
+                  %i.fa.fa-eye
+    %tfoot
+      %tr
+        %th{ colspan: 4 }
+          = paginate @appoinments, params: { query: params[:query] }
+          %br
+          .has-text-right
+            = page_entries_info @appoinments, entry_name: "consultas medicas"
+

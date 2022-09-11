@@ -1,0 +1,148 @@
+<% if @patient.clinic_history? %>
+<table class="table nobreak">
+  <thead>
+    <% if @patient.allergies.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.allergies") %></th></tr>
+      <tr><td><%= @patient.allergies %></td></tr>
+    <% end %>
+
+    <% if @patient.pathological_background.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.pathological_background") %></th></tr>
+      <tr><td><%= @patient.pathological_background %></td></tr>
+    <% end %>
+
+    <% if @patient.non_pathological_background.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.non_pathological_background") %></th></tr>
+      <tr><td><%= @patient.non_pathological_background %></td></tr>
+    <% end %>
+
+    <% if @patient.gyneco_obstetric_background.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.gyneco_obstetric_background") %></th></tr>
+      <tr><td><%= @patient.gyneco_obstetric_background %></td></tr>
+    <% end %>
+
+    <% if @patient.system_background.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.system_background") %></th></tr>
+      <tr><td><%= @patient.system_background %></td></tr>
+    <% end %>
+
+    <% if @patient.family_inheritance_background.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.family_inheritance_background") %></th></tr>
+      <tr><td><%= @patient.family_inheritance_background %></td></tr>
+    <% end %>
+
+    <% if @patient.physic_exploration.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.physic_exploration") %></th></tr>
+      <tr><td><%= @patient.physic_exploration %></td></tr>
+    <% end %>
+
+    <% if @patient.other_background.present? %>
+      <tr><th><%= t("activerecord.attributes.patient.other_background") %></th></tr>
+      <tr><td><%= @patient.other_background %></td></tr>
+    <% end %>
+  </thead>
+</table>
+<div class="alwaysbreak"></div>
+<% end %>
+
+<% @appoinments.each do |appoinment| %>
+  <table class="table nobreak">
+    <thead>
+      <tr><th><%= t("activerecord.attributes.appoinment.created_at") %></th></tr>
+      <tr><td><%= l appoinment.created_at, format: :long %></td></tr>
+
+      <tr><th><%= t("activerecord.attributes.appoinment.patient") %></th></tr>
+      <tr><td><%= @patient %> - <%= age_months(@patient) %></td></tr>
+
+      <tr><th><%= t("activerecord.attributes.appoinment.reason") %></th></tr>
+      <tr><td><%= appoinment.reason %></td></tr>
+
+      <tr><th><%= t("activerecord.attributes.appoinment.note") %></th></tr>
+      <tr><td><%= raw sanitize appoinment.note %></td></tr>
+
+      <tr><th><%= t("activerecord.attributes.appoinment.prescription") %></th></tr>
+      <tr><td><%= raw sanitize appoinment.prescription %></td></tr>
+
+      <tr><th><%= t("activerecord.attributes.appoinment.recommendations") %></th></tr>
+      <tr><td><%= raw appoinment.recommendations %></td></tr>
+
+      <% if appoinment.cabinet_results.present? %>
+        <tr><th><%= t("activerecord.attributes.appoinment.cabinet_results") %></th></tr>
+        <tr><td><%= appoinment.cabinet_results %></td></tr>
+      <% end %>
+
+      <% if appoinment.histopathology.present? %>
+        <tr><th><%= t("activerecord.attributes.appoinment.histopathology") %></th></tr>
+        <tr><td><%= appoinment.histopathology %></td></tr>
+      <% end %>
+
+      <tr>
+        <th>
+          <table class="table">
+            <thead>
+              <tr>
+                <% if appoinment.height.present? && !appoinment.height.zero? %>
+                  <th><%= t("activerecord.attributes.appoinment.height") %></th>
+                <% end %>
+                <% if appoinment.weight.present? && !appoinment.weight.zero? %>
+                  <th><%= t("activerecord.attributes.appoinment.weight") %></th>
+                <% end %>
+                <% if appoinment.imc.present? %>
+                  <th><%= t("activerecord.attributes.appoinment.imc") %></th>
+                <% end %>
+                <% if appoinment.blood_pressure.present? %>
+                  <th><%= t("activerecord.attributes.appoinment.blood_pressure") %></th>
+                <% end %>
+                <% unless appoinment.heart_rate.zero? %>
+                  <th><%= t("activerecord.attributes.appoinment.heart_rate") %></th>
+                <% end %>
+                <% unless appoinment.breathing_rate.zero? %>
+                  <th><%= t("activerecord.attributes.appoinment.breathing_rate") %></th>
+                <% end %>
+                <% unless appoinment.temperature.zero? %>
+                  <th><%= t("activerecord.attributes.appoinment.temperature") %></th>
+                <% end %>
+                <% unless appoinment.glycaemia.zero? %>
+                  <th><%= t("activerecord.attributes.appoinment.glycaemia") %></th>
+                <% end %>
+                <% unless appoinment.sat_02.zero? %>
+                  <th><%= t("activerecord.attributes.appoinment.sat_02") %></th>
+                <% end %>
+              </tr>
+              <tr>
+                <% if appoinment.height.present? && !appoinment.height.zero? %>
+                  <td><%= appoinment.height %> cm.</td>
+                <% end %>
+                <% if appoinment.weight.present? && !appoinment.weight.zero? %>
+                  <td><%= appoinment.weight %> kg.</td>
+                <% end %>
+                <% if appoinment.imc.present? %>
+                  <td><%= number_with_precision(appoinment.imc, precision: 2) %></td>
+                <% end %>
+                <% if appoinment.blood_pressure.present? %>
+                  <td><%= appoinment.blood_pressure %></td>
+                <% end %>
+                <% unless appoinment.heart_rate.zero? %>
+                  <td><%= number_with_precision(appoinment.heart_rate, precision: 2) %></td>
+                <% end %>
+                <% unless appoinment.breathing_rate.zero? %>
+                  <td><%= number_with_precision(appoinment.breathing_rate, precision: 2) %></td>
+                <% end %>
+                <% unless appoinment.temperature.zero? %>
+                  <td><%= temperature appoinment %></td>
+                <% end %>
+                <% unless appoinment.glycaemia.zero? %>
+                  <td><%= appoinment.glycaemia %></td>
+                <% end %>
+                <% unless appoinment.sat_02.zero? %>
+                  <td><%= appoinment.sat_02 %></td>
+                <% end %>
+              </tr>
+            </thead>
+          </table>
+        </th>
+      </tr>
+    </thead>
+  </table>
+  <div class="alwaysbreak"></div>
+<% end %>

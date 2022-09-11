@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def is_admin?
     current_user.admin?
   end
@@ -14,6 +13,12 @@ module ApplicationHelper
 
   def patients_for_select
     Patient.all.map { |p| [p, p.id] }
+  end
+
+  def referred_doctor_for_select
+    return [] if current_user.blank?
+
+    ReferredDoctor.by_doctor(current_user.id).map { |p| [p, p.id] }
   end
 
   def states_for_select

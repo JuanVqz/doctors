@@ -1,7 +1,6 @@
 require "csv"
 
 namespace :import do
-
   namespace :doctor_name do
     desc "Import Patients from CSV"
     task patients: :environment do
@@ -13,8 +12,6 @@ namespace :import do
       CSV.foreach(filename, headers: true) do |row|
         puts "save patients: #{doctor}, #{hospital}"
       end
-
-      puts "Imported #{counter} bentos."
     end
 
     desc "Import Medical Consultation from CSV"
@@ -26,9 +23,6 @@ namespace :import do
       CSV.foreach(filename, headers: true) do |row|
         puts "save appoinments: #{doctor}"
       end
-
-      puts "Imported #{counter} medical consultations."
     end
   end
-
 end
