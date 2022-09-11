@@ -9,8 +9,8 @@ tomar consultas de los pacientes y conservar el historial clinico.
 
 ## Requisitos
 
-- ruby 2.7.4
-- rails 6.1.4
+- ruby 2.7.5
+- rails 7.0.3.1
 - postgres 13
 
 ## Instalación
@@ -84,7 +84,7 @@ rake import:doctor_name:medical_consultation
 ### Reiniciar base de datos | Warning: Perderá toda la información
 
 ```bash
-heroku restart; heroku pg:reset DATABASE --confirm asistenciaclinica;
+heroku restart; heroku pg:reset DATABASE --confirm heroku_doctors;
 heroku run rails db:migrate
 heroku run rails db:seed
 heroku run rails console
@@ -112,5 +112,5 @@ cap production unicorn:start
 
 ## Desarrollo
 
-Si esta interesado en contribuir al desarrollo comprando un subdominio en
-[asistencia clinica](https://asistenciaclinica.com/) puede [contactarnos.](https://github.com/JuanVqz)
+Si esta interesado en contribuir al desarrollo comprando un subdominio
+puede [contactarnos.](https://github.com/JuanVqz)
