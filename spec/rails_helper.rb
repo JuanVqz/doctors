@@ -1,6 +1,6 @@
 if ENV["COVERAGE"] == "true"
   require "simplecov"
-  require 'simplecov-json'
+  require "simplecov-json"
   SimpleCov.start "rails"
 
   SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
