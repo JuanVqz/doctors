@@ -49,5 +49,5 @@ jobs:
           bin/rake
       - name: Publish code coverage
         run: |
-          export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
+          export GIT_BRANCH="${{github.ref}}"
           ./cc-test-reporter after-build -r ${{secrets.CC_TEST_REPORTER_ID}}
