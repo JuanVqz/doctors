@@ -16,7 +16,7 @@ gem "kaminari"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 5.6"
 gem "pundit"
-gem "rails", "~> 7.0.3"
+gem "rails", "~> 7.0.4"
 gem "simple_form"
 gem "sprockets-rails"
 gem "trix-rails", require: "trix"
@@ -36,7 +36,7 @@ group :development, :test do
   gem "shoulda-matchers"
   gem "simplecov", require: false
   gem "standard"
-  gem "webdrivers", "5.1.0", require: false
+  gem "webdrivers", "5.2.0", require: false
 end
 
 group :development do
