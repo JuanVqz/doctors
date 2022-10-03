@@ -1,7 +1,3 @@
-def next?
-  File.basename(__FILE__) == "Gemfile.next"
-end
-
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -20,11 +16,7 @@ gem "kaminari"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 5.6"
 gem "pundit"
-if next?
-  gem "rails", "7.0.3.1"
-else
-  gem "rails", "~> 7.0.3"
-end
+gem "rails", "~> 7.0.3"
 gem "simple_form"
 gem "sprockets-rails"
 gem "trix-rails", require: "trix"
@@ -36,7 +28,6 @@ group :development, :test do
   gem "capybara"
   gem "factory_bot_rails"
   gem "ffaker"
-  gem "next_rails"
   gem "pry"
   gem "rspec-rails"
   gem "rubocop"
