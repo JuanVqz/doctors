@@ -76,6 +76,6 @@ class PatientReferralsController < ApplicationController
   end
 
   def patient_referral_name
-    "#{@patient_referral.id}_#{@patient_referral.created_at.to_s(:number)}".upcase
+    "#{@patient_referral.id}_#{@patient_referral.created_at.to_fs(:number)}".upcase
   end
 end

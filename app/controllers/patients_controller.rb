@@ -90,6 +90,6 @@ class PatientsController < ApplicationController
   end
 
   def pdf_name
-    "#{@patient.name}_#{@patient.id}_#{@patient.created_at.to_s(:number)}".upcase
+    "#{@patient.name}_#{@patient.id}_#{@patient.created_at.to_fs(:number)}".upcase
   end
 end

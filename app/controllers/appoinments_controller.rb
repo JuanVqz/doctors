@@ -63,7 +63,7 @@ class AppoinmentsController < ApplicationController
   private
 
   def prescription_name
-    "#{@appoinment.patient.name}_#{@appoinment.id}_#{@appoinment.created_at.to_s(:number)}".upcase
+    "#{@appoinment.patient.name}_#{@appoinment.id}_#{@appoinment.created_at.to_fs(:number)}".upcase
   end
 
   def set_appoinment

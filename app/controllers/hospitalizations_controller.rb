@@ -58,7 +58,7 @@ class HospitalizationsController < ApplicationController
   end
 
   def pdf_name
-    "#{@hospitalization.patient.name}_#{@hospitalization.id}_#{@hospitalization.created_at.to_s(:number)}".upcase
+    "#{@hospitalization.patient.name}_#{@hospitalization.id}_#{@hospitalization.created_at.to_fs(:number)}".upcase
   end
 
   def hospitalization_params
