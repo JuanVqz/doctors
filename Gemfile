@@ -5,7 +5,7 @@ ruby IO.readlines(".ruby-version")[0].strip
 
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bulma-extensions-rails"
-gem "bulma-rails", "~> 0.9.3"
+gem "bulma-rails", "~> 0.9.4"
 gem "cocoon"
 gem "devise"
 gem "font-awesome-rails"

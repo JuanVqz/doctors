@@ -75,7 +75,7 @@ GEM
       msgpack (~> 1.2)
     builder (3.2.4)
     bulma-extensions-rails (6.2.7)
-    bulma-rails (0.9.3)
+    bulma-rails (0.9.4)
       sassc (~> 2.0)
     capybara (3.37.1)
       addressable
@@ -338,7 +338,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   bulma-extensions-rails
-  bulma-rails (~> 0.9.3)
+  bulma-rails (~> 0.9.4)
   capybara
   cocoon
   devise
