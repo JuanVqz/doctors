@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "hospitals/edit", type: :view do
+RSpec.describe "hospitals/edit" do
   before do
     @hospital = assign(:hospital, Hospital.create!(
       name: "Santa Ursula",

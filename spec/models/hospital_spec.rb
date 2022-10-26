@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Hospital, type: :model do
+RSpec.describe Hospital do
   it { should have_one(:address).dependent(:destroy) }
   it { should have_many(:doctors).dependent(:destroy) }
 
@@ -13,7 +13,7 @@ RSpec.describe Hospital, type: :model do
 
   describe "plan" do
     context "when plan is 'basic'" do
-      let(:hospital) { create :hospital, plan: :basic }
+      let(:hospital) { create(:hospital, plan: :basic) }
 
       it "returns true" do
         expect(hospital).to be_basic
@@ -25,7 +25,7 @@ RSpec.describe Hospital, type: :model do
     end
 
     context "when plan is 'medium'" do
-      let(:hospital) { create :hospital, plan: :medium }
+      let(:hospital) { create(:hospital, plan: :medium) }
 
       it "returns true" do
         expect(hospital).to be_medium

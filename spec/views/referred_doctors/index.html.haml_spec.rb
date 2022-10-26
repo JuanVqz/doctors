@@ -1,8 +1,8 @@
 require "rails_helper"
 
-RSpec.describe "referred_doctors/index", type: :view do
-  let(:hospital) { create :hospital, subdomain: "ursula" }
-  let(:doctor) { create :doctor, hospital_id: hospital.id }
+RSpec.describe "referred_doctors/index" do
+  let(:hospital) { create(:hospital, subdomain: "ursula") }
+  let(:doctor) { create(:doctor, hospital_id: hospital.id) }
 
   before do
     assign(:referred_doctors, Kaminari.paginate_array([

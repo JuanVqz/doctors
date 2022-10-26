@@ -1,7 +1,7 @@
 module Feature
   module AuthenticationHelpers
     def sign_in_doctor hospital
-      @doctor = create :doctor, hospital: hospital, role: "doctor"
+      @doctor = create(:doctor, hospital: hospital, role: "doctor")
       visit new_user_session_path
       expect(page).to have_current_path new_user_session_path
 
@@ -11,7 +11,7 @@ module Feature
     end
 
     def sign_in_admin_doctor hospital
-      @admin = create :doctor, hospital: hospital, role: "admin"
+      @admin = create(:doctor, hospital: hospital, role: "admin")
       visit new_user_session_path
       expect(page).to have_current_path(new_user_session_path)
 
@@ -21,7 +21,7 @@ module Feature
     end
 
     def invalid_sign_in hospital
-      doctor = create :doctor, hospital: hospital
+      doctor = create(:doctor, hospital: hospital)
       fill_in "user_email", with: "invalid@gmail.com"
       fill_in "user_password", with: doctor.password
       click_button "Iniciar Sesión"

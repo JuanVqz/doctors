@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ReferredDoctorsController, type: :routing do
+RSpec.describe ReferredDoctorsController do
   describe "routing" do
     it "routes to #index" do
       expect(get: "/referred_doctors").to route_to("referred_doctors#index")

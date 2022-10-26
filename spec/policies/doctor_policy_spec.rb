@@ -3,10 +3,10 @@ require "rails_helper"
 RSpec.describe DoctorPolicy do
   subject { described_class }
 
-  let(:hospital) { create :hospital, subdomain: "ursula" }
-  let(:admin) { create :doctor, role: "admin", hospital: hospital }
-  let(:doctor) { create :doctor, role: "doctor", hospital: hospital }
-  let(:doctors) { create_list :doctor, 4, hospital: hospital }
+  let(:hospital) { create(:hospital, subdomain: "ursula") }
+  let(:admin) { create(:doctor, role: "admin", hospital: hospital) }
+  let(:doctor) { create(:doctor, role: "doctor", hospital: hospital) }
+  let(:doctors) { create_list(:doctor, 4, hospital: hospital) }
 
   permissions ".scope" do
     before do

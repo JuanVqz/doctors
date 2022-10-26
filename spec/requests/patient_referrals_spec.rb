@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe "/patient_referrals", type: :request do
-  let(:hospital) { create :hospital }
+RSpec.describe "/patient_referrals" do
+  let(:hospital) { create(:hospital) }
   let(:valid_attributes) do
     {
       subject: "Subject",
@@ -22,9 +22,9 @@ RSpec.describe "/patient_referrals", type: :request do
       hospital_id: nil
     }
   end
-  let(:doctor) { create :doctor, hospital: hospital }
-  let(:patient) { create :patient, doctors: [doctor] }
-  let(:referred_doctor) { create :referred_doctor, doctor: doctor }
+  let(:doctor) { create(:doctor, hospital: hospital) }
+  let(:patient) { create(:patient, doctors: [doctor]) }
+  let(:referred_doctor) { create(:referred_doctor, doctor: doctor) }
 
   before do
     allow(Hospital).to receive(:current_id).and_return hospital.id

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Appoinment, type: :model do
+RSpec.describe Appoinment do
   it { should belong_to :doctor }
   it { should belong_to :patient }
   it { should have_many_attached :files }
@@ -16,14 +16,14 @@ RSpec.describe Appoinment, type: :model do
 
   describe "#files" do
     it "has many files" do
-      appoinment = create :appoinment, :with_files
+      appoinment = create(:appoinment, :with_files)
 
       expect(appoinment).to be_valid
       expect(appoinment.files).to be_attached
     end
 
     it "has not many files" do
-      appoinment = create :appoinment
+      appoinment = create(:appoinment)
 
       expect(appoinment).to be_valid
       expect(appoinment.files).not_to be_attached
@@ -31,9 +31,9 @@ RSpec.describe Appoinment, type: :model do
   end # describe #file
 
   describe "#update_patient" do
-    let(:patient) { create :patient, height: 160, weight: 60 }
+    let(:patient) { create(:patient, height: 160, weight: 60) }
     let!(:appoinment) do
-      create :appoinment, patient: patient, height: 170, weight: 70
+      create(:appoinment, patient: patient, height: 170, weight: 70)
     end
 
     context "when create an appoinment" do
@@ -54,26 +54,26 @@ RSpec.describe Appoinment, type: :model do
 
   describe ".search" do
     let(:mateo) do
-      create :patient, name: "Mateo", first_name: "Pérez", last_name: "Toledo"
+      create(:patient, name: "Mateo", first_name: "Pérez", last_name: "Toledo")
     end
 
     let(:josue) do
-      create :patient, name: "Josue", first_name: "Alvarez", last_name: "Suarez"
+      create(:patient, name: "Josue", first_name: "Alvarez", last_name: "Suarez")
     end
 
     let!(:appoinment) do
-      create :appoinment, reason: "Motivo 1", note: "Diagnostico 1",
-        prescription: "Receta 1", patient: mateo
+      create(:appoinment, reason: "Motivo 1", note: "Diagnostico 1",
+        prescription: "Receta 1", patient: mateo)
     end
 
     let!(:appoinment_two) do
-      create :appoinment, reason: "Otra cosa", note: "Practica",
-        prescription: "Persona", patient: josue
+      create(:appoinment, reason: "Otra cosa", note: "Practica",
+        prescription: "Persona", patient: josue)
     end
 
     let!(:appoinment_tree) do
-      create :appoinment, reason: "Mi razón", note: "Practica",
-        prescription: "Imprimir", patient: mateo
+      create(:appoinment, reason: "Mi razón", note: "Practica",
+        prescription: "Imprimir", patient: mateo)
     end
 
     context "search by reason, note or prescription" do
@@ -92,21 +92,21 @@ RSpec.describe Appoinment, type: :model do
   end
 
   describe "returns appoinment" do
-    let(:doctor_one) { create :doctor, name: "Pedro" }
-    let(:doctor_two) { create :doctor, name: "José" }
+    let(:doctor_one) { create(:doctor, name: "Pedro") }
+    let(:doctor_two) { create(:doctor, name: "José") }
 
     let(:patient_one) do
-      create :patient, name: "Ramon", doctors: [doctor_one, doctor_two]
+      create(:patient, name: "Ramon", doctors: [doctor_one, doctor_two])
     end
     let(:patient_two) do
-      create :patient, name: "Julian", doctors: [doctor_one, doctor_two]
+      create(:patient, name: "Julian", doctors: [doctor_one, doctor_two])
     end
 
     let!(:appoinment_doctor_one) do
-      create_list :appoinment, 5, doctor: doctor_one, patient: patient_one
+      create_list(:appoinment, 5, doctor: doctor_one, patient: patient_one)
     end
     let!(:appoinment_doctor_two) do
-      create_list :appoinment, 3, doctor: doctor_two, patient: patient_two
+      create_list(:appoinment, 3, doctor: doctor_two, patient: patient_two)
     end
 
     it ".per_doctor" do

@@ -1,4 +1,4 @@
 require "rails_helper"
 
-RSpec.describe PatientReferralsHelper, type: :helper do
+RSpec.describe PatientReferralsHelper do
 end
