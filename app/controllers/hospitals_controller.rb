@@ -3,7 +3,7 @@ class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:edit, :update]
 
   def edit
-    flash[:notice] = "Los datos que se requieren en esta sección seran publicos"
+    flash.now[:notice] = "Los datos que se requieren en esta sección seran publicos"
   end
 
   def update
