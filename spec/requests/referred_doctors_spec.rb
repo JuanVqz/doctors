@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe "/referred_doctors", type: :request do
-  let(:hospital) { create :hospital, :basic }
+RSpec.describe "/referred_doctors" do
+  let(:hospital) { create(:hospital, :basic) }
   let(:valid_attributes) do
     {
       full_name: "Licha Perez",
@@ -22,7 +22,7 @@ RSpec.describe "/referred_doctors", type: :request do
       doctor: nil
     }
   end
-  let(:doctor) { create :doctor, :admin, hospital_id: hospital.id }
+  let(:doctor) { create(:doctor, :admin, hospital_id: hospital.id) }
 
   before do
     allow(Hospital).to receive(:current_id).and_return hospital.id

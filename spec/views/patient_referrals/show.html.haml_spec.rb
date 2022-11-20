@@ -1,10 +1,10 @@
 require "rails_helper"
 
-RSpec.describe "patient_referrals/show", type: :view do
-  let(:hospital) { create :hospital }
-  let(:doctor) { create :doctor, hospital: hospital }
-  let(:patient) { create :patient, doctors: [doctor] }
-  let(:referred_doctor) { create :referred_doctor, doctor: doctor }
+RSpec.describe "patient_referrals/show" do
+  let(:hospital) { create(:hospital) }
+  let(:doctor) { create(:doctor, hospital: hospital) }
+  let(:patient) { create(:patient, doctors: [doctor]) }
+  let(:referred_doctor) { create(:referred_doctor, doctor: doctor) }
 
   before do
     @patient_referral = assign(:patient_referral, PatientReferral.create!(

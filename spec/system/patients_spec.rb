@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Patient's flow", type: :system do
+RSpec.describe "Patient's flow" do
   before do
     driven_by(:selenium_chrome_headless)
   end
@@ -87,7 +87,7 @@ RSpec.describe "Patient's flow", type: :system do
     fill_in "patient_address_attributes_postal_code", with: "68000"
     fill_in "patient_address_attributes_municipality", with: "Oaxaca"
 
-    find("#patient_address_attributes_state").find(:xpath, "option[2]").select_option
+    find_by_id("patient_address_attributes_state").find(:xpath, "option[2]").select_option
 
     click_button "Crear Paciente"
   end

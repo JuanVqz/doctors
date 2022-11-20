@@ -1,18 +1,18 @@
 require "rails_helper"
 
-RSpec.describe ReferredDoctor, type: :model do
+RSpec.describe ReferredDoctor do
   it { should belong_to :doctor }
   it { should have_one(:address).dependent(:destroy) }
   it { should have_many :hospitalizations }
 
   describe "#by_doctor" do
-    let(:doctor) { create :doctor }
-    let(:another_doctor) { create :doctor, name: "Ramon" }
+    let(:doctor) { create(:doctor) }
+    let(:another_doctor) { create(:doctor, name: "Ramon") }
     let(:referred_doctors) do
-      create_list :referred_doctor, 2, doctor: doctor
+      create_list(:referred_doctor, 2, doctor: doctor)
     end
     let(:another_referred_doctors) do
-      create_list :referred_doctor, 2, doctor: another_doctor
+      create_list(:referred_doctor, 2, doctor: another_doctor)
     end
 
     it "returns two referred doctor" do
@@ -24,16 +24,16 @@ RSpec.describe ReferredDoctor, type: :model do
   end # describe #by_doctor
 
   context "validations" do
-    let(:doctor) { build_stubbed :doctor }
+    let(:doctor) { build_stubbed(:doctor) }
 
     it "with valid attributes" do
-      referred = build :referred_doctor, doctor: doctor
+      referred = build(:referred_doctor, doctor: doctor)
 
       expect(referred).to be_valid
     end
 
     it "with invalid attributes" do
-      referred = build :referred_doctor, full_name: nil, specialty: nil, doctor: nil
+      referred = build(:referred_doctor, full_name: nil, specialty: nil, doctor: nil)
 
       expect(referred).to be_invalid
       expect(referred.errors.count).to eq 3
@@ -44,21 +44,21 @@ RSpec.describe ReferredDoctor, type: :model do
 
     context "#phone_number" do
       it "doesn't accept non number digits" do
-        referred = build :referred_doctor, phone_number: "555-111-1111"
+        referred = build(:referred_doctor, phone_number: "555-111-1111")
 
         expect(referred).to be_invalid
         expect(referred.errors["phone_number"][0]).to eq "acepta solo numeros"
       end
 
       it "accepts just 10 digits" do
-        referred = build :referred_doctor, phone_number: "123"
+        referred = build(:referred_doctor, phone_number: "123")
 
         expect(referred).to be_invalid
         expect(referred.errors["phone_number"][0]).to eq "longitud errónea (debe ser de 10 caracteres)"
       end
 
       it "allows phone number is blank" do
-        referred = build :referred_doctor, phone_number: ""
+        referred = build(:referred_doctor, phone_number: "")
 
         expect(referred).to be_valid
       end
@@ -66,20 +66,20 @@ RSpec.describe ReferredDoctor, type: :model do
   end # context validations
 
   describe ".search" do
-    let(:doctor) { create :doctor }
+    let(:doctor) { create(:doctor) }
     let(:edgardo) do
-      create :referred_doctor,
+      create(:referred_doctor,
         full_name: "Edgardo Gonzalez",
         specialty: "Dentista",
         phone_number: 9999999999,
-        doctor: doctor
+        doctor: doctor)
     end
     let(:david) do
-      create :referred_doctor,
+      create(:referred_doctor,
         full_name: "David Zepeda",
         specialty: "General",
         phone_number: 5555555555,
-        doctor: doctor
+        doctor: doctor)
     end
 
     context "search by full_name" do

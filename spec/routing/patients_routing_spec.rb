@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe PatientsController, type: :routing do
+RSpec.describe PatientsController do
   describe "routing" do
     it "routes to #index" do
       expect(get: "/patients").to route_to("patients#index")

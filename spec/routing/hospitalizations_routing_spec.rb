@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe HospitalizationsController, type: :routing do
+RSpec.describe HospitalizationsController do
   describe "routing" do
     it "routes to #index" do
       expect(get: "/hospitalizations").to route_to("hospitalizations#index")

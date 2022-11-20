@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe PatientReferral, type: :model do
+RSpec.describe PatientReferral do
   it { should define_enum_for(:importance) }
 
   it do
@@ -8,20 +8,20 @@ RSpec.describe PatientReferral, type: :model do
   end
 
   describe "#validations" do
-    let(:doctor) { build_stubbed :doctor }
-    let(:referred_doctor) { build_stubbed :referred_doctor }
-    let(:hospital) { build_stubbed :hospital }
+    let(:doctor) { build_stubbed(:doctor) }
+    let(:referred_doctor) { build_stubbed(:referred_doctor) }
+    let(:hospital) { build_stubbed(:hospital) }
 
     it "is valid" do
-      patient_referral = build :patient_referral, doctor: doctor,
-        referred_doctor: referred_doctor, hospital: hospital
+      patient_referral = build(:patient_referral, doctor: doctor,
+        referred_doctor: referred_doctor, hospital: hospital)
 
       expect(patient_referral).to be_valid
     end
 
     it "is invalid" do
-      patient_referral = build :patient_referral, patient: nil, doctor: nil,
-        referred_doctor: nil, hospital: nil
+      patient_referral = build(:patient_referral, patient: nil, doctor: nil,
+        referred_doctor: nil, hospital: nil)
 
       expect(patient_referral).to be_invalid
       expect(patient_referral.errors.count).to eq 4
@@ -34,11 +34,11 @@ RSpec.describe PatientReferral, type: :model do
 
   describe "#scopes" do
     describe "#by_hospital(hospital_id)" do
-      let(:hospital_one) { create :hospital, :basic }
-      let(:hospital_two) { create :hospital, :basic }
-      let(:patient_referral_one_one) { create :patient_referral, hospital: hospital_one }
-      let(:patient_referral_one_two) { create :patient_referral, hospital: hospital_one }
-      let(:patient_referral_two_one) { create :patient_referral, hospital: hospital_two }
+      let(:hospital_one) { create(:hospital, :basic) }
+      let(:hospital_two) { create(:hospital, :basic) }
+      let(:patient_referral_one_one) { create(:patient_referral, hospital: hospital_one) }
+      let(:patient_referral_one_two) { create(:patient_referral, hospital: hospital_one) }
+      let(:patient_referral_two_one) { create(:patient_referral, hospital: hospital_two) }
 
       it "returns one patient referred" do
         patient_referral_one_one

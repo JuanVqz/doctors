@@ -1,8 +1,8 @@
 require "rails_helper"
 
-RSpec.describe "patients/show", type: :view do
-  let(:hospital) { create :hospital, subdomain: "ursula" }
-  let(:doctor) { create :doctor, hospital_id: hospital.id }
+RSpec.describe "patients/show" do
+  let(:hospital) { create(:hospital, subdomain: "ursula") }
+  let(:doctor) { create(:doctor, hospital_id: hospital.id) }
 
   before do
     allow(Hospital).to receive(:current_id).and_return hospital.id
@@ -25,14 +25,14 @@ RSpec.describe "patients/show", type: :view do
       doctors: [doctor]
     ))
 
-    @appoinments = create_list :appoinment, 2, doctor: doctor, patient: @patient
+    @appoinments = create_list(:appoinment, 2, doctor: doctor, patient: @patient)
     assign(:appoinments, Kaminari.paginate_array(@appoinments).page(1))
 
-    @hospitalizations = create_list :hospitalization, 2, doctor: doctor, patient: @patient
+    @hospitalizations = create_list(:hospitalization, 2, doctor: doctor, patient: @patient)
     assign(:hospitalizations, Kaminari.paginate_array(@hospitalizations).page(1))
 
-    @address = create :address, addressable: @patient
-    @clinic_history = create :clinic_history, patient: @patient
+    @address = create(:address, addressable: @patient)
+    @clinic_history = create(:clinic_history, patient: @patient)
   end
 
   it "renders attributes in <p>" do
