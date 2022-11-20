@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Medical Consultations flow", type: :system do
+RSpec.describe "Medical Consultations flow" do
   before do
     driven_by(:selenium_chrome_headless)
   end

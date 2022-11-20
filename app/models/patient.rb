@@ -19,7 +19,7 @@ class Patient < User
     :state, :country, to: :address, prefix: true, allow_nil: true
 
   def self.search query
-    where("concat_ws(' ', name, first_name, last_name) ILIKE ?", "%#{query&.squish}%")
+    where("unaccent(concat_ws(' ', name, first_name, last_name)) ILIKE unaccent(?)", "%#{query&.squish}%")
   end
 
   def email_required?
