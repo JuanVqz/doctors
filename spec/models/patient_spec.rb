@@ -100,7 +100,7 @@ RSpec.describe Patient, type: :model do
       end
     end
 
-    context "supports accents" do
+    context "with accent" do
       it "returns 2 items" do
         create :patient, doctors: [doctor], name: "Aron"
         create :patient, doctors: [doctor], name: "Áron"
