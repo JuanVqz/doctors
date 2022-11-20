@@ -102,8 +102,8 @@ RSpec.describe Patient do
 
     context "with accent" do
       it "returns 2 items" do
-        create :patient, doctors: [doctor], name: "Aron"
-        create :patient, doctors: [doctor], name: "Áron"
+        create(:patient, doctors: [doctor], name: "Aron")
+        create(:patient, doctors: [doctor], name: "Áron")
 
         expect(described_class.search("Aron").count).to eq 2
       end
