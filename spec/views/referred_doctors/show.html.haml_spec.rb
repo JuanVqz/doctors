@@ -1,8 +1,8 @@
 require "rails_helper"
 
-RSpec.describe "referred_doctors/show", type: :view do
-  let(:hospital) { create :hospital, subdomain: "ursula" }
-  let(:doctor) { create :doctor, hospital_id: hospital.id }
+RSpec.describe "referred_doctors/show" do
+  let(:hospital) { create(:hospital, subdomain: "ursula") }
+  let(:doctor) { create(:doctor, hospital_id: hospital.id) }
 
   before do
     @referred_doctor = assign(:referred_doctor, ReferredDoctor.create!(

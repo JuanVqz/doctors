@@ -1,10 +1,10 @@
 require "rails_helper"
 
-RSpec.describe "Patient", type: :request do
-  let(:hospital) { create :hospital, :basic }
-  let(:doctor) { create :doctor, hospital_id: hospital.id }
+RSpec.describe "Patient" do
+  let(:hospital) { create(:hospital, :basic) }
+  let(:doctor) { create(:doctor, hospital_id: hospital.id) }
   let(:patient) do
-    create :patient, doctors: [doctor], hospital_id: hospital.id
+    create(:patient, doctors: [doctor], hospital_id: hospital.id)
   end
 
   before do

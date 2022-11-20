@@ -1,5 +1,5 @@
 require "rails_helper"
 
-RSpec.describe ClinicHistory, type: :model do
+RSpec.describe ClinicHistory do
   it { should belong_to :patient }
 end

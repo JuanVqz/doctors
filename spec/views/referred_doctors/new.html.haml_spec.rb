@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "referred_doctors/new", type: :view do
+RSpec.describe "referred_doctors/new" do
   before do
     assign(:referred_doctor, ReferredDoctor.new(
       full_name: "MyString",

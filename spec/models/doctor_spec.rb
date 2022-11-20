@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Doctor, type: :model do
+RSpec.describe Doctor do
   it { should belong_to :hospital }
   it { should have_and_belong_to_many :patients }
   it { should have_many :medical_consultations }
@@ -15,7 +15,7 @@ RSpec.describe Doctor, type: :model do
 
   describe "has a role" do
     context "can use :doctor or :admin role" do
-      let(:doctor) { build :doctor, role: :doctor }
+      let(:doctor) { build(:doctor, role: :doctor) }
 
       it "is a doctor role" do
         doctor.save
@@ -30,7 +30,7 @@ RSpec.describe Doctor, type: :model do
     end
 
     context "can not use :patient role" do
-      let(:doctor) { build :doctor, :patient }
+      let(:doctor) { build(:doctor, :patient) }
 
       it "is not a patient role" do
         messages = ["no puede tener el rol paciente"]

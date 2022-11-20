@@ -1,14 +1,14 @@
 require "rails_helper"
 
-RSpec.describe "Hospitalizations", type: :request do
-  let(:hospital) { create :hospital, :basic }
-  let(:doctor) { create :doctor, hospital_id: hospital.id }
+RSpec.describe "Hospitalizations" do
+  let(:hospital) { create(:hospital, :basic) }
+  let(:doctor) { create(:doctor, hospital_id: hospital.id) }
   let(:patient) do
-    create :patient, doctors: [doctor], hospital_id: hospital.id
+    create(:patient, doctors: [doctor], hospital_id: hospital.id)
   end
-  let(:referred_doctor) { create :referred_doctor, doctor: doctor }
+  let(:referred_doctor) { create(:referred_doctor, doctor: doctor) }
   let(:hospitalization) do
-    create :hospitalization, doctor: doctor, patient: patient
+    create(:hospitalization, doctor: doctor, patient: patient)
   end
 
   before do

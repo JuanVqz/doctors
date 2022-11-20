@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ReferredDoctorsHelper, type: :helper do
+RSpec.describe ReferredDoctorsHelper do
   describe "#call_to phone_number" do
     it "returns a link with the phone number" do
       expect(call_to("555111111")).to include "href"
