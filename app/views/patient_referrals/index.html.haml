@@ -25,9 +25,9 @@
           %td= patient_referral.referred_doctor
           %td
             .buttons.is-right
-              = link_to patient_referral_path(patient_referral, format: "pdf"),
+              = link_to patient_referral_path(patient_referral, format: :pdf),
                 "data-tooltip": "Imprimir",
-                class: "button is-danger tooltip",
+                class: "button is-success tooltip",
                 target: "_blank" do
                 %span.icon
                   %i.fa.fa-print

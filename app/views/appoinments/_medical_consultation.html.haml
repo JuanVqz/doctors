@@ -4,7 +4,7 @@
   %td= truncate(medical_consultation.prescription, lenght: 50)
   %td
     .buttons.is-right
-      = link_to [medical_consultation, format: "pdf"], "data-tooltip": "Imprimir", class: "button is-danger tooltip", target: "_blank" do
+      = link_to [medical_consultation, format: :pdf], "data-tooltip": "Imprimir", class: "button is-success tooltip", target: "_blank" do
         %i.fa.fa-print
 
       = link_to medical_consultation, "data-tooltip": "Detalles", class: "button is-link tooltip" do
