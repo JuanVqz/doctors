@@ -26,7 +26,7 @@
           %td= truncate(appoinment.reason, lenght: 50)
           %td
             .buttons.is-right
-              = link_to appoinment_path(appoinment, format: "pdf"), "data-tooltip": "Imprimir", class: "button is-danger tooltip", target: "_blank" do
+              = link_to appoinment_path(appoinment, format: :pdf), "data-tooltip": "Imprimir", class: "button is-success tooltip", target: "_blank" do
                 %span.icon
                   %i.fa.fa-print
 

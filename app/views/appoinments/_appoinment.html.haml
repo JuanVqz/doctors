@@ -4,7 +4,7 @@
   %td= raw appoinment.prescription.truncate(50)
   %td
     .buttons.is-right
-      = link_to [appoinment, format: :pdf], "data-tooltip": "Imprimir", class: "button is-danger tooltip", target: "_blank" do
+      = link_to [appoinment, format: :pdf], "data-tooltip": "Imprimir", class: "button is-success tooltip", target: "_blank" do
         %i.fa.fa-print
 
       = link_to appoinment, "data-tooltip": "Detalles", class: "button is-link tooltip" do

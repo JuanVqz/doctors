@@ -4,7 +4,7 @@
   %td= l patient.updated_at, format: :day_month_year
   %td
     .buttons.is-right
-      = link_to [:appoinments, patient, format: :pdf], "data-tooltip": "Descargar todas las consultas", class: "button is-danger tooltip", target: "_blank" do
+      = link_to [:appoinments, patient, format: :pdf], "data-tooltip": "Descargar todas las consultas", class: "button is-success tooltip", target: "_blank" do
         %span.icon
           %i.fa.fa-print
 
