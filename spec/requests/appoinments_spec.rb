@@ -65,5 +65,13 @@ RSpec.describe "Appoinments" do
         delete appoinment_path(appoinment)
       }.not_to change(Appoinment, :count)
     end
+
+    it "destroy an appoinment and files" do
+      appoinment = create(:appoinment, :with_files)
+
+      expect {
+        delete appoinment_path(appoinment)
+      }.to change { appoinment.files.count }.from(2).to(0)
+    end
   end
 end
