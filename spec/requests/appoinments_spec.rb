@@ -58,4 +58,12 @@ RSpec.describe "Appoinments" do
       expect(response).to have_http_status(:ok)
     end
   end
+
+  describe "DELETE /appoinments/1" do
+    it "destroy an appoinment" do
+      expect {
+        delete appoinment_path(appoinment)
+      }.not_to change(Appoinment, :count)
+    end
+  end
 end
