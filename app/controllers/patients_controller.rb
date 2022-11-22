@@ -44,7 +44,11 @@ class PatientsController < ApplicationController
   def appoinments
     respond_to do |format|
       format.js
-      format.pdf { render generar_pdf("appoinments") }
+      format.pdf do
+        render pdf: "consultas_#{@patient.name}",
+          template: "pdfs/appoinments",
+          layout: "pdfs/appoinments"
+      end
     end
   end
 
