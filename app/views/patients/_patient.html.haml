@@ -19,3 +19,7 @@
       = link_to patient, "data-tooltip": "Detalles", class: "button is-link tooltip" do
         %span.icon
           %i.fa.fa-eye
+
+      = link_to patient, class: "button is-danger tooltip is-tooltip-left", data: { confirm: "Estas seguro de eliminar?", method: :delete, tooltip: "Eliminar paciente" } do
+        %span.icon
+          %i.fa.fa-times

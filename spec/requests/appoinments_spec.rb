@@ -61,9 +61,11 @@ RSpec.describe "Appoinments" do
 
   describe "DELETE /appoinments/1" do
     it "destroy an appoinment" do
+      appoinment = create(:appoinment)
+
       expect {
         delete appoinment_path(appoinment)
-      }.not_to change(Appoinment, :count)
+      }.to change(Appoinment, :count).by(-1)
     end
 
     it "destroy an appoinment and files" do

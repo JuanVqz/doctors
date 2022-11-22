@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_patient, only: [:show, :edit, :update, :appoinments]
+  before_action :set_patient, only: [:show, :edit, :update, :appoinments, :destroy]
   before_action :set_appoinments, only: [:show, :appoinments]
 
   def index
@@ -45,6 +45,14 @@ class PatientsController < ApplicationController
     respond_to do |format|
       format.js
       format.pdf { render generar_pdf("appoinments") }
+    end
+  end
+
+  def destroy
+    @patient.destroy
+
+    respond_to do |format|
+      format.html { redirect_to patients_url, notice: "Paciente eliminado correctamente." }
     end
   end
 

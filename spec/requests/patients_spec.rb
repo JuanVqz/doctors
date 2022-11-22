@@ -47,4 +47,40 @@ RSpec.describe "Patient" do
       expect(response).to have_http_status(:ok)
     end
   end
+
+  describe "DELETE /patients/1" do
+    it "destroy a patient" do
+      patient = create(:patient)
+
+      expect {
+        delete patient_path(patient)
+      }.to change(Patient, :count).by(-1)
+    end
+
+    it "destroy patient's bentos" do
+      patient = create(:patient, bentos: [build(:bento)])
+
+      expect {
+        delete patient_path(patient)
+      }.to change(Bento, :count).by(-1)
+    end
+
+    it "destroy patient's appoinments" do
+      doctors = [doctor]
+      appoinments = [build(:appoinment, doctor: doctor)]
+      patient = create(:patient, appoinments: appoinments, doctors: doctors)
+
+      expect {
+        delete patient_path(patient)
+      }.to change(Appoinment, :count).by(-1)
+    end
+
+    it "does not destroy patient's doctor" do
+      patient = create(:patient, doctors: [doctor])
+
+      expect {
+        delete patient_path(patient)
+      }.not_to change(Doctor, :count)
+    end
+  end
 end
