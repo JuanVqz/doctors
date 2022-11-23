@@ -22,6 +22,9 @@ FileUtils.chdir APP_ROOT do
   #   FileUtils.cp "config/database.yml.sample", "config/database.yml"
   # end
 
+  puts "== Installing foreman =="
+  system("gem install foreman")
+
   system("overcommit --install")
   system("overcommit --sign pre-commit")
 

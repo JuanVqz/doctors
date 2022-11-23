@@ -27,6 +27,13 @@ docker-compose run --rm web rails db:setup
 docker-compose up
 ```
 
+ó
+
+```sh
+./bin/setup
+./bin/dev
+```
+
 ahora puedes visitar la siguiente ruta
 
 ```bash
