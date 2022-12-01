@@ -24,7 +24,7 @@ gem "sprockets-rails"
 gem "trix-rails", require: "trix"
 gem "turbolinks", "~> 5"
 gem "wicked_pdf"
-gem "wkhtmltopdf-binary", "0.12.6.5"
+gem "wkhtmltopdf-binary", "0.12.6.6"
 
 group :development, :test do
   gem "capybara"
