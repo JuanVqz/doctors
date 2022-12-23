@@ -16,6 +16,10 @@
           %span.icon
             %i.fa.fa-edit
 
+        = link_to @hospitalization, "data-tooltip": "Eliminar", class: "button is-danger tooltip", data: {method: :delete, confirm: '¿Estás seguro de eliminar esta hospitalización?'} do
+          %span.icon
+            %i.fa.fa-trash
+
         = link_to [@hospitalization, format: :pdf], "data-tooltip": "Imprimir", class: "button is-success tooltip", target: "_blank" do
           %span.icon
             %i.fa.fa-print
