@@ -29,10 +29,12 @@
           %td= hospitalization.days_of_stay
           %td
             .buttons.is-right
+              = link_to hospitalization, "data-tooltip": "Eliminar", class: "button is-danger tooltip", data: {method: :delete, confirm: '¿Estás seguro de eliminar esta hospitalización?'} do
+                %span.icon
+                  %i.fa.fa-trash
               = link_to [hospitalization, format: :pdf], "data-tooltip": "Imprimir", class: "button is-success tooltip", target: "_blank" do
                 %span.icon
                   %i.fa.fa-print
-
               = link_to [:edit, hospitalization], "data-tooltip": "Editar", class: "button is-warning tooltip" do
                 %span.icon
                   %i.fa.fa-edit
