@@ -8,7 +8,7 @@ namespace :new_table do
       doctor.medical_consultations.each do |mc|
         appoinment = create_appoinment(mc, doctor)
         if appoinment.errors.any?
-          puts appoinment.errors.full_messages.join(",").to_s
+          puts appoinment.errors.full_messages.join(",")
           abort
         end
 
@@ -32,7 +32,7 @@ namespace :new_table do
       patient = update_patient p
       patient.save
       if patient.errors.any?
-        puts patient.errors.full_messages.join(", ").to_s
+        puts patient.errors.full_messages.join(", ")
         abort
       end
       count += 1 if patient.persisted?
