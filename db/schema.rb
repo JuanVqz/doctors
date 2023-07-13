@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
     t.text "metadata"
     t.bigint "byte_size", null: false
     t.string "checksum"
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
@@ -53,9 +53,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
     t.string "country", default: "México"
     t.string "addressable_type"
     t.bigint "addressable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
   create_table "appoinments", force: :cascade do |t|
@@ -77,8 +77,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
     t.float "cost", default: 0.0
     t.text "cabinet_results"
     t.text "histopathology"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["doctor_id"], name: "index_appoinments_on_doctor_id"
     t.index ["patient_id"], name: "index_appoinments_on_patient_id"
   end
@@ -86,8 +86,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
   create_table "bentos", force: :cascade do |t|
     t.string "code"
     t.bigint "patient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["patient_id"], name: "index_bentos_on_patient_id"
   end
 
@@ -103,8 +103,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
     t.text "description_cancer"
     t.text "description_other"
     t.bigint "patient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["patient_id"], name: "index_clinic_histories_on_patient_id"
   end
 
@@ -123,8 +123,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
     t.text "treatment", default: ""
     t.bigint "doctor_id"
     t.bigint "patient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.text "input_diagnosis"
     t.text "output_diagnosis"
     t.text "recommendations"
@@ -147,8 +147,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
     t.string "twitter", default: "https://twitter.com/?lang=es"
     t.string "linkedin", default: "https://www.linkedin.com/"
     t.string "maps", default: "https://www.google.com/maps"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "medical_consultations", force: :cascade do |t|
@@ -165,8 +165,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
     t.text "comments"
     t.bigint "doctor_id"
     t.bigint "patient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.decimal "imc", default: "0.0"
     t.decimal "weight", default: "0.0"
     t.decimal "height", default: "0.0"
@@ -229,19 +229,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
     t.string "email"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at", precision: nil
+    t.datetime "confirmation_sent_at", precision: nil
     t.string "unconfirmed_email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "hospital_id"
     t.string "marital_status"
     t.text "comments"
