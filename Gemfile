@@ -31,9 +31,6 @@ group :development, :test do
   gem "ffaker"
   gem "pry"
   gem "rspec-rails"
-  gem "rubocop"
-  gem "rubocop-rails"
-  gem "rubocop-rspec"
   gem "shoulda-matchers"
   gem "simplecov", require: false
   gem "standard"
