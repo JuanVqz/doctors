@@ -33,6 +33,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "shoulda-matchers"
   gem "simplecov", require: false
+  gem "simplecov_json_formatter", require: false
   gem "standard"
   gem "webdrivers", "5.2.0", require: false
 end

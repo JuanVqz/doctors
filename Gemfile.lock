@@ -377,6 +377,7 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   simplecov
+  simplecov_json_formatter
   sprockets-rails
   standard
   trix-rails
