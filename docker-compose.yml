@@ -19,11 +19,5 @@ services:
     command: bash -c "rm -rf /code/tmp/pids && foreman start -f Procfile.dev"
     depends_on:
       - db
-  next:
-    <<: *web
-    command: bash -c "rm -rf /code/tmp/pids && foreman start -f Procfile.dev"
-    environment:
-      <<: *envs
-      BUNDLE_GEMFILE: Gemfile.next
 volumes:
   db_data:
