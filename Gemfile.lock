@@ -69,8 +69,7 @@ GEM
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
-    bcrypt (3.1.18)
-    bindex (0.8.1)
+    bcrypt (3.1.19)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -87,10 +86,12 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (4.1.0)
-    coderay (1.1.3)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
+    debug (1.8.0)
+      irb (>= 1.5.0)
+      reline (>= 0.3.1)
     devise (4.9.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -111,7 +112,7 @@ GEM
       railties (>= 3.2, < 8.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
-    haml (6.0.1)
+    haml (6.1.1)
       temple (>= 0.8.2)
       thor
       tilt
@@ -123,6 +124,9 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     iniparse (1.5.0)
+    io-console (0.6.0)
+    irb (1.7.4)
+      reline (>= 0.3.6)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -162,7 +166,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.2)
     minitest (5.18.1)
-    msgpack (1.6.0)
+    msgpack (1.7.1)
     net-imap (0.3.6)
       date
       net-protocol
@@ -188,10 +192,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.3)
-    pry (0.14.2)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
-    public_suffix (5.0.1)
+    public_suffix (5.0.3)
     puma (6.3.0)
       nio4r (~> 2.0)
     pundit (2.3.0)
@@ -234,6 +235,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.8.1)
+    reline (0.3.6)
+      io-console (~> 0.5)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -274,8 +277,7 @@ GEM
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
-    selenium-webdriver (4.5.0)
-      childprocess (>= 0.5, < 5.0)
+    selenium-webdriver (4.9.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -295,9 +297,9 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    sprockets (4.1.1)
+    sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
-      rack (> 1, < 3)
+      rack (>= 2.2.4, < 4)
     sprockets-rails (3.4.2)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
@@ -308,14 +310,15 @@ GEM
       rubocop (~> 1.52.0)
       standard-custom (~> 1.0.0)
       standard-performance (~> 1.1.0)
-    standard-custom (1.0.1)
+    standard-custom (1.0.2)
       lint_roller (~> 1.0)
-    standard-performance (1.1.1)
+      rubocop (~> 1.50)
+    standard-performance (1.1.2)
       lint_roller (~> 1.1)
       rubocop-performance (~> 1.18.0)
-    temple (0.8.2)
+    temple (0.10.2)
     thor (1.2.2)
-    tilt (2.0.11)
+    tilt (2.2.0)
     timeout (0.4.0)
     trix-rails (2.4.0)
       rails (> 4.1)
@@ -327,11 +330,6 @@ GEM
     unicode-display_width (2.4.2)
     warden (1.2.9)
       rack (>= 2.0.9)
-    web-console (4.2.0)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
-      bindex (>= 0.4.0)
-      railties (>= 6.0.0)
     webdrivers (5.2.0)
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
@@ -352,23 +350,23 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bootsnap (>= 1.1.0)
+  bootsnap
   bulma-extensions-rails
-  bulma-rails (~> 0.9.4)
+  bulma-rails
   capybara
+  debug
   devise
   factory_bot_rails
   ffaker
   font-awesome-rails
-  haml-rails (~> 2.1)
-  jbuilder (~> 2.11)
+  haml-rails
+  jbuilder
   jquery-rails
   kaminari
   listen (>= 3.0.5, < 3.9)
   overcommit
-  pg (>= 0.18, < 2.0)
-  pry
-  puma (~> 6.3)
+  pg
+  puma
   pundit
   rails (~> 7.0)
   rspec-rails
@@ -381,9 +379,8 @@ DEPENDENCIES
   sprockets-rails
   standard
   trix-rails
-  turbolinks (~> 5)
+  turbolinks
   tzinfo-data
-  web-console (>= 3.3.0)
   webdrivers (= 5.2.0)
   wicked_pdf
   wkhtmltopdf-binary (= 0.12.6.6)
