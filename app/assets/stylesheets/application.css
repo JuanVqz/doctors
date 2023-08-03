@@ -14,8 +14,6 @@
  *= require trix
  *= require bulma
  *= require bulma-extensions
- *= require font-awesome
  *= require_directory .
  *= require_self
  */
-
