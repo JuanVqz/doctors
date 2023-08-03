@@ -13,8 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     services:
       db:
-        image: postgres:10.13
-        ports: ["5432:5432"]
+        image: postgres:12.15
+        ports:
+          - 5432:5432
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
@@ -39,8 +40,7 @@ jobs:
           DATABASE_URL: postgres://postgres:password@localhost:5432/doctors_test
           TZ: America/Mexico_City
         run: |
-          bin/rails db:create
-          bin/rails db:schema:load
+          bin/rails db:prepare
           bin/rake
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
