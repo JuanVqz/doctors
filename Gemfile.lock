@@ -125,9 +125,6 @@ GEM
     io-console (0.6.0)
     irb (1.7.4)
       reline (>= 0.3.6)
-    jbuilder (2.11.5)
-      actionview (>= 5.0.0)
-      activesupport (>= 5.0.0)
     jquery-rails (4.6.0)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -357,7 +354,6 @@ DEPENDENCIES
   factory_bot_rails
   ffaker
   haml-rails
-  jbuilder
   jquery-rails
   kaminari
   listen (>= 3.0.5, < 3.9)
