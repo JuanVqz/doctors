@@ -7,7 +7,6 @@ gem "bootsnap", require: false
 gem "bulma-extensions-rails"
 gem "bulma-rails"
 gem "devise"
-gem "font-awesome-rails"
 gem "haml-rails"
 gem "jbuilder"
 gem "jquery-rails"
