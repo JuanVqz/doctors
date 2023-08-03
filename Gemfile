@@ -34,7 +34,7 @@ group :development, :test do
   gem "simplecov", require: false
   gem "simplecov_json_formatter", require: false
   gem "standard"
-  gem "webdrivers", "5.3.1", require: false
+  gem "selenium-webdriver"
 end
 
 group :development do
