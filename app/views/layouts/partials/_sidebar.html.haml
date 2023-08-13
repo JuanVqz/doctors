@@ -36,9 +36,3 @@
           %span.icon
             %i.fa.fa-hospital
           %span Página principal
-      - unless current_hospital.basic?
-        %li
-          = link_to doctors_path(subdomain: current_hospital.subdomain), class: active_for(doctors_path) do
-            %span.icon
-              %i.fa.fa-user-md
-            %span Doctores
