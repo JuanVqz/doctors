@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   constraints(!SubdomainRoutes) do
     resources :appoinments
-    resources :doctors
     resources :hospitalizations
     resources :hospitals, only: [:edit, :update]
     resources :medical_consultations
