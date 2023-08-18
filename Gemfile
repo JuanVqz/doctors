@@ -37,7 +37,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "listen", ">= 3.0.5", "< 3.9"
+  gem "listen"
   gem "overcommit"
 end
 
