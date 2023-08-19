@@ -20,6 +20,7 @@ gem "simple_form"
 gem "sprockets-rails"
 gem "trix-rails", require: "trix"
 gem "turbolinks"
+gem "view_component"
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary", "0.12.6.6"
 
