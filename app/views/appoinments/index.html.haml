@@ -1,7 +1,7 @@
 %nav.level
   .level-left
     .level-item
-      = render "shared/search", search_path: appoinments_path, placeholder: "Consultas"
+      = render SearchFormComponent.new(search_path: appoinments_path, placeholder: "Consultas")
   .level-right
     .level-item
       = link_to [:new, :appoinment], class: "button is-link" do
@@ -44,4 +44,3 @@
           %br
           .has-text-right
             = page_entries_info @appoinments, entry_name: "consultas medicas"
-

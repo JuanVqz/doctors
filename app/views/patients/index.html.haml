@@ -1,8 +1,7 @@
 %nav.level
   .level-left
     .level-item
-      = render "shared/search", search_path: patients_path,
-        placeholder: "Pacientes"
+      = render SearchFormComponent.new(search_path: patients_path, placeholder: "Pacientes")
   .level-right
     .level-item
       = link_to [:new, :patient], class: "button is-link" do
@@ -26,4 +25,3 @@
           %br
           .has-text-right
             = page_entries_info @patients, entry_name: "pacientes"
-
