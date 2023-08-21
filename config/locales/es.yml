@@ -269,6 +269,12 @@ es-MX:
     errors:
       <<: *errors
   activerecord:
+    model:
+      patient: Paciente
+      appoinment: Consulta
+      hospitalization: Hospitalización
+      patient_referral: Referencia de Paciente
+      referred_doctor: Doctor
     errors:
       <<: *errors
     attributes:

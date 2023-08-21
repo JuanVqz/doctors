@@ -1,13 +1,4 @@
-%nav.level
-  .level-left
-    .level-item
-      = render SearchFormComponent.new(search_path: referred_doctors_path, placeholder: "Doctores")
-  .level-right
-    .level-item
-      = link_to [:new, :referred_doctor], class: "button is-link" do
-        %span.icon
-          %i.fa.fa-plus
-        %span Registrar Doctor
+= render ActionsBarComponent.new(subject: :referred_doctor)
 
 .table-container
   %table.table.is-hoverable.is-fullwidth

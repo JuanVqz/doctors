@@ -1,13 +1,5 @@
-%nav.level
-  .level-left
-    .level-item
-      = render SearchFormComponent.new(search_path: patients_path, placeholder: "Pacientes")
-  .level-right
-    .level-item
-      = link_to [:new, :patient], class: "button is-link" do
-        %span.icon
-          %i.fa.fa-plus
-        %span Registrar Paciente
+= render ActionsBarComponent.new(subject: :patient)
+
 .table-container
   %table.table.is-hoverable.is-fullwidth
     %thead.is-uppercase

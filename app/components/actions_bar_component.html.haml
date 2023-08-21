@@ -1,0 +1,11 @@
+%nav.level
+  .level-left
+    .level-item
+      = link_to [:new, subject], class: "button is-link" do
+        %span.icon
+          %i.fa.fa-plus
+        %span= text
+  - if search?
+    .level-right
+      .level-item
+        = render SearchFormComponent.new(search_path: search_path, placeholder: placeholder)
