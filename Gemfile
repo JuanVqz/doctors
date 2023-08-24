@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby IO.readlines(".ruby-version")[0].strip
+ruby "3.0.3"
 
 gem "bootsnap", require: false
 gem "bulma-extensions-rails"
@@ -20,6 +20,7 @@ gem "simple_form"
 gem "sprockets-rails"
 gem "trix-rails", require: "trix"
 gem "turbolinks"
+gem "vite_rails"
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary", "0.12.6.6"
 
