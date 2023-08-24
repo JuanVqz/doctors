@@ -14,35 +14,44 @@ jobs:
     services:
       db:
         image: postgres:10.13
-        ports: ["5432:5432"]
+        ports:
+          - 5432:5432
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+          POSTGRES_DB: doctors_test
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:password@localhost:5432/doctors_test
+      TZ: America/Mexico_City
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Ruby
+      - name: Checkout 🏗
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 🏗
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install Node.js ⌨
+        run: npm install
+
+      - name: Install Ruby ♦
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Install dependencies
-        run: bundle install
-      - name: Run linter
+
+      - name: Run linter 👟
         run: bundle exec standardrb
-      - name: Run test suite
-        env:
-          RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:password@localhost:5432/doctors_test
-          TZ: America/Mexico_City
-        run: |
-          bin/rails db:create
-          bin/rails db:schema:load
-          bin/rake
-      - name: Publish code coverage
+
+      - name: Setup database 🏗
+        run: bin/rails db:schema:load
+
+      - name: Run test suite 👟
+        run: bin/rake
+
+      - name: Publish code coverage 🚀
         uses: paambaati/codeclimate-action@v5.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
