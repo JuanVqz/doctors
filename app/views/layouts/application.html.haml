@@ -7,13 +7,11 @@
     %title Doctores
     = csrf_meta_tags
     = csp_meta_tag
-    = favicon_link_tag asset_path('favicon.png')
+    = favicon_link_tag vite_asset_path('images/favicon.png')
 
     = vite_client_tag
+    = vite_stylesheet_tag 'application', data: { "turbo-track": "reload" }
     = vite_javascript_tag 'application'
-
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = render "layouts/partials/flash"
     = render "layouts/partials/navbar"
