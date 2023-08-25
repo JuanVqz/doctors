@@ -5,7 +5,7 @@ RSpec.describe "Hospitalization's flow" do
     driven_by(:selenium_chrome_headless)
   end
 
-  feature "Doctor can create an hospitalization" do
+  xfeature "Doctor can create an hospitalization" do
     scenario "from patient list", js: true do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital

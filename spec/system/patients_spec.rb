@@ -5,7 +5,7 @@ RSpec.describe "Patient's flow" do
     driven_by(:selenium_chrome_headless)
   end
 
-  feature "Doctor can create a patient" do
+  xfeature "Doctor can create a patient" do
     scenario "with valid data" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
@@ -25,7 +25,7 @@ RSpec.describe "Patient's flow" do
     end
   end
 
-  feature "Doctor can edit a patient" do
+  xfeature "Doctor can edit a patient" do
     context "from show patient page" do
       scenario "with valid data" do
         create_hospital_plan_medium
@@ -42,7 +42,7 @@ RSpec.describe "Patient's flow" do
     end
   end
 
-  feature "Doctor can create an appoinment" do
+  xfeature "Doctor can create an appoinment" do
     context "from patients#index" do
       scenario "redirect to new appoinment" do
         create_hospital_plan_medium

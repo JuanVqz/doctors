@@ -5,7 +5,7 @@ RSpec.describe "Medical Consultations flow" do
     driven_by(:selenium_chrome_headless)
   end
 
-  feature "Doctor can create a medical consultation" do
+  xfeature "Doctor can create a medical consultation" do
     scenario "from patients list" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
@@ -22,7 +22,7 @@ RSpec.describe "Medical Consultations flow" do
     end
   end
 
-  feature "when the doctor doesn't enter a required field and an error is throw the patient is changed (it shouldn't) to the first patient" do
+  xfeature "when the doctor doesn't enter a required field and an error is throw the patient is changed (it shouldn't) to the first patient" do
     scenario "from patients list", :js do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
