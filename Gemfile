@@ -4,8 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.0.3"
 
 gem "bootsnap", require: false
-gem "bulma-extensions-rails"
-gem "bulma-rails"
 gem "devise"
 gem "haml-rails"
 gem "jquery-rails"
@@ -17,7 +15,6 @@ gem "rails", "~> 7.0"
 gem "sentry-rails"
 gem "sentry-ruby"
 gem "simple_form"
-gem "sprockets-rails"
 gem "trix-rails", require: "trix"
 gem "turbolinks"
 gem "vite_rails"

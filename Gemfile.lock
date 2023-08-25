@@ -74,9 +74,6 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
-    bulma-extensions-rails (6.2.7)
-    bulma-rails (0.9.4)
-      sassc (~> 2.0)
     capybara (3.39.2)
       addressable
       matrix
@@ -276,8 +273,6 @@ GEM
       rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
-    sassc (2.4.0)
-      ffi (~> 1.9)
     selenium-webdriver (4.11.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -298,13 +293,6 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    sprockets (4.2.0)
-      concurrent-ruby (~> 1.0)
-      rack (>= 2.2.4, < 4)
-    sprockets-rails (3.4.2)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
-      sprockets (>= 3.0.0)
     standard (1.31.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
@@ -355,8 +343,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  bulma-extensions-rails
-  bulma-rails
   capybara
   debug
   devise
@@ -379,7 +365,6 @@ DEPENDENCIES
   simple_form
   simplecov
   simplecov_json_formatter
-  sprockets-rails
   standard
   trix-rails
   turbolinks
