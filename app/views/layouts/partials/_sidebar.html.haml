@@ -1,38 +1,25 @@
-%aside.menu
-  %p.menu-label
-    MENÚ
-  %ul.menu-list
-    %li
-      = link_to patients_path(subdomain: current_hospital.subdomain), class: active_for(patients_path) do
-        %span.icon
-          %i.fa.fa-users
-        %span Pacientes
-    %li
-      = link_to appoinments_path(subdomain: current_hospital.subdomain), class: active_for(appoinments_path) do
-        %span.icon
-          %i.fa.fa-book
-        %span Consultas
-    %li
-      = link_to hospitalizations_path(subdomain: current_hospital.subdomain), class: active_for(hospitalizations_path) do
-        %span.icon
-          %i.fa.fa-ambulance
-        %span Hospitalizaciónes
-    %li
-      = link_to patient_referrals_path(subdomain: current_hospital.subdomain), class: active_for(patient_referrals_path) do
-        %span.icon
-          %i.fa.fa-share
-        %span Referencia de paciente
-  - if is_admin?
-    %p.menu-label
-      CONFIGURACIÓN
-    %ul.menu-list
-      %li
-        = link_to referred_doctors_path(subdomain: current_hospital.subdomain), class: active_for(referred_doctors_path) do
-          %span.icon
-            %i.fa.fa-user-md
-          %span Referidos
-      %li
-        = link_to [:edit, current_hospital], class: active_for(edit_hospital_path(current_hospital)) do
-          %span.icon
-            %i.fa.fa-hospital
-          %span Página principal
+%aside#sidebar.fixed.top-0.left-0.z-20.flex.flex-col.flex-shrink-0.hidden.w-64.h-full.pt-16.font-normal.duration-75.lg:flex.transition-width
+  %div.relative.flex.flex-col.flex-1.min-h-0.pt-0.bg-white.border-r.border-gray-200.dark:bg-gray-800.dark:border-gray-700
+    %div.flex.flex-col.flex-1.pt-5.pb-4.overflow-y-auto
+      %div.flex-1.px-3.space-y-1.bg-white.divide-y.divide-gray-200.dark:bg-gray-800.dark:divide-gray-700
+        %ul.pb-2.space-y-2
+          %li
+            = link_to patients_path(subdomain: current_hospital.subdomain), class: "flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700" do
+              %span Pacientes
+          %li
+            = link_to appoinments_path(subdomain: current_hospital.subdomain), class: "flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700" do
+              %span Consultas
+          %li
+            = link_to hospitalizations_path(subdomain: current_hospital.subdomain), class: "flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700" do
+              %span Hospitalizaciónes
+          %li
+            = link_to patient_referrals_path(subdomain: current_hospital.subdomain), class: "flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700" do
+              %span Referencia de paciente
+          %li
+            = link_to referred_doctors_path(subdomain: current_hospital.subdomain), class: "flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700" do
+              %span Referidos
+          %li
+            = link_to [:edit, current_hospital], class: "flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700" do
+              %span Página principal
+
+%div#sidebar_background{class: "fixed inset-0 z-10 bg-gray-900/50 dark:bg-gray-900/90 hidden"}

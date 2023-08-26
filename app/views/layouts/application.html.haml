@@ -1,23 +1,13 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}/
-    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
-    %title Doctores
-    = csrf_meta_tags
-    = csp_meta_tag
-    = favicon_link_tag vite_asset_path('images/favicon.png')
-
-    = vite_client_tag
-    = vite_stylesheet_tag 'application', data: { "turbo-track": "reload" }
-    = vite_javascript_tag 'application'
-  %body
-    = render "layouts/partials/flash"
+    = render "layouts/partials/head"
+  %body.bg-gray-50.dark:bg-gray-800
     = render "layouts/partials/navbar"
-    %section.section
-      .columns
-        %aside.column.is-2
-          = render "layouts/partials/sidebar"
-        .column.is-10
-          = yield
+    %section.flex.pt-16.overflow-hidden.bg-gray-50.dark:bg-gray-900
+      = render "layouts/partials/sidebar"
+      %section.relative.w-full.h-full.overflow-y-auto.bg-gray-50.lg:ml-64.dark:bg-gray-900
+        %main.p-4
+          %div.p-4.bg-white.border.border-gray-200.rounded-lg.shadow-sm.dark:border-gray-700.sm:p-6.dark:bg-gray-800
+            = render "layouts/partials/flash"
+            = yield
