@@ -1,29 +1,20 @@
-%nav.level
-  .level-left
-    .level-item
-      = render "shared/search", search_path: patients_path,
-        placeholder: "Pacientes"
-  .level-right
-    .level-item
-      = link_to [:new, :patient], class: "button is-link" do
-        %span.icon
-          %i.fa.fa-plus
-        %span Registrar Paciente
-.table-container
-  %table.table.is-hoverable.is-fullwidth
-    %thead.is-uppercase
-      %tr
-        %th Nombre
-        %th Registrado
-        %th Actualizado
-        %th.has-text-right Acciones
-    %tbody
-      = render @patients
-    %tfoot
-      %tr
-        %th{ colspan: 4 }
-          = paginate @patients, params: { query: params[:query] }
-          %br
-          .has-text-right
-            = page_entries_info @patients, entry_name: "pacientes"
+= render "shared/actions", model: :patient, search_path: patients_path
 
+%div.m-4.p-3.bg-white.border.border-gray-200.rounded-lg.shadow-sm.dark:border-gray-700.dark:bg-gray-800.dark:text-white
+  .table-container
+    %table.table.is-hoverable.is-fullwidth
+      %thead.is-uppercase
+        %tr
+          %th Nombre
+          %th Registrado
+          %th Actualizado
+          %th.has-text-right Acciones
+      %tbody
+        = render @patients
+      %tfoot
+        %tr
+          %th{ colspan: 4 }
+            = paginate @patients, params: { query: params[:query] }
+            %br
+            .has-text-right
+              = page_entries_info @patients, entry_name: "pacientes"

@@ -1,13 +1,5 @@
-%nav.level
-  .level-left
-    .level-item
-      = render "shared/search", search_path: appoinments_path, placeholder: "Consultas"
-  .level-right
-    .level-item
-      = link_to [:new, :appoinment], class: "button is-link" do
-        %span.icon
-          %i.fa.fa-plus
-        %span Registrar Consulta
+= render "shared/actions", model: :appoinment, search_path: appoinments_path
+
 .table-container
   %table.table.is-hoverable.is-fullwidth
     %thead.is-uppercase
@@ -44,4 +36,3 @@
           %br
           .has-text-right
             = page_entries_info @appoinments, entry_name: "consultas medicas"
-

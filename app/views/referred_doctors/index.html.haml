@@ -1,13 +1,4 @@
-%nav.level
-  .level-left
-    .level-item
-      = render "shared/search", search_path: referred_doctors_path, placeholder: "Doctores"
-  .level-right
-    .level-item
-      = link_to [:new, :referred_doctor], class: "button is-link" do
-        %span.icon
-          %i.fa.fa-plus
-        %span Registrar Doctor
+= render "shared/actions", model: :referred_doctor, search_path: referred_doctors_path
 
 .table-container
   %table.table.is-hoverable.is-fullwidth
@@ -40,4 +31,3 @@
           %br
           .has-text-right
             = page_entries_info @referred_doctors, entry_name: "doctores"
-

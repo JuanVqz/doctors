@@ -14,10 +14,10 @@
               %span Hospitalizaciónes
           %li
             = link_to patient_referrals_path(subdomain: current_hospital.subdomain), class: "flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700" do
-              %span Referencia de paciente
+              %span Referir paciente
           %li
             = link_to referred_doctors_path(subdomain: current_hospital.subdomain), class: "flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700" do
-              %span Referidos
+              %span Doctores Referidos
           %li
             = link_to [:edit, current_hospital], class: "flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700" do
               %span Página principal

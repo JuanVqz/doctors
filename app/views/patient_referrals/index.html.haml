@@ -1,10 +1,4 @@
-%nav.level
-  .level-right
-    .level-item
-      = link_to [:new, :patient_referral], class: "button is-link" do
-        %span.icon
-          %i.fa.fa-plus
-        %span Registrar Referencia de Paciente
+= render "shared/actions", model: :patient_referral, search_path: nil
 
 .table-container
   %table.table.is-hoverable.is-fullwidth
@@ -41,4 +35,3 @@
           %br
           .has-text-right
             = page_entries_info @patient_referrals, entry_name: "envios"
-

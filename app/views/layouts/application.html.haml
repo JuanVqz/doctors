@@ -2,12 +2,10 @@
 %html
   %head
     = render "layouts/partials/head"
-  %body.bg-gray-50.dark:bg-gray-800
+  %body.bg-gray-50.dark:bg-gray-900
     = render "layouts/partials/navbar"
-    %section.flex.pt-16.overflow-hidden.bg-gray-50.dark:bg-gray-900
+    %section.flex.pt-16.overflow-hidden
       = render "layouts/partials/sidebar"
-      %section.relative.w-full.h-full.overflow-y-auto.bg-gray-50.lg:ml-64.dark:bg-gray-900
-        %main.p-4
-          %div.p-4.bg-white.border.border-gray-200.rounded-lg.shadow-sm.dark:border-gray-700.sm:p-6.dark:bg-gray-800
-            = render "layouts/partials/flash"
-            = yield
+      %section.w-full.h-full.overflow-y-auto.lg:ml-64
+        %main
+          = yield
