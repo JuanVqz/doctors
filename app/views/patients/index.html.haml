@@ -1,20 +1,21 @@
 = render "shared/actions", model: :patient, search_path: patients_path
 
-%div.m-4.p-3.bg-white.border.border-gray-200.rounded-lg.shadow-sm.dark:border-gray-700.dark:bg-gray-800.dark:text-white
-  .table-container
-    %table.table.is-hoverable.is-fullwidth
-      %thead.is-uppercase
-        %tr
-          %th Nombre
-          %th Registrado
-          %th Actualizado
-          %th.has-text-right Acciones
-      %tbody
-        = render @patients
-      %tfoot
-        %tr
-          %th{ colspan: 4 }
-            = paginate @patients, params: { query: params[:query] }
-            %br
-            .has-text-right
-              = page_entries_info @patients, entry_name: "pacientes"
+= render "shared/section" do
+  = render "shared/table" do
+    %thead.border-b.border-gray-200.dark:border-gray-700.font-medium
+      %tr
+        %th{scope: :col, class: "px-6 py-2"} Nombre
+        %th{scope: :col, class: "px-6 py-2"} Registrado
+        %th{scope: :col, class: "px-6 py-2"} Actualizado
+        %th{scope: :col, class: "px-6 py-2"} Acciones
+    %tbody
+      - @patients.each do |patient|
+        %tr.border-b.border-gray-200.dark:border-gray-700
+          %td.whitespace-nowrap.px-6.py-4= patient
+          %td.whitespace-nowrap.px-6.py-4= time_ago_in_words(patient.created_at)
+          %td.whitespace-nowrap.px-6.py-4= time_ago_in_words(patient.updated_at)
+          %td
+            = link_to :print, [patient, format: :pdf], target: :_blank
+            = link_to :hospitalizacion, [:new, :hospitalization, patient_id: patient.id]
+            = link_to :consulta, [:new, :appoinment, patient_id: patient.id]
+            = link_to :detalles, patient

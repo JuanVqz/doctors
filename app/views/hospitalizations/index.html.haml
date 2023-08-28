@@ -1,41 +1,18 @@
 = render "shared/actions", model: :hospitalization, search_path: hospitalizations_path
 
-.table-container
-  %table.table.is-hoverable.is-fullwidth
-    %thead.is-uppercase
+= render "shared/section" do
+  = render "shared/table" do
+    %thead.border-b.border-gray-200.dark:border-gray-700.font-medium
       %tr
-        %th Fecha
-        %th Paciente
-        %th Inicio
-        %th Final
-        %th Dias de estadia
-        %th.has-text-right Acciones
+        %th{scope: :col, class: "px-6 py-2"} Paciente
+        %th{scope: :col, class: "px-6 py-2"} Dias de estadia
+        %th{scope: :col, class: "px-6 py-2"} Acciones
     %tbody
       - @hospitalizations.each do |hospitalization|
-        %tr
-          %td= l hospitalization.created_at, format: :not_hour
-          %td= hospitalization.patient
-          %td= hospitalization.starting
-          %td= hospitalization.ending
-          %td= hospitalization.days_of_stay
+        %tr.border-b.border-gray-200.dark:border-gray-700
+          %td.whitespace-nowrap.px-6.py-4= hospitalization.patient
+          %td.whitespace-nowrap.px-6.py-4= hospitalization.days_of_stay
           %td
-            .buttons.is-right
-              = link_to hospitalization, "data-tooltip": "Eliminar", class: "button is-danger tooltip", data: {method: :delete, confirm: '¿Estás seguro de eliminar esta hospitalización?'} do
-                %span.icon
-                  %i.fa.fa-trash
-              = link_to [hospitalization, format: :pdf], "data-tooltip": "Imprimir", class: "button is-success tooltip", target: "_blank" do
-                %span.icon
-                  %i.fa.fa-print
-              = link_to [:edit, hospitalization], "data-tooltip": "Editar", class: "button is-warning tooltip" do
-                %span.icon
-                  %i.fa.fa-edit
-              = link_to hospitalization, "data-tooltip": "Detalles", class: "button is-link tooltip" do
-                %span.icon
-                  %i.fa.fa-eye
-    %tfoot
-      %tr
-        %th{ colspan: 6 }
-          = paginate @hospitalizations
-          %br
-          .has-text-right
-            = page_entries_info @hospitalizations, entry_name: "hospitalizaciones"
+            = link_to :print, [hospitalization, format: :pdf], target: "_blank"
+            = link_to :editar, [:edit, hospitalization]
+            = link_to :detalles, hospitalization

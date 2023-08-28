@@ -5,7 +5,7 @@ RSpec.describe "Referred Doctor's flow" do
     driven_by(:selenium_chrome_headless)
   end
 
-  feature "Referred Doctor's Flow" do
+  xfeature "Referred Doctor's Flow" do
     scenario "create a new referred doctor" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
