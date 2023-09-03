@@ -1,6 +1,6 @@
 %div.m-4.p-3.md:p-4.bg-white.border.border-gray-200.rounded-lg.shadow-sm.dark:border-gray-700.dark:bg-gray-800.dark:text-white
   %div.flex.flex-col.md:flex-row.md:justify-between
-    = link_to "Registrar", [:new, model], class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    = link_to "Registrar", [:new, model], class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
     - if search_path
       .pt-2.md:pt-0
         = render "shared/search", search_path: search_path
