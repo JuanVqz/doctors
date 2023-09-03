@@ -7,6 +7,7 @@ RSpec.describe Appoinment do
 
   it { should validate_presence_of :reason }
   it { should validate_presence_of :prescription }
+  it { should validate_presence_of :patient_id }
   it { should validate_numericality_of(:heart_rate).is_greater_than_or_equal_to 0 }
   it { should validate_numericality_of(:breathing_rate).is_greater_than_or_equal_to 0 }
   it { should validate_numericality_of(:temperature).is_greater_than_or_equal_to 0 }
