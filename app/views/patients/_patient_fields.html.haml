@@ -2,7 +2,11 @@
 = f.input :name
 = f.input :first_name
 = f.input :last_name
-= f.input :birthday
+= f.input :birthday,
+  as: :date,
+  prompt: true,
+  start_year: Date.current.year,
+  end_year: Date.current.year - 100
 = f.input :place_of_birth
 = f.input :height
 = f.input :weight
