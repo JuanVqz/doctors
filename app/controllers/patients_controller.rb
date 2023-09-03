@@ -4,7 +4,12 @@ class PatientsController < ApplicationController
   before_action :set_appoinments, only: [:show, :appoinments]
 
   def index
-    @patients = Patient.recent.search(params[:query]).page(params[:page])
+    @patients =
+      current_hospital
+        .patients
+        .recent
+        .search(params[:query])
+        .page(params[:page])
   end
 
   def show
