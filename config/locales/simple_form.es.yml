@@ -46,6 +46,26 @@ es-MX:
         state: Estado
         street: Calle
 
+      appoinment: &appoinment_labels
+        blood_pressure: TA
+        breathing_rate: FR
+        cabinet_results: Resultados de gabinete
+        cost: Costo
+        created_at: Fecha de registro
+        glycaemia: Glc
+        heart_rate: FC
+        height: Altura
+        histopathology: Histopatologia
+        imc: IMC
+        note: Anotación
+        patient_id: Paciente
+        prescription: Tratamiento
+        reason: Motivo
+        recommendations: Recomendaciones
+        sat_02: Sat02
+        temperature: Temperatura
+        weight: Peso
+
     placeholders:
       patient:
         <<: *user_labels
