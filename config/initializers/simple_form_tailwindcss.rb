@@ -105,18 +105,20 @@ SimpleForm.setup do |config|
   end
 
   # vertical file input
-  config.wrappers :vertical_file, tag: :div do |b|
+  config.wrappers :vertical_file, tag: :div, class: "mb-6" do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
     b.optional :minlength
     b.optional :readonly
-    b.use :label, class: "mb-2"
-    b.use :input, class: "w-full min-w-fit mt-1 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md border",
-      error_class: "border-red-400 is-invalid mb-1",
-      valid_class: "is-valid"
-    b.use :full_error, wrap_with: {tag: :p, class: "invalid-feedback text-xs text-red-400"}
-    b.use :hint, wrap_with: {tag: :small, class: "text-gray-400"}
+    b.use :label, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    # class: "w-full min-w-fit mt-1 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md border",
+    b.use :input,
+      class: "block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400",
+      error_class: "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500",
+      valid_class: "bg-green-50 border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-green-500"
+    b.use :full_error, wrap_with: {tag: :p, class: "mt-2 text-sm text-red-600 dark:text-red-600"}
+    b.use :hint, wrap_with: {tag: :small, class: "text-sm text-gray-400 dark:text-gray-400"}
   end
 
   # Custom wrappers for input types. This should be a hash containing an input

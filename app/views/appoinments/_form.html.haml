@@ -21,7 +21,7 @@
   = f.input :weight, hint: t("simple_form.hint.defaults.weight")
   = f.input :imc, input_html: { readonly: true, class: "cursor-not-allowed" }
 
-  = f.file_field :files, multiple: true, direct_upload: true
+  = f.input :files
   = f.input :cost, hint: t("simple_form.hint.defaults.cost")
 
   = f.button :submit
