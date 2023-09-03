@@ -8,11 +8,15 @@ module ApplicationHelper
   end
 
   def sexos_for_select
-    ["Masculino", "Femenino"]
+    ["Femenino", "Masculino"]
   end
 
   def patients_for_select
-    Patient.all.map { |p| [p, p.id] }
+    @patients_for_select ||=
+      current_hospital
+        .patients
+        .order(name: :asc, first_name: :asc, last_name: :asc)
+        .map { |p| [p, p.id] }
   end
 
   def referred_doctor_for_select
