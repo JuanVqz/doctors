@@ -3,70 +3,110 @@ es-MX:
     "yes": "Sí"
     "no": "No"
     required:
-      text: "requerido"
-      mark: "*"
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
-    error_notification:
-      default_message: "Por favor, revise los siguientes problemas:"
+      # text: "required"
+      # mark: "*"
+      html: '<abbr title="required" class="text-red-500 no-underline">*</abbr>'
     labels:
-      patient_referral:
-        referred_doctor: "Destinatario"
-        subject: "Motivo de envio"
-        content: "Contenido"
-        importance: "Imporatancia"
-      defaults:
-        name: "Nombre"
-        first_name: "Apellido Paterno"
-        last_name: "Apellido Materno"
-        specialty: "Especialidad"
-        professional_card: "Cédula Profesional"
-        email: "Correo Electrónico"
-        password: "Contraseña"
-        password_confirmation: "Confirmar Contraseña"
-        street: "Calle"
-        number: "Número"
-        colony: "Colonia"
-        postal_code: "Código Postal"
-        municipality: "Municipio"
-        state: "Estado"
-        contry: "País"
-        note: "Nota Medica"
-        prescription: "Receta"
-        cabinet_results: "Resultados de gabinete"
-        histopathology: "Histopatologia"
-        comments: "Comentarios"
-        place_of_birth: "Lugar de Nacimiento"
-        sex: "Sexo"
-        marital_status: "Estado Civil"
-        cellphone: "Celular"
-        starting: "Fecha de Ingreso"
-        ending: "Fecha de Egreso"
-        input_diagnosis: "Diagnóstico de Ingreso"
-        output_diagnosis: "Diagnóstico de Egreso"
-        days_of_stay: "Días de Estadia"
-        reason_for_hospitalization: "Procedimiento realizado"
-        doctor: "Doctor"
-        patient: "Paciente"
-        allergies: "Alergias"
-        pathological_background: "Antecedentes personales patológicos"
-        non_pathological_background: "Antecedentes personales no patológicos"
-        gyneco_obstetric_background: "Antecedentes gineco-obstetricos"
-        system_background: "Interrogatorio por aparatos y sistemas"
-        family_inheritance_background: "Antecedentes heredo-familiares"
-        physic_exploration: "Exploración fisica"
-        other_background: "Otros Motivos"
-        description: "Descripción"
-        maps: "Mapa"
-        about: "Acerca de"
-        schedule: "Horario"
-        tags: "Expertos en"
-        blood_pressure: "T. A."
-        heart_rate: "F. C."
-        breathing_rate: "F. R."
-        temperature: "Temp."
-        glycaemia: "Gluc. Cap."
-        sat_02: "SAT. 02"
-        cost: "Costo de la consulta"
-        recommendations: "Recomendaciones"
+      user: &user_labels
+        active: Si
+        allergies: Alergias
+        birthday: Fecha de cumpleaños
+        blood_group: Grupo Sanguíneo
+        cellphone: Número Telefónico
+        comments: Comentarios
+        email: Correo Electrónico
+        family_inheritance_background: Antecedentes heredo-familiares
+        first_name: Apellido Paterno
+        gyneco_obstetric_background: Antecedentes gineco-obstetricos
+        height: Altura
+        last_name: Apellido Materno
+        marital_status: Estado Civil
+        name: Nombre
+        non_pathological_background: Antecedentes personales no patológicos
+        occupation: Ocupación
+        other_background: Otros Motivos
+        password: Contraseña
+        pathological_background: Antecedentes personales patológicos
+        physic_exploration: Exploración fisica
+        place_of_birth: Lugar de Nacimiento
+        professional_card: Cédula Profesional
+        referred_by: Referido por
+        role: Rol
+        sex: Sexo
+        specialty: Especialidad
+        system_background: Interrogatorio por aparatos y sistemas
+        weight: Peso
+
+      address: &address_labels
+        colony: Colonia
+        contry: País
+        municipality: Municipio
+        number: Número
+        postal_code: Código Postal
+        state: Estado
+        street: Calle
+
+    placeholders:
+      patient:
+        <<: *user_labels
+        height: Altura en Centimetros
+        weight: Peso en Kilogramos
+      address:
+        <<: *address_labels
+
+      # patient_referral:
+      #   referred_doctor: "Destinatario"
+      #   subject: "Motivo de envio"
+      #   content: "Contenido"
+      #   importance: "Imporatancia"
+      # defaults:
+      #   specialty: "Especialidad"
+      #   professional_card: "Cédula Profesional"
+      #   email: "Correo Electrónico"
+      #   password: "Contraseña"
+      #   password_confirmation: "Confirmar Contraseña"
+      #   street: "Calle"
+      #   number: "Número"
+      #   colony: "Colonia"
+      #   postal_code: "Código Postal"
+      #   municipality: "Municipio"
+      #   state: "Estado"
+      #   contry: "País"
+      #   note: "Nota Medica"
+      #   prescription: "Receta"
+      #   cabinet_results: "Resultados de gabinete"
+      #   histopathology: "Histopatologia"
+      #   comments: "Comentarios"
+      #   place_of_birth: "Lugar de Nacimiento"
+      #   sex: "Sexo"
+      #   marital_status: "Estado Civil"
+      #   cellphone: "Celular"
+      #   starting: "Fecha de Ingreso"
+      #   ending: "Fecha de Egreso"
+      #   input_diagnosis: "Diagnóstico de Ingreso"
+      #   output_diagnosis: "Diagnóstico de Egreso"
+      #   days_of_stay: "Días de Estadia"
+      #   reason_for_hospitalization: "Procedimiento realizado"
+      #   doctor: "Doctor"
+      #   patient: "Paciente"
+      #   allergies: "Alergias"
+      #   pathological_background: "Antecedentes personales patológicos"
+      #   non_pathological_background: "Antecedentes personales no patológicos"
+      #   gyneco_obstetric_background: "Antecedentes gineco-obstetricos"
+      #   system_background: "Interrogatorio por aparatos y sistemas"
+      #   family_inheritance_background: "Antecedentes heredo-familiares"
+      #   physic_exploration: "Exploración fisica"
+      #   other_background: "Otros Motivos"
+      #   description: "Descripción"
+      #   maps: "Mapa"
+      #   about: "Acerca de"
+      #   schedule: "Horario"
+      #   tags: "Expertos en"
+      #   blood_pressure: "T. A."
+      #   heart_rate: "F. C."
+      #   breathing_rate: "F. R."
+      #   temperature: "Temp."
+      #   glycaemia: "Gluc. Cap."
+      #   sat_02: "SAT. 02"
+      #   cost: "Costo de la consulta"
+      #   recommendations: "Recomendaciones"

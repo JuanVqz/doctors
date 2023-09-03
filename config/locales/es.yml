@@ -135,71 +135,6 @@ es-MX:
       header:
         one: ! '%{model} no pudo guardarse debido a 1 error'
         other: ! '%{model} no pudo guardarse debido a %{count} errores'
-    models:
-      bento:
-        attributes:
-          patient:
-            required: "no puede estar en blanco"
-      doctor:
-        attributes:
-          hospital:
-            required: "no puede estar en blanco"
-      appoinment:
-        attributes:
-          doctor:
-            required: "no puede estar en blanco"
-          patient:
-            required: "no puede estar en blanco"
-      hospitalization:
-        attributes:
-          patient:
-            required: "no puede estar en blanco"
-      referred_doctor:
-        attributes:
-          doctor:
-            required: "no puede estar en blanco"
-      patient_referral:
-        attributes:
-          patient:
-            required: "no puede estar en blanco"
-          doctor:
-            required: "no puede estar en blanco"
-          referred_doctor:
-            required: "no puede estar en blanco"
-          hospital:
-            required: "no puede estar en blanco"
-  helpers:
-    select:
-      prompt: Por favor selecciona
-    submit:
-      hospitalization:
-        create: Crear Hospitalización
-        update: Actualizar Hospitalización
-      patient:
-        create: Crear Paciente
-        update: Actualizar Paciente
-      appoinment:
-        create: Crear Consulta
-        update: Actualizar Consulta
-      hospital:
-        update: Actualizar Página
-      referred_doctor:
-        create: Crear Doctor
-        update: Actualizar Doctor
-      patient_referral:
-        create: Crear Referencia de Paciente
-        update: Actualizar Referencia de Paciente
-      create: Crear %{model}
-      submit: Guardar %{model}
-      update: Actualizar %{model}
-    page_entries_info:
-      one_page:
-        display_entries:
-          zero: "No existen %{entry_name}"
-          one: "Mostrando <b>1</b> %{entry_name}"
-          other: "Mostrando <b>%{count}</b> %{entry_name}"
-      more_pages:
-        display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> en total"
   number:
     currency:
       format:
@@ -263,116 +198,176 @@ es-MX:
       short: ! '%d de %b a las %H:%M hrs'
       comprobante: ! '%FT%T'
       day_month_year: ! '%d-%m-%Y'
-    pm: pm
-  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
-  activemodel:
-    errors:
-      <<: *errors
+      pm: pm
   activerecord:
-    errors:
-      <<: *errors
     attributes:
-      endoscopias: "Endoscopias"
-      doctor:
-        name: "Nombre"
-        first_name: "Apellido Paterno"
-        last_name: "Apellido Materno"
-        specialty: "Especialidad"
-        professional_card: "Cédula Profesional"
-        email: "Correo Electronico"
-        password: "Contraseña"
-        active: "Si"
-      patient:
-        name: "Nombre"
-        first_name: "Apellido Paterno"
-        last_name: "Apellido Materno"
-        height: "Altura"
-        weight: "Peso"
-        blood_group: "Grupo Sanguíneo"
-        occupation: "Ocupación"
-        referred_by: "Referido por"
-        blood_pressure: "Presion Arterial"
-        place_of_birth: "Lugar de Nacimiento"
-        sex: "Sexo"
-        cellphone: "Celular"
-        allergies: "Alergias"
-        pathological_background: "Antecedentes personales patológicos"
-        non_pathological_background: "Antecedentes personales no patológicos"
-        gyneco_obstetric_background: "Antecedentes gineco-obstetricos"
-        system_background: "Interrogatorio por aparatos y sistemas"
-        family_inheritance_background: "Antecedentes heredo-familiares"
-        physic_exploration: "Exploración fisica"
-        other_background: "Otros Motivos"
+      user:
+        active: Si
+        allergies: Alergias
+        birthday: Fecha de cumpleaños
+        blood_group: Grupo Sanguíneo
+        cellphone: Número Telefónico
+        comments: Comentarios
+        email: Correo Electrónico
+        family_inheritance_background: Antecedentes heredo-familiares
+        first_name: Apellido Paterno
+        gyneco_obstetric_background: Antecedentes gineco-obstetricos
+        height: Altura
+        last_name: Apellido Materno
+        marital_status: Estado Civil
+        name: Nombre
+        non_pathological_background: Antecedentes personales no patológicos
+        occupation: Ocupación
+        other_background: Otros Motivos
+        password: Contraseña
+        pathological_background: Antecedentes personales patológicos
+        physic_exploration: Exploración fisica
+        place_of_birth: Lugar de Nacimiento
+        professional_card: Cédula Profesional
+        referred_by: Referido por
+        role: Rol
+        sex: Sexo
+        specialty: Especialidad
+        system_background: Interrogatorio por aparatos y sistemas
+        weight: Peso
+
       address:
-        street: "Calle"
-        number: "Numero"
-        colony: "Colonia"
-        postal_code: "Código Postal"
-        municipality: "Municipio"
-        state: "Estado"
-        contry: "País"
-      appoinment:
-        patient: "Paciente"
-        reason: "Motivo de Consulta"
-        prescription: "Receta"
-        recommendations: "Recomendaciones"
-        note: "Nota Medica"
-        cabinet_results: "Resultados de gabinete"
-        histopathology: "Histopatologia"
-        height: "Altura"
-        weight: "Peso"
-        imc: "IMC"
-        blood_pressure: "T. A."
-        heart_rate: "F. C."
-        breathing_rate: "F. R."
-        temperature: "Temp."
-        glycaemia: "Gluc. Cap."
-        sat_02: "SAT. 02"
-        cost: "Costo"
-        created_at: "Fecha de registro"
-        files: "Archivos"
-      hospitalization:
-        patient: "Paciente"
-        input_diagnosis: "Diagnóstico de Ingreso"
-        output_diagnosis: "Diagnóstico de Egreso"
-        starting: "Fecha de Ingreso"
-        ending: "Fecha de Egreso"
-        days_of_stay: "Días de Estadia"
-        reason_for_hospitalization: "Procedimiento realizado"
-        treatment: "Resumen"
-        recommendations: "Recomendaciones"
-        created_at: "Fecha de registro"
-        status: "Tipo"
-      hospital:
-        name: "Nombre"
-        description: "Descripción"
-      referred_doctor:
-        full_name: "Nombre completo"
-        specialty: "Especialidad"
-        phone_number: "Número Teléfonico"
-      patient_referral:
-        doctor: "Remitente"
-        referred_doctor: "Destinatario"
-        patient: "Paciente"
-        subject: "Motivo de envio"
-        content: "Contenido"
-        importance: "Imporatancia"
-        created_at: "Fecha de registro"
-        phone_number: "Número Teléfonico"
-  sessions:
-    new:
-      title: "Iniciar sesión"
-      email: "Email"
-      password: "Contraseña"
-      button: "Iniciar sesión"
-    messages:
-      invalid: "Email o contraseña incorrecto"
-      logged_in: "¡Has iniciado sesión!"
-      logged_out: "¡Has cerrado sesión!"
-  views:
-    pagination:
-      first: "&laquo; Primera"
-      last: "Última &raquo;"
-      previous: "&lsaquo; Anterior"
-      next: "Siguiente &rsaquo;"
-      truncate: "&hellip;"
+        colony: Colonia
+        contry: País
+        municipality: Municipio
+        number: Número
+        postal_code: Código Postal
+        state: Estado
+        street: Calle
+
+  #     appoinment:
+  #       patient: "Paciente"
+  #       reason: "Motivo de Consulta"
+  #       prescription: "Receta"
+  #       recommendations: "Recomendaciones"
+  #       note: "Nota Medica"
+  #       cabinet_results: "Resultados de gabinete"
+  #       histopathology: "Histopatologia"
+  #       height: "Altura"
+  #       weight: "Peso"
+  #       imc: "IMC"
+  #       blood_pressure: "T. A."
+  #       heart_rate: "F. C."
+  #       breathing_rate: "F. R."
+  #       temperature: "Temp."
+  #       glycaemia: "Gluc. Cap."
+  #       sat_02: "SAT. 02"
+  #       cost: "Costo"
+  #       created_at: "Fecha de registro"
+  #       files: "Archivos"
+  #     hospitalization:
+  #       patient: "Paciente"
+  #       input_diagnosis: "Diagnóstico de Ingreso"
+  #       output_diagnosis: "Diagnóstico de Egreso"
+  #       starting: "Fecha de Ingreso"
+  #       ending: "Fecha de Egreso"
+  #       days_of_stay: "Días de Estadia"
+  #       reason_for_hospitalization: "Procedimiento realizado"
+  #       treatment: "Resumen"
+  #       recommendations: "Recomendaciones"
+  #       created_at: "Fecha de registro"
+  #       status: "Tipo"
+  #     hospital:
+  #       name: "Nombre"
+  #       description: "Descripción"
+  #     referred_doctor:
+  #       full_name: "Nombre completo"
+  #       specialty: "Especialidad"
+  #       phone_number: "Número Teléfonico"
+  #     patient_referral:
+  #       doctor: "Remitente"
+  #       referred_doctor: "Destinatario"
+  #       patient: "Paciente"
+  #       subject: "Motivo de envio"
+  #       content: "Contenido"
+  #       importance: "Imporatancia"
+  #       created_at: "Fecha de registro"
+  #       phone_number: "Número Teléfonico"
+  #
+  # models:
+  #     bento:
+  #       attributes:
+  #         patient:
+  #           required: "no puede estar en blanco"
+  #     doctor:
+  #       attributes:
+  #         hospital:
+  #           required: "no puede estar en blanco"
+  #     appoinment:
+  #       attributes:
+  #         doctor:
+  #           required: "no puede estar en blanco"
+  #         patient:
+  #           required: "no puede estar en blanco"
+  #     hospitalization:
+  #       attributes:
+  #         patient:
+  #           required: "no puede estar en blanco"
+  #     referred_doctor:
+  #       attributes:
+  #         doctor:
+  #           required: "no puede estar en blanco"
+  #     patient_referral:
+  #       attributes:
+  #         patient:
+  #           required: "no puede estar en blanco"
+  #         doctor:
+  #           required: "no puede estar en blanco"
+  #         referred_doctor:
+  #           required: "no puede estar en blanco"
+  #         hospital:
+  #           required: "no puede estar en blanco"
+  # helpers:
+  #   select:
+  #     prompt: Por favor selecciona
+  #   submit:
+  #     hospitalization:
+  #       create: Crear Hospitalización
+  #       update: Actualizar Hospitalización
+  #     patient:
+  #       create: Crear Paciente
+  #       update: Actualizar Paciente
+  #     appoinment:
+  #       create: Crear Consulta
+  #       update: Actualizar Consulta
+  #     hospital:
+  #       update: Actualizar Página
+  #     referred_doctor:
+  #       create: Crear Doctor
+  #       update: Actualizar Doctor
+  #     patient_referral:
+  #       create: Crear Referencia de Paciente
+  #       update: Actualizar Referencia de Paciente
+  #     create: Crear %{model}
+  #     submit: Guardar %{model}
+  #     update: Actualizar %{model}
+  #   page_entries_info:
+  #     one_page:
+  #       display_entries:
+  #         zero: "No existen %{entry_name}"
+  #         one: "Mostrando <b>1</b> %{entry_name}"
+  #         other: "Mostrando <b>%{count}</b> %{entry_name}"
+  #     more_pages:
+  #       display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> en total"
+  #
+  # sessions:
+  #   new:
+  #     title: "Iniciar sesión"
+  #     email: "Email"
+  #     button: "Iniciar sesión"
+  #   messages:
+  #     invalid: "Email o contraseña incorrecto"
+  #     logged_in: "¡Has iniciado sesión!"
+  #     logged_out: "¡Has cerrado sesión!"
+  # views:
+  #   pagination:
+  #     first: "&laquo; Primera"
+  #     last: "Última &raquo;"
+  #     previous: "&lsaquo; Anterior"
+  #     next: "Siguiente &rsaquo;"
+  #     truncate: "&hellip;"
