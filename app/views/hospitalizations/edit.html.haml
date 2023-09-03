@@ -1,8 +1,7 @@
-%nav.level
-  .level-left
-    .level-item
-      %span.icon
-        %i.fa.fa-ambulance
-      %span.is-uppercase Actualizar Hospitalización
+= render "shared/section" do
+  %div.flex.flex-col.md:flex-row.md:justify-between
+    = link_to "Regresar", :hospitalizations
+    Actualizar Hospitalización
 
-= render 'form'
+= render "shared/section" do
+  = render "form"

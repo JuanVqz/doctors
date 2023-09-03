@@ -1,8 +1,7 @@
-%nav.level
-  .level-left
-    .level-item
-      %span.icon
-        %i.fa.fa-users
-      %span.is-uppercase Actualizar Paciente
+= render "shared/section" do
+  %div.flex.flex-col.md:flex-row.md:justify-between
+    = link_to "Regresar", :patients
+    Actualizar Paciente
 
-= render "form"
+= render "shared/section" do
+  = render "form", patient: @patient

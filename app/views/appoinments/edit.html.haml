@@ -1,8 +1,7 @@
-%nav.level
-  .level-left
-    .level-item
-      %span.icon
-        %i.fa.fa-user-md
-      %span.is-uppercase Actualizar Consulta
+= render "shared/section" do
+  %div.flex.flex-col.md:flex-row.md:justify-between
+    = link_to "Regresar", :appoinments
+    Actualizar Consulta
 
-= render "form"
+= render "shared/section" do
+  = render "form"
