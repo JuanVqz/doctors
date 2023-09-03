@@ -49,10 +49,16 @@ es-MX:
     placeholders:
       patient:
         <<: *user_labels
-        height: Altura en Centimetros
-        weight: Peso en Kilogramos
       address:
         <<: *address_labels
+      appoinment:
+        <<: *appoinment_labels
+
+    hint:
+      defaults:
+        height: Altura en Centimetros
+        weight: Peso en Kilogramos
+        cost: Costo de la consulta
 
       # patient_referral:
       #   referred_doctor: "Destinatario"
