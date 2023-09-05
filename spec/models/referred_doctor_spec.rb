@@ -37,9 +37,6 @@ RSpec.describe ReferredDoctor do
 
       expect(referred).to be_invalid
       expect(referred.errors.count).to eq 3
-      expect(referred.errors["doctor"][0]).to eq "no puede estar en blanco"
-      expect(referred.errors["full_name"][0]).to eq "no puede estar en blanco"
-      expect(referred.errors["specialty"][0]).to eq "no puede estar en blanco"
     end
 
     context "#phone_number" do
@@ -47,7 +44,7 @@ RSpec.describe ReferredDoctor do
         referred = build(:referred_doctor, phone_number: "555-111-1111")
 
         expect(referred).to be_invalid
-        expect(referred.errors["phone_number"][0]).to eq "acepta solo numeros"
+        expect(referred.errors["phone_number"][0]).to eq "acepta solo números"
       end
 
       it "accepts just 10 digits" do

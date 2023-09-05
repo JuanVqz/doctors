@@ -1,7 +1,7 @@
 = render "shared/section" do
   %div.flex.flex-col.md:flex-row.md:justify-between
-    = link_to "Regresar", :patients
+    = link_to "Regresar", :referred_doctors
     Registrar Doctor
 
 = render "shared/section" do
-  = render "form", referred_doctor: @referred_doctor
+  = render "form"

@@ -275,38 +275,37 @@ es-MX:
         patient_id: Paciente
         referred_doctor_id: Destinatario
         subject: Motivo de envío
-
+      referred_doctor:
+        full_name: Nombre completo
+        phone_number: Número Teléfonico
+        specialty: Especialidad
   #     hospital:
   #       name: "Nombre"
   #       description: "Descripción"
-  #     referred_doctor:
-  #       full_name: "Nombre completo"
-  #       specialty: "Especialidad"
-  #       phone_number: "Número Teléfonico"
   helpers:
     select:
       prompt: Seleccione una opción
     submit:
+      create: Crear %{model}
+      submit: Guardar %{model}
+      update: Actualizar %{model}
       patient:
-        create: Crear Paciente
+        create: Registrar Paciente
         update: Actualizar Paciente
       appoinment:
-        create: Crear Consulta
+        create: Registrar Consulta
         update: Actualizar Consulta
       hospitalization:
-        create: Crear Hospitalización
+        create: Registrar Hospitalización
         update: Actualizar Hospitalización
       patient_referral:
         create: Referir Paciente
         update: Actualizar Referencia
+      referred_doctor:
+        create: Registrar Doctor
+        update: Actualizar Doctor
   #     hospital:
   #       update: Actualizar Página
-  #     referred_doctor:
-  #       create: Crear Doctor
-  #       update: Actualizar Doctor
-  #     create: Crear %{model}
-  #     submit: Guardar %{model}
-  #     update: Actualizar %{model}
   #   page_entries_info:
   #     one_page:
   #       display_entries:

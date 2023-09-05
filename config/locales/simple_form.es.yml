@@ -85,6 +85,16 @@ es-MX:
         patient_id: Paciente
         referred_doctor_id: Destinatario
         subject: Motivo de envío
+      referred_doctor: &referred_doctor_labels
+        full_name: Nombre completo
+        phone_number: Número Teléfonico
+        specialty: Especialidad
+      # defaults:
+      #   description: "Descripción"
+      #   maps: "Mapa"
+      #   about: "Acerca de"
+      #   schedule: "Horario"
+      #   tags: "Expertos en"
     placeholders:
       patient:
         <<: *user_labels
@@ -96,20 +106,11 @@ es-MX:
         <<: *hospitalization_labels
       patient_referral:
         <<: *patient_referral_labels
+      referred_doctor:
+        <<: *referred_doctor_labels
     hint:
       defaults:
         height: Altura en Centimetros
         weight: Peso en Kilogramos
         cost: Costo de la consulta
-
-      # patient_referral:
-      #   referred_doctor: "Destinatario"
-      #   subject: "Motivo de envio"
-      #   content: "Contenido"
-      #   importance: "Imporatancia"
-      # defaults:
-      #   description: "Descripción"
-      #   maps: "Mapa"
-      #   about: "Acerca de"
-      #   schedule: "Horario"
-      #   tags: "Expertos en"
+        phone_number: Coloque solo los digitos sin guiones, parentesis o espacios. Ejemplo. 9511234567
