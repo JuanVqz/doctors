@@ -26,6 +26,7 @@ es-MX:
         occupation: Ocupación
         other_background: Otros Motivos
         password: Contraseña
+        password_confirmation: Confirmar Contraseña
         pathological_background: Antecedentes personales patológicos
         physic_exploration: Exploración fisica
         place_of_birth: Lugar de Nacimiento

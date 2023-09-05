@@ -1,12 +1,4 @@
 module ApplicationHelper
-  def is_admin?
-    current_user.admin?
-  end
-
-  def active_for current
-    "is-active" if request.path.include? current
-  end
-
   def sexos_for_select
     ["Femenino", "Masculino"]
   end

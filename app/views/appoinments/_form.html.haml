@@ -1,6 +1,6 @@
 -# frozen_string_literal: true
 
-= simple_form_for(@appoinment) do |f|
+= simple_form_for(appoinment) do |f|
   = f.input :patient_id, collection: patients_for_select, prompt: true
 
   = f.input :reason
