@@ -76,6 +76,14 @@ es-MX:
         starting: Fecha de ingreso
         status: Tipo
         treatment: Resumen
+      patient_referral: &patient_referral_labels
+        content: Diagnóstico
+        created_at: Fecha de registro
+        doctor_id: Remitente
+        importance: Imporatancia
+        patient_id: Paciente
+        referred_doctor_id: Destinatario
+        subject: Motivo de envío
     placeholders:
       patient:
         <<: *user_labels
@@ -85,6 +93,8 @@ es-MX:
         <<: *appoinment_labels
       hospitalization:
         <<: *hospitalization_labels
+      patient_referral:
+        <<: *patient_referral_labels
     hint:
       defaults:
         height: Altura en Centimetros

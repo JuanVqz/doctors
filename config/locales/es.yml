@@ -267,6 +267,14 @@ es-MX:
         starting: Fecha de ingreso
         status: Tipo
         treatment: Resumen
+      patient_referral:
+        content: Diagnóstico
+        created_at: Fecha de registro
+        doctor_id: Remitente
+        importance: Imporatancia
+        patient_id: Paciente
+        referred_doctor_id: Destinatario
+        subject: Motivo de envío
 
   #     hospital:
   #       name: "Nombre"
@@ -275,16 +283,6 @@ es-MX:
   #       full_name: "Nombre completo"
   #       specialty: "Especialidad"
   #       phone_number: "Número Teléfonico"
-  #     patient_referral:
-  #       doctor: "Remitente"
-  #       referred_doctor: "Destinatario"
-  #       patient: "Paciente"
-  #       subject: "Motivo de envio"
-  #       content: "Contenido"
-  #       importance: "Imporatancia"
-  #       created_at: "Fecha de registro"
-  #       phone_number: "Número Teléfonico"
-  #
   helpers:
     select:
       prompt: Seleccione una opción
@@ -295,17 +293,17 @@ es-MX:
       appoinment:
         create: Crear Consulta
         update: Actualizar Consulta
-  #     hospitalization:
-  #       create: Crear Hospitalización
-  #       update: Actualizar Hospitalización
+      hospitalization:
+        create: Crear Hospitalización
+        update: Actualizar Hospitalización
+      patient_referral:
+        create: Referir Paciente
+        update: Actualizar Referencia
   #     hospital:
   #       update: Actualizar Página
   #     referred_doctor:
   #       create: Crear Doctor
   #       update: Actualizar Doctor
-  #     patient_referral:
-  #       create: Crear Referencia de Paciente
-  #       update: Actualizar Referencia de Paciente
   #     create: Crear %{model}
   #     submit: Guardar %{model}
   #     update: Actualizar %{model}

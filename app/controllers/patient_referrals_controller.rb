@@ -4,8 +4,8 @@ class PatientReferralsController < ApplicationController
   # GET /patient_referrals
   def index
     @patient_referrals =
-      PatientReferral
-        .by_hospital(current_user.hospital_id)
+      current_hospital
+        .patient_referrals
         .order(created_at: :desc)
         .page(params[:page])
   end
