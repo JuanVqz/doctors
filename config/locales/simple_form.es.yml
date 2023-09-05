@@ -36,7 +36,6 @@ es-MX:
         specialty: Especialidad
         system_background: Interrogatorio por aparatos y sistemas
         weight: Peso
-
       address: &address_labels
         colony: Colonia
         contry: País
@@ -45,7 +44,6 @@ es-MX:
         postal_code: Código Postal
         state: Estado
         street: Calle
-
       appoinment: &appoinment_labels
         blood_pressure: TA
         breathing_rate: FR
@@ -65,7 +63,19 @@ es-MX:
         sat_02: Sat02
         temperature: Temperatura
         weight: Peso
-
+      hospitalization: &hospitalization_labels
+        created_at: Fecha de registro
+        days_of_stay: Días de Estadia
+        doctor_id: Doctor
+        ending: Fecha de egreso
+        input_diagnosis: Diagnóstico de ingreso
+        output_diagnosis: Diagnóstico de egreso
+        patient_id: Paciente
+        reason_for_hospitalization: Procedimiento a realizar
+        recommendations: Recomendaciones
+        starting: Fecha de ingreso
+        status: Tipo
+        treatment: Resumen
     placeholders:
       patient:
         <<: *user_labels
@@ -73,7 +83,8 @@ es-MX:
         <<: *address_labels
       appoinment:
         <<: *appoinment_labels
-
+      hospitalization:
+        <<: *hospitalization_labels
     hint:
       defaults:
         height: Altura en Centimetros
@@ -86,53 +97,8 @@ es-MX:
       #   content: "Contenido"
       #   importance: "Imporatancia"
       # defaults:
-      #   specialty: "Especialidad"
-      #   professional_card: "Cédula Profesional"
-      #   email: "Correo Electrónico"
-      #   password: "Contraseña"
-      #   password_confirmation: "Confirmar Contraseña"
-      #   street: "Calle"
-      #   number: "Número"
-      #   colony: "Colonia"
-      #   postal_code: "Código Postal"
-      #   municipality: "Municipio"
-      #   state: "Estado"
-      #   contry: "País"
-      #   note: "Nota Medica"
-      #   prescription: "Receta"
-      #   cabinet_results: "Resultados de gabinete"
-      #   histopathology: "Histopatologia"
-      #   comments: "Comentarios"
-      #   place_of_birth: "Lugar de Nacimiento"
-      #   sex: "Sexo"
-      #   marital_status: "Estado Civil"
-      #   cellphone: "Celular"
-      #   starting: "Fecha de Ingreso"
-      #   ending: "Fecha de Egreso"
-      #   input_diagnosis: "Diagnóstico de Ingreso"
-      #   output_diagnosis: "Diagnóstico de Egreso"
-      #   days_of_stay: "Días de Estadia"
-      #   reason_for_hospitalization: "Procedimiento realizado"
-      #   doctor: "Doctor"
-      #   patient: "Paciente"
-      #   allergies: "Alergias"
-      #   pathological_background: "Antecedentes personales patológicos"
-      #   non_pathological_background: "Antecedentes personales no patológicos"
-      #   gyneco_obstetric_background: "Antecedentes gineco-obstetricos"
-      #   system_background: "Interrogatorio por aparatos y sistemas"
-      #   family_inheritance_background: "Antecedentes heredo-familiares"
-      #   physic_exploration: "Exploración fisica"
-      #   other_background: "Otros Motivos"
       #   description: "Descripción"
       #   maps: "Mapa"
       #   about: "Acerca de"
       #   schedule: "Horario"
       #   tags: "Expertos en"
-      #   blood_pressure: "T. A."
-      #   heart_rate: "F. C."
-      #   breathing_rate: "F. R."
-      #   temperature: "Temp."
-      #   glycaemia: "Gluc. Cap."
-      #   sat_02: "SAT. 02"
-      #   cost: "Costo de la consulta"
-      #   recommendations: "Recomendaciones"

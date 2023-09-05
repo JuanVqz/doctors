@@ -1,49 +1,18 @@
 -# frozen_string_literal: true
+
 = simple_form_for(@hospitalization) do |f|
-  %p.has-text-grey-light.is-uppercase Datos de Hospitalización
-  .columns
-    .column
-      %label.label{ for: "hospitalization_patient" } Paciente
-      = f.select :patient_id, options_for_select(patients_for_select, selected: params[:patient_id]), { prompt: "Seleccione un paciente" }, class: "select2"
-      - if f.object.errors[:patient].any?
-        .help.is-danger= f.object.errors[:patient].to_sentence
-    .column
-      = f.label :status, class: "label"
-      = f.select :status, options_for_select(statuses_for_select), {}, class: "select2"
-    .column
-      %label.label{ for: "hospitalization_referred_doctor" } Doctor referido (opcional*)
-      = f.select :referred_doctor_id, options_for_select(referred_doctor_for_select, selected: params[:referred_doctor_id]), { prompt: "Seleccione un doctor" }, class: "select2"
-  .columns
-    .column.is-4
-      %label.label= t "activerecord.attributes.hospitalization.starting"
-      .control
-        = date_field("hospitalization", "starting", class: "input #{ f.object.errors[:starting].any? ? 'is-danger' : '' }")
-        - if f.object.errors[:starting].any?
-          .help.is-danger= f.object.errors[:starting].to_sentence
-    .column.is-4
-      %label.label= t "activerecord.attributes.hospitalization.ending"
-      .control
-        = date_field("hospitalization", "ending", class: "input #{ f.object.errors[:starting].any? ? 'is-danger' : '' }")
-        - if f.object.errors[:ending].any?
-          .help.is-danger= f.object.errors[:ending].to_sentence
-    .column.is-4
-      = f.input :days_of_stay
+  %p Datos de Hospitalización
 
-  .columns.is-multiline
-    .column.is-12
-      = f.input :input_diagnosis, as: :trix_editor
-    .column.is-12
-      = f.input :output_diagnosis, as: :trix_editor
-    .column.is-12
-      = f.input :reason_for_hospitalization, as: :trix_editor
-    .column.is-12
-      = f.input :treatment, as: :trix_editor
-    .column.is-12
-      = f.input :recommendations, as: :trix_editor
+  = f.input :patient_id, collection: patients_for_select, prompt: true
+  = f.input :status, collection: statuses_for_select, prompt: true
+  = f.input :referred_doctor_id, collection: referred_doctor_for_select, prompt: true
+  = f.input :starting, as: :date, prompt: true
+  = f.input :ending, as: :date, prompt: true
+  = f.input :days_of_stay
+  = f.input :input_diagnosis, as: :trix_editor
+  = f.input :output_diagnosis, as: :trix_editor
+  = f.input :reason_for_hospitalization, as: :trix_editor
+  = f.input :treatment, as: :trix_editor
+  = f.input :recommendations, as: :trix_editor
 
-  .buttons
-    = link_to :back, class: "button is-link" do
-      %span.icon
-        %i.fa.fa-arrow-left
-      %span Regresar
-    = f.button :submit
+  = f.button :submit
