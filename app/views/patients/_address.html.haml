@@ -1,22 +1,8 @@
-.columns.is-multiline
-  .column.is-3
-    %strong Calle
-    %p= @patient.address_street
-  .column.is-3
-    %strong Número
-    %p= @patient.address_number
-  .column.is-3
-    %strong Colonia
-    %p= @patient.address_colony
-  .column.is-3
-    %strong Código Postal
-    %p= @patient.address_postal_code
-  .column.is-3
-    %strong Municipio
-    %p= @patient.address_municipality
-  .column.is-3
-    %strong Estado
-    %p= @patient.address_state
-  .column.is-3
-    %strong País
-    %p= @patient.address_country
+%h3.mb-4.text-2xl.font-bold.text-gray-900.dark:text-white Dirección
+
+.grid.gap-4.grid-rows-4.grid-flow-row.md:grid-flow-col.text-sm
+  - patient.address.attributes.slice("street", "colony", "number", "postal_code", "municipality", "state", "country").map do |key, value|
+    - if value.present?
+      %dl
+        %dt= t("activerecord.attributes.address.#{key}")
+        %dd.text-lg.font-semibold= value

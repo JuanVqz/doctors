@@ -1,51 +1,8 @@
-.columns.is-multiline
-  - if @patient.avatar.attached?
-    .column.is-one-quarter
-      %figure.image.is-128x128
-        = image_tag url_for(@patient.avatar)
-  .column.is-3
-    %strong Ocupación
-    %p= @patient.occupation
-  .column.is-3
-    %strong Nombre Completo
-    %p= @patient
-  .column.is-3
-    %strong Altura
-    %p= "#{@patient.height} cm."
-  .column.is-3
-    %strong Peso
-    %p= "#{@patient.weight} kg."
-  .column.is-3
-    %strong Grupo Sanguíneo
-    %p= @patient.blood_group
-  .column.is-3
-    %strong Edad
-    %p= age @patient
-  .column.is-3
-    %strong Fecha de cumpleaños
-    %p= @patient.birthday
-  .column.is-3
-    %strong Lugar de Nacimiento
-    %p= @patient.place_of_birth
-  .column.is-3
-    %strong Celular
-    %p= @patient.cellphone
-  .column.is-3
-    %strong Sexo
-    %p= @patient.sex
-  .column.is-3
-    %strong Estado Civil
-    %p= @patient.marital_status
-  .column.is-3
-    %strong Comentarios
-    %p= @patient.comments
-  .column.is-3
-    %strong Referido por
-    %p= @patient.referred_by
-  .column.is-3
-    %strong Registro
-    %p= l @patient.created_at, format: :long
-  .column.is-3
-    %strong Actualizado
-    %p= l @patient.updated_at, format: :long
+%h3.mb-4.text-2xl.font-bold.text-gray-900.dark:text-white Datos Generales
 
+.grid.gap-4.grid-rows-4.grid-flow-row.md:grid-flow-col.text-sm
+  - patient.attributes.slice("occupation", "name", "first_name", "last_name", "birthday", "height", "weight", "blood_group", "place_of_birth", "marital_status", "sex", "referred_by", "comments").map do |key, value|
+    - if value.present?
+      %dl
+        %dt= t("activerecord.attributes.user.#{key}")
+        %dd.text-lg.font-semibold= value

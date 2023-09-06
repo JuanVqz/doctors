@@ -1,26 +1,8 @@
-.columns.is-multiline
-  .column.is-4
-    %strong= t("activerecord.attributes.patient.allergies")
-    %p= @patient.allergies
-  .column.is-4
-    %strong= t("activerecord.attributes.patient.pathological_background")
-    %p= @patient.pathological_background
-  .column.is-4
-    %strong= t("activerecord.attributes.patient.non_pathological_background")
-    %p= @patient.non_pathological_background
-  .column.is-4
-    %strong= t("activerecord.attributes.patient.gyneco_obstetric_background")
-    %p= @patient.gyneco_obstetric_background
-  .column.is-4
-    %strong= t("activerecord.attributes.patient.system_background")
-    %p= @patient.system_background
-  .column.is-4
-    %strong= t("activerecord.attributes.patient.family_inheritance_background")
-    %p= @patient.family_inheritance_background
-  .column.is-4
-    %strong= t("activerecord.attributes.patient.physic_exploration")
-    %p= @patient.physic_exploration
-  .column.is-4
-    %strong= t("activerecord.attributes.patient.other_background")
-    %p= @patient.other_background
+%h3.mb-4.text-2xl.font-bold.text-gray-900.dark:text-white Historia Clínica
 
+.grid.gap-4.grid-rows-4.grid-flow-row.md:grid-flow-col.text-sm
+  - patient.attributes.slice("allergies", "pathological_background", "non_pathological_background", "gyneco_obstetric_background", "system_background", "family_inheritance_background", "physic_exploration", "other_background").map do |key, value|
+    - if value.present?
+      %dl.overflow-x-scroll
+        %dt= t("activerecord.attributes.user.#{key}")
+        %dd.text-lg.font-semibold= value
