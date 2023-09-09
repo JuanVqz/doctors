@@ -250,6 +250,7 @@ es-MX:
         heart_rate: FC
         height: Altura
         histopathology: Histopatologia
+        id: Identificador
         imc: IMC
         note: Anotación
         patient: Paciente

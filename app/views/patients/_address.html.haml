@@ -1,8 +1,8 @@
-%h3.mb-4.text-2xl.font-bold.text-gray-900.dark:text-white Dirección
+%h3.mb-4.text-xl.font-bold.text-gray-900.dark:text-white Dirección
 
-.grid.gap-4.grid-rows-4.grid-flow-row.md:grid-flow-col.text-sm
+.grid.gap-4.grid-rows-4.grid-flow-row.md:grid-flow-col.text-xs
   - patient.address.attributes.slice("street", "colony", "number", "postal_code", "municipality", "state", "country").map do |key, value|
     - if value.present?
       %dl
         %dt= t("activerecord.attributes.address.#{key}")
-        %dd.text-lg.font-semibold= value
+        %dd.text-base= value

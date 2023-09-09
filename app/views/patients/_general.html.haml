@@ -1,8 +1,8 @@
-%h3.mb-4.text-2xl.font-bold.text-gray-900.dark:text-white Datos Generales
+%h3.mb-4.text-xl.font-bold.text-gray-900.dark:text-white Datos Generales
 
-.grid.gap-4.grid-rows-4.grid-flow-row.md:grid-flow-col.text-sm
+.grid.gap-4.grid-rows-4.grid-flow-row.md:grid-flow-col.text-xs
   - patient.attributes.slice("occupation", "name", "first_name", "last_name", "birthday", "height", "weight", "blood_group", "place_of_birth", "marital_status", "sex", "referred_by", "comments").map do |key, value|
     - if value.present?
       %dl
         %dt= t("activerecord.attributes.user.#{key}")
-        %dd.text-lg.font-semibold= value
+        %dd.text-base= value
