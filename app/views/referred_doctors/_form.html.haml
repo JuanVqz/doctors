@@ -5,7 +5,6 @@
   = f.input :specialty
   = f.input :phone_number, as: :numeric, hint: t("simple_form.hint.defaults.phone_number")
 
-  %p Domicilio
   = render "addresses/address_fields", f: f
 
   = f.button :submit

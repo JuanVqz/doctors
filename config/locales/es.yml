@@ -252,7 +252,7 @@ es-MX:
         histopathology: Histopatologia
         imc: IMC
         note: Anotación
-        patient_id: Paciente
+        patient: Paciente
         prescription: Tratamiento
         reason: Motivo
         recommendations: Recomendaciones
@@ -262,23 +262,24 @@ es-MX:
       hospitalization:
         created_at: Fecha de registro
         days_of_stay: Días de Estadia
-        doctor_id: Doctor
+        doctor: Doctor
         ending: Fecha de egreso
         input_diagnosis: Diagnóstico de ingreso
         output_diagnosis: Diagnóstico de egreso
-        patient_id: Paciente
+        patient: Paciente
         reason_for_hospitalization: Procedimiento a realizar
         recommendations: Recomendaciones
+        referred_doctor: Destinatario
         starting: Fecha de ingreso
         status: Tipo
         treatment: Resumen
       patient_referral:
         content: Diagnóstico
         created_at: Fecha de registro
-        doctor_id: Remitente
+        doctor: Remitente
         importance: Imporatancia
-        patient_id: Paciente
-        referred_doctor_id: Destinatario
+        patient: Paciente
+        referred_doctor: Destinatario
         subject: Motivo de envío
       referred_doctor:
         full_name: Nombre completo
