@@ -1,53 +1,18 @@
-%nav.level
-  .level-left
-    .level-item
-      %span.icon
-        %i.fa.fa-user-md
-      %span.is-uppercase información del doctor
-  .level-right
-    .level-item
-      .buttons
-        = link_to referred_doctors_path, class: "button is-link" do
-          %span.icon
-            %i.fa.fa-arrow-left
-          %span Regresar
+= render "shared/section" do
+  %div.flex.flex-col.md:flex-row.md:justify-between
+    = link_to "Regresar", :referred_doctors
+    %div.flex.flex-col.md:flex-row.md:space-x-4
+      = link_to "Editar", [:edit, @referred_doctor]
 
-        = link_to [:edit, @referred_doctor], class: "button is-warning" do
-          %span.icon
-            %i.fa.fa-edit
-          %span Editar
+= render "shared/section" do
+  %h3.mb-4.text-xl.font-bold.text-gray-900.dark:text-white Información
+  .grid.gap-4.grid-rows-3.grid-flow-row.md:grid-flow-col.text-xs
+    - @referred_doctor.attributes.slice("full_name", "specialty", "phone_number").map do |key, value|
+      - if value.present?
+        %dl.overflow-x-auto
+          %dt= t("activerecord.attributes.referred_doctor.#{key}")
+          %dd.text-base.font-semibold= raw value
 
-.table-container
-  %table.table.is-hoverable.is-fullwidth
-    %thead
-      %tr
-        %th Nombre Completo
-        %td= @referred_doctor.full_name
-      %tr
-        %th Especialidad
-        %td= @referred_doctor.specialty
-      %tr
-        %th Número Teléfonico
-        %td= call_to(@referred_doctor.phone_number)
-      %tr
-        %th Calle
-        %td= @referred_doctor.address_street
-      %tr
-        %th Número
-        %td= @referred_doctor.address_number
-      %tr
-        %th Colonia
-        %td= @referred_doctor.address_colony
-      %tr
-        %th Código Postal
-        %td= @referred_doctor.address_postal_code
-      %tr
-        %th Municipio
-        %td= @referred_doctor.address_municipality
-      %tr
-        %th Estado
-        %td= @referred_doctor.address_state
-      %tr
-        %th País
-        %td= @referred_doctor.address_colony
-
+- if @referred_doctor.address
+  = render "shared/section" do
+    = render "patients/address", address: @referred_doctor.address
