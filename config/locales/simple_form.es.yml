@@ -66,7 +66,7 @@ es-MX:
         weight: Peso
       hospitalization: &hospitalization_labels
         created_at: Fecha de registro
-        days_of_stay: Días de Estadia
+        days_of_stay: Días de estadia
         doctor_id: Doctor
         ending: Fecha de egreso
         input_diagnosis: Diagnóstico de ingreso

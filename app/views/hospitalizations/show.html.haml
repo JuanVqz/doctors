@@ -1,81 +1,31 @@
-%nav.level
-  .level-left
-    .level-item
-      %span.icon
-        %i.fa.fa-ambulance
-      %span.is-uppercase Información de la hospitalización
-  .level-right
-    .level-item
-      .buttons
-        = link_to :back, class: "button is-link" do
-          %span.icon
-            %i.fa.fa-arrow-left
-          %span Regresar
+= render "shared/section" do
+  %div.flex.flex-col.md:flex-row.md:justify-between
+    = link_to "Regresar", :hospitalizations
+    %div.flex.flex-col.md:flex-row.md:space-x-4
+      = link_to "Editar", [:edit, @hospitalization, patient_id: @hospitalization.patient]
+      = link_to "PDF", [@hospitalization, format: :pdf]
+      = link_to "Ver paciente #{@hospitalization.patient}", @hospitalization.patient, target: "_blank"
 
-        = link_to [:edit, @hospitalization, patient_id: @hospitalization.patient], "data-tooltip": "Editar", class: "button is-warning tooltip" do
-          %span.icon
-            %i.fa.fa-edit
+= render "shared/section" do
+  %h3.mb-4.text-xl.font-bold.text-gray-900.dark:text-white Información
+  .grid.gap-4.grid-rows-2.grid-flow-row.md:grid-flow-col.text-xs
+    %dl.overflow-x-auto
+      %dt= t("activerecord.attributes.hospitalization.patient")
+      %dd.text-base.font-semibold= @hospitalization.patient
+    %dl.overflow-x-auto
+      %dt= t("activerecord.attributes.hospitalization.referred_doctor")
+      %dd.text-base.font-semibold= @hospitalization.referred_doctor
+    - @hospitalization.attributes.slice("status", "starting", "ending", "days_of_stay").map do |key, value|
+      - if value.present?
+        %dl.overflow-x-auto
+          %dt= t("activerecord.attributes.hospitalization.#{key}")
+          %dd.text-base.font-semibold= raw value
 
-        = link_to @hospitalization, "data-tooltip": "Eliminar", class: "button is-danger tooltip", data: {method: :delete, confirm: '¿Estás seguro de eliminar esta hospitalización?'} do
-          %span.icon
-            %i.fa.fa-trash
-
-        = link_to [@hospitalization, format: :pdf], "data-tooltip": "Imprimir", class: "button is-success tooltip", target: "_blank" do
-          %span.icon
-            %i.fa.fa-print
-
-        = link_to @hospitalization.patient, target: "_blank", "data-tooltip": "Detalle de #{@hospitalization.patient}", class: "button is-success tooltip is-tooltip-left", style: "margin-left: auto" do
-          %span.icon
-            %i.fa.fa-user
-
-.columns
-  .column.is-9
-    %p.has-text-grey-light.is-uppercase .
-    .table-container
-      %table.table.is-hoverable.is-fullwidth
-        %tr
-          %thead
-            %tr
-              %th= t "activerecord.attributes.hospitalization.input_diagnosis"
-              %td= @hospitalization.input_diagnosis&.html_safe
-            %tr
-              %th= t "activerecord.attributes.hospitalization.output_diagnosis"
-              %td= @hospitalization.output_diagnosis&.html_safe
-            %tr
-              %th= t "activerecord.attributes.hospitalization.reason_for_hospitalization"
-              %td= @hospitalization.reason_for_hospitalization&.html_safe
-            %tr
-              %th= t "activerecord.attributes.hospitalization.treatment"
-              %td= @hospitalization.treatment&.html_safe
-            %tr
-              %th= t "activerecord.attributes.hospitalization.recommendations"
-              %td= @hospitalization.recommendations&.html_safe
-  .column.is-3
-    %p.has-text-grey-light.is-uppercase Datos generales
-    .table-container
-      %table.table.is-hoverable.is-fullwidth
-        %tr
-          %thead
-            - if @hospitalization.referred_doctor_id.present?
-              %tr
-                %th Doctor Referido
-                %td= @hospitalization.referred_doctor
-            %tr
-              %th= t "activerecord.attributes.hospitalization.patient"
-              %td= @hospitalization.patient
-            %tr
-              %th= t "activerecord.attributes.hospitalization.status"
-              %td= @hospitalization.status
-            %tr
-              %th= t "activerecord.attributes.hospitalization.starting"
-              %td= @hospitalization.starting
-            %tr
-              %th= t "activerecord.attributes.hospitalization.ending"
-              %td= @hospitalization.ending
-            %tr
-              %th= t "activerecord.attributes.hospitalization.days_of_stay"
-              %td= @hospitalization.days_of_stay
-            %tr
-              %th= t "activerecord.attributes.hospitalization.created_at"
-              %td= l @hospitalization.created_at, format: :long
-
+= render "shared/section" do
+  %h3.mb-4.text-xl.font-bold.text-gray-900.dark:text-white Diagnóstico
+  .grid.gap-4.grid-rows-3.grid-flow-row.md:grid-flow-col.text-xs
+    - @hospitalization.attributes.slice("input_diagnosis", "output_diagnosis", "reason_for_hospitalization", "treatment", "cabinet_results", "histopathology", "recommendations").map do |key, value|
+      - if value.present?
+        %dl.overflow-x-auto
+          %dt= t("activerecord.attributes.hospitalization.#{key}")
+          %dd.text-base.font-semibold= raw value
