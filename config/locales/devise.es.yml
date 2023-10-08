@@ -5,26 +5,25 @@ es-MX:
   #     already_confirmed: "ya fue confirmado"
   #     not_locked: "no ha sido desbloqueado"
   #     not_saved: "No se ha podido completar el registro"
-  #
-  # devise:
-  #   shared:
-  #     sign_in: "Acceder"
-  #     sign_up: "Regístrate"
-  #     forgot_password: "¿Ha olvidado su contraseña?"
-  #   failure:
-  #     unauthenticated: "Necesita ingresar o registrarse para continuar."
-  #     unconfirmed: "Necesita confirmar su cuenta antes de continuar."
-  #     locked: "Su cuenta ha sido bloqueada."
-  #     invalid: "Email o Contraseña inválido."
-  #     invalid_token: "Llave de Autenticación invalida."
-  #     timeout: "Su sesión ha expirado, por favor ingrese nuevamente para continuar."
-  #     inactive: "Su cuenta aun no ha sido activada."
-  #     account_inactive: "Su cuenta ha sido bloqueada."
-  #     already_authenticated: "Ya tiene abierta una sesión en el sistema"
-  #     not_found_in_database: "Usuario no encontrado"
-  #   sessions:
-  #     signed_in: "Ingresó exitosamente al sistema."
-  #     signed_out: "Sesión cerrada exitosamente."
+  devise:
+    # shared:
+    #   sign_in: "Acceder"
+    #   sign_up: "Regístrate"
+    #   forgot_password: "¿Ha olvidado su contraseña?"
+    failure:
+      unauthenticated: "Necesita ingresar o registrarse para continuar."
+      unconfirmed: "Necesita confirmar su cuenta antes de continuar."
+      locked: "Su cuenta ha sido bloqueada."
+      invalid: "Email o Contraseña inválido."
+      invalid_token: "Llave de Autenticación invalida."
+      timeout: "Su sesión ha expirado, por favor ingrese nuevamente para continuar."
+      inactive: "Su cuenta aun no ha sido activada."
+      account_inactive: "Su cuenta ha sido bloqueada."
+      already_authenticated: "Ya tiene abierta una sesión en el sistema"
+      not_found_in_database: "Usuario no encontrado"
+    sessions:
+      signed_in: "Ingresó exitosamente al sistema."
+      signed_out: "Sesión cerrada exitosamente."
   #   passwords:
   #     change_your_password: "Cambia tu contraseña"
   #     new_password: "Nueva contraseña"
