@@ -12,7 +12,7 @@
         %th.py-2{scope: :col} Acciones
     %tbody
       - @patients.each do |patient|
-        %tr.cursor-pointer.on-hover:bg-gray-100.dark:hover:bg-gray-700
+        %tr.cursor-pointer.hover:bg-gray-200.dark:hover:bg-gray-700
           %td.whitespace-nowrap.px-2.py-4= patient
           %td.whitespace-nowrap.px-2.py-4= time_ago_in_words(patient.created_at)
           %td.whitespace-nowrap.px-2.py-4= time_ago_in_words(patient.updated_at)

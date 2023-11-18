@@ -11,7 +11,7 @@
         %th.py-2{scope: :col} Acciones
     %tbody
       - @hospitalizations.each do |hospitalization|
-        %tr.cursor-pointer.on-hover:bg-gray-100.dark:hover:bg-gray-700
+        %tr.cursor-pointer.hover:bg-gray-200.dark:hover:bg-gray-700
           %td.whitespace-nowrap.py-4= hospitalization.patient
           %td.whitespace-nowrap.py-4= hospitalization.days_of_stay
           %td

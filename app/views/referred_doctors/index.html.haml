@@ -12,7 +12,7 @@
         %th.py-2{scope: :col} Acciones
     %tbody
       - @referred_doctors.each do |referred_doctor|
-        %tr.cursor-pointer.on-hover:bg-gray-100.dark:hover:bg-gray-700
+        %tr.cursor-pointer.hover:bg-gray-200.dark:hover:bg-gray-700
           %td.whitespace-nowrap.py-4= referred_doctor.full_name
           %td.whitespace-nowrap.py-4= referred_doctor.specialty
           %td.whitespace-nowrap.py-4= call_to referred_doctor.phone_number
