@@ -1,4 +1,4 @@
-%h3.mb-4.text-xl.font-bold.text-gray-900.dark:text-white Dirección
+= render "shared/title", title: "Dirección"
 
 .grid.gap-4.grid-rows-4.grid-flow-row.md:grid-flow-col.text-xs
   - address.attributes.slice("street", "colony", "number", "postal_code", "municipality", "state", "country").map do |key, value|
