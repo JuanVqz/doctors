@@ -9,8 +9,8 @@ tomar consultas de los pacientes y conservar el historial clinico.
 
 ## Requisitos
 
-- ruby 2.7.5
-- rails 7.0.3.1
+- ruby 3.0.3
+- rails 7.0.7.2
 - postgres 13
 
 ## Instalación
