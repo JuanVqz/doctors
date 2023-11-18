@@ -2,7 +2,7 @@ es-MX:
   patient: Paciente
   appoinment: Consulta
   hospitalization: Hospitalización
-  patient_referral: Referido
+  patient_referral: Referencia
   referred_doctor: Doctor
   date:
     abbr_day_names:

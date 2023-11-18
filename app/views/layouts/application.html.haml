@@ -2,10 +2,10 @@
 %html
   %head
     = render "layouts/partials/head"
-  %body.bg-gray-50.dark:bg-gray-900
+  %body.bg-gray-200.dark:bg-gray-900.text-gray-800.dark:text-gray-200
     = render "layouts/partials/navbar"
     %section.flex.pt-16.overflow-hidden
       = render "layouts/partials/sidebar"
       %section.w-full.h-full.overflow-y-auto.lg:ml-64
-        %main
+        %main.p-4.space-y-6
           = yield

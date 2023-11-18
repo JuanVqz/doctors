@@ -1,7 +1,7 @@
 -# frozen_string_literal: true
 
 = simple_form_for(hospitalization) do |f|
-  %p Datos de Hospitalización
+  = render "shared/title", title: title
 
   = f.association :patient, collection: patients_for_select, prompt: true
   = f.input :status, collection: statuses_for_select, prompt: true

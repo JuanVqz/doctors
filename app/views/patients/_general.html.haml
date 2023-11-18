@@ -1,8 +1,8 @@
 = render "shared/title", title: "Datos Generales"
 
-.grid.gap-4.grid-rows-4.grid-flow-row.md:grid-flow-col.text-xs
+.grid.gap-4.grid-rows-4.grid-flow-row.md:grid-flow-col
   - patient.attributes.slice("occupation", "name", "first_name", "last_name", "birthday", "height", "weight", "blood_group", "place_of_birth", "marital_status", "sex", "referred_by", "comments").map do |key, value|
     - if value.present?
       %dl
-        %dt= t("activerecord.attributes.user.#{key}")
-        %dd.text-base= value
+        %dt.text-gray-400.my-2= t("activerecord.attributes.user.#{key}")
+        %dd= value

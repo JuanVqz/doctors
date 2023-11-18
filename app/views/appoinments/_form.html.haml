@@ -1,8 +1,9 @@
 -# frozen_string_literal: true
 
 = simple_form_for(appoinment) do |f|
-  = f.association :patient, collection: patients_for_select, prompt: true
+  = render "shared/title", title: title
 
+  = f.association :patient, collection: patients_for_select, prompt: true
   = f.input :reason
   = f.input :note, as: :trix_editor
   = f.input :prescription, as: :trix_editor

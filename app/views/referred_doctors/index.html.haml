@@ -4,18 +4,18 @@
 
 = render "shared/section" do
   = render "shared/table" do
-    %thead.border-b.border-gray-200.dark:border-gray-700.font-medium
+    %thead.border-b.border-gray-300.dark:border-gray-700.text-gray-400
       %tr
-        %th{scope: :col, class: "px-6 py-2"} Nombre Completo
-        %th{scope: :col, class: "px-6 py-2"} Especialidad
-        %th{scope: :col, class: "px-6 py-2"} Número Teléfonico
-        %th{scope: :col, class: "px-6 py-2"} Acciones
+        %th.py-2{scope: :col} Nombre Completo
+        %th.py-2{scope: :col} Especialidad
+        %th.py-2{scope: :col} Número Teléfonico
+        %th.py-2{scope: :col} Acciones
     %tbody
       - @referred_doctors.each do |referred_doctor|
-        %tr.border-b.border-gray-200.dark:border-gray-700
-          %td.whitespace-nowrap.px-6.py-4= referred_doctor.full_name
-          %td.whitespace-nowrap.px-6.py-4= referred_doctor.specialty
-          %td.whitespace-nowrap.px-6.py-4= call_to referred_doctor.phone_number
+        %tr.cursor-pointer.on-hover:bg-gray-100.dark:hover:bg-gray-700
+          %td.whitespace-nowrap.py-4= referred_doctor.full_name
+          %td.whitespace-nowrap.py-4= referred_doctor.specialty
+          %td.whitespace-nowrap.py-4= call_to referred_doctor.phone_number
           %td
             = link_to :editar, [:edit, referred_doctor]
             = link_to :detalle, referred_doctor

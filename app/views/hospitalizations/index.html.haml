@@ -4,16 +4,16 @@
 
 = render "shared/section" do
   = render "shared/table" do
-    %thead.border-b.border-gray-200.dark:border-gray-700.font-medium
+    %thead.border-b.border-gray-300.dark:border-gray-700.text-gray-400
       %tr
-        %th{scope: :col, class: "px-6 py-2"} Paciente
-        %th{scope: :col, class: "px-6 py-2"} Dias de estadia
-        %th{scope: :col, class: "px-6 py-2"} Acciones
+        %th.py-2{scope: :col} Paciente
+        %th.py-2{scope: :col} Dias de estadia
+        %th.py-2{scope: :col} Acciones
     %tbody
       - @hospitalizations.each do |hospitalization|
-        %tr.border-b.border-gray-200.dark:border-gray-700
-          %td.whitespace-nowrap.px-6.py-4= hospitalization.patient
-          %td.whitespace-nowrap.px-6.py-4= hospitalization.days_of_stay
+        %tr.cursor-pointer.on-hover:bg-gray-100.dark:hover:bg-gray-700
+          %td.whitespace-nowrap.py-4= hospitalization.patient
+          %td.whitespace-nowrap.py-4= hospitalization.days_of_stay
           %td
             = link_to :print, [hospitalization, format: :pdf], target: "_blank"
             = link_to :editar, [:edit, hospitalization]

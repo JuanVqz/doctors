@@ -4,18 +4,18 @@
 
 = render "shared/section" do
   = render "shared/table" do
-    %thead.border-b.border-gray-200.dark:border-gray-700.font-medium
+    %thead.border-b.border-gray-300.dark:border-gray-700.text-gray-400
       %tr
-        %th{scope: :col, class: "px-6 py-2"} Nombre
-        %th{scope: :col, class: "px-6 py-2"} Registrado
-        %th{scope: :col, class: "px-6 py-2"} Actualizado
-        %th{scope: :col, class: "px-6 py-2"} Acciones
+        %th.py-2{scope: :col} Nombre
+        %th.py-2{scope: :col} Registrado
+        %th.py-2{scope: :col} Actualizado
+        %th.py-2{scope: :col} Acciones
     %tbody
       - @patients.each do |patient|
-        %tr.border-b.border-gray-200.dark:border-gray-700
-          %td.whitespace-nowrap.px-6.py-4= patient
-          %td.whitespace-nowrap.px-6.py-4= time_ago_in_words(patient.created_at)
-          %td.whitespace-nowrap.px-6.py-4= time_ago_in_words(patient.updated_at)
+        %tr.cursor-pointer.on-hover:bg-gray-100.dark:hover:bg-gray-700
+          %td.whitespace-nowrap.px-2.py-4= patient
+          %td.whitespace-nowrap.px-2.py-4= time_ago_in_words(patient.created_at)
+          %td.whitespace-nowrap.px-2.py-4= time_ago_in_words(patient.updated_at)
           %td
             = link_to :print, [patient, format: :pdf], target: :_blank
             = link_to :hospitalizacion, [:new, :hospitalization, patient_id: patient.id]
