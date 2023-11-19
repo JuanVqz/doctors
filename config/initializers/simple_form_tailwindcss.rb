@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 SimpleForm.setup do |config|
-  config.wrappers :vertical_form, tag: :div, class: "mb-6" do |b|
+  config.wrappers :vertical_form, tag: :div, class: "mb-4" do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -74,7 +74,7 @@ SimpleForm.setup do |config|
   end
 
   # vertical multi select
-  config.wrappers :vertical_multi_select, tag: :div, class: "mb-6" do |b|
+  config.wrappers :vertical_multi_select, tag: :div, class: "mb-4" do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -105,14 +105,13 @@ SimpleForm.setup do |config|
   end
 
   # vertical file input
-  config.wrappers :vertical_file, tag: :div, class: "mb-6" do |b|
+  config.wrappers :vertical_file, tag: :div, class: "mb-4" do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
     b.optional :minlength
     b.optional :readonly
     b.use :label, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-    # class: "w-full min-w-fit mt-1 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md border",
     b.use :input,
       class: "block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400",
       error_class: "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500",
