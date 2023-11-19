@@ -3,10 +3,11 @@
 = simple_form_for(patient_referral) do |f|
   = render "shared/title", title: title
 
-  = f.association :referred_doctor, collection: referred_doctor_for_select, prompt: true
-  = f.association :patient, collection: patients_for_select, prompt: true
-  = f.input :importance, collection: importances_for_select
-  = f.input :subject
+  .grid.gap-2.grid-cols-1.md:grid-cols-2
+    = f.association :referred_doctor, collection: referred_doctor_for_select, prompt: true
+    = f.association :patient, collection: patients_for_select, prompt: true
+    = f.input :importance, collection: importances_for_select
+    = f.input :subject
   = f.input :content, as: :trix_editor
 
   = f.button :submit

@@ -3,9 +3,10 @@
 = simple_form_for(referred_doctor) do |f|
   = render "shared/title", title: title
 
-  = f.input :full_name
-  = f.input :specialty
-  = f.input :phone_number, as: :numeric, hint: t("simple_form.hint.defaults.phone_number")
+  .grid.gap-2.grid-cols-1.md:grid-cols-3
+    = f.input :full_name
+    = f.input :specialty
+    = f.input :phone_number, as: :numeric, hint: t("simple_form.hint.defaults.phone_number")
 
   = render "addresses/address_fields", f: f
 

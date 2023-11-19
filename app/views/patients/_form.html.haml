@@ -3,35 +3,37 @@
 = simple_form_for(patient) do |f|
   = render "shared/title", title: title
 
-  = f.input :occupation
-  = f.input :name
-  = f.input :first_name
-  = f.input :last_name
-  = f.input :birthday,
-    as: :date,
-    prompt: true,
-    start_year: Date.current.year,
-    end_year: Date.current.year - 100
-  = f.input :place_of_birth
-  = f.input :height, hint: t("simple_form.hint.defaults.height")
-  = f.input :weight, hint: t("simple_form.hint.defaults.weight")
-  = f.input :blood_group, collection: blood_groups_for_select, prompt: true
-  = f.input :sex, collection: sexos_for_select, prompt: true
-  = f.input :cellphone
-  = f.input :marital_status
-  = f.input :comments
-  = f.input :referred_by
+  .grid.gap-2.grid-cols-1.md:grid-cols-4
+    = f.input :occupation
+    = f.input :name
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :birthday,
+      as: :date,
+      prompt: true,
+      start_year: Date.current.year,
+      end_year: Date.current.year - 100
+    = f.input :place_of_birth
+    = f.input :height, hint: t("simple_form.hint.defaults.height")
+    = f.input :weight, hint: t("simple_form.hint.defaults.weight")
+    = f.input :blood_group, collection: blood_groups_for_select, prompt: true
+    = f.input :sex, collection: sexos_for_select, prompt: true
+    = f.input :cellphone
+    = f.input :marital_status
+    = f.input :comments
+    = f.input :referred_by
 
   = render "shared/title", title: "Historial Clínico"
 
-  = f.input :allergies
-  = f.input :pathological_background
-  = f.input :non_pathological_background
-  = f.input :gyneco_obstetric_background
-  = f.input :system_background
-  = f.input :family_inheritance_background
-  = f.input :physic_exploration
-  = f.input :other_background
+  .grid.gap-2.grid-cols-1.md:grid-cols-2
+    = f.input :allergies
+    = f.input :pathological_background
+    = f.input :non_pathological_background
+    = f.input :gyneco_obstetric_background
+    = f.input :system_background
+    = f.input :family_inheritance_background
+    = f.input :physic_exploration
+    = f.input :other_background
 
   = render "addresses/address_fields", f: f
 
