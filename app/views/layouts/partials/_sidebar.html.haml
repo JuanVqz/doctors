@@ -5,18 +5,28 @@
         %ul.space-y-2
           %li
             = link_to patients_path(subdomain: current_hospital.subdomain), class: "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700" do
-              %span Pacientes
+              %span
+                %i.fa.fa-user
+                Pacientes
           %li
             = link_to appoinments_path(subdomain: current_hospital.subdomain), class: "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700" do
-              %span Consultas
+              %span
+                %i.fa.fa-book
+                Consultas
           %li
             = link_to hospitalizations_path(subdomain: current_hospital.subdomain), class: "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700" do
-              %span Hospitalizaciónes
+              %span
+                %i.fa.fa-ambulance
+                Hospitalizaciónes
           %li
             = link_to patient_referrals_path(subdomain: current_hospital.subdomain), class: "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700" do
-              %span Referir paciente
+              %span
+                %i.fa.fa-hospital
+                Referir paciente
           %li
             = link_to referred_doctors_path(subdomain: current_hospital.subdomain), class: "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700" do
-              %span Doctores Referidos
+              %span
+                %i.fa.fa-user-md
+                Doctores Referidos
 
 %div#sidebar_background{class: "fixed inset-0 z-10 bg-gray-900/50 dark:bg-gray-900/90 hidden"}
