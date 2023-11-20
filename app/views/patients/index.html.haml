@@ -8,16 +8,16 @@
       %tr
         %th.py-2{scope: :col} Nombre
         %th.py-2{scope: :col} Registrado
-        %th.py-2{scope: :col} Actualizado
         %th.py-2{scope: :col} Acciones
     %tbody
       - @patients.each do |patient|
-        %tr.cursor-pointer.hover:bg-gray-200.dark:hover:bg-gray-700
-          %td.whitespace-nowrap.px-2.py-4= patient
-          %td.whitespace-nowrap.px-2.py-4= time_ago_in_words(patient.created_at)
-          %td.whitespace-nowrap.px-2.py-4= time_ago_in_words(patient.updated_at)
-          %td
-            = link_to :print, [patient, format: :pdf], target: :_blank
-            = link_to :hospitalizacion, [:new, :hospitalization, patient_id: patient.id]
-            = link_to :consulta, [:new, :appoinment, patient_id: patient.id]
-            = link_to :detalles, patient
+        %tr.cursor-pointer.hover:bg-gray-200.dark:hover:bg-gray-700.space-y-4
+          %td.whitespace-nowrap= patient
+          %td.whitespace-nowrap= time_ago_in_words(patient.created_at)
+          %td.flex.flex-row.justify-around
+            = link_to [:new, :appoinment, patient_id: patient.id] do
+              %span.fa.fa-book
+            = link_to [:new, :hospitalization, patient_id: patient.id] do
+              %span.fa.fa-ambulance
+            = link_to patient do
+              %span.fa.fa-eye
