@@ -1,3 +1,7 @@
 .trix-button-group.trix-button-group--file-tools {
   display: none;
 }
+
+.trix-button-group button {
+  background-color: #e5e7eb;
+}
