@@ -29,3 +29,4 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 import 'trix'
 
 import '~/javascripts/sidebar.js'
+import '~/javascripts/search.js'
