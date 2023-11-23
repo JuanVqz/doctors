@@ -1,6 +1,6 @@
 = render "shared/section" do
-  %div.flex.flex-col.md:flex-row.md:justify-between
-    = link_to "Regresar", :appoinments
+  = link_to :appoinments do
+    %i.fa.fa-arrow-left
 
 = render "shared/section" do
   = render "form", appoinment: @appoinment, title: t("helpers.submit.appoinment.create")

@@ -1,16 +1,17 @@
 = render "shared/section" do
-  %div.flex.flex-col.md:flex-row.md:justify-between
-    = link_to "Regresar", :referred_doctors
-    %div.flex.flex-col.md:flex-row.md:space-x-4
-      = link_to "Editar", [:edit, @referred_doctor]
+  .flex.flex-col.md:flex-row.md:space-x-4
+    = link_to :referred_doctors do
+      %i.fa.fa-arrow-left
+    = link_to [:edit, @referred_doctor] do
+      %i.fa.fa-edit.text-yellow-600
 
 = render "shared/section" do
-  %h3.mb-4.text-xl.font-bold.text-gray-900.dark:text-white Información
+  = render "shared/title", title: "Información"
   .grid.gap-4.grid-rows-3.grid-flow-row.md:grid-flow-col.text-xs
     - @referred_doctor.attributes.slice("full_name", "specialty", "phone_number").map do |key, value|
       - if value.present?
         %dl.overflow-x-auto
-          %dt= t("activerecord.attributes.referred_doctor.#{key}")
+          %dt.text-gray-400.my-2= t("activerecord.attributes.referred_doctor.#{key}")
           %dd.text-base.font-semibold= raw value
 
 - if @referred_doctor.address

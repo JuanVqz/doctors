@@ -1,6 +1,6 @@
 = render "shared/section" do
-  %div.flex.flex-col.md:flex-row.md:justify-between
-    = link_to "Regresar", :patients
+  = link_to :patients do
+    %i.fa.fa-arrow-left
 
 = render "shared/section" do
   = render "form", patient: @patient, title: t("helpers.submit.patient.update")

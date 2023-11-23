@@ -1,31 +1,34 @@
 = render "shared/section" do
-  %div.flex.flex-col.md:flex-row.md:justify-between
-    = link_to "Regresar", :hospitalizations
-    %div.flex.flex-col.md:flex-row.md:space-x-4
-      = link_to "Editar", [:edit, @hospitalization, patient_id: @hospitalization.patient]
-      = link_to "PDF", [@hospitalization, format: :pdf]
-      = link_to "Ver paciente #{@hospitalization.patient}", @hospitalization.patient, target: "_blank"
+  .flex.flex-col.md:flex-row.md:space-x-4
+    = link_to :hospitalizations do
+      %i.fa.fa-arrow-left
+    = link_to [:edit, @hospitalization, patient_id: @hospitalization.patient] do
+      %i.fa.fa-edit.text-yellow-600
+    = link_to [@hospitalization, format: :pdf], target: :_blank do
+      %i.fa.fa-print.text-red-600
+    = link_to @hospitalization.patient, target: :_blank do
+      %i.fa.fa-user
 
 = render "shared/section" do
-  %h3.mb-4.text-xl.font-bold.text-gray-900.dark:text-white Información
+  = render "shared/title", title: "Información"
   .grid.gap-4.grid-rows-2.grid-flow-row.md:grid-flow-col.text-xs
     %dl.overflow-x-auto
-      %dt= t("activerecord.attributes.hospitalization.patient")
+      %dt.text-gray-400.my-2= t("activerecord.attributes.hospitalization.patient")
       %dd.text-base.font-semibold= @hospitalization.patient
     %dl.overflow-x-auto
-      %dt= t("activerecord.attributes.hospitalization.referred_doctor")
+      %dt.text-gray-400.my-2= t("activerecord.attributes.hospitalization.referred_doctor")
       %dd.text-base.font-semibold= @hospitalization.referred_doctor
     - @hospitalization.attributes.slice("status", "starting", "ending", "days_of_stay").map do |key, value|
       - if value.present?
         %dl.overflow-x-auto
-          %dt= t("activerecord.attributes.hospitalization.#{key}")
+          %dt.text-gray-400.my-2= t("activerecord.attributes.hospitalization.#{key}")
           %dd.text-base.font-semibold= raw value
 
 = render "shared/section" do
-  %h3.mb-4.text-xl.font-bold.text-gray-900.dark:text-white Diagnóstico
+  = render "shared/title", title: "Diagnóstico"
   .grid.gap-4.grid-rows-3.grid-flow-row.md:grid-flow-col.text-xs
     - @hospitalization.attributes.slice("input_diagnosis", "output_diagnosis", "reason_for_hospitalization", "treatment", "cabinet_results", "histopathology", "recommendations").map do |key, value|
       - if value.present?
         %dl.overflow-x-auto
-          %dt= t("activerecord.attributes.hospitalization.#{key}")
+          %dt.text-gray-400.my-2= t("activerecord.attributes.hospitalization.#{key}")
           %dd.text-base.font-semibold= raw value

@@ -30,7 +30,7 @@ SimpleForm.setup do |config|
     b.wrapper :legend_tag, tag: :legend, class: "col-form-label pt-0" do |ba|
       ba.use :label_text, class: "ml-3 block text-sm font-medium text-gray-700"
     end
-    b.use :input, class: "focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 mr-2",
+    b.use :input, class: "focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 mr-2",
       error_class: "is-invalid border-red-400",
       valid_class: "is-valid"
     b.use :full_error, wrap_with: {tag: :p, class: "invalid-feedback text-xs text-red-400"}
@@ -48,7 +48,7 @@ SimpleForm.setup do |config|
   #   b.wrapper :legend_tag, tag: 'legend', class: 'col-form-label pt-0' do |ba|
   #     ba.use :label_text, class: 'ml-3 block text-sm font-medium text-gray-700'
   #   end
-  #   b.use :input, class: 'focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded mr-2',
+  #   b.use :input, class: 'focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 rounded mr-2',
   #                 error_class: 'is-invalid border-red-400',
   #                 valid_class: 'is-valid'
   #   b.use :full_error, wrap_with: { tag: :p, class: 'invalid-feedback text-xs text-red-400' }
@@ -66,7 +66,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.use :label, class: "pt-0 mb-2"
     b.wrapper :grid_wrapper, tag: :div do |ba|
-      ba.use :input, class: "focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded mr-2",
+      ba.use :input, class: "focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 rounded mr-2",
         error_class: "is-invalid", valid_class: "is-valid"
       ba.use :full_error, wrap_with: {tag: :p, class: "invalid-feedback text-xs text-red-400"}
       ba.use :hint, wrap_with: {tag: :small, class: "text-gray-400"}
@@ -95,7 +95,7 @@ SimpleForm.setup do |config|
     b.use :html5
     b.optional :readonly
     b.wrapper :form_check_wrapper, tag: "div" do |bb|
-      bb.use :input, class: "focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded mr-2",
+      bb.use :input, class: "focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 rounded mr-2",
         error_class: "!border-red-500",
         valid_class: "is-valid"
       bb.use :label, class: "mb-2"

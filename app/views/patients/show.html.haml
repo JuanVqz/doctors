@@ -1,18 +1,13 @@
 = render "shared/section" do
-  %div.flex.flex-col.md:flex-row.md:justify-between
-    = link_to :patients, class: primary_button do
+  .flex.flex-col.md:flex-row.md:space-x-4
+    = link_to :patients do
       %i.fa.fa-arrow-left
-      Regresar
-
-    %div.flex.flex-col.md:flex-row.md:space-x-4
-      = link_to new_appoinment_path(patient_id: @patient.id) do
-        %i.fa.fa-book
-
-      = link_to new_hospitalization_path(patient_id: @patient.id) do
-        %i.fa.fa-ambulance
-
-      = link_to [:edit, @patient] do
-        %i.fa.fa-edit
+    = link_to [:edit, @patient] do
+      %i.fa.fa-edit.text-yellow-600
+    = link_to new_appoinment_path(patient_id: @patient.id) do
+      %i.fa.fa-book
+    = link_to new_hospitalization_path(patient_id: @patient.id) do
+      %i.fa.fa-ambulance
 
 = render "shared/section" do
   = render "patients/general", patient: @patient

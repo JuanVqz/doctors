@@ -1,23 +1,28 @@
 = render "shared/section" do
-  %div.flex.flex-col.md:flex-row.md:justify-between
-    = link_to "Regresar", :patient_referrals
-    %div.flex.flex-col.md:flex-row.md:space-x-4
-      = link_to "Editar", [:edit, @patient_referral]
+  .flex.flex-col.md:flex-row.md:space-x-4
+    = link_to :patient_referrals do
+      %i.fa.fa-arrow-left
+    = link_to [:edit, @patient_referral] do
+      %i.fa.fa-edit.text-yellow-600
+    = link_to [@patient_referral, format: :pdf], target: :_blank do
+      %i.fa.fa-print.text-red-600
+    = link_to @patient_referral.patient, target: :_blank do
+      %i.fa.fa-user
 
 = render "shared/section" do
-  %h3.mb-4.text-xl.font-bold.text-gray-900.dark:text-white Información
+  = render "shared/title", title: "Información"
   .grid.gap-4.grid-rows-3.grid-flow-row.md:grid-flow-col.text-xs
     - @patient_referral.attributes.slice("phone_number", "subject", "content", "created_at").map do |key, value|
       - if value.present?
         %dl.overflow-x-auto
-          %dt= t("activerecord.attributes.patient_referral.#{key}")
+          %dt.text-gray-400.my-2= t("activerecord.attributes.patient_referral.#{key}")
           %dd.text-base.font-semibold= raw value
     %dl.overflow-x-auto
-      %dt= t("activerecord.attributes.patient_referral.patient")
+      %dt.text-gray-400.my-2= t("activerecord.attributes.patient_referral.patient")
       %dd.text-base.font-semibold= @patient_referral.patient
     %dl.overflow-x-auto
-      %dt= t("activerecord.attributes.patient_referral.doctor")
+      %dt.text-gray-400.my-2= t("activerecord.attributes.patient_referral.doctor")
       %dd.text-base.font-semibold= @patient_referral.doctor
     %dl.overflow-x-auto
-      %dt= t("activerecord.attributes.patient_referral.referred_doctor")
+      %dt.text-gray-400.my-2= t("activerecord.attributes.patient_referral.referred_doctor")
       %dd.text-base.font-semibold= @patient_referral.referred_doctor

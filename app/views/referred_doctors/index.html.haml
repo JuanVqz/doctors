@@ -13,9 +13,12 @@
     %tbody
       - @referred_doctors.each do |referred_doctor|
         %tr.cursor-pointer.hover:bg-gray-200.dark:hover:bg-gray-700
-          %td.whitespace-nowrap.py-4= referred_doctor.full_name
-          %td.whitespace-nowrap.py-4= referred_doctor.specialty
-          %td.whitespace-nowrap.py-4= call_to referred_doctor.phone_number
-          %td
-            = link_to :editar, [:edit, referred_doctor]
-            = link_to :detalle, referred_doctor
+          %td.py-2.whitespace-nowrap= referred_doctor.full_name
+          %td.py-2.whitespace-nowrap= referred_doctor.specialty
+          %td.py-2.whitespace-nowrap= call_to referred_doctor.phone_number
+          %td.py-2.whitespace-nowrap
+            .flex.flex-row.justify-around
+              = link_to [:edit, referred_doctor] do
+                %span.fa.fa-edit.text-yellow-600
+              = link_to referred_doctor do
+                %span.fa.fa-eye.text-sky-600

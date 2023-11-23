@@ -1,26 +1,29 @@
 = render "shared/section" do
-  %div.flex.flex-col.md:flex-row.md:justify-between
-    = link_to "Regresar", :appoinments
-    %div.flex.flex-col.md:flex-row.md:space-x-4
-      = link_to "Editar", [:edit, @appoinment, patient_id: @appoinment.patient]
-      = link_to "PDF", [@appoinment, format: "pdf"]
-      = link_to "Ver paciente #{@appoinment.patient}", @appoinment.patient, target: "_blank"
+  .flex.flex-col.md:flex-row.md:space-x-4
+    = link_to :appoinments do
+      %i.fa.fa-arrow-left
+    = link_to [:edit, @appoinment, patient_id: @appoinment.patient] do
+      %i.fa.fa-edit.text-yellow-600
+    = link_to [@appoinment, format: :pdf], target: :_blank do
+      %i.fa.fa-print.text-red-600
+    = link_to @appoinment.patient, target: :_blank do
+      %i.fa.fa-user
 
 
 = render "shared/section" do
-  %h3.mb-4.text-xl.font-bold.text-gray-900.dark:text-white Consulta
+  = render "shared/title", title: "Consulta"
   .grid.gap-4.grid-rows-3.grid-flow-row.md:grid-flow-col.text-xs
     - @appoinment.attributes.slice("id", "reason", "note", "prescription", "recommendations", "created_at", "cabinet_results", "histopathology").map do |key, value|
       - if value.present?
-        %dl.overflow-x-auto
-          %dt= t("activerecord.attributes.appoinment.#{key}")
+        %dl
+          %dt.text-gray-400.my-2= t("activerecord.attributes.appoinment.#{key}")
           %dd.text-base.font-semibold= raw value
 
 = render "shared/section" do
-  %h3.mb-4.text-xl.font-bold.text-gray-900.dark:text-white Datos
+  = render "shared/title", title: "Datos"
   .grid.gap-4.grid-rows-2.grid-flow-row.md:grid-flow-col.text-xs
     - @appoinment.attributes.slice("height", "weight", "imc", "blood_pressure", "glycaemia", "sat_02", "heart_rate", "breathing_rate", "temperature", "cost").map do |key, value|
       - if value.present?
         %dl
-          %dt= t("activerecord.attributes.appoinment.#{key}")
+          %dt.text-gray-400.my-2= t("activerecord.attributes.appoinment.#{key}")
           %dd.text-base.font-semibold= raw value

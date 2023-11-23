@@ -11,13 +11,14 @@
         %th.py-2{scope: :col} Acciones
     %tbody
       - @patients.each do |patient|
-        %tr.cursor-pointer.hover:bg-gray-200.dark:hover:bg-gray-700.space-y-4
-          %td.whitespace-nowrap= patient
-          %td.whitespace-nowrap= time_ago_in_words(patient.created_at)
-          %td.flex.flex-row.justify-around
-            = link_to [:new, :appoinment, patient_id: patient.id] do
-              %span.fa.fa-book
-            = link_to [:new, :hospitalization, patient_id: patient.id] do
-              %span.fa.fa-ambulance
-            = link_to patient do
-              %span.fa.fa-eye
+        %tr.cursor-pointer.hover:bg-gray-200.dark:hover:bg-gray-700
+          %td.py-2.whitespace-nowrap= patient
+          %td.py-2.whitespace-nowrap= time_ago_in_words(patient.created_at)
+          %td.py-2.whitespace-nowrap
+            .flex.flex-row.justify-around
+              = link_to [:new, :appoinment, patient_id: patient.id] do
+                %span.fa.fa-book
+              = link_to [:new, :hospitalization, patient_id: patient.id] do
+                %span.fa.fa-ambulance
+              = link_to patient do
+                %span.fa.fa-eye.text-sky-600
