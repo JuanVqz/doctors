@@ -16,9 +16,9 @@
           %td.py-2.whitespace-nowrap= hospitalization.days_of_stay
           %td.py-2.whitespace-nowrap
             .flex.flex-row.justify-around
-              = link_to [hospitalization, format: :pdf], target: "_blank" do
+              = link_to hospitalization_path(hospitalization, format: :pdf), 'data-tooltip': 'Imprimir', class: 'tooltip tooltip-top', target: "_blank" do
                 %span.fa.fa-print.text-red-600
-              = link_to [:edit, hospitalization] do
+              = link_to edit_hospitalization_path(hospitalization), 'data-tooltip': 'Editar', class: 'tooltip tooltip-top' do
                 %span.fa.fa-edit.text-yellow-600
-              = link_to hospitalization do
+              = link_to hospitalization, 'data-tooltip': 'Detalles', class: 'tooltip tooltip-left' do
                 %span.fa.fa-eye.text-sky-600

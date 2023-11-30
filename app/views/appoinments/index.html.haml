@@ -18,7 +18,9 @@
           %td.py-2.whitespace-nowrap= time_ago_in_words(appoinment.created_at)
           %td.py-2.whitespace-nowrap
             .flex.flex-row.justify-around
-              = link_to [appoinment, format: :pdf], target: "_blank" do
+              = link_to appoinment_path(appoinment, format: :pdf), 'data-tooltip': 'Imprimir', class: 'tooltip tooltip-top', target: :_blank do
                 %i.fa.fa-print.text-red-600
-              = link_to appoinment do
+              = link_to edit_appoinment_path(appoinment), 'data-tooltip': 'Editar', class: 'tooltip tooltip-top' do
+                %i.fa.fa-edit.text-yellow-600
+              = link_to appoinment, 'data-tooltip': 'Detalles', class: 'tooltip tooltip-left' do
                 %i.fa.fa-eye.text-sky-600

@@ -2,11 +2,11 @@
   .flex.flex-col.md:flex-row.md:space-x-4
     = link_to :hospitalizations do
       %i.fa.fa-arrow-left
-    = link_to [:edit, @hospitalization, patient_id: @hospitalization.patient] do
+    = link_to edit_hospitalization_path(@hospitalization), 'data-tooltip': 'Editar', class: 'tooltip tooltip-top' do
       %i.fa.fa-edit.text-yellow-600
-    = link_to [@hospitalization, format: :pdf], target: :_blank do
+    = link_to hospitalization_path(@hospitalization, format: :pdf), 'data-tooltip': 'Imprimir', class: 'tooltip tooltip-top', target: :_blank do
       %i.fa.fa-print.text-red-600
-    = link_to @hospitalization.patient, target: :_blank do
+    = link_to @hospitalization.patient, 'data-tooltip': 'Paciente', class: 'tooltip tooltip-top', target: :_blank do
       %i.fa.fa-user
 
 = render "shared/section" do

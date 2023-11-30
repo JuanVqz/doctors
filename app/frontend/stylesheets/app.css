@@ -1,6 +1,8 @@
 @import 'trix/dist/trix.css';
 @import '@fortawesome/fontawesome-free/css/all.min.css';
+
 @import 'trix.css';
+@import 'tooltip.css';
 
 @tailwind base;
 @tailwind components;

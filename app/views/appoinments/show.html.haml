@@ -2,18 +2,21 @@
   .flex.flex-col.md:flex-row.md:space-x-4
     = link_to :appoinments do
       %i.fa.fa-arrow-left
-    = link_to [:edit, @appoinment, patient_id: @appoinment.patient] do
+    = link_to edit_appoinment_path(@appoinment), 'data-tooltip': 'Editar', class: 'tooltip tooltip-top' do
       %i.fa.fa-edit.text-yellow-600
-    = link_to [@appoinment, format: :pdf], target: :_blank do
+    = link_to appoinment_path(@appoinment, format: :pdf), 'data-tooltip': 'Imprimir', class: 'tooltip tooltip-top', target: :_blank do
       %i.fa.fa-print.text-red-600
-    = link_to @appoinment.patient, target: :_blank do
+    = link_to @appoinment.patient, 'data-tooltip': 'Paciente', class: 'tooltip tooltip-top', target: :_blank do
       %i.fa.fa-user
 
 
 = render "shared/section" do
-  = render "shared/title", title: "Consulta"
+  = render "shared/title", title: "Consulta ##{@appoinment.id}"
   .grid.gap-4.grid-rows-3.grid-flow-row.md:grid-flow-col.text-xs
-    - @appoinment.attributes.slice("id", "reason", "note", "prescription", "recommendations", "created_at", "cabinet_results", "histopathology").map do |key, value|
+    %dl
+      %dt.text-gray-400.my-2= t("activerecord.attributes.appoinment.patient")
+      %dd.text-base.font-semibold= @appoinment.patient
+    - @appoinment.attributes.slice("reason", "note", "prescription", "recommendations", "created_at", "cabinet_results", "histopathology").map do |key, value|
       - if value.present?
         %dl
           %dt.text-gray-400.my-2= t("activerecord.attributes.appoinment.#{key}")
