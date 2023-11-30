@@ -10,4 +10,4 @@ document.addEventListener("DOMContentLoaded", function() {
     sidebarBackgrond.classList.toggle("hidden")
     document.getElementById("sidebar").classList.toggle("hidden")
   }
-});
+})

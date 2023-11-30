@@ -1,7 +1,7 @@
 function focusSearch() {
-  const search = document.querySelector("input[type='search']");
-  if (!search) return;
-  search.focus();
+  const search = document.querySelector("input[type='search']")
+  if (!search) return
+  search.focus()
 }
 
-document.addEventListener("DOMContentLoaded", focusSearch);
+document.addEventListener("DOMContentLoaded", focusSearch)
