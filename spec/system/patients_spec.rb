@@ -9,7 +9,9 @@ RSpec.describe "Patient's flow" do
     scenario "with valid data" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
-      visit_patients_path
+      visit patients_path
+      expect(page).to have_content "Buscar"
+      expect(page).to have_current_path(patients_path)
       visit_new_patient
       create_new_patient "Marco"
       visit_show_patient
@@ -18,7 +20,9 @@ RSpec.describe "Patient's flow" do
     scenario "with invalid data" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
-      visit_patients_path
+      visit patients_path
+      expect(page).to have_content "Buscar"
+      expect(page).to have_current_path(patients_path)
       visit_new_patient
       create_new_patient ""
       expect(page).to have_content "Nombre no puede estar en blanco"
@@ -30,7 +34,9 @@ RSpec.describe "Patient's flow" do
       scenario "with valid data" do
         create_hospital_plan_medium
         sign_in_admin_doctor @hospital
-        visit_patients_path
+        visit patients_path
+        expect(page).to have_content "Buscar"
+        expect(page).to have_current_path(patients_path)
         visit_new_patient
         create_new_patient "Marco"
         visit_show_patient
@@ -47,10 +53,14 @@ RSpec.describe "Patient's flow" do
       scenario "redirect to new appoinment" do
         create_hospital_plan_medium
         sign_in_admin_doctor @hospital
-        visit_patients_path
+        visit patients_path
+        expect(page).to have_content "Buscar"
+        expect(page).to have_current_path(patients_path)
         visit_new_patient
         create_new_patient "Marco"
-        visit_patients_path
+        visit patients_path
+        expect(page).to have_content "Buscar"
+        expect(page).to have_current_path(patients_path)
         find('a[data-tooltip="Nueva consulta"]').click
         expect(page).to have_content "REGISTRAR CONSULTA"
         expect(page).to have_content "Marco"

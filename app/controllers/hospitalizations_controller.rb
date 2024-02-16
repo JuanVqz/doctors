@@ -22,7 +22,7 @@ class HospitalizationsController < ApplicationController
   end
 
   def new
-    @hospitalization = Hospitalization.new(patient_id: params[:patient])
+    @hospitalization = Hospitalization.new(patient_id: patient_id_param)
   end
 
   def edit
@@ -59,6 +59,10 @@ class HospitalizationsController < ApplicationController
 
   def pdf_name
     "#{@hospitalization.patient.name}_#{@hospitalization.id}_#{@hospitalization.created_at.to_fs(:number)}".upcase
+  end
+
+  def patient_id_param
+    current_hospital.patients.find_by(id: params[:patient_id])&.to_param
   end
 
   def hospitalization_params

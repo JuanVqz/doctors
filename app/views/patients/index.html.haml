@@ -11,7 +11,7 @@
         %th.py-2{scope: :col} Acciones
     %tbody
       - @patients.each do |patient|
-        %tr.cursor-pointer.hover:bg-gray-200.dark:hover:bg-gray-700
+        %tr.cursor-pointer.hover:bg-gray-200.dark:hover:bg-gray-700{"data-patient-id": patient.id}
           %td.py-2.whitespace-nowrap= patient
           %td.py-2.whitespace-nowrap= time_ago_in_words(patient.created_at)
           %td.py-2.whitespace-nowrap
