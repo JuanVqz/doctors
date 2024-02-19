@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe Doctor do
   it { should belong_to :hospital }
   it { should have_and_belong_to_many :patients }
-  it { should have_many :medical_consultations }
   it { should have_many :appoinments }
   it { should have_many :hospitalizations }
   it { should have_many :referred_doctors }
