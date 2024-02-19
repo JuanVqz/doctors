@@ -5,83 +5,85 @@ RSpec.describe "Patient's flow" do
     driven_by(:selenium_chrome_headless)
   end
 
-  xfeature "Doctor can create a patient" do
-    scenario "with valid data" do
+  feature "Doctor" do
+    scenario "can create a patient with valid information" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
+
       visit patients_path
       expect(page).to have_content "Buscar"
       expect(page).to have_current_path(patients_path)
-      visit_new_patient
-      create_new_patient "Marco"
-      visit_show_patient
+      click_on "Registrar Paciente"
+      fill_up_patient_form "Marco"
+      click_button "Registrar Paciente"
+      expect(page).to have_current_path patient_path @hospital.patients.last
+      expect(page).to have_content "DATOS GENERALES"
     end
 
-    scenario "with invalid data" do
+    scenario "does not not create a patient with invalid information" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
+
       visit patients_path
       expect(page).to have_content "Buscar"
       expect(page).to have_current_path(patients_path)
-      visit_new_patient
-      create_new_patient ""
+      click_on "Registrar Paciente"
+      fill_up_patient_form ""
+      click_button "Registrar Paciente"
       expect(page).to have_content "Nombre no puede estar en blanco"
     end
-  end
+    scenario "can edit a patient from show page with valid information" do
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
 
-  xfeature "Doctor can edit a patient" do
-    context "from show patient page" do
-      scenario "with valid data" do
-        create_hospital_plan_medium
-        sign_in_admin_doctor @hospital
-        visit patients_path
-        expect(page).to have_content "Buscar"
-        expect(page).to have_current_path(patients_path)
-        visit_new_patient
-        create_new_patient "Marco"
-        visit_show_patient
-        click_link "Editar"
-        fill_in "patient_name", with: "Marco update"
-        click_button "Actualizar Paciente"
-        visit_show_patient
-      end
+      visit patients_path
+      expect(page).to have_content "Buscar"
+      expect(page).to have_current_path(patients_path)
+      click_on "Registrar Paciente"
+      fill_up_patient_form "Marco"
+      click_button "Registrar Paciente"
+      expect(page).to have_current_path patient_path @hospital.patients.last
+      expect(page).to have_content "DATOS GENERALES"
+
+      find('a[data-tooltip="Editar"]').click
+      fill_in "patient_name", with: "Marco update"
+      click_button "Actualizar Paciente"
+      expect(page).to have_current_path patient_path @hospital.patients.last
+      expect(page).to have_content "DATOS GENERALES"
+    end
+
+    scenario "can create an appoinment from patient#index and redirect to new appoinment" do
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
+
+      visit patients_path
+      expect(page).to have_content "Buscar"
+      expect(page).to have_current_path(patients_path)
+      click_on "Registrar Paciente"
+      fill_up_patient_form "Marco"
+      click_button "Registrar Paciente"
+
+      visit patients_path
+      expect(page).to have_content "Buscar"
+      expect(page).to have_current_path(patients_path)
+      find('a[data-tooltip="Nueva Consulta"]').click
+      expect(page).to have_content "REGISTRAR CONSULTA"
+      expect(page).to have_content "Marco"
     end
   end
 
-  xfeature "Doctor can create an appoinment" do
-    context "from patients#index" do
-      scenario "redirect to new appoinment" do
-        create_hospital_plan_medium
-        sign_in_admin_doctor @hospital
-        visit patients_path
-        expect(page).to have_content "Buscar"
-        expect(page).to have_current_path(patients_path)
-        visit_new_patient
-        create_new_patient "Marco"
-        visit patients_path
-        expect(page).to have_content "Buscar"
-        expect(page).to have_current_path(patients_path)
-        find('a[data-tooltip="Nueva consulta"]').click
-        expect(page).to have_content "REGISTRAR CONSULTA"
-        expect(page).to have_content "Marco"
-      end
-    end
-  end
-
-  def visit_show_patient
-    expect(page).to have_current_path patient_path Patient.unscoped.last
-    expect(page).to have_content "INFORMACIÓN DEL PACIENTE"
-  end
-
-  def create_new_patient name
+  def fill_up_patient_form name
     fill_in "patient_name", with: name
     fill_in "patient_first_name", with: "Chavez"
     fill_in "patient_last_name", with: "Castro"
-    fill_in "patient_birthday", with: DateTime.current
+
+    select "1", from: :patient_birthday_3i
+    select "enero", from: :patient_birthday_2i
+    select "1990", from: :patient_birthday_1i
+
     fill_in "patient_height", with: 180
     fill_in "patient_weight", with: 100
-    # TODO: get it working again
-    # find("#patient_blood_group").find(:xpath, "option[2]").select_option
+    select "ARH+", from: "patient_blood_group"
     fill_in "patient_occupation", with: "Herrero"
     fill_in "patient_referred_by", with: "Pedro Ramos"
 
@@ -98,12 +100,5 @@ RSpec.describe "Patient's flow" do
     fill_in "patient_address_attributes_municipality", with: "Oaxaca"
 
     find_by_id("patient_address_attributes_state").find(:xpath, "option[2]").select_option
-
-    click_button "Crear Paciente"
-  end
-
-  def visit_new_patient
-    click_link "Registrar Paciente"
-    expect(page).to have_content "REGISTRAR PACIENTE"
   end
 end
