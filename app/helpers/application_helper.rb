@@ -38,4 +38,11 @@ module ApplicationHelper
   def primary_button
     "text-white text-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
   end
+
+  def sidebar_classes action
+    classes = "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
+    classes += " bg-gray-200 dark:bg-gray-700" if controller_name == action
+
+    classes
+  end
 end

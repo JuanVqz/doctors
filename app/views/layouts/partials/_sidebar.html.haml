@@ -4,27 +4,27 @@
       %div.flex-1.px-2
         %ul.space-y-2
           %li
-            = link_to patients_path(subdomain: current_hospital.subdomain), class: "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700" do
+            = link_to patients_path(subdomain: current_hospital.subdomain), class: sidebar_classes('patients') do
               %span
                 %i.fa.fa-user
                 Pacientes
           %li
-            = link_to appoinments_path(subdomain: current_hospital.subdomain), class: "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700" do
+            = link_to appoinments_path(subdomain: current_hospital.subdomain), class: sidebar_classes('appoinments') do
               %span
                 %i.fa.fa-book
                 Consultas
           %li
-            = link_to hospitalizations_path(subdomain: current_hospital.subdomain), class: "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700" do
+            = link_to hospitalizations_path(subdomain: current_hospital.subdomain), class: sidebar_classes('hospitalizations') do
               %span
                 %i.fa.fa-ambulance
                 Hospitalizaciónes
           %li
-            = link_to patient_referrals_path(subdomain: current_hospital.subdomain), class: "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700" do
+            = link_to patient_referrals_path(subdomain: current_hospital.subdomain), class: sidebar_classes('patient_referrals') do
               %span
                 %i.fa.fa-hospital
                 Referir paciente
           %li
-            = link_to referred_doctors_path(subdomain: current_hospital.subdomain), class: "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700" do
+            = link_to referred_doctors_path(subdomain: current_hospital.subdomain), class: sidebar_classes('referred_doctors') do
               %span
                 %i.fa.fa-user-md
                 Doctores Referidos
