@@ -12,6 +12,7 @@ tomar consultas de los pacientes y conservar el historial clinico.
 - ruby 3.0.3
 - rails 7.0.7.2
 - postgres 13
+- node 20.8.0
 
 ## Instalación
 
