@@ -3,10 +3,7 @@ class PatientReferralsController < ApplicationController
 
   # GET /patient_referrals
   def index
-    @patient_referrals =
-      current_hospital
-        .patient_referrals
-        .order(created_at: :desc)
+    @pagy, @patient_referrals = pagy(current_hospital.patient_referrals.order(created_at: :desc))
   end
 
   # GET /patient_referrals/1

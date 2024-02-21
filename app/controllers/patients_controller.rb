@@ -4,11 +4,7 @@ class PatientsController < ApplicationController
   before_action :set_appoinments, only: [:show, :appoinments]
 
   def index
-    @patients =
-      current_hospital
-        .patients
-        .recent
-        .search(params[:query])
+    @pagy, @patients = pagy(current_hospital.patients.recent.search(params[:query]))
   end
 
   def show
@@ -70,11 +66,11 @@ class PatientsController < ApplicationController
   end
 
   def set_appoinments
-    @appoinments = Appoinment.by_doctor_and_patient(current_user.id, @patient.id).recent
+    @pagy, @appoinments = pagy(Appoinment.by_doctor_and_patient(current_user.id, @patient.id).recent)
   end
 
   def set_hospitalizations
-    @hospitalizations = Hospitalization.by_doctor_and_patient(current_user.id, @patient.id).recent
+    @pagy, @hospitalizations = pagy(Hospitalization.by_doctor_and_patient(current_user.id, @patient.id).recent)
   end
 
   def patient_params

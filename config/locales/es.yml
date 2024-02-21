@@ -331,10 +331,9 @@ es-MX:
   #     invalid: "Email o contraseña incorrecto"
   #     logged_in: "¡Has iniciado sesión!"
   #     logged_out: "¡Has cerrado sesión!"
-  # views:
-  #   pagination:
-  #     first: "&laquo; Primera"
-  #     last: "Última &raquo;"
-  #     previous: "&lsaquo; Anterior"
-  #     next: "Siguiente &rsaquo;"
-  #     truncate: "&hellip;"
+  pagy:
+    nav:
+      prev: "&lsaquo; Anterior"
+      next: "Siguiente &rsaquo;"
+    info:
+      single_page: "Mostrando <b>%{count}</b> %{item_name}"
