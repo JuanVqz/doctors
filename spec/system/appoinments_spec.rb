@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Medical Consultations flow" do
+RSpec.describe "Medical Consultations flow", type: :system do
   before do
     driven_by(:selenium_chrome_headless)
   end
@@ -9,15 +9,15 @@ RSpec.describe "Medical Consultations flow" do
     scenario "from the show page" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
-
       @patient = create(:patient)
-      create_list(:appoinment, 3, doctor: @admin, patient: @patient)
 
       visit patients_path
       expect(page).to have_content "Buscar"
       expect(page).to have_current_path(patients_path)
 
-      find('a[data-tooltip="Detalles"]').click
+      within "tr[data-patient-id='#{@patient.id}']" do
+        find('a[data-tooltip="Detalles"]').click
+      end
 
       find('a[data-tooltip="Nueva Consulta"]').click
       expect(page).to have_current_path(new_appoinment_path(patient_id: @patient.id))
