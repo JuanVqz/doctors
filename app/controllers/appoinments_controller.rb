@@ -3,13 +3,7 @@ class AppoinmentsController < ApplicationController
   before_action :set_appoinment, only: [:show, :edit, :update, :destroy]
 
   def index
-    @appoinments =
-      Appoinment
-        .includes(:patient)
-        .per_doctor(current_user.id)
-        .search(params[:query])
-        .recent
-        .page(params[:page])
+    @pagy, @appoinments = pagy(Appoinment.includes(:patient).per_doctor(current_user.id).search(params[:query]).recent)
   end
 
   def show

@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def sexos_for_select
     ["Femenino", "Masculino"]
   end

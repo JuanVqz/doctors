@@ -3,11 +3,7 @@ class HospitalizationsController < ApplicationController
   before_action :set_hospitalization, only: [:show, :edit, :update, :destroy]
 
   def index
-    @hospitalizations = Hospitalization.includes(:patient)
-      .per_doctor(current_user.id)
-      .search(params[:query])
-      .recent
-      .page(params[:page])
+    @pagy, @hospitalizations = pagy(Hospitalization.includes(:patient).per_doctor(current_user.id).search(params[:query]).recent)
   end
 
   def show
