@@ -9,7 +9,6 @@ class PatientsController < ApplicationController
         .patients
         .recent
         .search(params[:query])
-        .page(params[:page])
   end
 
   def show
@@ -71,15 +70,11 @@ class PatientsController < ApplicationController
   end
 
   def set_appoinments
-    @appoinments = Appoinment.by_doctor_and_patient(current_user.id, @patient.id)
-      .recent
-      .page(params[:page])
+    @appoinments = Appoinment.by_doctor_and_patient(current_user.id, @patient.id).recent
   end
 
   def set_hospitalizations
-    @hospitalizations = Hospitalization.by_doctor_and_patient(current_user.id, @patient.id)
-      .recent
-      .page(params[:page])
+    @hospitalizations = Hospitalization.by_doctor_and_patient(current_user.id, @patient.id).recent
   end
 
   def patient_params

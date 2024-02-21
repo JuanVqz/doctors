@@ -8,7 +8,6 @@ class ReferredDoctorsController < ApplicationController
         .search(params[:query])
         .by_doctor(current_user.id)
         .order(:full_name)
-        .page(params[:page])
   end
 
   # GET /referred_doctors/1

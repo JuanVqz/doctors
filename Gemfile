@@ -7,7 +7,6 @@ gem "bootsnap", require: false
 gem "devise"
 gem "haml-rails"
 gem "jquery-rails"
-gem "kaminari"
 gem "pg"
 gem "puma"
 gem "pundit"

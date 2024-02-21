@@ -7,7 +7,6 @@ class PatientReferralsController < ApplicationController
       current_hospital
         .patient_referrals
         .order(created_at: :desc)
-        .page(params[:page])
   end
 
   # GET /patient_referrals/1
