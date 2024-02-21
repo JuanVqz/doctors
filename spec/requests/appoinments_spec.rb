@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Appoinments" do
+RSpec.describe "appoinments", type: :request do
   let(:hospital) { create(:hospital, :basic) }
   let(:doctor) { create(:doctor, hospital_id: hospital.id) }
   let(:patient) do
@@ -45,6 +45,13 @@ RSpec.describe "Appoinments" do
 
       it "creates a new appoinment" do
         params = {appoinment: valid_attributes.merge(patient_id: patient.id)}
+        expect {
+          post appoinments_path, params: params
+        }.to change(Appoinment, :count).by(1)
+      end
+
+      xit "creates with files" do
+        params = {appoinment: valid_attributes.merge(patient_id: patient.id, files: [])}
         expect {
           post appoinments_path, params: params
         }.to change(Appoinment, :count).by(1)

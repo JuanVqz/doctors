@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Hospitals" do
+RSpec.describe "hospitals", type: :request do
   let(:hospital) { create(:hospital, :basic) }
   let(:doctor) do
     create(:doctor, :admin, hospital_id: hospital.id)
