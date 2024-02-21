@@ -20,20 +20,20 @@
     = f.input :sex, collection: sexos_for_select, prompt: true
     = f.input :cellphone
     = f.input :marital_status
-    = f.input :comments
+    = f.input :comments, input_html: resize_field_controller
     = f.input :referred_by
 
   = render "shared/title", title: "Historial Clínico"
 
   .grid.gap-2.grid-cols-1.md:grid-cols-2
-    = f.input :allergies
-    = f.input :pathological_background
-    = f.input :non_pathological_background
-    = f.input :gyneco_obstetric_background
-    = f.input :system_background
-    = f.input :family_inheritance_background
-    = f.input :physic_exploration
-    = f.input :other_background
+    = f.input :allergies, input_html: resize_field_controller
+    = f.input :pathological_background, input_html: resize_field_controller
+    = f.input :non_pathological_background, input_html: resize_field_controller
+    = f.input :gyneco_obstetric_background, input_html: resize_field_controller
+    = f.input :system_background, input_html: resize_field_controller
+    = f.input :family_inheritance_background, input_html: resize_field_controller
+    = f.input :physic_exploration, input_html: resize_field_controller
+    = f.input :other_background, input_html: resize_field_controller
 
   = render "addresses/address_fields", f: f
 
