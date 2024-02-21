@@ -2,7 +2,7 @@
   %div.px-3.py-3.lg:px-5.lg:pl-3
     %div.flex.justify-between.items-center
       %div.flex.items-center.justify-start
-        %button#sidebar_toggler.p-2.rounded.cursor-pointer.lg:hidden.hover:text-gray-800.hover:bg-gray-300.dark:hover:bg-gray-700.focus:bg-gray-300.dark:focus:bg-gray-700.focus:ring-2.focus:ring-gray-100.dark:focus:ring-gray-700
+        %button.p-2.rounded.cursor-pointer.lg:hidden.hover:text-gray-800.hover:bg-gray-300.dark:hover:bg-gray-700.focus:bg-gray-300.dark:focus:bg-gray-700.focus:ring-2.focus:ring-gray-100.dark:focus:ring-gray-700{"data-sidebar-target": :toggler, "data-action": "click->sidebar#toggle"}
           %svg.w-6.h-6{fill: "currentColor", viewbox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg"}
             %path{"clip-rule" => "evenodd", d: "M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z", "fill-rule" => "evenodd"}
           %svg.w-6.h-6.hidden{fill: "currentColor", viewbox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg"}

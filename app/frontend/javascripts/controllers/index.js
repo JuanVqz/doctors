@@ -9,3 +9,6 @@ application.register("resize-field", ResizeFieldController)
 
 import FocusFieldController from "./focus_field_controller"
 application.register("focus-field", FocusFieldController)
+
+import SidebarController from "./sidebar_controller"
+application.register("sidebar", SidebarController)
