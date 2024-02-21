@@ -8,10 +8,7 @@ Rails.application.routes.draw do
     resources :hospitalizations
     resources :hospitals, only: [:edit, :update]
     resources :patient_referrals
-    resources :patients do
-      get :weight, on: :member
-      get :appoinments, on: :member
-    end
+    resources :patients
     resources :referred_doctors
 
     root to: "main#hospital"

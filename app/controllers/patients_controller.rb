@@ -1,14 +1,12 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_patient, only: [:show, :edit, :update, :appoinments, :destroy]
-  before_action :set_appoinments, only: [:show, :appoinments]
+  before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   def index
     @pagy, @patients = pagy(current_hospital.patients.recent.search(params[:query]))
   end
 
   def show
-    set_hospitalizations
   end
 
   def new
@@ -38,19 +36,6 @@ class PatientsController < ApplicationController
     end
   end
 
-  def weight
-  end
-
-  def appoinments
-    respond_to do |format|
-      format.pdf do
-        render pdf: "consultas_#{@patient.name}",
-          template: "pdfs/appoinments",
-          layout: "pdfs/appoinments"
-      end
-    end
-  end
-
   def destroy
     @patient.destroy
 
@@ -63,14 +48,6 @@ class PatientsController < ApplicationController
 
   def set_patient
     @patient = Patient.find(params[:id])
-  end
-
-  def set_appoinments
-    @pagy, @appoinments = pagy(Appoinment.by_doctor_and_patient(current_user.id, @patient.id).recent)
-  end
-
-  def set_hospitalizations
-    @pagy, @hospitalizations = pagy(Hospitalization.by_doctor_and_patient(current_user.id, @patient.id).recent)
   end
 
   def patient_params
