@@ -2,13 +2,13 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from './application'
 
-import ResizeFieldController from "./resize_field_controller"
-application.register("resize-field", ResizeFieldController)
+import ResizeFieldController from './resize_field_controller'
+application.register('resize-field', ResizeFieldController)
 
-import FocusFieldController from "./focus_field_controller"
-application.register("focus-field", FocusFieldController)
+import FocusFieldController from './focus_field_controller'
+application.register('focus-field', FocusFieldController)
 
-import SidebarController from "./sidebar_controller"
-application.register("sidebar", SidebarController)
+import SidebarController from './sidebar_controller'
+application.register('sidebar', SidebarController)
