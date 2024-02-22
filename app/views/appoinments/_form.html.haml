@@ -15,16 +15,16 @@
     = f.input :cabinet_results, input_html: resize_field_controller
     = f.input :histopathology, input_html: resize_field_controller
 
-  .grid.gap-2.grid-cols-1.md:grid-cols-4
+  .grid.gap-2.grid-cols-1.md:grid-cols-6{ data: { controller: :imc } }
     = f.input :blood_pressure
     = f.input :heart_rate
     = f.input :breathing_rate
     = f.input :temperature
     = f.input :glycaemia
     = f.input :sat_02
-    = f.input :height, hint: t("simple_form.hint.defaults.height")
-    = f.input :weight, hint: t("simple_form.hint.defaults.weight")
-    = f.input :imc, input_html: { readonly: true, class: "cursor-not-allowed" }
+    = f.input :height, hint: t("simple_form.hint.defaults.height"), input_html: { data: { imc_target: :height, action: "input->imc#calculate" } }
+    = f.input :weight, hint: t("simple_form.hint.defaults.weight"), input_html: { data: { imc_target: :weight, action: "input->imc#calculate" } }
+    = f.input :imc, hint: t("simple_form.hint.defaults.imc"), input_html: { data: { imc_target: :result } }
     = f.input :cost, hint: t("simple_form.hint.defaults.cost")
     = f.input :files
 
