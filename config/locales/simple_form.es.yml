@@ -51,6 +51,7 @@ es-MX:
         cabinet_results: Resultados de gabinete
         cost: Costo
         created_at: Fecha de registro
+        files: Archivos
         glycaemia: Glc
         heart_rate: FC
         height: Altura
@@ -112,5 +113,6 @@ es-MX:
       defaults:
         height: Altura en Centimetros
         weight: Peso en Kilogramos
+        imc: Basado en la altura y el peso
         cost: Costo de la consulta
         phone_number: Coloque solo los digitos sin guiones, parentesis o espacios. Ejemplo. 9511234567
