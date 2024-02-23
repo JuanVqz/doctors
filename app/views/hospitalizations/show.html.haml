@@ -1,33 +1,34 @@
-= render "shared/section" do
+= render 'shared/section' do
   .flex.flex-row.justify-center.md:justify-start.space-x-4
-    = link_to :hospitalizations do
+    = link_to :hospitalizations, class: secondary_button do
       %span.fa.fa-arrow-left
-    = link_to edit_hospitalization_path(@hospitalization), 'data-tooltip': 'Editar', class: 'tooltip tooltip-top' do
+      = t('.back')
+    = link_to edit_hospitalization_path(@hospitalization), 'data-tooltip': t('tooltips.defaults.edit'), class: "#{secondary_button} tooltip tooltip-top" do
       %span.fa.fa-edit.text-yellow-600
-    = link_to hospitalization_path(@hospitalization, format: :pdf), 'data-tooltip': 'Imprimir', class: 'tooltip tooltip-top', target: :_blank do
+    = link_to hospitalization_path(@hospitalization, format: :pdf), 'data-tooltip': t('tooltips.defaults.print'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
       %span.fa.fa-print.text-red-600
-    = link_to @hospitalization.patient, 'data-tooltip': 'Paciente', class: 'tooltip tooltip-top', target: :_blank do
+    = link_to @hospitalization.patient, 'data-tooltip': t('tooltips.defaults.patient'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
       %span.fa.fa-user
 
-= render "shared/section" do
-  = render "shared/title", title: "Información"
+= render 'shared/section' do
+  = render 'shared/title', title: t('.information')
   .grid.gap-4.grid-rows-2.grid-flow-row.md:grid-flow-col.text-xs
     %dl.overflow-x-auto
-      %dt.text-gray-400.my-2= t("activerecord.attributes.hospitalization.patient")
+      %dt.text-gray-400.my-2= t('activerecord.attributes.hospitalization.patient')
       %dd.text-base.font-semibold= @hospitalization.patient
     %dl.overflow-x-auto
-      %dt.text-gray-400.my-2= t("activerecord.attributes.hospitalization.referred_doctor")
+      %dt.text-gray-400.my-2= t('activerecord.attributes.hospitalization.referred_doctor')
       %dd.text-base.font-semibold= @hospitalization.referred_doctor
-    - @hospitalization.attributes.slice("status", "starting", "ending", "days_of_stay").map do |key, value|
+    - @hospitalization.attributes.slice('status', 'starting', 'ending', 'days_of_stay').map do |key, value|
       - if value.present?
         %dl.overflow-x-auto
           %dt.text-gray-400.my-2= t("activerecord.attributes.hospitalization.#{key}")
           %dd.text-base.font-semibold= raw value
 
-= render "shared/section" do
-  = render "shared/title", title: "Diagnóstico"
+= render 'shared/section' do
+  = render 'shared/title', title: t('.diagnosis')
   .grid.gap-4.grid-rows-3.grid-flow-row.md:grid-flow-col.text-xs
-    - @hospitalization.attributes.slice("input_diagnosis", "output_diagnosis", "reason_for_hospitalization", "treatment", "cabinet_results", "histopathology", "recommendations").map do |key, value|
+    - @hospitalization.attributes.slice('input_diagnosis', 'output_diagnosis', 'reason_for_hospitalization', 'treatment', 'cabinet_results', 'histopathology', 'recommendations').map do |key, value|
       - if value.present?
         %dl.overflow-x-auto
           %dt.text-gray-400.my-2= t("activerecord.attributes.hospitalization.#{key}")

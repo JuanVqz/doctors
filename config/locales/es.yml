@@ -14,15 +14,18 @@ es-MX:
   shared:
     section:
       back: Regresar
+      diagnosis: 'Diagnóstico'
       edit: Editar
-      data: Datos
       files: Archivos
+      identifier: "%{model} #%{id}"
+      information: 'Información'
     table:
+      actions: Acciones
+      created_at: Fecha de registro
+      days_of_stay: Días de estadia
       name: Nombre
       patient: Paciente
       reason: Motivo
-      created_at: Fecha de registro
-      actions: Acciones
     actions:
       register: Registrar %{model}
       patient:
@@ -31,20 +34,21 @@ es-MX:
       appoinment:
         one: Consulta
         other: Consultas
+      hospitalization:
+        one: Hospitalización
+        other: Hospitalizaciones
     search:
       name: Buscar
   tooltips:
     defaults:
       details: Detalles
+      edit: Editar
+      patient: Paciente
+      print: Imprimir
     appoinments:
       new: Nueva Consulta
-      edit: Editar
-      print: Imprimir
-      patient: Paciente
     hospitalizations:
       new: Nueva Hospitalización
-    patients:
-      edit: Editar
   layouts:
     partials:
       sidebar:
