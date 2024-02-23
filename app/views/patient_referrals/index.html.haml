@@ -19,8 +19,8 @@
           %td.py-2.whitespace-nowrap
             .flex.flex-row.justify-around
               = link_to patient_referral_path(patient_referral, format: :pdf), 'data-tooltip': 'Imprimir', class: 'tooltip tooltip-top', target: :_blank do
-                %i.fa.fa-print.text-red-600
+                %span.fa.fa-print.text-red-600
               = link_to edit_patient_referral_path(patient_referral), 'data-tooltip': 'Editar', class: 'tooltip tooltip-top' do
-                %i.fa.fa-edit.text-yellow-600
+                %span.fa.fa-edit.text-yellow-600
               = link_to patient_referral, 'data-tooltip': 'Detalles', class: 'tooltip tooltip-left' do
-                %i.fa.fa-eye.text-sky-600
+                %span.fa.fa-eye.text-sky-600

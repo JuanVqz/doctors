@@ -1,7 +1,7 @@
 = render "shared/section" do
-  .flex.flex-col.md:flex-row.md:space-x-4
+  .flex.flex-row.justify-center.md:justify-start.space-x-4
     = link_to :referred_doctors do
-      %i.fa.fa-arrow-left
+      %span.fa.fa-arrow-left
     = link_to edit_referred_doctor_path(@referred_doctor), 'data-tooltip': 'Editar', class: 'tooltip tooltip-top' do
       %span.fa.fa-edit.text-yellow-600
 

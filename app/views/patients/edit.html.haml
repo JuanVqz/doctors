@@ -1,6 +1,8 @@
-= render "shared/section" do
-  = link_to :patients do
-    %i.fa.fa-arrow-left
+= render 'shared/section' do
+  .flex.flex-row
+    = link_to :patients, class: secondary_button do
+      %span.fa.fa-arrow-left
+      = t('.back')
 
-= render "shared/section" do
-  = render "form", patient: @patient, title: t("helpers.submit.patient.update")
+= render 'shared/section' do
+  = render 'form', patient: @patient, title: t('helpers.submit.patient.update')

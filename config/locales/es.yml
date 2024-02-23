@@ -1,5 +1,59 @@
 es-MX:
-  patient: Paciente
+  addresses:
+    address_fields:
+      title: Dirección
+  patients:
+    form:
+      medical_history: Antecedentes Médicos
+    general:
+      title: Datos Generales
+    clinic_history:
+      title: Historial Clínico
+    address:
+      title: Dirección
+  shared:
+    section:
+      back: Regresar
+      edit: Editar
+      data: Datos
+      files: Archivos
+    table:
+      name: Nombre
+      patient: Paciente
+      reason: Motivo
+      created_at: Fecha de registro
+      actions: Acciones
+    actions:
+      register: Registrar %{model}
+      patient:
+        one: Paciente
+        other: Pacientes
+      appoinment:
+        one: Consulta
+        other: Consultas
+    search:
+      name: Buscar
+  tooltips:
+    defaults:
+      details: Detalles
+    appoinments:
+      new: Nueva Consulta
+      edit: Editar
+      print: Imprimir
+      patient: Paciente
+    hospitalizations:
+      new: Nueva Hospitalización
+    patients:
+      edit: Editar
+  layouts:
+    partials:
+      sidebar:
+       patients: Pacientes
+       appoinments: Consultas
+       hospitalizations: Hospitalizaciónes
+       patient_referrals: Referencias
+       referred_doctors: Doctores
+
   appoinment: Consulta
   hospitalization: Hospitalización
   patient_referral: Referencia

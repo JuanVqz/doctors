@@ -1,7 +1,7 @@
 -# frozen_string_literal: true
 
 = simple_form_for(patient) do |f|
-  = render "shared/title", title: title
+  = render 'shared/title', title: title
 
   .grid.gap-2.grid-cols-1.md:grid-cols-4
     = f.input :occupation
@@ -14,8 +14,8 @@
       start_year: Date.current.year,
       end_year: Date.current.year - 100
     = f.input :place_of_birth
-    = f.input :height, hint: t("simple_form.hint.defaults.height")
-    = f.input :weight, hint: t("simple_form.hint.defaults.weight")
+    = f.input :height, hint: t('simple_form.hint.defaults.height')
+    = f.input :weight, hint: t('simple_form.hint.defaults.weight')
     = f.input :blood_group, collection: blood_groups_for_select, prompt: true
     = f.input :sex, collection: sexos_for_select, prompt: true
     = f.input :cellphone
@@ -23,7 +23,7 @@
     = f.input :comments, input_html: resize_field_controller
     = f.input :referred_by
 
-  = render "shared/title", title: "Historial Clínico"
+  = render 'shared/title', title: t('.medical_history')
 
   .grid.gap-2.grid-cols-1.md:grid-cols-2
     = f.input :allergies, input_html: resize_field_controller
@@ -35,6 +35,6 @@
     = f.input :physic_exploration, input_html: resize_field_controller
     = f.input :other_background, input_html: resize_field_controller
 
-  = render "addresses/address_fields", f: f
+  = render 'addresses/address_fields', f: f
 
   = f.button :submit

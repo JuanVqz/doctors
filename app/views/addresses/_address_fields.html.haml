@@ -1,4 +1,4 @@
-= render "shared/title", title: "Domicilio"
+= render 'shared/title', title: t('.title')
 
 = f.simple_fields_for(:address) do |af|
   .grid.gap-2.grid-cols-1.md:grid-cols-3
@@ -7,4 +7,4 @@
     = af.input :colony
     = af.input :postal_code
     = af.input :municipality
-    = af.input :state, collection: states_for_select, selected: "Oaxaca"
+    = af.input :state, collection: states_for_select, selected: 'Oaxaca'

@@ -1,7 +1,7 @@
 -# frozen_string_literal: true
 
 = simple_form_for(appoinment) do |f|
-  = render "shared/title", title: title
+  = render 'shared/title', title: title
 
   .grid.gap-2.grid-cols-1.md:grid-cols-2
     = f.association :patient, collection: patients_for_select, default: params[:patient_id], prompt: true
@@ -22,10 +22,10 @@
     = f.input :temperature
     = f.input :glycaemia
     = f.input :sat_02
-    = f.input :height, hint: t("simple_form.hint.defaults.height"), input_html: { data: { imc_target: :height, action: "input->imc#calculate" } }
-    = f.input :weight, hint: t("simple_form.hint.defaults.weight"), input_html: { data: { imc_target: :weight, action: "input->imc#calculate" } }
-    = f.input :imc, hint: t("simple_form.hint.defaults.imc"), input_html: { data: { imc_target: :result } }
-    = f.input :cost, hint: t("simple_form.hint.defaults.cost")
+    = f.input :height, hint: t('simple_form.hint.defaults.height'), input_html: { data: { imc_target: :height, action: "input->imc#calculate" } }
+    = f.input :weight, hint: t('simple_form.hint.defaults.weight'), input_html: { data: { imc_target: :weight, action: "input->imc#calculate" } }
+    = f.input :imc, hint: t('simple_form.hint.defaults.imc'), input_html: { data: { imc_target: :result } }
+    = f.input :cost, hint: t('simple_form.hint.defaults.cost')
 
   .grid.gap-2.grid-cols-1
     - appoinment.files.each do |file|

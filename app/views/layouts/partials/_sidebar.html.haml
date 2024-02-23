@@ -1,32 +1,32 @@
 %aside.fixed.top-0.left-0.z-20.flex.flex-col.flex-shrink-0.bg-gray-100.dark:bg-gray-800.hidden.w-64.h-full.pt-16.font-normal.duration-75.lg:flex.transition-width{ "data-sidebar-target": :aside }
-  %div.relative.flex.flex-col.flex-1.min-h-0.border-r.border-gray-300.dark:border-gray-700
-    %div.flex.flex-col.flex-1.pt-4.overflow-y-auto
-      %div.flex-1.px-2
+  .relative.flex.flex-col.flex-1.min-h-0.border-r.border-gray-300.dark:border-gray-700
+    .flex.flex-col.flex-1.pt-4.overflow-y-auto
+      .flex-1.px-2
         %ul.space-y-2
           %li
             = link_to patients_path(subdomain: current_hospital.subdomain), class: sidebar_classes('patients') do
               %span
-                %i.fa.fa-user
-                Pacientes
+                %span.fa.fa-user
+                = t('.patients')
           %li
             = link_to appoinments_path(subdomain: current_hospital.subdomain), class: sidebar_classes('appoinments') do
               %span
-                %i.fa.fa-book
-                Consultas
+                %span.fa.fa-book
+                = t('.appoinments')
           %li
             = link_to hospitalizations_path(subdomain: current_hospital.subdomain), class: sidebar_classes('hospitalizations') do
               %span
-                %i.fa.fa-ambulance
-                Hospitalizaciónes
+                %span.fa.fa-ambulance
+                = t('.hospitalizations')
           %li
             = link_to patient_referrals_path(subdomain: current_hospital.subdomain), class: sidebar_classes('patient_referrals') do
               %span
-                %i.fa.fa-hospital
-                Referir paciente
+                %span.fa.fa-hospital
+                = t('.patient_referrals')
           %li
             = link_to referred_doctors_path(subdomain: current_hospital.subdomain), class: sidebar_classes('referred_doctors') do
               %span
-                %i.fa.fa-user-md
-                Doctores Referidos
+                %span.fa.fa-user-md
+                = t('.referred_doctors')
 
-%div{ class: "fixed inset-0 z-10 bg-gray-900/50 dark:bg-gray-900/90 hidden", "data-sidebar-target": :background, "data-action": "click->sidebar#toggle" }
+%div{ class: 'fixed inset-0 z-10 bg-gray-900/50 dark:bg-gray-900/90 hidden', 'data-sidebar-target': :background, 'data-action': 'click->sidebar#toggle' }

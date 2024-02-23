@@ -1,7 +1,7 @@
-= render "shared/title", title: "Dirección"
+= render 'shared/title', title: t('.title')
 
 .grid.gap-4.grid-rows-4.grid-flow-row.md:grid-flow-col
-  - address.attributes.slice("street", "colony", "number", "postal_code", "municipality", "state", "country").map do |key, value|
+  - address.attributes.slice('street', 'colony', 'number', 'postal_code', 'municipality', 'state', 'country').map do |key, value|
     - if value.present?
       %dl
         %dt.text-gray-400.my-2= t("activerecord.attributes.address.#{key}")
