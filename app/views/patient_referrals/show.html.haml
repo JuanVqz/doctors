@@ -1,28 +1,29 @@
-= render "shared/section" do
+= render 'shared/section' do
   .flex.flex-row.justify-center.md:justify-start.space-x-4
-    = link_to :patient_referrals do
+    = link_to :patient_referrals, class: secondary_button do
       %span.fa.fa-arrow-left
-    = link_to edit_patient_referral_path(@patient_referral), 'data-tooltip': 'Editar', class: 'tooltip tooltip-top' do
+      = t('.back')
+    = link_to edit_patient_referral_path(@patient_referral), 'data-tooltip': t('tooltips.defaults.edit'), class: "#{secondary_button} tooltip tooltip-top" do
       %span.fa.fa-edit.text-yellow-600
-    = link_to patient_referral_path(@patient_referral, format: :pdf), 'data-tooltip': 'Imprimir', class: 'tooltip tooltip-top', target: :_blank do
+    = link_to patient_referral_path(@patient_referral, format: :pdf), 'data-tooltip': t('tooltips.defaults.print'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
       %span.fa.fa-print.text-red-600
-    = link_to @patient_referral.patient, 'data-tooltip': 'Paciente', class: 'tooltip tooltip-top', target: :_blank do
+    = link_to @patient_referral.patient, 'data-tooltip': t('tooltips.defaults.patient'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
       %span.fa.fa-user
 
-= render "shared/section" do
-  = render "shared/title", title: "Información"
+= render 'shared/section' do
+  = render 'shared/title', title: t('.information')
   .grid.gap-4.grid-rows-3.grid-flow-row.md:grid-flow-col.text-xs
-    - @patient_referral.attributes.slice("phone_number", "subject", "content", "created_at").map do |key, value|
+    - @patient_referral.attributes.slice('phone_number', 'subject', 'content', 'created_at').map do |key, value|
       - if value.present?
         %dl.overflow-x-auto
           %dt.text-gray-400.my-2= t("activerecord.attributes.patient_referral.#{key}")
           %dd.text-base.font-semibold= raw value
     %dl.overflow-x-auto
-      %dt.text-gray-400.my-2= t("activerecord.attributes.patient_referral.patient")
+      %dt.text-gray-400.my-2= t('activerecord.attributes.patient_referral.patient')
       %dd.text-base.font-semibold= @patient_referral.patient
     %dl.overflow-x-auto
-      %dt.text-gray-400.my-2= t("activerecord.attributes.patient_referral.doctor")
+      %dt.text-gray-400.my-2= t('activerecord.attributes.patient_referral.doctor')
       %dd.text-base.font-semibold= @patient_referral.doctor
     %dl.overflow-x-auto
-      %dt.text-gray-400.my-2= t("activerecord.attributes.patient_referral.referred_doctor")
+      %dt.text-gray-400.my-2= t('activerecord.attributes.patient_referral.referred_doctor')
       %dd.text-base.font-semibold= @patient_referral.referred_doctor

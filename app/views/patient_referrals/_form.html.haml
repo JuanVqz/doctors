@@ -1,7 +1,7 @@
 -# frozen_string_literal: true
 
 = simple_form_for(patient_referral) do |f|
-  = render "shared/title", title: title
+  = render 'shared/title', title: title
 
   .grid.gap-2.grid-cols-1.md:grid-cols-2
     = f.association :referred_doctor, collection: referred_doctor_for_select, prompt: true

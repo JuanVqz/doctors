@@ -26,6 +26,7 @@ es-MX:
       name: Nombre
       patient: Paciente
       reason: Motivo
+      doctor: Doctor
     actions:
       register: Registrar %{model}
       patient:
@@ -37,6 +38,9 @@ es-MX:
       hospitalization:
         one: Hospitalización
         other: Hospitalizaciones
+      patient_referral:
+        one: Referencia
+        other: Referencias
     search:
       name: Buscar
   tooltips:
@@ -58,9 +62,6 @@ es-MX:
        patient_referrals: Referencias
        referred_doctors: Doctores
 
-  appoinment: Consulta
-  hospitalization: Hospitalización
-  patient_referral: Referencia
   referred_doctor: Doctor
   date:
     abbr_day_names:
