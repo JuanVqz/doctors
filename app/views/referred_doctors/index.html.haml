@@ -1,24 +1,24 @@
-= render "shared/section" do
+= render 'shared/section' do
   %div.flex.flex-col.md:flex-row.md:justify-between
-    = render "shared/actions", model: :referred_doctor, search_path: referred_doctors_path
+    = render 'shared/actions', model: :referred_doctor, search_path: referred_doctors_path
 
-= render "shared/section" do
-  = render "shared/table" do
+= render 'shared/section' do
+  = render 'shared/table' do
     %thead.border-b.border-gray-300.dark:border-gray-700.text-gray-400
       %tr
-        %th.py-2{scope: :col} Nombre Completo
-        %th.py-2{scope: :col} Especialidad
-        %th.py-2{scope: :col} Número Teléfonico
-        %th.py-2{scope: :col} Acciones
+        %th.py-2{scope: :col}= t('.full_name')
+        %th.py-2{scope: :col}= t('.specialty')
+        %th.py-2{scope: :col}= t('.phone_number')
+        %th.py-2.text-center{scope: :col}= t('.actions')
     %tbody
       - @referred_doctors.each do |referred_doctor|
-        %tr.cursor-pointer.hover:bg-gray-200.dark:hover:bg-gray-700
+        %tr.hover:bg-gray-200.dark:hover:bg-gray-700
           %td.py-2.whitespace-nowrap= referred_doctor.full_name
           %td.py-2.whitespace-nowrap= referred_doctor.specialty
           %td.py-2.whitespace-nowrap= call_to referred_doctor.phone_number
           %td.py-2.whitespace-nowrap
-            .flex.flex-row.justify-around
-              = link_to edit_referred_doctor_path(referred_doctor), 'data-tooltip': 'Editar', class: 'tooltip tooltip-top' do
+            .flex.flex-row.justify-center.gap-2
+              = link_to edit_referred_doctor_path(referred_doctor), 'data-tooltip': t('tooltips.defaults.edit'), class: "#{secondary_button} tooltip tooltip-top" do
                 %span.fa.fa-edit.text-yellow-600
-              = link_to referred_doctor, 'data-tooltip': 'Detalles', class: 'tooltip tooltip-left' do
+              = link_to referred_doctor, 'data-tooltip': t('tooltips.defaults.details'), class: "#{secondary_button} tooltip tooltip-top" do
                 %span.fa.fa-eye.text-sky-600

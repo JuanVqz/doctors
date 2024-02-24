@@ -1,42 +1,43 @@
-= render "shared/section" do
-  .flex.flex-col.md:flex-row.md:space-x-4
-    = link_to :appoinments do
-      %i.fa.fa-arrow-left
-    = link_to edit_appoinment_path(@appoinment), 'data-tooltip': 'Editar', class: 'tooltip tooltip-top' do
-      %i.fa.fa-edit.text-yellow-600
-    = link_to appoinment_path(@appoinment, format: :pdf), 'data-tooltip': 'Imprimir', class: 'tooltip tooltip-top', target: :_blank do
-      %i.fa.fa-print.text-red-600
-    = link_to @appoinment.patient, 'data-tooltip': 'Paciente', class: 'tooltip tooltip-top', target: :_blank do
-      %i.fa.fa-user
+= render 'shared/section' do
+  .flex.flex-row.justify-center.md:justify-start.space-x-4
+    = link_to :appoinments, class: secondary_button do
+      %span.fa.fa-arrow-left
+      = t('.back')
+    = link_to edit_appoinment_path(@appoinment), 'data-tooltip': t('tooltips.defaults.edit'), class: "#{secondary_button} tooltip tooltip-top" do
+      %span.fa.fa-edit.text-yellow-600
+    = link_to appoinment_path(@appoinment, format: :pdf), 'data-tooltip': t('tooltips.defaults.print'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
+      %span.fa.fa-print.text-red-600
+    = link_to @appoinment.patient, 'data-tooltip': t('tooltips.defaults.patient'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
+      %span.fa.fa-user
 
 
-= render "shared/section" do
-  = render "shared/title", title: "Consulta ##{@appoinment.id}"
+= render 'shared/section' do
+  = render 'shared/title', title: t('.identifier', model: t('shared.actions.appoinment.one', count: 1), id: @appoinment.id)
   .grid.gap-4.grid-rows-3.grid-flow-row.md:grid-flow-col.text-xs
     %dl
-      %dt.text-gray-400.my-2= t("activerecord.attributes.appoinment.patient")
+      %dt.text-gray-400.my-2= t('activerecord.attributes.appoinment.patient')
       %dd.text-base.font-semibold= @appoinment.patient
-    - @appoinment.attributes.slice("reason", "note", "prescription", "recommendations", "created_at", "cabinet_results", "histopathology").map do |key, value|
+    - @appoinment.attributes.slice('reason', 'note', 'prescription', 'recommendations', 'created_at', 'cabinet_results', 'histopathology').map do |key, value|
       - if value.present?
         %dl
           %dt.text-gray-400.my-2= t("activerecord.attributes.appoinment.#{key}")
           %dd.text-base.font-semibold= raw value
 
-= render "shared/section" do
-  = render "shared/title", title: "Datos"
+= render 'shared/section' do
+  = render 'shared/title', title: t('.information')
   .grid.gap-4.grid-rows-2.grid-flow-row.md:grid-flow-col.text-xs
-    - @appoinment.attributes.slice("height", "weight", "imc", "blood_pressure", "glycaemia", "sat_02", "heart_rate", "breathing_rate", "temperature", "cost").map do |key, value|
+    - @appoinment.attributes.slice('height', 'weight', 'imc', 'blood_pressure', 'glycaemia', 'sat_02', 'heart_rate', 'breathing_rate', 'temperature', 'cost').map do |key, value|
       - if value.present?
         %dl
           %dt.text-gray-400.my-2= t("activerecord.attributes.appoinment.#{key}")
           %dd.text-base.font-semibold= raw value
 
 - if @appoinment.files.attached?
-  = render "shared/section" do
-    = render "shared/title", title: "Archivos"
+  = render 'shared/section' do
+    = render 'shared/title', title: t('.files')
     .grid.gap-2.grid-rows-1.grid-flow-row.md:grid-flow-cols-2.text-xs
       - @appoinment.files.each do |file|
         %dl
           %dt.my-2
             = link_to rails_blob_path(file, disposition: :attachment) do
-              = image_tag rails_storage_proxy_path(file), class: "object-scale-down"
+              = image_tag rails_storage_proxy_path(file), class: 'object-scale-down'

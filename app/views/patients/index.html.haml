@@ -1,24 +1,24 @@
-= render "shared/section" do
+= render 'shared/section' do
   %div.flex.flex-col.md:flex-row.md:justify-between
-    =render "shared/actions", model: :patient, search_path: patients_path
+    = render 'shared/actions', model: :patient, search_path: patients_path
 
-= render "shared/section" do
-  = render "shared/table" do
+= render 'shared/section' do
+  = render 'shared/table' do
     %thead.border-b.border-gray-300.dark:border-gray-700.text-gray-400
       %tr
-        %th.py-2{scope: :col} Nombre
-        %th.py-2{scope: :col} Registrado
-        %th.py-2{scope: :col} Acciones
+        %th.py-2{scope: :col}= t('.name')
+        %th.py-2{scope: :col}= t('.created_at')
+        %th.py-2.text-center{scope: :col}= t('.actions')
     %tbody
       - @patients.each do |patient|
-        %tr.cursor-pointer.hover:bg-gray-200.dark:hover:bg-gray-700{"data-patient-id": patient.id}
+        %tr.hover:bg-gray-200.dark:hover:bg-gray-700{ 'data-patient-id': patient.id }
           %td.py-2.whitespace-nowrap= patient
           %td.py-2.whitespace-nowrap= time_ago_in_words(patient.created_at)
           %td.py-2.whitespace-nowrap
-            .flex.flex-row.justify-around
-              = link_to new_appoinment_path(patient_id: patient.id), 'data-tooltip': 'Nueva Consulta', class: 'tooltip tooltip-top' do
+            .flex.flex-row.justify-center.gap-2
+              = link_to new_appoinment_path(patient_id: patient.id), 'data-tooltip': t('tooltips.appoinments.new'), class: "#{secondary_button} tooltip tooltip-top" do
                 %span.fa.fa-book
-              = link_to new_hospitalization_path(patient_id: patient.id), 'data-tooltip': 'Nueva Hospitalización', class: 'tooltip tooltip-top' do
+              = link_to new_hospitalization_path(patient_id: patient.id), 'data-tooltip': t('tooltips.hospitalizations.new'), class: "#{secondary_button} tooltip tooltip-top" do
                 %span.fa.fa-ambulance
-              = link_to patient, 'data-tooltip': 'Detalles', class: 'tooltip tooltip-left' do
+              = link_to patient, 'data-tooltip': t('tooltips.defaults.details'), class: "#{secondary_button} tooltip tooltip-top" do
                 %span.fa.fa-eye.text-sky-600

@@ -1,9 +1,73 @@
 es-MX:
-  patient: Paciente
-  appoinment: Consulta
-  hospitalization: Hospitalización
-  patient_referral: Referencia
-  referred_doctor: Doctor
+  addresses:
+    address_fields:
+      title: Dirección
+  patients:
+    form:
+      medical_history: Antecedentes Médicos
+    general:
+      title: Datos Generales
+    clinic_history:
+      title: Historial Clínico
+    address:
+      title: Dirección
+  shared:
+    actions:
+      register: Registrar %{model}
+      patient:
+        one: Paciente
+        other: Pacientes
+      appoinment:
+        one: Consulta
+        other: Consultas
+      hospitalization:
+        one: Hospitalización
+        other: Hospitalizaciones
+      patient_referral:
+        one: Referencia
+        other: Referencias
+      referred_doctor:
+        one: Doctor
+        other: Doctores
+    section:
+      back: Regresar
+      diagnosis: 'Diagnóstico'
+      edit: Editar
+      files: Archivos
+      identifier: "%{model} #%{id}"
+      information: 'Información'
+    table:
+      actions: Acciones
+      created_at: Fecha de registro
+      days_of_stay: Días de estadia
+      name: Nombre
+      patient: Paciente
+      reason: Motivo
+      doctor: Doctor
+      full_name: Nombre completo
+      specialty: Especialidad
+      phone_number: Número Teléfonico
+    search:
+      name: Buscar
+  tooltips:
+    defaults:
+      details: Detalles
+      edit: Editar
+      patient: Paciente
+      print: Imprimir
+    appoinments:
+      new: Nueva Consulta
+    hospitalizations:
+      new: Nueva Hospitalización
+  layouts:
+    partials:
+      sidebar:
+       patients: Pacientes
+       appoinments: Consultas
+       hospitalizations: Hospitalizaciónes
+       patient_referrals: Referencias
+       referred_doctors: Doctores
+
   date:
     abbr_day_names:
     - dom
@@ -234,7 +298,7 @@ es-MX:
         weight: Peso
       address:
         colony: Colonia
-        contry: País
+        country: País
         municipality: Municipio
         number: Número
         postal_code: Código Postal

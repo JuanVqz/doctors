@@ -1,6 +1,7 @@
-= render "shared/section" do
-  = link_to :patient_referrals do
+= render 'shared/section' do
+  = link_to :patient_referrals, class: secondary_button do
     %span.fa.fa-arrow-left
+    = t('.back')
 
-= render "shared/section" do
-  = render "form", patient_referral: @patient_referral, title: t("helpers.submit.patient_referral.update")
+= render 'shared/section' do
+  = render 'form', patient_referral: @patient_referral, title: t('helpers.submit.patient_referral.update')
