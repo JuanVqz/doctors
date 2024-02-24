@@ -1,43 +1,29 @@
-%nav.level
-  .level-left
-    .level-item
-      %span.icon
-        %i.fa.fa-share
-      %span.is-uppercase información de la referencia del paciente
-  .level-right
-    .level-item
-      .buttons
-        = link_to patient_referrals_path, class: "button is-link" do
-          %span.icon
-            %i.fa.fa-arrow-left
-          %span Regresar
+= render 'shared/section' do
+  .flex.flex-row.justify-center.md:justify-start.space-x-4
+    = link_to :patient_referrals, class: secondary_button do
+      %span.fa.fa-arrow-left
+      = t('.back')
+    = link_to edit_patient_referral_path(@patient_referral), 'data-tooltip': t('tooltips.defaults.edit'), class: "#{secondary_button} tooltip tooltip-top" do
+      %span.fa.fa-edit.text-yellow-600
+    = link_to patient_referral_path(@patient_referral, format: :pdf), 'data-tooltip': t('tooltips.defaults.print'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
+      %span.fa.fa-print.text-red-600
+    = link_to @patient_referral.patient, 'data-tooltip': t('tooltips.defaults.patient'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
+      %span.fa.fa-user
 
-        = link_to [:edit, @patient_referral], class: "button is-warning" do
-          %span.icon
-            %i.fa.fa-edit
-          %span Editar
-
-.table-container
-  %table.table.is-hoverable.is-fullwidth
-    %thead
-      %tr
-        %th=t("activerecord.attributes.patient_referral.created_at")
-        %td= l @patient_referral.created_at, format: :not_hour
-      %tr
-        %th=t("activerecord.attributes.patient_referral.patient")
-        %td= @patient_referral.patient
-      %tr
-        %th=t("activerecord.attributes.patient_referral.doctor")
-        %td= @patient_referral.doctor
-      %tr
-        %th=t("activerecord.attributes.patient_referral.referred_doctor")
-        %td= @patient_referral.referred_doctor
-      %tr
-        %th=t("activerecord.attributes.referred_doctor.phone_number")
-        %td= number_to_phone @patient_referral.referred_doctor.phone_number
-      %tr
-        %th=t("activerecord.attributes.patient_referral.subject")
-        %td= @patient_referral.subject
-      %tr
-        %th=t("activerecord.attributes.patient_referral.content")
-        %td= @patient_referral.content.html_safe
+= render 'shared/section' do
+  = render 'shared/title', title: t('.information')
+  .grid.gap-4.grid-rows-3.grid-flow-row.md:grid-flow-col.text-xs
+    - @patient_referral.attributes.slice('phone_number', 'subject', 'content', 'created_at').map do |key, value|
+      - if value.present?
+        %dl.overflow-x-auto
+          %dt.text-gray-400.my-2= t("activerecord.attributes.patient_referral.#{key}")
+          %dd.text-base.font-semibold= raw value
+    %dl.overflow-x-auto
+      %dt.text-gray-400.my-2= t('activerecord.attributes.patient_referral.patient')
+      %dd.text-base.font-semibold= @patient_referral.patient
+    %dl.overflow-x-auto
+      %dt.text-gray-400.my-2= t('activerecord.attributes.patient_referral.doctor')
+      %dd.text-base.font-semibold= @patient_referral.doctor
+    %dl.overflow-x-auto
+      %dt.text-gray-400.my-2= t('activerecord.attributes.patient_referral.referred_doctor')
+      %dd.text-base.font-semibold= @patient_referral.referred_doctor

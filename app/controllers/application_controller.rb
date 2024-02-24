@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
   include Pundit::Authorization
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   layout :layout_by_resource
 
   before_action :scope_current_hospital

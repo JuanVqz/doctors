@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe AppoinmentsHelper do
   describe "#temperature" do
-    let(:appoinment) { create(:appoinment) }
+    let(:appoinment) { build(:appoinment) }
 
     it "is 36.5 should return 36.5°C" do
       expect(temperature(appoinment)).to eq "36.5°C"

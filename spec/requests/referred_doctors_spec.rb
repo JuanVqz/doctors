@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "/referred_doctors" do
+RSpec.describe "referred_doctors", type: :request do
   let(:hospital) { create(:hospital, :basic) }
   let(:valid_attributes) do
     {

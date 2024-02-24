@@ -1,8 +1,8 @@
-%nav.level
-  .level-left
-    .level-item
-      %span.icon
-        %i.fa.fa-ambulance
-      %span.is-uppercase Actualizar Hospitalización
+= render 'shared/section' do
+  .flex.flex-row
+    = link_to :hospitalizations, class: secondary_button do
+      %span.fa.fa-arrow-left
+      = t('.back')
 
-= render 'form'
+= render 'shared/section' do
+  = render 'form', hospitalization: @hospitalization, title: t("helpers.submit.hospitalization.update")

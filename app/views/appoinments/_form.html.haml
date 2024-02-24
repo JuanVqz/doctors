@@ -1,76 +1,36 @@
 -# frozen_string_literal: true
 
-= simple_form_for(@appoinment) do |f|
-  #patient_info.columns.is-multiline.display-none
-    .column
-      #patient_age
-    .column.has-text-danger
-      #patient_allergies
-  .columns.is-multiline
-    .column.is-12
-      %label.label{ for: "medical_consultation_patient_id" } Paciente
-      = f.select :patient_id,
-        options_for_select(patients_for_select,
-                           selected: selected_appoinnment_patient(f.object)),
-        { prompt: "Seleccione un paciente" },
-        class: "select2"
-      - if f.object.errors[:patient].any?
-        .help.is-danger= f.object.errors[:patient].to_sentence
+= simple_form_for(appoinment) do |f|
+  = render 'shared/title', title: title
 
-    .column.is-12
-      = f.input :reason
-    .column.is-12
-      = f.input :note, as: :trix_editor
-    .column.is-12
-      = f.input :prescription, as: :trix_editor
-    .column.is-12
-      = f.input :recommendations, as: :trix_editor
-    .column.is-12
-      = f.input :cabinet_results
-    .column.is-12
-      = f.input :histopathology
+  .grid.gap-2.grid-cols-1.md:grid-cols-2
+    = f.association :patient, collection: patients_for_select, default: params[:patient_id], prompt: true
+    = f.input :reason
 
-  .columns.is-multiline
-    .column
-      = f.input :blood_pressure
-    .column
-      = f.input :heart_rate
-    .column
-      = f.input :breathing_rate
-    .column
-      = f.input :temperature
-    .column
-      = f.input :glycaemia
-    .column
-      = f.input :sat_02
+  = f.input :note, as: :trix_editor
+  = f.input :prescription, as: :trix_editor
+  = f.input :recommendations, as: :trix_editor
 
-  .columns.is-multiline
-    .column
-      = f.input :height
-    .column
-      = f.input :weight
-    .column
-      = f.input :imc, readonly: true
-      %p#imc_text.help
-    .column
-      = f.input :cost
+  .grid.gap-2.grid-cols-1.md:grid-cols-2
+    = f.input :cabinet_results, input_html: resize_field_controller
+    = f.input :histopathology, input_html: resize_field_controller
 
-  .columns
-    .column
-      = label_tag "Archivos", nil, class: "label"
-      .file.has-name.is-info
-        %label.file-label
-          = f.file_field :files, multiple: true, direct_upload: true, class: "file-input"
-          %span.file-cta
-            %span.file-icon
-              %i.fa.fa-upload
-            %span.file-label
-              Seleccionar archivos
-          %span.file-name
+  .grid.gap-2.grid-cols-1.md:grid-cols-5{ data: { controller: :imc } }
+    = f.input :blood_pressure
+    = f.input :heart_rate
+    = f.input :breathing_rate
+    = f.input :temperature
+    = f.input :glycaemia
+    = f.input :sat_02
+    = f.input :height, hint: t('simple_form.hint.defaults.height'), input_html: { data: { imc_target: :height, action: "input->imc#calculate" } }
+    = f.input :weight, hint: t('simple_form.hint.defaults.weight'), input_html: { data: { imc_target: :weight, action: "input->imc#calculate" } }
+    = f.input :imc, hint: t('simple_form.hint.defaults.imc'), input_html: { data: { imc_target: :result } }
+    = f.input :cost, hint: t('simple_form.hint.defaults.cost')
 
-  .buttons
-    = link_to :back, class: "button is-link" do
-      %span.icon
-        %i.fa.fa-arrow-left
-      %span Regresar
-    = f.button :submit
+  .grid.gap-2.grid-cols-1
+    - appoinment.files.each do |file|
+      = f.input :files, as: :hidden, input_html: { multiple: true, value: file.signed_id }
+    = f.input :files, input_html: { multiple: true }
+
+
+  = f.button :submit
