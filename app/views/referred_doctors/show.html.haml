@@ -1,19 +1,20 @@
-= render "shared/section" do
+= render 'shared/section' do
   .flex.flex-row.justify-center.md:justify-start.space-x-4
-    = link_to :referred_doctors do
+    = link_to :referred_doctors, class: secondary_button do
       %span.fa.fa-arrow-left
-    = link_to edit_referred_doctor_path(@referred_doctor), 'data-tooltip': 'Editar', class: 'tooltip tooltip-top' do
+      = t('.back')
+    = link_to edit_referred_doctor_path(@referred_doctor), 'data-tooltip': t('tooltips.defaults.edit'), class: "#{secondary_button} tooltip tooltip-top" do
       %span.fa.fa-edit.text-yellow-600
 
-= render "shared/section" do
-  = render "shared/title", title: "Información"
+= render 'shared/section' do
+  = render 'shared/title', title: 'Información'
   .grid.gap-4.grid-rows-3.grid-flow-row.md:grid-flow-col.text-xs
-    - @referred_doctor.attributes.slice("full_name", "specialty", "phone_number").map do |key, value|
+    - @referred_doctor.attributes.slice('full_name', 'specialty', 'phone_number').map do |key, value|
       - if value.present?
         %dl.overflow-x-auto
           %dt.text-gray-400.my-2= t("activerecord.attributes.referred_doctor.#{key}")
           %dd.text-base.font-semibold= raw value
 
 - if @referred_doctor.address
-  = render "shared/section" do
-    = render "patients/address", address: @referred_doctor.address
+  = render 'shared/section' do
+    = render 'patients/address', address: @referred_doctor.address

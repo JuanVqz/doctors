@@ -45,7 +45,7 @@ RSpec.describe "Patient's flow", type: :system do
       expect(page).to have_current_path patient_path @hospital.patients.last
       expect(page).to have_content "DATOS GENERALES"
 
-      find('a[data-tooltip="Editar"]').click
+      find("a[data-tooltip=Editar]").click
       fill_in "patient_name", with: "Marco update"
       click_button "Actualizar Paciente"
       expect(page).to have_current_path patient_path @hospital.patients.last
