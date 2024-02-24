@@ -375,8 +375,8 @@ es-MX:
       referred_doctor:
         create: Registrar Doctor
         update: Actualizar Doctor
-  #     hospital:
-  #       update: Actualizar Página
+      hospital:
+        update: Actualizar Página
   #   page_entries_info:
   #     one_page:
   #       display_entries:

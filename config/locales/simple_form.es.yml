@@ -90,12 +90,12 @@ es-MX:
         full_name: Nombre completo
         phone_number: Número Teléfonico
         specialty: Especialidad
-      # defaults:
-      #   description: "Descripción"
-      #   maps: "Mapa"
-      #   about: "Acerca de"
-      #   schedule: "Horario"
-      #   tags: "Expertos en"
+      hospital:
+        description: Descripción
+        maps: Mapa
+        tags: Expertos en
+        about: Acerca de
+        schedule: Horario
     placeholders:
       patient:
         <<: *user_labels
