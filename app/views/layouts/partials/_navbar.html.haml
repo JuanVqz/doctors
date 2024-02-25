@@ -1,21 +1,17 @@
-%nav.navbar
-  .container
-    .navbar-brand
-      = link_to patients_path, class: "navbar-item" do
-        %h6.title.is-5
-          = current_hospital.name
-      %span.navbar-burger.burger{ "data-target" => "navMenu", :role => "button"}
-        %span{"aria-hidden" => "true"}
-        %span{"aria-hidden" => "true"}
-        %span{"aria-hidden" => "true"}
-    #navMenu.navbar-menu
-      .navbar-end
+%nav.fixed.z-30.w-full.border-b.border-gray-300.dark:border-gray-700.bg-gray-100.dark:bg-gray-800
+  .px-3.py-3.lg:px-5.lg:pl-3
+    .flex.justify-between.items-center
+      .flex.items-center.justify-start
+        %button.p-2.rounded.cursor-pointer.lg:hidden.hover:text-gray-800.hover:bg-gray-300.dark:hover:bg-gray-700.focus:bg-gray-300.dark:focus:bg-gray-700.focus:ring-2.focus:ring-gray-100.dark:focus:ring-gray-700{ "data-sidebar-target": :toggler, "data-action": "click->sidebar#toggle" }
+          %svg.w-6.h-6{fill: "currentColor", viewbox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg"}
+            %path{"clip-rule" => "evenodd", d: "M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z", "fill-rule" => "evenodd"}
+          %svg.w-6.h-6.hidden{fill: "currentColor", viewbox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg"}
+            %path{"clip-rule" => "evenodd", d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z", "fill-rule" => "evenodd"}
+        = link_to patients_path, class: "flex ml-2 md:mr-24" do
+          %span.self-center.text-xl.font-semibold.sm:text-2xl.whitespace-nowrap
+            = current_hospital.name
+      .flex.items-center.p-2.cursor-pointer
         - if user_signed_in?
-          .navbar-item.has-dropdown.is-hoverable
-            .navbar-link
-              = "Dr. #{current_user.name}"
-            .navbar-dropdown
-              .navbar-item
-                = link_to destroy_user_session_path, method: :delete do
-                  %i.fa.fa-sign-out-alt
-                  Cerrar Sesión
+          %span= "Dr. #{current_user.name}"
+          = link_to destroy_user_session_path, method: :delete, class: "ml-2" do
+            %span.fa.fa-sign-out-alt

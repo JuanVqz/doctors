@@ -1,32 +1,20 @@
 -# frozen_string_literal: true
+
 = simple_form_for(@hospital) do |f|
-  %p.has-text-grey-light.is-uppercase Datos generales
-  .columns.is-multiline
-    .column.is-3
-      = f.input :name
-    .column.is-3
-      = f.input :maps
-    .column.is-3
-      = f.input :facebook
-    .column.is-3
-      = f.input :twitter
-    .column.is-3
-      = f.input :linkedin
-    .column.is-3
-      = f.input :description
-    .column.is-3
-      = f.input :schedule
-    .column.is-3
-      = f.input :tags, input_html: { type: "tags", placeholder: "Ingrese sus servicios" }
-    .column.is-12
-      = f.input :about, as: :trix_editor
+  = render 'shared/title', title: title
 
-  %p.has-text-grey-light.is-uppercase Domicilio
-  = render "addresses/address_fields", f: f
+  .grid.gap-2.grid-cols-1.md:grid-cols-2
+    = f.input :name
+    = f.input :maps
+    = f.input :facebook
+    = f.input :twitter
+    = f.input :linkedin
+    = f.input :description
+    = f.input :tags
+    = f.input :schedule, input_html: resize_field_controller
 
-  .buttons
-    = link_to :back, class: "button is-link" do
-      %span.icon
-        %i.fa.fa-arrow-left
-      %span Regresar
-    = f.button :submit
+  = f.input :about, as: :trix_editor
+
+  = render 'addresses/address_fields', f: f
+
+  = f.button :submit

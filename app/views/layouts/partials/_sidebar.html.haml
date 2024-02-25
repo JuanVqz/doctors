@@ -1,38 +1,32 @@
-%aside.menu
-  %p.menu-label
-    MENÚ
-  %ul.menu-list
-    %li
-      = link_to patients_path(subdomain: current_hospital.subdomain), class: active_for(patients_path) do
-        %span.icon
-          %i.fa.fa-users
-        %span Pacientes
-    %li
-      = link_to appoinments_path(subdomain: current_hospital.subdomain), class: active_for(appoinments_path) do
-        %span.icon
-          %i.fa.fa-book
-        %span Consultas
-    %li
-      = link_to hospitalizations_path(subdomain: current_hospital.subdomain), class: active_for(hospitalizations_path) do
-        %span.icon
-          %i.fa.fa-ambulance
-        %span Hospitalizaciónes
-    %li
-      = link_to patient_referrals_path(subdomain: current_hospital.subdomain), class: active_for(patient_referrals_path) do
-        %span.icon
-          %i.fa.fa-share
-        %span Referencia de paciente
-  - if is_admin?
-    %p.menu-label
-      CONFIGURACIÓN
-    %ul.menu-list
-      %li
-        = link_to referred_doctors_path(subdomain: current_hospital.subdomain), class: active_for(referred_doctors_path) do
-          %span.icon
-            %i.fa.fa-user-md
-          %span Referidos
-      %li
-        = link_to [:edit, current_hospital], class: active_for(edit_hospital_path(current_hospital)) do
-          %span.icon
-            %i.fa.fa-hospital
-          %span Página principal
+%aside.fixed.top-0.left-0.z-20.flex.flex-col.flex-shrink-0.bg-gray-100.dark:bg-gray-800.hidden.w-64.h-full.pt-16.font-normal.duration-75.lg:flex.transition-width{ "data-sidebar-target": :aside }
+  .relative.flex.flex-col.flex-1.min-h-0.border-r.border-gray-300.dark:border-gray-700
+    .flex.flex-col.flex-1.pt-4.overflow-y-auto
+      .flex-1.px-2
+        %ul.space-y-2
+          %li
+            = link_to patients_path(subdomain: current_hospital.subdomain), class: sidebar_classes('patients') do
+              %span
+                %span.fa.fa-user
+                = t('.patients')
+          %li
+            = link_to appoinments_path(subdomain: current_hospital.subdomain), class: sidebar_classes('appoinments') do
+              %span
+                %span.fa.fa-book
+                = t('.appoinments')
+          %li
+            = link_to hospitalizations_path(subdomain: current_hospital.subdomain), class: sidebar_classes('hospitalizations') do
+              %span
+                %span.fa.fa-ambulance
+                = t('.hospitalizations')
+          %li
+            = link_to patient_referrals_path(subdomain: current_hospital.subdomain), class: sidebar_classes('patient_referrals') do
+              %span
+                %span.fa.fa-hospital
+                = t('.patient_referrals')
+          %li
+            = link_to referred_doctors_path(subdomain: current_hospital.subdomain), class: sidebar_classes('referred_doctors') do
+              %span
+                %span.fa.fa-user-md
+                = t('.referred_doctors')
+
+%div{ class: 'fixed inset-0 z-10 bg-gray-900/50 dark:bg-gray-900/90 hidden', 'data-sidebar-target': :background, 'data-action': 'click->sidebar#toggle' }

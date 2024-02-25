@@ -1,8 +1,7 @@
-%nav.level
-  .level-left
-    .level-item
-      %span.icon
-        %i.fa.fa-share
-      %span.is-uppercase Referencia de Paciente
+= render 'shared/section' do
+  = link_to :patient_referrals, class: secondary_button do
+    %span.fa.fa-arrow-left
+    = t('.back')
 
-= render "form"
+= render 'shared/section' do
+  = render 'form', patient_referral: @patient_referral, title: t('helpers.submit.patient_referral.update')

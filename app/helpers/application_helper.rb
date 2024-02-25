@@ -1,24 +1,24 @@
 module ApplicationHelper
-  def is_admin?
-    current_user.admin?
-  end
-
-  def active_for current
-    "is-active" if request.path.include? current
-  end
+  include Pagy::Frontend
 
   def sexos_for_select
-    ["Masculino", "Femenino"]
+    ["Femenino", "Masculino"]
   end
 
   def patients_for_select
-    Patient.all.map { |p| [p, p.id] }
+    @patients_for_select ||=
+      current_hospital
+        .patients
+        .order(name: :asc, first_name: :asc, last_name: :asc)
+        .map { |p| [p, p.id] }
   end
 
   def referred_doctor_for_select
-    return [] if current_user.blank?
-
-    ReferredDoctor.by_doctor(current_user.id).map { |p| [p, p.id] }
+    @referred_doctor_for_select ||=
+      ReferredDoctor
+        .by_doctor(current_user.id)
+        .order(full_name: :asc)
+        .map { |p| [p, p.id] }
   end
 
   def states_for_select
@@ -35,5 +35,20 @@ module ApplicationHelper
 
   def blood_groups_for_select
     ["ARH+", "ORH+", "BRH+", "ABRH+", "ARH-", "ORH-", "BRH-", "ABRH-"]
+  end
+
+  def primary_button
+    "text-white text-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+  end
+
+  def secondary_button
+    "text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+  end
+
+  def sidebar_classes action
+    classes = "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
+    classes += " bg-gray-200 dark:bg-gray-700" if controller_name == action
+
+    classes
   end
 end

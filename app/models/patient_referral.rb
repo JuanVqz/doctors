@@ -6,5 +6,5 @@ class PatientReferral < ApplicationRecord
   belongs_to :referred_doctor
   belongs_to :hospital
 
-  scope :by_hospital, ->(hospital_id) { where hospital_id: hospital_id }
+  validates :patient_id, :doctor_id, :referred_doctor_id, :subject, :content, :importance, presence: true
 end
