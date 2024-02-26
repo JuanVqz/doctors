@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Medical Consultations flow", type: :system do
   before do
-    driven_by(:selenium_chrome_headless)
+    driven_by(:headless_firefox)
   end
 
   feature "Doctor creates an appoinment" do
