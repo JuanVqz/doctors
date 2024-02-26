@@ -1,16 +1,13 @@
 -# frozen_string_literal: true
-= simple_form_for(@referred_doctor) do |f|
-  .columns.is-multiline
-    .column.is-6= f.input :full_name
-    .column.is-4= f.input :specialty
-    .column.is-2= f.input :phone_number, as: :numeric
 
-  %p.has-text-grey-light.is-uppercase Domicilio
-  = render "addresses/address_fields", f: f
+= simple_form_for(referred_doctor) do |f|
+  = render 'shared/title', title: title
 
-  .buttons
-    = link_to :back, class: "button is-link" do
-      %span.icon
-        %i.fa.fa-arrow-left
-      %span Regresar
-    = f.button :submit
+  .grid.gap-2.grid-cols-1.md:grid-cols-3
+    = f.input :full_name
+    = f.input :specialty
+    = f.input :phone_number, as: :numeric, hint: t('simple_form.hint.defaults.phone_number')
+
+  = render 'addresses/address_fields', f: f
+
+  = f.button :submit

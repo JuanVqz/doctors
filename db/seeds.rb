@@ -119,8 +119,8 @@ doctors.each do |doctor|
 end
 
 fake_referred_doctors = [
-  {full_name: FFaker::NameMX.unique.full_name, specialty: FFaker::Skill.unique.specialty},
-  {full_name: FFaker::NameMX.unique.full_name, specialty: FFaker::Skill.unique.specialty}
+  {full_name: FFaker::NameMX.unique.full_name, specialty: FFaker::Skill.unique.specialty, phone_number: "1234567890"},
+  {full_name: FFaker::NameMX.unique.full_name, specialty: FFaker::Skill.unique.specialty, phone_number: "0987654321"}
 ]
 referred_doctors =
   doctors.map { |doctor| doctor.referred_doctors.create!(fake_referred_doctors) }

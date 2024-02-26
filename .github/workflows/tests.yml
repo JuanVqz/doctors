@@ -1,0 +1,60 @@
+name: tests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:10.13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: doctors_test
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:password@localhost:5432/doctors_test
+      TZ: America/Mexico_City
+
+    steps:
+      - name: Checkout 🏗
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 🏗
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20
+
+      - name: Install Node.js ⌨
+        run: npm install
+
+      - name: Install Ruby ♦
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Run linter 👟
+        run: bundle exec standardrb
+
+      - name: Setup database 🏗
+        run: bin/rails db:schema:load
+
+      - name: Run test suite 👟
+        run: bin/rake
+
+      - name: Publish code coverage 🚀
+        uses: paambaati/codeclimate-action@v5.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageLocation: ${{github.workspace}}/coverage/coverage.json:simplecov
+          debug: true

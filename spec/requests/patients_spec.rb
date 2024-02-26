@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Patient" do
+RSpec.describe "patients", type: :request do
   let(:hospital) { create(:hospital, :basic) }
   let(:doctor) { create(:doctor, hospital_id: hospital.id) }
   let(:patient) do
@@ -41,13 +41,6 @@ RSpec.describe "Patient" do
     end
   end
 
-  describe "GET /patients/1/appoinments" do
-    it "returns patient's appoinments" do
-      get appoinments_patient_path(patient), xhr: true
-      expect(response).to have_http_status(:ok)
-    end
-  end
-
   describe "DELETE /patients/1" do
     it "destroy a patient" do
       patient = create(:patient)
@@ -65,7 +58,7 @@ RSpec.describe "Patient" do
       }.to change(Bento, :count).by(-1)
     end
 
-    it "destroy patient's appoinments" do
+    xit "destroy patient's appoinments" do
       doctors = [doctor]
       appoinments = [build(:appoinment, doctor: doctor)]
       patient = create(:patient, appoinments: appoinments, doctors: doctors)

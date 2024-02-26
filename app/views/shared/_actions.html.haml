@@ -1,0 +1,4 @@
+= link_to t('.register', model: t(".#{model}", count: 1)), [:new, model], class: primary_button
+- if search_path
+  .pt-2.md:pt-0
+    = render 'shared/search', search_path: search_path

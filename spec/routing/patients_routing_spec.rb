@@ -33,9 +33,5 @@ RSpec.describe PatientsController do
     it "routes to #destroy" do
       expect(delete: "/patients/1").to route_to("patients#destroy", id: "1")
     end
-
-    it "routes to #appoinments" do
-      expect(get: "/patients/1/appoinments").to route_to("patients#appoinments", id: "1")
-    end
   end
 end

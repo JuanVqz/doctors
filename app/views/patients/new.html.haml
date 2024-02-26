@@ -1,8 +1,9 @@
-%nav.level
-  .level-left
-    .level-item
-      %span.icon
-        %i.fa.fa-user-md
-      %span.is-uppercase Registrar Paciente
+= render 'shared/section' do
+  .flex.flex-row
+    = link_to :patients, class: secondary_button do
+      %span.fa.fa-arrow-left
+      = t('.back')
 
-= render "form"
+
+= render 'shared/section' do
+  = render 'form', patient: @patient, title: t('helpers.submit.patient.create')

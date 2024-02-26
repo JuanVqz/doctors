@@ -1,8 +1,8 @@
-%nav.level
-  .level-left
-    .level-item
-      %span.icon
-        %i.fa.fa-user-md
-      %span.is-uppercase Registrar Doctor
+= render 'shared/section' do
+  .flex.flex-row
+    = link_to :referred_doctors, class: secondary_button do
+      %span.fa.fa-arrow-left
+      = t('.back')
 
-= render 'form'
+= render 'shared/section' do
+  = render 'form', referred_doctor: @referred_doctor, title: t('helpers.submit.referred_doctor.create')

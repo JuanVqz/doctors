@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Appoinments" do
+RSpec.describe "appoinments", type: :request do
   let(:hospital) { create(:hospital, :basic) }
   let(:doctor) { create(:doctor, hospital_id: hospital.id) }
   let(:patient) do
@@ -42,6 +42,7 @@ RSpec.describe "Appoinments" do
       let(:valid_attributes) do
         attributes_for(:appoinment)
       end
+      let(:file) { fixture_file_upload("patients.png", "image/png") }
 
       it "creates a new appoinment" do
         params = {appoinment: valid_attributes.merge(patient_id: patient.id)}
@@ -49,8 +50,16 @@ RSpec.describe "Appoinments" do
           post appoinments_path, params: params
         }.to change(Appoinment, :count).by(1)
       end
-    end # context with valid params
-  end # describe POST /appoinments
+
+      it "creates with files" do
+        params = {appoinment: valid_attributes.merge(patient_id: patient.id, files: [file])}
+        expect {
+          post appoinments_path, params: params
+        }.to change(Appoinment, :count).by(1)
+          .and change(ActiveStorage::Attachment, :count).by(1)
+      end
+    end
+  end
 
   describe "GET /appoinments/1/edit" do
     it "appoinments edit" do

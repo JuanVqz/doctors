@@ -16,7 +16,7 @@ module PatientHelper
     year -= 1 if now.yday < patient.birthday.yday
 
     months = now.month - patient.birthday.month
-    months = months % 12
+    months %= 12
 
     "#{year} años #{months} meses"
   end
