@@ -1,10 +1,11 @@
 = render 'shared/section' do
-  .flex.flex-row.justify-center.md:justify-start.space-x-4
+  .flex.flex-col.md:flex-row.space-y-2.md:space-y-0.md:space-x-2
     = link_to :referred_doctors, class: secondary_button do
       %span.fa.fa-arrow-left
-      = t('.back')
+      %span= t('.back')
     = link_to edit_referred_doctor_path(@referred_doctor), 'data-tooltip': t('tooltips.defaults.edit'), class: "#{secondary_button} tooltip tooltip-top" do
       %span.fa.fa-edit.text-yellow-600
+      %span= t('tooltips.defaults.edit')
 
 = render 'shared/section' do
   = render 'shared/title', title: 'Información'

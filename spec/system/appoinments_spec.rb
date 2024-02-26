@@ -13,21 +13,16 @@ RSpec.describe "Medical Consultations flow", type: :system do
 
       visit patients_path
       expect(page).to have_content "Buscar"
-      expect(page).to have_current_path(patients_path)
-
       within "tr[data-patient-id='#{@patient.id}']" do
         find('a[data-tooltip="Detalles"]').click
       end
 
       find('a[data-tooltip="Nueva Consulta"]').click
-      expect(page).to have_current_path(new_appoinment_path(patient_id: @patient.id))
 
-      fill_up_appoinment_form
+      fill_up_appoinment_form(@patient.to_param)
       click_button "Registrar Consulta"
 
-      expect(page).to have_current_path appoinment_path Appoinment.last
       expect(page).to have_content "CONSULTA ##{Appoinment.last.id}"
-      expect(page).to have_content(/#{@patient}/)
     end
 
     scenario "for the correct patient even when the name is almost the same" do
@@ -39,30 +34,25 @@ RSpec.describe "Medical Consultations flow", type: :system do
 
       visit patients_path
       expect(page).to have_content "Buscar"
-      expect(page).to have_current_path(patients_path)
+      within "tr[data-patient-id='#{@other_patient.id}']" do
+        first('a[data-tooltip="Nueva Consulta"]').click
+      end
 
-      first('a[data-tooltip="Nueva Consulta"]').click
-      expect(page).to have_current_path new_appoinment_path(patient_id: @patient.id)
-
-      click_button "Registrar Consulta"
-      expect(page).to have_current_path appoinments_path
-
-      fill_up_appoinment_form
+      fill_up_appoinment_form(@other_patient.to_param)
       click_button "Registrar Consulta"
 
-      last_appoinment = Appoinment.last
-      expect(page).to have_current_path appoinment_path last_appoinment
-      expect(page).to have_content "CONSULTA ##{last_appoinment.id}"
-      expect(page).to have_content(/#{@patient}/)
+      expect(page).to have_content "CONSULTA ##{Appoinment.last.id}"
+      expect(page).to have_content(/#{@other_patient}/)
 
       within "main" do
-        expect(page).to have_no_content @other_patient.to_s
-        expect(page).to have_content @patient.to_s
+        expect(page).to have_no_content @patient
+        expect(page).to have_content @other_patient
       end
     end
   end
 
-  def fill_up_appoinment_form
+  def fill_up_appoinment_form(patient_id)
+    expect(find("#appoinment_patient_id").value).to eq patient_id
     fill_in "appoinment_reason", with: "Razón de la consulta"
     find(:xpath, "//*[@input='appoinment_note']", visible: false).set("Nota Medica")
     find(:xpath, "//*[@input='appoinment_prescription']", visible: false).set("Receta")

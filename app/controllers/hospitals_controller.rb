@@ -10,7 +10,7 @@ class HospitalsController < ApplicationController
     if @hospital.update(hospital_params)
       redirect_to [:edit, @hospital], notice: "Datos actualizados correctamente."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
