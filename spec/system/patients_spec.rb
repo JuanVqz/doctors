@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Patient's flow", type: :system do
   before do
-    driven_by(:selenium_chrome_headless)
+    driven_by(:headless_firefox)
   end
 
   feature "Doctor" do
