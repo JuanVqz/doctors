@@ -18,6 +18,15 @@ require "capybara/rspec"
 require "pundit/rspec"
 # Add additional requires below this line. Rails is not loaded until this point!
 
+# When updating Capybara check if we still need this, newer versions already include this config
+# https://github.com/teamcapybara/capybara/blob/c7c22789b7aaf6c1515bf6e68f00bfe074cf8fc1/lib/capybara/registrations/drivers.rb
+Capybara.register_driver :headless_firefox do |app|
+  browser_options = ::Selenium::WebDriver::Firefox::Options.new
+  browser_options.args << "-headless"
+  Capybara::Selenium::Driver.new(app, browser: :firefox, options: browser_options)
+end
+Capybara.javascript_driver = :headless_firefox
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -44,7 +53,7 @@ end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = Rails.root.join("spec/fixtures")
+  config.fixture_path = %w(Rails.root.join("spec/fixtures"))
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
