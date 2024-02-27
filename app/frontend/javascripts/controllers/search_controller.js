@@ -5,12 +5,7 @@ export default class extends Controller {
   static values = { debounce: { type: Number, default: 500 } }
 
   connect() {
-    if (!this.hasFieldTarget) {
-      return
-    }
-
-    this.fieldTarget.focus()
-    this.fieldTarget.select()
+    this.moveCursorAtTheEndOfTheSearchContent()
   }
 
   submit() {
@@ -18,5 +13,15 @@ export default class extends Controller {
     this.timeout = setTimeout(() => {
       this.element.requestSubmit()
     }, this.debounceValue)
+  }
+
+  moveCursorAtTheEndOfTheSearchContent() {
+    if (!this.hasFieldTarget) {
+      return
+    }
+
+    let endOfContent = this.fieldTarget.value.length
+    this.fieldTarget.setSelectionRange(endOfContent, endOfContent)
+    this.fieldTarget.focus()
   }
 }
