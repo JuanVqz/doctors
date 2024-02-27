@@ -1,11 +1,11 @@
-= form_tag(search_path, method: :get, class: 'flex justify-center', 'data-controller': 'focus-field') do
+= form_tag(search_path, method: :get, class: 'flex justify-center', data: { controller: :search, action: 'input->search#submit', turbo_frame: :search_results, turbo_action: :advance }) do
   %label.sr-only{for: :query }= t('.name')
   .relative
     .absolute.inset-y-0.flex.items-center.pl-3.pointer-events-none
       %svg.w-4.h-4.text-gray-500.dark:text-gray-400{'aria-hidden' => 'true', fill: 'none', viewbox: '0 0 20 20', xmlns: 'http://www.w3.org/2000/svg'}
         %path{d: 'm19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z', stroke: 'currentColor', 'stroke-linecap' => 'round', 'stroke-linejoin' => 'round', 'stroke-width' => '2'}
 
-    %input{ 'data-focus-field-target': :field, type: :search, name: :query, value: params[:query], id: :query, placeholder: 'Buscar', autocomplete: :off, required: true, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' }
+  %input{ data: { search_target: :field }, type: :search, name: :query, value: params[:query], id: :query, placeholder: 'Buscar', autocomplete: :off, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' }
   %button{ class: 'p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800', type: :submit}
     %svg.w-4.h-4{'aria-hidden' => 'true', fill: 'none', viewbox: '0 0 20 20', xmlns: 'http://www.w3.org/2000/svg'}
       %path{d: 'm19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z', stroke: 'currentColor', 'stroke-linecap' => 'round', 'stroke-linejoin' => 'round', 'stroke-width' => '2'}

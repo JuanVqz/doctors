@@ -35,7 +35,7 @@ class PatientReferralsController < ApplicationController
       if @patient_referral.save
         format.html { redirect_to @patient_referral, notice: "Referencia del paciente creada correctamente." }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -46,7 +46,7 @@ class PatientReferralsController < ApplicationController
       if @patient_referral.update(patient_referral_params)
         format.html { redirect_to @patient_referral, notice: "Referenca del paciente actualizada correctamente." }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end

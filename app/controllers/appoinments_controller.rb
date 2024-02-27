@@ -31,7 +31,7 @@ class AppoinmentsController < ApplicationController
       if @appoinment.save
         format.html { redirect_to @appoinment, notice: "Consulta creada correctamente." }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -41,7 +41,7 @@ class AppoinmentsController < ApplicationController
       if @appoinment.update(appoinment_params)
         format.html { redirect_to @appoinment, notice: "Consulta actualizada correctamente." }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end

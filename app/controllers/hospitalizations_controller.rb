@@ -30,7 +30,7 @@ class HospitalizationsController < ApplicationController
     if @hospitalization.save
       redirect_to @hospitalization, notice: "Hospitalización creada correctamente."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -38,7 +38,7 @@ class HospitalizationsController < ApplicationController
     if @hospitalization.update(hospitalization_params)
       redirect_to @hospitalization, notice: "Hospitalización actualizado correctamente."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

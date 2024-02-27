@@ -24,7 +24,7 @@ class PatientsController < ApplicationController
       current_user.patients << @patient
       redirect_to patient_path(@patient), notice: "Paciente creado correctamente."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -32,7 +32,7 @@ class PatientsController < ApplicationController
     if @patient.update(patient_params)
       redirect_to @patient, notice: "Paciente actualizado correctamente."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

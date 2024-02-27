@@ -83,9 +83,9 @@ RSpec.describe "referred_doctors", type: :request do
         }.not_to change(ReferredDoctor, :count)
       end
 
-      it "renders a successful response" do
+      it "returns an unprocessable entry" do
         post referred_doctors_url, params: {referred_doctor: invalid_attributes}
-        expect(response).to be_successful
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
@@ -114,10 +114,10 @@ RSpec.describe "referred_doctors", type: :request do
     end
 
     context "with invalid parameters" do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
+      it "returns an unprocessable entry" do
         referred_doctor = ReferredDoctor.create! valid_attributes
         patch referred_doctor_url(referred_doctor), params: {referred_doctor: invalid_attributes}
-        expect(response).to be_successful
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
