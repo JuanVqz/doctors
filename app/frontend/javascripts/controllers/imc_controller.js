@@ -4,6 +4,9 @@ export default class extends Controller {
   static targets = ['height', 'weight', 'result']
   static values = { meter: { type: Number, default: 100 } }
 
+  connect() {
+    this.calculate()
+  }
 
   calculate() {
     if (!this.validHeightAndWeight()) {
