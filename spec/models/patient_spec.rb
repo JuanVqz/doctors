@@ -1,14 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Patient do
-  it { should have_one(:clinic_history).dependent(:destroy) }
   it { should have_one(:address).dependent(:destroy) }
   it { should have_and_belong_to_many :doctors }
   it { should have_many(:appoinments).dependent(:destroy) }
   it { should have_many(:hospitalizations).dependent(:destroy) }
   it { should have_many(:bentos).dependent(:destroy) }
 
-  it { should accept_nested_attributes_for(:clinic_history).allow_destroy(true) }
   it { should accept_nested_attributes_for(:address).allow_destroy(true) }
 
   it { should validate_presence_of :name }

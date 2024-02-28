@@ -22,7 +22,6 @@ FactoryBot.define do
       if patient.doctors.nil?
         patient.doctors = build_list :doctor, 1
       end
-      patient.clinic_history = build :clinic_history
       patient.address = build :address
     end
 

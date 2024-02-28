@@ -1,5 +1,4 @@
 class Patient < User
-  has_one :clinic_history, dependent: :destroy
   has_one :address, as: :addressable, dependent: :destroy
   has_and_belongs_to_many :doctors, join_table: "doctors_patients"
   has_many :appoinments, -> { order(created_at: :desc) }, dependent: :destroy
@@ -8,7 +7,6 @@ class Patient < User
 
   has_one_attached :avatar
 
-  accepts_nested_attributes_for :clinic_history, allow_destroy: true
   accepts_nested_attributes_for :address, allow_destroy: true
 
   validates :email, uniqueness: true, allow_nil: true
