@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_28_054356) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -89,23 +89,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["patient_id"], name: "index_bentos_on_patient_id"
-  end
-
-  create_table "clinic_histories", force: :cascade do |t|
-    t.text "description_diabetes"
-    t.text "description_hypertension"
-    t.text "description_allergic"
-    t.text "description_traumatic"
-    t.text "description_transfusion"
-    t.text "description_surgical"
-    t.text "description_drug_addiction"
-    t.text "description_hereditary"
-    t.text "description_cancer"
-    t.text "description_other"
-    t.bigint "patient_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["patient_id"], name: "index_clinic_histories_on_patient_id"
   end
 
   create_table "doctors_patients", id: false, force: :cascade do |t|
@@ -264,7 +247,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_194132) do
   add_foreign_key "appoinments", "users", column: "doctor_id"
   add_foreign_key "appoinments", "users", column: "patient_id"
   add_foreign_key "bentos", "users", column: "patient_id"
-  add_foreign_key "clinic_histories", "users", column: "patient_id"
   add_foreign_key "hospitalizations", "referred_doctors"
   add_foreign_key "hospitalizations", "users", column: "doctor_id"
   add_foreign_key "hospitalizations", "users", column: "patient_id"
