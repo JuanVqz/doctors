@@ -5,8 +5,8 @@ RSpec.describe "Medical Consultations flow", type: :system do
     driven_by(:headless_firefox)
   end
 
-  feature "Doctor creates an appoinment" do
-    scenario "from the show page" do
+  feature "Doctor" do
+    scenario "creates an appoinment from the show page" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
       @patient = create(:patient)
@@ -25,7 +25,7 @@ RSpec.describe "Medical Consultations flow", type: :system do
       expect(page).to have_content "CONSULTA ##{Appoinment.last.id}"
     end
 
-    scenario "for the correct patient even when the name is almost the same" do
+    scenario "creates an appoinment for the correct patient even when the name is almost the same" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
 
@@ -48,6 +48,28 @@ RSpec.describe "Medical Consultations flow", type: :system do
         expect(page).to have_no_content @patient
         expect(page).to have_content @other_patient
       end
+    end
+
+    scenario "can action some pages", js: true do
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
+      patient = create(:patient, doctors: [@admin])
+      appoinment = create(:appoinment, patient: patient, doctor: @admin)
+
+      visit appoinments_path(appoinment)
+      find('a[data-tooltip="Editar"]').click
+      expect(page).to have_content "ACTUALIZAR CONSULTA"
+      expect(find("#appoinment_patient_id").value).to eq patient.to_param
+
+      visit appoinment_path(appoinment)
+      find('a[data-tooltip="Nueva Consulta"]').click
+      expect(page).to have_content "REGISTRAR CONSULTA"
+      expect(find("#appoinment_patient_id").value).to eq patient.to_param
+
+      visit appoinment_path(appoinment)
+      find('a[data-tooltip="Nueva Hospitalización"]').click
+      expect(page).to have_content "REGISTRAR HOSPITALIZACIÓN"
+      expect(find("#hospitalization_patient_id").value).to eq patient.to_param
     end
   end
 

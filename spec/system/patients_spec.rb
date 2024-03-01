@@ -81,15 +81,13 @@ RSpec.describe "Patient's flow", type: :system do
     scenario "can see the patient's appoinments history" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
-      @patient = create(:patient, doctors: [@admin])
-      @appoinments = create_list(:appoinment, 3, doctor: @admin, patient: @patient)
+      patient = create(:patient, doctors: [@admin])
+      create_list(:appoinment, 3, doctor: @admin, patient: patient)
 
-      visit patients_path
-      expect(page).to have_content "Buscar"
-      within "tr", text: @patient do
-        find('a[data-tooltip="Consultas"]').click
-      end
-      expect(page).to have_content @patient, count: 3
+      visit patient_path(patient)
+      expect(page).to have_content "DATOS GENERALES"
+      find('a[data-tooltip="Consultas"]').click
+      expect(page).to have_content patient, count: 3
     end
   end
 

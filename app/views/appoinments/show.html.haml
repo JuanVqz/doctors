@@ -3,15 +3,18 @@
     = link_to :appoinments, class: secondary_button do
       %span.fa.fa-arrow-left
       %span= t('.back')
-    = link_to edit_appoinment_path(@appoinment), 'data-tooltip': t('tooltips.defaults.edit'), class: "#{secondary_button} tooltip tooltip-top" do
+    = link_to edit_appoinment_path(@appoinment), data: { tooltip: t('tooltips.defaults.edit') }, class: "#{secondary_button} tooltip tooltip-top" do
       %span.fa.fa-edit.text-yellow-600
       %span= t('tooltips.defaults.edit')
-    = link_to appoinment_path(@appoinment, format: :pdf), 'data-tooltip': t('tooltips.defaults.print'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
+    = link_to appoinment_path(@appoinment, format: :pdf), data: { tooltip: t('tooltips.defaults.print') }, class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
       %span.fa.fa-print.text-red-600
       %span= t('tooltips.defaults.print')
-    = link_to @appoinment.patient, 'data-tooltip': t('tooltips.defaults.patient'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
-      %span.fa.fa-user
-      %span= t('tooltips.defaults.patient')
+    = link_to new_appoinment_path(patient_id: @appoinment.patient_id), data: { tooltip: t('tooltips.appoinments.new') }, class: "#{secondary_button} tooltip tooltip-top" do
+      %span.fa.fa-book
+      %span= t('tooltips.appoinments.new')
+    = link_to new_hospitalization_path(patient_id: @appoinment.patient_id), data: { tooltip: t('tooltips.hospitalizations.new') }, class: "#{secondary_button} tooltip tooltip-top" do
+      %span.fa.fa-ambulance
+      %span= t('tooltips.hospitalizations.new')
 
 
 = render 'shared/section' do
