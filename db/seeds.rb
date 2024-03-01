@@ -107,7 +107,7 @@ doctors.each do |doctor|
     doctor.patients << patient
 
     Rails.logger.debug { "Creating #{patient} Appoinments" }
-    10.times do
+    30.times do
       Appoinment.create(
         reason: FFaker::Lorem.phrase, note: FFaker::HTMLIpsum.p,
         prescription: FFaker::Lorem.paragraph, recommendations: FFaker::Lorem.paragraph,
