@@ -1,7 +1,7 @@
 %tr.hover:bg-gray-200.dark:hover:bg-gray-700
   %td.py-2.whitespace-nowrap= appoinment.patient
   %td.py-2.whitespace-nowrap= truncate(appoinment.reason, lenght: 50)
-  %td.py-2.whitespace-nowrap= time_ago_in_words(appoinment.created_at)
+  %td.py-2.whitespace-nowrap= appoinment.created_at.to_date
   %td.py-2.whitespace-nowrap
     .flex.flex-row.justify-center.gap-2
       = link_to appoinment_path(appoinment, format: :pdf), 'data-tooltip': t('tooltips.defaults.print'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
