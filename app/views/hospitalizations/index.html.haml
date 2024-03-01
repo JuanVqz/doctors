@@ -8,12 +8,14 @@
       %tr
         %th.py-2{scope: :col}= t('.patient')
         %th.py-2{scope: :col}= t('.days_of_stay')
+        %th.py-2{scope: :col}= t('.created_at')
         %th.py-2.text-center{scope: :col}= t('.actions')
     %tbody
       - @hospitalizations.each do |hospitalization|
         %tr.hover:bg-gray-200.dark:hover:bg-gray-700
           %td.py-2.whitespace-nowrap= hospitalization.patient
           %td.py-2.whitespace-nowrap= hospitalization.days_of_stay
+          %td.py-2.whitespace-nowrap= hospitalization.created_at.to_date
           %td.py-2.whitespace-nowrap
             .flex.flex-row.justify-center.gap-2
               = link_to hospitalization_path(hospitalization, format: :pdf), 'data-tooltip': t('tooltips.defaults.print'), class: "#{secondary_button} tooltip tooltip-top", target: "_blank" do

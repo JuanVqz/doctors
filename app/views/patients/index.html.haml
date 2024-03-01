@@ -13,7 +13,7 @@
       - @patients.each do |patient|
         %tr.hover:bg-gray-200.dark:hover:bg-gray-700{ data: { patient_id: patient.id } }
           %td.py-2.whitespace-nowrap= patient
-          %td.py-2.whitespace-nowrap= time_ago_in_words(patient.created_at)
+          %td.py-2.whitespace-nowrap= patient.created_at.to_date
           %td.py-2.whitespace-nowrap
             .flex.flex-row.justify-center.gap-2
               = link_to new_appoinment_path(patient_id: patient.id), 'data-tooltip': t('tooltips.appoinments.new'), class: "#{secondary_button} tooltip tooltip-top" do

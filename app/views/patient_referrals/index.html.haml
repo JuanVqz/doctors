@@ -15,7 +15,7 @@
         %tr.hover:bg-gray-200.dark:hover:bg-gray-700
           %td.py-2.whitespace-nowrap= patient_referral.patient
           %td.py-2.whitespace-nowrap= patient_referral.referred_doctor
-          %td.py-2.whitespace-nowrap= time_ago_in_words(patient_referral.created_at)
+          %td.py-2.whitespace-nowrap= patient_referral.created_at.to_date
           %td.py-2.whitespace-nowrap
             .flex.flex-row.justify-center.gap-2
               = link_to patient_referral_path(patient_referral, format: :pdf), 'data-tooltip': t('tooltips.defaults.print'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
