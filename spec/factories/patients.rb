@@ -17,6 +17,7 @@ FactoryBot.define do
     role { "patient" }
     type { "Patient" }
     confirmed_at { Time.zone.now }
+    association :hospital, factory: :hospital
 
     after :build do |patient|
       if patient.doctors.nil?

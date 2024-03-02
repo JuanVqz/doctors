@@ -1,12 +1,12 @@
 module Feature
   module SubdomainHelpers
-    def set_capybara_subdomain
-      Capybara.app_host = "http://#{@hospital.subdomain}.lvh.me"
+    def capybara_subdomain(subdomain)
+      Capybara.app_host = "http://#{subdomain}.lvh.me"
     end
 
     def create_hospital_plan_medium
       @hospital = create(:hospital, :medium)
-      set_capybara_subdomain
+      capybara_subdomain(@hospital.subdomain)
     end
   end
 end

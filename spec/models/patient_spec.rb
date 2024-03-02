@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Patient do
+  it { should belong_to :hospital }
   it { should have_one(:address).dependent(:destroy) }
   it { should have_and_belong_to_many :doctors }
   it { should have_many(:appoinments).dependent(:destroy) }

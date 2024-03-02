@@ -55,19 +55,20 @@ class PatientsController < ApplicationController
   end
 
   def patient_params
-    params.require(:patient).permit(
-      :name, :first_name, :last_name, :birthday, :height,
-      :weight, :blood_group, :occupation, :referred_by,
-      :place_of_birth, :sex, :cellphone, :marital_status,
-      :comments, :avatar, :allergies, :pathological_background,
-      :non_pathological_background, :gyneco_obstetric_background,
-      :system_background, :family_inheritance_background,
-      :physic_exploration, :other_background,
-      address_attributes: [
-        :id, :street, :number, :colony, :postal_code, :municipality,
-        :state, :country, :_destroy
-      ]
-    )
+    params.require(:patient)
+      .permit(
+        :name, :first_name, :last_name, :birthday, :height,
+        :weight, :blood_group, :occupation, :referred_by,
+        :place_of_birth, :sex, :cellphone, :marital_status,
+        :comments, :avatar, :allergies, :pathological_background,
+        :non_pathological_background, :gyneco_obstetric_background,
+        :system_background, :family_inheritance_background,
+        :physic_exploration, :other_background,
+        address_attributes: [
+          :id, :street, :number, :colony, :postal_code, :municipality,
+          :state, :country, :_destroy
+        ]
+      ).with_defaults(hospital_id: current_user.hospital_id)
   end
 
   def pdf_name

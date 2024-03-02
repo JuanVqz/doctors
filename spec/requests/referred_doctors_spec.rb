@@ -22,7 +22,7 @@ RSpec.describe "referred_doctors", type: :request do
       doctor: nil
     }
   end
-  let(:doctor) { create(:doctor, :admin, hospital_id: hospital.id) }
+  let(:doctor) { create(:doctor, :admin, hospital: hospital) }
 
   before do
     allow(Hospital).to receive(:current_id).and_return hospital.id

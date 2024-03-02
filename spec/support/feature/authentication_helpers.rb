@@ -11,7 +11,7 @@ module Feature
     end
 
     def sign_in_admin_doctor hospital
-      @admin = create(:doctor, hospital: hospital, role: "admin")
+      @admin = create(:doctor, hospital: hospital, role: :admin)
       visit new_user_session_path
       expect(page).to have_current_path(new_user_session_path)
 

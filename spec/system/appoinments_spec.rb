@@ -9,7 +9,7 @@ RSpec.describe "Medical Consultations flow", type: :system do
     scenario "creates an appoinment from the show page" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
-      @patient = create(:patient)
+      @patient = create(:patient, hospital: @hospital)
 
       visit patients_path
       expect(page).to have_content "Buscar"
@@ -29,8 +29,8 @@ RSpec.describe "Medical Consultations flow", type: :system do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
 
-      @other_patient = create(:patient, name: "Zác", doctors: [@admin])
-      @patient = create(:patient, name: "Zac", doctors: [@admin])
+      @other_patient = create(:patient, name: "Zác", doctors: [@admin], hospital: @hospital)
+      @patient = create(:patient, name: "Zac", doctors: [@admin], hospital: @hospital)
 
       visit patients_path
       expect(page).to have_content "Buscar"
@@ -50,10 +50,10 @@ RSpec.describe "Medical Consultations flow", type: :system do
       end
     end
 
-    scenario "can action some pages", js: true do
+    scenario "can action some pages" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
-      patient = create(:patient, doctors: [@admin])
+      patient = create(:patient, doctors: [@admin], hospital: @hospital)
       appoinment = create(:appoinment, patient: patient, doctor: @admin)
 
       visit appoinments_path(appoinment)
