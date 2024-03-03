@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
-  include Pundit::Authorization
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   layout :layout_by_resource
 
@@ -36,11 +34,6 @@ class ApplicationController < ActionController::Base
 
   def scope_current_hospital
     Hospital.current_id = current_hospital ? current_hospital.id : current_user.hospital_id
-  end
-
-  def user_not_authorized
-    flash[:alert] = "Usuario no autorizado para realizar esta acción!"
-    redirect_to(request.referer || root_path)
   end
 
   def layout_by_resource
