@@ -6,7 +6,6 @@ ruby "3.0.3"
 gem "bootsnap", require: false
 gem "devise"
 gem "haml-rails"
-gem "jquery-rails"
 gem "pagy"
 gem "pg"
 gem "puma"
