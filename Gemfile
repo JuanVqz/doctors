@@ -18,7 +18,7 @@ gem "trix-rails", require: "trix"
 gem "turbo-rails"
 gem "vite_rails"
 gem "wicked_pdf"
-gem "wkhtmltopdf-binary", "0.12.6.6"
+gem "wkhtmltopdf-binary"
 
 group :development, :test do
   gem "capybara"
