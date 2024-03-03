@@ -75,38 +75,6 @@ puede [contactarnos.](https://github.com/JuanVqz)
 
 ## Deprecado
 
-## Importar información (opcional)
-
-Los Doctores que utilizan nuestro servicio habian usado un sistema llamado Bento.
-
-Este sistema solo tenia soporte para Mac pero no lo han actualizado por lo tanto
-los Doctores buscaron una alternativa web pero requieren el historial clinico de sus pacientes.
-
-1. Exportar desde Bento
-
-- El template de los pacientes
-- El template de las consultas medicas
-
-2. Crear un namespace con el nombre del doctor en la tarea import.rake
-
-```
-  namespace :import do
-    namespace :doctor_name do
-      task patients do
-      end
-      task medical_consultations do
-      end
-    end
-  end
-```
-
-Ejecutar importación:
-
-```ruby
-rake import:doctor_name:patients
-rake import:doctor_name:medical_consultation
-```
-
 #### Deploy
 
 Antes de realizar el deploy puedes verificar los requisitos con:

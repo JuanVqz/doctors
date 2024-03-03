@@ -6,7 +6,6 @@ RSpec.describe Patient do
   it { should have_and_belong_to_many :doctors }
   it { should have_many(:appoinments).dependent(:destroy) }
   it { should have_many(:hospitalizations).dependent(:destroy) }
-  it { should have_many(:bentos).dependent(:destroy) }
 
   it { should accept_nested_attributes_for(:address).allow_destroy(true) }
 
