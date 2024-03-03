@@ -390,7 +390,7 @@ DEPENDENCIES
   tzinfo-data
   vite_rails
   wicked_pdf
-  wkhtmltopdf-binary (= 0.12.6.6)
+  wkhtmltopdf-binary
 
 RUBY VERSION
    ruby 3.0.3p157
