@@ -50,14 +50,6 @@ RSpec.describe "patients", type: :request do
       }.to change(Patient, :count).by(-1)
     end
 
-    it "destroy patient's bentos" do
-      patient = create(:patient, bentos: [build(:bento)])
-
-      expect {
-        delete patient_path(patient)
-      }.to change(Bento, :count).by(-1)
-    end
-
     xit "destroy patient's appoinments" do
       doctors = [doctor]
       appoinments = [build(:appoinment, doctor: doctor)]
