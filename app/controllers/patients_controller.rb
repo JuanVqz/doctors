@@ -68,7 +68,7 @@ class PatientsController < ApplicationController
           :id, :street, :number, :colony, :postal_code, :municipality,
           :state, :country, :_destroy
         ]
-      ).with_defaults(hospital_id: current_user.hospital_id)
+      ).with_defaults(hospital: current_user.hospital)
   end
 
   def pdf_name

@@ -2,7 +2,7 @@ class User < ApplicationRecord
   belongs_to :hospital
   enum role: {patient: 0, doctor: 1, admin: 2}
 
-  validates :role, presence: true
+  validates :role, :hospital, presence: true
 
   devise :database_authenticatable, :registerable, :recoverable,
     :rememberable, :validatable, :confirmable, :trackable
