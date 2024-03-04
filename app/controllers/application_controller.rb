@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
-  before_action :scope_current_hospital
-
   def current_hospital
     @current_hospital ||= Hospital.find_by(subdomain: request.subdomain)
   end
@@ -31,10 +29,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def scope_current_hospital
-    Hospital.current_id = current_hospital ? current_hospital.id : current_user.hospital_id
-  end
 
   def layout_by_resource
     if devise_controller?
