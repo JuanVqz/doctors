@@ -55,7 +55,7 @@ es-MX:
       edit: Editar
       patient: Paciente
       print: Imprimir
-      appoinments: Consultas
+      appoinments: Consultas Previas
     appoinments:
       new: Nueva Consulta
     hospitalizations:
@@ -64,7 +64,7 @@ es-MX:
     partials:
       sidebar:
        patients: Pacientes
-       appoinments: Consultas
+       appoinments: Consultas Previas
        hospitalizations: Hospitalizaciónes
        patient_referrals: Referencias
        referred_doctors: Doctores

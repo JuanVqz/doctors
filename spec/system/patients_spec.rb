@@ -86,7 +86,7 @@ RSpec.describe "Patient's flow", type: :system do
 
       visit patient_path(patient)
       expect(page).to have_content "DATOS GENERALES"
-      find('a[data-tooltip="Consultas"]').click
+      find('a[data-tooltip="Consultas Previas"]').click
       expect(page).to have_content patient, count: 3
     end
   end

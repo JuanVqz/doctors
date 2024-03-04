@@ -1,8 +1,16 @@
 = render 'shared/section' do
-  .flex.flex-row
+  .flex.flex-col.md:flex-row.space-y-2.md:space-y-0.md:space-x-2
     = link_to :appoinments, class: secondary_button do
       %span.fa.fa-arrow-left
       = t('.back')
+    - if @appoinment.patient.persisted?
+      = link_to appoinments_patient_path(id: @appoinment.patient_id), 'data-tooltip': t('tooltips.defaults.appoinments'), class: "#{secondary_button} tooltip tooltip-top" do
+        %span.fa.fa-folder-open
+        %span= t('tooltips.defaults.appoinments')
+
+- if @appoinment.patient.persisted?
+  = render 'shared/section' do
+    = render 'patients/clinic_history', patient: @appoinment.patient
 
 = render 'shared/section' do
   = render 'form', appoinment: @appoinment, title: t('helpers.submit.appoinment.create')
