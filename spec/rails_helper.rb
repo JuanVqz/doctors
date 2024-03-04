@@ -52,7 +52,7 @@ end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = %w(Rails.root.join("spec/fixtures"))
+  config.fixture_paths = %w(Rails.root.join("spec/fixtures"))
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
