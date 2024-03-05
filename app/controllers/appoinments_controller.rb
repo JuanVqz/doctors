@@ -19,7 +19,7 @@ class AppoinmentsController < ApplicationController
 
   def new
     patient = patient_from_params
-    @appoinments = patient.appoinments.where.not(id: nil).recent
+    @appoinments = patient.appoinments.where.not(id: nil).recent.take(3)
     @appoinment = patient.appoinments.build(height: patient.height, weight: patient.weight)
   end
 

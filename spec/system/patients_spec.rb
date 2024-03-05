@@ -78,16 +78,50 @@ RSpec.describe "Patient's flow", type: :system do
       expect(find("#appoinment_patient_id").value).to eq patient.to_param
     end
 
-    scenario "can see the patient's appoinments history" do
+    scenario "can go to the patient's appoinment history" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
-      patient = create(:patient, doctors: [@admin])
+      patient = create(:patient, doctors: [@admin], hospital: @hospital)
       create_list(:appoinment, 3, doctor: @admin, patient: patient)
 
       visit patient_path(patient)
       expect(page).to have_content "DATOS GENERALES"
       find('a[data-tooltip="Consultas Previas"]').click
       expect(page).to have_content patient, count: 3
+    end
+
+    scenario "can see the patient's clinic history in the same new page", js: true do
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
+      patient = create(:patient, pathological_background: :something, doctors: [@admin], hospital: @hospital)
+
+      visit patients_path
+      expect(page).to have_content "Buscar"
+
+      within "tr[data-patient-id='#{patient.id}']" do
+        first('a[data-tooltip="Nueva Consulta"]').click
+      end
+
+      expect(page).to have_content "HISTORIAL CLÍNICO"
+      expect(page).to have_content patient.pathological_background
+      expect(page).to_not have_content "CONSULTAS PREVIAS"
+    end
+
+    scenario "can see the previous patient's appoinments in the same new page", js: true do
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
+      patient = create(:patient, doctors: [@admin], hospital: @hospital)
+      create_list(:appoinment, 4, doctor: @admin, patient: patient)
+
+      visit patients_path
+      expect(page).to have_content "Buscar"
+
+      within "tr[data-patient-id='#{patient.id}']" do
+        first('a[data-tooltip="Nueva Consulta"]').click
+      end
+
+      expect(page).to have_content "CONSULTAS PREVIAS"
+      expect(page).to have_selector "details", count: 3
     end
   end
 

@@ -23,7 +23,10 @@
     %dl
       %dt.text-gray-400.my-2= t('activerecord.attributes.appoinment.patient')
       %dd.text-base.font-semibold= @appoinment.patient
-    - @appoinment.attributes.slice('reason', 'note', 'prescription', 'recommendations', 'created_at', 'cabinet_results', 'histopathology').map do |key, value|
+    %dl
+      %dt.text-gray-400.my-2= t('activerecord.attributes.appoinment.created_at')
+      %dd.text-base.font-semibold= @appoinment.created_at.to_date
+    - @appoinment.attributes.slice('reason', 'note', 'prescription', 'recommendations', 'cabinet_results', 'histopathology').map do |key, value|
       - if value.present?
         %dl
           %dt.text-gray-400.my-2= t("activerecord.attributes.appoinment.#{key}")
