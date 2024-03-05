@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node.js 🏗
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
@@ -41,6 +41,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+          cache-version: 1
 
       - name: Run linter 👟
         run: bundle exec standardrb
@@ -49,7 +50,7 @@ jobs:
         run: bin/rails db:schema:load
 
       - name: Run test suite 👟
-        run: bin/rake
+        run: bundle exec rake
 
       - name: Publish code coverage 🚀
         uses: paambaati/codeclimate-action@v5.0.0
