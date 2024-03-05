@@ -12,9 +12,9 @@
     = link_to new_hospitalization_path(patient_id: @patient.id), 'data-tooltip': t('tooltips.hospitalizations.new'), class: "#{secondary_button} tooltip tooltip-top" do
       %span.fa.fa-ambulance
       %span= t('tooltips.hospitalizations.new')
-    = link_to appoinments_patient_path(id: @patient.id), 'data-tooltip': t('tooltips.defaults.appoinments'), class: "#{secondary_button} tooltip tooltip-top" do
+    = link_to patient_appoinments_path(patient_id: @patient.id), 'data-tooltip': t('tooltips.appoinments.previous'), class: "#{secondary_button} tooltip tooltip-top" do
       %span.fa.fa-folder-open
-      %span= t('tooltips.defaults.appoinments')
+      %span= t('tooltips.appoinments.previous')
 
 = render 'shared/section' do
   = render 'patients/general', patient: @patient

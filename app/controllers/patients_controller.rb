@@ -36,10 +36,6 @@ class PatientsController < ApplicationController
     end
   end
 
-  def appoinments
-    @patient = Patient.includes(:appoinments).find(params[:id])
-  end
-
   def destroy
     @patient.destroy
 

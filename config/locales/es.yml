@@ -55,9 +55,9 @@ es-MX:
       edit: Editar
       patient: Paciente
       print: Imprimir
-      appoinments: Consultas
     appoinments:
       new: Nueva Consulta
+      previous: Consultas Previas
     hospitalizations:
       new: Nueva Hospitalización
   layouts:
