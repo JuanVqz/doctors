@@ -18,8 +18,8 @@ class AppoinmentsController < ApplicationController
   end
 
   def new
-    patient = patient_from_params
-    @appoinment = patient.appoinments.build(height: patient.height, weight: patient.weight)
+    patient_from_params
+    @appoinment = @patient.appoinments.build(height: @patient.height, weight: @patient.weight)
   end
 
   def edit
@@ -65,7 +65,8 @@ class AppoinmentsController < ApplicationController
   end
 
   def patient_from_params
-    current_hospital.patients.find_by(id: params[:patient_id]) ||
+    @patient =
+      current_hospital.patients.find_by(id: params[:patient_id]) ||
       current_hospital.patients.new(height: 0.0, weight: 0.0)
   end
 

@@ -1,8 +1,11 @@
 = render 'shared/section' do
-  .flex.flex-row
+  .flex.flex-col.md:flex-row.space-y-2.md:space-y-0.md:space-x-2
     = link_to :appoinments, class: secondary_button do
       %span.fa.fa-arrow-left
       = t('.back')
+
+= turbo_frame_tag :patient_information, class: 'hidden' do
+  = render 'appoinments/patient_information', patient: @patient
 
 = render 'shared/section' do
   = render 'form', appoinment: @appoinment, title: t('helpers.submit.appoinment.create')
