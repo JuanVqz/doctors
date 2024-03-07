@@ -4,8 +4,8 @@
       %span.fa.fa-arrow-left
       = t('.back')
 
-= turbo_frame_tag :patient_information, class: 'hidden' do
-  = render 'appoinments/patient_information', patient: @patient
+= turbo_frame_tag :patient_information, class: 'hidden space-y-4 p-4' do
+  = render 'appoinments/patient_information', patient: @patient, appoinments: @appoinments
 
 = render 'shared/section' do
   = render 'form', appoinment: @appoinment, title: t('helpers.submit.appoinment.create')

@@ -1,2 +1,5 @@
 = render 'shared/section' do
-  = render partial: 'patients/clinic_history', locals: { patient: patient }
+  = render 'patients/clinic_history', patient: patient
+
+= render 'shared/section' do
+  = render 'patients/appoinments', appoinments: appoinments

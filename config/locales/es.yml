@@ -11,6 +11,8 @@ es-MX:
       title: Historial Clínico
     address:
       title: Dirección
+    appoinments:
+      see_more: Ver más
   shared:
     actions:
       register: Registrar %{model}
