@@ -4,6 +4,9 @@
 
 import { application } from './application'
 
+import ImcController from './imc_controller'
+application.register('imc', ImcController)
+
 import ResizeFieldController from './resize_field_controller'
 application.register('resize-field', ResizeFieldController)
 
@@ -13,5 +16,5 @@ application.register('search', SearchController)
 import SidebarController from './sidebar_controller'
 application.register('sidebar', SidebarController)
 
-import ImcController from './imc_controller'
-application.register('imc', ImcController)
+import PatientInformationController from './patient_information_controller'
+application.register('patient-information', PatientInformationController)

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :patient_referrals
     resources :patients do
       resources :appoinments, module: :patients, only: %i[index new]
+      resources :information, module: :patients, only: %i[index]
     end
     resources :referred_doctors
 
