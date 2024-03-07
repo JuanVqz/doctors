@@ -5,4 +5,11 @@
     - if value.present?
       %dl
         %dt.text-gray-400.my-2= t("activerecord.attributes.user.#{key}")
-        %dd= value
+        - if key.eql?('birthday')
+          %dd= age_months patient
+        - elsif key.eql?('height')
+          %dd= height_for_human patient
+        - elsif key.eql?('weight')
+          %dd= weight_for_human patient
+        - else
+          %dd= value

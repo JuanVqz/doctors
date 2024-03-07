@@ -23,20 +23,32 @@
     %dl
       %dt.text-gray-400.my-2= t('activerecord.attributes.appoinment.patient')
       %dd.text-base.font-semibold= @appoinment.patient
-    - @appoinment.attributes.slice('reason', 'note', 'prescription', 'recommendations', 'created_at', 'cabinet_results', 'histopathology').map do |key, value|
+    - @appoinment.attributes.slice('reason', 'note', 'prescription', 'recommendations', 'cabinet_results', 'histopathology', 'created_at').map do |key, value|
       - if value.present?
         %dl
           %dt.text-gray-400.my-2= t("activerecord.attributes.appoinment.#{key}")
-          %dd.text-base.font-semibold= raw value
+          - if key.eql?('created_at')
+            %dd.text-base.font-semibold= value.to_date
+          - else
+            %dd.text-base.font-semibold= raw value
 
 = render 'shared/section' do
   = render 'shared/title', title: t('.information')
-  .grid.gap-4.grid-rows-2.grid-flow-row.md:grid-flow-col.text-xs
+  .grid.gap-4.grid-rows-1.grid-flow-row.md:grid-flow-col.text-xs
     - @appoinment.attributes.slice('height', 'weight', 'imc', 'blood_pressure', 'glycaemia', 'sat_02', 'heart_rate', 'breathing_rate', 'temperature', 'cost').map do |key, value|
       - if value.present?
         %dl
           %dt.text-gray-400.my-2= t("activerecord.attributes.appoinment.#{key}")
-          %dd.text-base.font-semibold= raw value
+          - if key.eql?('height')
+            %dd.text-base.font-semibold= height_for_human @appoinment
+          - elsif key.eql?('weight')
+            %dd.text-base.font-semibold= weight_for_human @appoinment
+          - elsif key.eql?('imc')
+            %dd.text-base.font-semibold= imc_for_human @appoinment
+          - elsif key.eql?('temperature')
+            %dd.text-base.font-semibold= temperature @appoinment
+          - else
+            %dd.text-base.font-semibold= raw value
 
 - if @appoinment.files.attached?
   = render 'shared/section' do

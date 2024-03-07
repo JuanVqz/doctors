@@ -1,5 +1,6 @@
 = render 'shared/section' do
   = render 'patients/clinic_history', patient: patient
 
-= render 'shared/section' do
-  = render 'patients/appoinments', appoinments: appoinments
+- if appoinments.any?
+  = render 'shared/section' do
+    = render 'patients/appoinments', appoinments: appoinments

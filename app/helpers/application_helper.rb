@@ -51,4 +51,20 @@ module ApplicationHelper
 
     classes
   end
+
+  def height_for_human object
+    "#{object.height} cm"
+  end
+
+  def weight_for_human object
+    "#{object.weight} kg"
+  end
+
+  def imc_for_human object
+    if object.height.to_f.zero? || object.weight.to_f.zero?
+      "N/A"
+    else
+      (object.weight / (object.height / 100.0)**2).round(2)
+    end
+  end
 end
