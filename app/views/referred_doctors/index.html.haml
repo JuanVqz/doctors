@@ -22,3 +22,4 @@
                 %span.fa.fa-edit.text-yellow-600
               = link_to referred_doctor, 'data-tooltip': t('tooltips.defaults.details'), class: "#{secondary_button} tooltip tooltip-top" do
                 %span.fa.fa-eye.text-sky-600
+  = render 'shared/pagination', pagy: @pagy
