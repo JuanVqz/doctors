@@ -47,7 +47,7 @@ module ApplicationHelper
 
   def sidebar_classes action
     classes = "flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
-    classes += " bg-gray-200 dark:bg-gray-700" if controller_name == action
+    classes += " bg-gray-200 dark:bg-gray-700" if controller_name.to_sym.eql?(action)
 
     classes
   end

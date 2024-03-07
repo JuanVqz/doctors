@@ -4,29 +4,29 @@
       .flex-1.px-2
         %ul.space-y-2
           %li
-            = link_to patients_path(subdomain: current_hospital.subdomain), class: sidebar_classes('patients') do
+            = link_to patients_path(subdomain: current_hospital.subdomain), class: sidebar_classes(:patients) do
               %span
                 %span.fa.fa-user
                 = t('.patients')
           %li
-            = link_to appoinments_path(subdomain: current_hospital.subdomain), class: sidebar_classes('appoinments') do
+            = link_to appoinments_path(subdomain: current_hospital.subdomain), class: sidebar_classes(:appoinments) do
               %span
                 %span.fa.fa-book
                 = t('.appoinments')
           %li
-            = link_to hospitalizations_path(subdomain: current_hospital.subdomain), class: sidebar_classes('hospitalizations') do
+            = link_to hospitalizations_path(subdomain: current_hospital.subdomain), class: sidebar_classes(:hospitalizations) do
               %span
                 %span.fa.fa-ambulance
                 = t('.hospitalizations')
           %li
-            = link_to patient_referrals_path(subdomain: current_hospital.subdomain), class: sidebar_classes('patient_referrals') do
+            = link_to patient_referrals_path(subdomain: current_hospital.subdomain), class: sidebar_classes(:patient_referrals) do
               %span
                 %span.fa.fa-hospital
                 = t('.patient_referrals')
           %li
-            = link_to referred_doctors_path(subdomain: current_hospital.subdomain), class: sidebar_classes('referred_doctors') do
+            = link_to referred_doctors_path(subdomain: current_hospital.subdomain), class: sidebar_classes(:referred_doctors) do
               %span
                 %span.fa.fa-user-md
                 = t('.referred_doctors')
 
-%div{ class: 'fixed inset-0 z-10 bg-gray-900/50 dark:bg-gray-900/90 hidden', 'data-sidebar-target': :background, 'data-action': 'click->sidebar#toggle' }
+%div{ class: 'fixed inset-0 z-10 bg-gray-900/50 dark:bg-gray-900/90 hidden', data: { action: 'click->sidebar#toggle', sidebar: { target: :background } } }
