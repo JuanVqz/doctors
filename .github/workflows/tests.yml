@@ -50,7 +50,7 @@ jobs:
         run: bin/rails db:schema:load
 
       - name: Run test suite 👟
-        run: bundle exec rake
+        run: bundle exec rspec --format documentation
 
       - name: Publish code coverage 🚀
         uses: paambaati/codeclimate-action@v5.0.0
