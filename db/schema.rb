@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_03_013534) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_08_222728) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -126,37 +126,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_03_013534) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
-  create_table "medical_consultations", force: :cascade do |t|
-    t.text "reason"
-    t.text "subjetive"
-    t.text "objetive"
-    t.text "plan"
-    t.text "diagnosis"
-    t.text "treatment"
-    t.text "observations"
-    t.text "prescription"
-    t.text "lab_results"
-    t.text "histopathology"
-    t.text "comments"
-    t.bigint "doctor_id"
-    t.bigint "patient_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.decimal "imc", default: "0.0"
-    t.decimal "weight", default: "0.0"
-    t.decimal "height", default: "0.0"
-    t.string "blood_pressure", default: ""
-    t.float "heart_rate", default: 0.0
-    t.float "breathing_rate", default: 0.0
-    t.float "temperature", default: 0.0
-    t.float "glycaemia", default: 0.0
-    t.float "sat_02", default: 0.0
-    t.float "cost", default: 0.0
-    t.text "recommendation", default: ""
-    t.index ["doctor_id"], name: "index_medical_consultations_on_doctor_id"
-    t.index ["patient_id"], name: "index_medical_consultations_on_patient_id"
-  end
-
   create_table "patient_referrals", force: :cascade do |t|
     t.string "subject"
     t.text "content"
@@ -241,8 +210,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_03_013534) do
   add_foreign_key "hospitalizations", "referred_doctors"
   add_foreign_key "hospitalizations", "users", column: "doctor_id"
   add_foreign_key "hospitalizations", "users", column: "patient_id"
-  add_foreign_key "medical_consultations", "users", column: "doctor_id"
-  add_foreign_key "medical_consultations", "users", column: "patient_id"
   add_foreign_key "patient_referrals", "hospitals"
   add_foreign_key "patient_referrals", "referred_doctors"
   add_foreign_key "patient_referrals", "users", column: "doctor_id"
