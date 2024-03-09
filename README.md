@@ -1,7 +1,7 @@
 # ASISTENCIA CLINICA
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/09e3708ac24f9016f6fd/maintainability)](https://codeclimate.com/github/JuanVqz/doctors/maintainability)
-[![current rails build](https://github.com/JuanVqz/doctors/actions/workflows/tests.yml/badge.svg)](https://github.com/JuanVqz/doctors/actions/workflows/tests.yml)
+[![tests](https://github.com/JuanVqz/doctors/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/JuanVqz/doctors/actions/workflows/tests.yml)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 
 
