@@ -33,6 +33,39 @@ RSpec.describe "patients", type: :request do
     end
   end
 
+  describe "POST /patients" do
+    context "with valid params" do
+      let(:valid_attributes) { attributes_for(:patient) }
+      let(:file) { fixture_file_upload("avatar.jpg", "image/jpg") }
+
+      it "creates a new patient" do
+        params = {patient: valid_attributes}
+        expect {
+          post patients_path, params: params
+        }.to change(Patient, :count).by(1)
+      end
+
+      it "creates with avatar" do
+        params = {patient: valid_attributes.merge(avatar: file)}
+        expect {
+          post patients_path, params: params
+        }.to change(Patient, :count).by(1)
+          .and change(ActiveStorage::Attachment, :count).by(1)
+      end
+    end
+
+    context "with invalid params" do
+      let(:invalid_attributes) { attributes_for(:patient, name: nil) }
+
+      it "does not create a new patient" do
+        params = {patient: invalid_attributes}
+        expect {
+          post patients_path, params: params
+        }.not_to change(Patient, :count)
+      end
+    end
+  end
+
   describe "GET /patients/1/edit" do
     it "patient edit" do
       get edit_patient_path patient

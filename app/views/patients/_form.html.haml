@@ -20,8 +20,9 @@
     = f.input :sex, collection: sexos_for_select, prompt: true
     = f.input :cellphone
     = f.input :marital_status
-    = f.input :comments, input_html: resize_field_controller
+    = f.input :avatar
     = f.input :referred_by
+    = f.input :comments, input_html: resize_field_controller
 
   = render 'shared/title', title: t('.medical_history')
 
