@@ -6,15 +6,15 @@
     = link_to edit_patient_path(@patient), 'data-tooltip': t('tooltips.defaults.edit'), class: "#{secondary_button} tooltip tooltip-top" do
       %span.fa.fa-edit.text-yellow-600
       %span= t('tooltips.defaults.edit')
-    = link_to new_appoinment_path(patient_id: @patient.id), 'data-tooltip': t('tooltips.appoinments.new'), class: "#{secondary_button} tooltip tooltip-top" do
+    = link_to new_appointment_path(patient_id: @patient.id), 'data-tooltip': t('tooltips.appointments.new'), class: "#{secondary_button} tooltip tooltip-top" do
       %span.fa.fa-book
-      %span= t('tooltips.appoinments.new')
+      %span= t('tooltips.appointments.new')
     = link_to new_hospitalization_path(patient_id: @patient.id), 'data-tooltip': t('tooltips.hospitalizations.new'), class: "#{secondary_button} tooltip tooltip-top" do
       %span.fa.fa-ambulance
       %span= t('tooltips.hospitalizations.new')
-    = link_to patient_appoinments_path(patient_id: @patient.id), 'data-tooltip': t('tooltips.appoinments.previous'), class: "#{secondary_button} tooltip tooltip-top" do
+    = link_to patient_appointments_path(patient_id: @patient.id), 'data-tooltip': t('tooltips.appointments.previous'), class: "#{secondary_button} tooltip tooltip-top" do
       %span.fa.fa-folder-open
-      %span= t('tooltips.appoinments.previous')
+      %span= t('tooltips.appointments.previous')
 
 = render 'shared/section' do
   = render 'patients/general', patient: @patient

@@ -9,10 +9,10 @@
                 %span.fa.fa-user
                 = t('.patients')
           %li
-            = link_to appoinments_path(subdomain: current_hospital.subdomain), class: sidebar_classes(:appoinments) do
+            = link_to appointments_path(subdomain: current_hospital.subdomain), class: sidebar_classes(:appointments) do
               %span
                 %span.fa.fa-book
-                = t('.appoinments')
+                = t('.appointments')
           %li
             = link_to hospitalizations_path(subdomain: current_hospital.subdomain), class: sidebar_classes(:hospitalizations) do
               %span

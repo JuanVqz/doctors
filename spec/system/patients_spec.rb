@@ -57,7 +57,7 @@ RSpec.describe "Patient's flow", type: :system do
       expect(page).to have_content "Juan Antonio"
     end
 
-    scenario "can create appoinments after create the patient" do
+    scenario "can create appointments after create the patient" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
 
@@ -76,20 +76,20 @@ RSpec.describe "Patient's flow", type: :system do
         find('a[data-tooltip="Nueva Consulta"]').click
       end
       expect(page).to have_content "Lizzette"
-      expect(find("#appoinment_patient_id").value).to eq patient.to_param
+      expect(find("#appointment_patient_id").value).to eq patient.to_param
     end
 
-    scenario "can go to the appoinments history" do
+    scenario "can go to the appointments history" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
       patient = create(:patient, doctors: [@admin], hospital: @hospital)
-      create_list(:appoinment, 3, doctor: @admin, patient: patient)
+      create_list(:appointment, 3, doctor: @admin, patient: patient)
 
       visit patient_path(patient)
       expect(page).to have_content "DATOS GENERALES"
       find('a[data-tooltip="Consultas Previas"]').click
 
-      expect(page).to have_selector("tr[data-appoinment-id]", count: 3)
+      expect(page).to have_selector("tr[data-appointment-id]", count: 3)
     end
   end
 

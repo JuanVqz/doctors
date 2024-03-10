@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   end
 
   constraints(!SubdomainRoutes) do
-    resources :appoinments
+    resources :appointments
     resources :hospitalizations
     resources :hospitals, only: %i[edit update]
     resources :patient_referrals
     resources :patients do
-      resources :appoinments, module: :patients, only: %i[index new]
+      resources :appointments, module: :patients, only: %i[index new]
       resources :information, module: :patients, only: %i[index]
     end
     resources :referred_doctors

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Appoinment do
+RSpec.describe Appointment do
   it { should belong_to :doctor }
   it { should belong_to :patient }
   it { should have_many_attached :files }
@@ -17,38 +17,38 @@ RSpec.describe Appoinment do
 
   describe "#files" do
     it "has many files" do
-      appoinment = create(:appoinment, :with_files)
+      appointment = create(:appointment, :with_files)
 
-      expect(appoinment).to be_valid
-      expect(appoinment.files).to be_attached
+      expect(appointment).to be_valid
+      expect(appointment.files).to be_attached
     end
 
     it "has not many files" do
-      appoinment = create(:appoinment)
+      appointment = create(:appointment)
 
-      expect(appoinment).to be_valid
-      expect(appoinment.files).not_to be_attached
+      expect(appointment).to be_valid
+      expect(appointment.files).not_to be_attached
     end
   end # describe #file
 
   describe "#update_patient" do
     let(:patient) { create(:patient, height: 160, weight: 60) }
-    let!(:appoinment) do
-      create(:appoinment, patient: patient, height: 170, weight: 70)
+    let!(:appointment) do
+      create(:appointment, patient: patient, height: 170, weight: 70)
     end
 
-    context "when create an appoinment" do
+    context "when create an appointment" do
       it "update patient height and weight" do
-        expect(appoinment.patient.height).to eq 170.00
-        expect(appoinment.patient.weight).to eq 70.00
+        expect(appointment.patient.height).to eq 170.00
+        expect(appointment.patient.weight).to eq 70.00
       end
     end
 
-    context "when update an appoinment" do
+    context "when update an appointment" do
       it "update patient height and weight" do
-        appoinment.update(height: 180, weight: 80)
-        expect(appoinment.patient.height).to eq 180.00
-        expect(appoinment.patient.weight).to eq 80.00
+        appointment.update(height: 180, weight: 80)
+        expect(appointment.patient.height).to eq 180.00
+        expect(appointment.patient.weight).to eq 80.00
       end
     end
   end
@@ -62,18 +62,18 @@ RSpec.describe Appoinment do
       create(:patient, name: "Josue", first_name: "Alvarez", last_name: "Suarez")
     end
 
-    let!(:appoinment) do
-      create(:appoinment, reason: "Motivo 1", note: "Diagnostico 1",
+    let!(:appointment) do
+      create(:appointment, reason: "Motivo 1", note: "Diagnostico 1",
         prescription: "Receta 1", patient: mateo)
     end
 
     let!(:appoinment_two) do
-      create(:appoinment, reason: "Otra cosa", note: "Practica",
+      create(:appointment, reason: "Otra cosa", note: "Practica",
         prescription: "Persona", patient: josue)
     end
 
     let!(:appoinment_tree) do
-      create(:appoinment, reason: "Mi razón", note: "Practica",
+      create(:appointment, reason: "Mi razón", note: "Practica",
         prescription: "Imprimir", patient: mateo)
     end
 
@@ -92,7 +92,7 @@ RSpec.describe Appoinment do
     end
   end
 
-  describe "returns appoinment" do
+  describe "returns appointment" do
     let(:doctor_one) { create(:doctor, name: "Pedro") }
     let(:doctor_two) { create(:doctor, name: "José") }
 
@@ -104,10 +104,10 @@ RSpec.describe Appoinment do
     end
 
     let!(:appoinment_doctor_one) do
-      create_list(:appoinment, 5, doctor: doctor_one, patient: patient_one)
+      create_list(:appointment, 5, doctor: doctor_one, patient: patient_one)
     end
     let!(:appoinment_doctor_two) do
-      create_list(:appoinment, 3, doctor: doctor_two, patient: patient_two)
+      create_list(:appointment, 3, doctor: doctor_two, patient: patient_two)
     end
 
     it ".per_doctor" do

@@ -106,9 +106,9 @@ doctors.each do |doctor|
     # doctor = Doctor.unscoped.first
     doctor.patients << patient
 
-    Rails.logger.debug { "Creating #{patient} Appoinments" }
+    Rails.logger.debug { "Creating #{patient} appointments" }
     30.times do
-      Appoinment.create(
+      Appointment.create(
         reason: FFaker::Lorem.phrase, note: FFaker::HTMLIpsum.p,
         prescription: FFaker::Lorem.paragraph, recommendations: FFaker::Lorem.paragraph,
         created_at: FFaker::Time.between(10.years.ago, 2.months.ago),

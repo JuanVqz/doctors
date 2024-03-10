@@ -45,7 +45,7 @@ es-MX:
         postal_code: Código Postal
         state: Estado
         street: Calle
-      appoinment: &appoinment_labels
+      appointment: &appoinment_labels
         blood_pressure: TA
         breathing_rate: FR
         cabinet_results: Resultados de gabinete
@@ -101,7 +101,7 @@ es-MX:
         <<: *user_labels
       address:
         <<: *address_labels
-      appoinment:
+      appointment:
         <<: *appoinment_labels
       hospitalization:
         <<: *hospitalization_labels

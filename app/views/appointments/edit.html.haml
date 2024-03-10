@@ -1,0 +1,8 @@
+= render 'shared/section' do
+  .flex.flex-row
+    = link_to :appointments, class: secondary_button do
+      %span.fa.fa-arrow-left
+      = t('.back')
+
+= render 'shared/section' do
+  = render 'form', appointment: @appointment, title: t('helpers.submit.appointment.update')

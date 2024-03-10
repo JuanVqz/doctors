@@ -11,7 +11,7 @@ es-MX:
       title: Historial Clínico
     address:
       title: Dirección
-    appoinments:
+    appointments:
       see_more: Ver más
   shared:
     actions:
@@ -19,7 +19,7 @@ es-MX:
       patient:
         one: Paciente
         other: Pacientes
-      appoinment:
+      appointment:
         one: Consulta
         other: Consultas
       hospitalization:
@@ -57,7 +57,7 @@ es-MX:
       edit: Editar
       patient: Paciente
       print: Imprimir
-    appoinments:
+    appointments:
       new: Nueva Consulta
       previous: Consultas Previas
     hospitalizations:
@@ -66,7 +66,7 @@ es-MX:
     partials:
       sidebar:
        patients: Pacientes
-       appoinments: Consultas
+       appointments: Consultas
        hospitalizations: Hospitalizaciónes
        patient_referrals: Referencias
        referred_doctors: Doctores
@@ -308,7 +308,7 @@ es-MX:
         postal_code: Código Postal
         state: Estado
         street: Calle
-      appoinment:
+      appointment:
         blood_pressure: PA
         breathing_rate: FR
         cabinet_results: Resultados de gabinete
@@ -367,7 +367,7 @@ es-MX:
       patient:
         create: Registrar Paciente
         update: Actualizar Paciente
-      appoinment:
+      appointment:
         create: Registrar Consulta
         update: Actualizar Consulta
       hospitalization:

@@ -1,0 +1,3 @@
+= render 'patients/clinic_history', patient: patient if patient&.present?
+
+= render 'patients/appointments', appointments: appointments if appointments&.any?
