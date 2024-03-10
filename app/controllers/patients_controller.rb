@@ -20,7 +20,6 @@ class PatientsController < ApplicationController
     @patient = Patient.new patient_params
 
     if @patient.save
-      @patient.avatar.attach(params[:patient][:avatar])
       current_user.patients << @patient
       redirect_to patient_path(@patient), notice: "Paciente creado correctamente."
     else

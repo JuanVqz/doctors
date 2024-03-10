@@ -272,6 +272,7 @@ es-MX:
     attributes:
       user:
         active: Si
+        avatar: Foto
         allergies: Alergias
         birthday: Edad
         blood_group: Grupo Sanguíneo
