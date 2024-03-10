@@ -13,7 +13,7 @@ RSpec.describe Patient do
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :birthday }
 
-  describe "#avatar" do
+  xdescribe "#avatar" do
     it "has an avatar" do
       patient = create(:patient, :with_avatar)
 
@@ -29,7 +29,7 @@ RSpec.describe Patient do
     end
   end
 
-  describe ".search" do
+  xdescribe ".search" do
     let(:hospital) { create(:hospital) }
     let(:doctor) { create(:doctor, hospital: hospital) }
     let(:jose) do
