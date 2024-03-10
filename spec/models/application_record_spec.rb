@@ -11,12 +11,12 @@ RSpec.describe ApplicationRecord do
       end
     end
 
-    context "with Appoinment" do
-      let(:appoinment) { create(:appoinment) }
-      let(:appoinment_old) { create(:appoinment, created_at: 2.days.ago) }
+    context "with Appointment" do
+      let(:appointment) { create(:appointment) }
+      let(:appointment_old) { create(:appointment, created_at: 2.days.ago) }
 
-      it "returns newest appoinment first" do
-        expect(Appoinment.recent).to eq [appoinment, appoinment_old]
+      it "returns newest appointment first" do
+        expect(Appointment.recent).to eq [appointment, appointment_old]
       end
     end
 

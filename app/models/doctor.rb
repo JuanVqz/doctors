@@ -1,6 +1,6 @@
 class Doctor < User
   has_and_belongs_to_many :patients, join_table: "doctors_patients"
-  has_many :appoinments
+  has_many :appointments
   has_many :hospitalizations, -> { order(created_at: :desc) }
   has_many :referred_doctors
 

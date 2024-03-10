@@ -1,0 +1,27 @@
+= render 'shared/section' do
+  .flex.flex-col.md:flex-row.md:justify-between
+    = render 'shared/actions', model: :appointment, search_path: appointments_path
+
+= render 'shared/section' do
+  = render 'shared/table' do
+    %thead.border-b.border-gray-300.dark:border-gray-700.text-gray-400
+      %tr
+        %th.py-2{scope: :col}= t('.patient')
+        %th.py-2{scope: :col}= t('.reason')
+        %th.py-2{scope: :col}= t('.created_at')
+        %th.py-2.text-center{scope: :col}= t('.actions')
+    %tbody
+      - @appointments.each do |appointment|
+        %tr.hover:bg-gray-200.dark:hover:bg-gray-700
+          %td.py-2.whitespace-nowrap= appointment.patient
+          %td.py-2.whitespace-nowrap= truncate(appointment.reason, lenght: 50)
+          %td.py-2.whitespace-nowrap= appointment.created_at.to_date
+          %td.py-2.whitespace-nowrap
+            .flex.flex-row.justify-center.gap-2
+              = link_to appointment_path(appointment, format: :pdf), 'data-tooltip': t('tooltips.defaults.print'), class: "#{secondary_button} tooltip tooltip-top", target: :_blank do
+                %span.fa.fa-print.text-red-600
+              = link_to edit_appointment_path(appointment), 'data-tooltip': t('tooltips.defaults.edit'), class: "#{secondary_button} tooltip tooltip-top" do
+                %span.fa.fa-edit.text-yellow-600
+              = link_to appointment, 'data-tooltip': t('tooltips.defaults.details'), class: "#{secondary_button} tooltip tooltip-top" do
+                %span.fa.fa-eye.text-sky-600
+  = render 'shared/pagination', pagy: @pagy

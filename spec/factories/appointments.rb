@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :appoinment do
+  factory :appointment do
     sequence(:reason) { |n| "Motivo #{n}" }
     note { "MyText" }
     sequence(:prescription) { |n| "Prescription #{n}" }
@@ -17,19 +17,19 @@ FactoryBot.define do
     cabinet_results { "MyText" }
     histopathology { "MyText" }
 
-    after :build do |appoinment|
-      appoinment.doctor = create :doctor if appoinment.doctor.nil?
-      if appoinment.patient.nil?
-        appoinment.patient = create :patient, doctors: [appoinment.doctor]
+    after :build do |appointment|
+      appointment.doctor = create :doctor if appointment.doctor.nil?
+      if appointment.patient.nil?
+        appointment.patient = create :patient, doctors: [appointment.doctor]
       end
     end
 
     trait :with_files do
-      after :create do |appoinment|
+      after :create do |appointment|
         cv1_path = Rails.root.join("spec/fixtures/files/cv.pdf")
         cv2_path = Rails.root.join("spec/fixtures/files/cv.pdf")
-        appoinment.files.attach(io: File.open(cv1_path), filename: "cv.pdf", content_type: "application/pdf")
-        appoinment.files.attach(io: File.open(cv2_path), filename: "cv.pdf", content_type: "application/pdf")
+        appointment.files.attach(io: File.open(cv1_path), filename: "cv.pdf", content_type: "application/pdf")
+        appointment.files.attach(io: File.open(cv2_path), filename: "cv.pdf", content_type: "application/pdf")
       end
     end
   end

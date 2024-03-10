@@ -1,6 +1,6 @@
 -# frozen_string_literal: true
 
-= simple_form_for(appoinment, html: { class: 'pt-4' }) do |f|
+= simple_form_for(appointment, html: { class: 'pt-4' }) do |f|
   = render 'shared/title', title: title
 
   .grid.gap-2.grid-cols-1.md:grid-cols-2
@@ -32,7 +32,7 @@
     = f.input :cost, hint: t('simple_form.hint.defaults.cost')
 
   .grid.gap-2.grid-cols-1
-    - appoinment.files.each do |file|
+    - appointment.files.each do |file|
       = f.input :files, as: :hidden, input_html: { multiple: true, value: file.signed_id }
     = f.input :files, input_html: { multiple: true }
 

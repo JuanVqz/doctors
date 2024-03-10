@@ -45,35 +45,35 @@
 <div class="alwaysbreak"></div>
 <% end %>
 
-<% @appoinments.each do |appoinment| %>
+<% @appointments.each do |appointment| %>
   <table class="table nobreak">
     <thead>
-      <tr><th><%= t("activerecord.attributes.appoinment.created_at") %></th></tr>
-      <tr><td><%= l appoinment.created_at, format: :long %></td></tr>
+      <tr><th><%= t("activerecord.attributes.appointment.created_at") %></th></tr>
+      <tr><td><%= l appointment.created_at, format: :long %></td></tr>
 
-      <tr><th><%= t("activerecord.attributes.appoinment.patient") %></th></tr>
+      <tr><th><%= t("activerecord.attributes.appointment.patient") %></th></tr>
       <tr><td><%= @patient %> - <%= age_months(@patient) %></td></tr>
 
-      <tr><th><%= t("activerecord.attributes.appoinment.reason") %></th></tr>
-      <tr><td><%= appoinment.reason %></td></tr>
+      <tr><th><%= t("activerecord.attributes.appointment.reason") %></th></tr>
+      <tr><td><%= appointment.reason %></td></tr>
 
-      <tr><th><%= t("activerecord.attributes.appoinment.note") %></th></tr>
-      <tr><td><%= raw sanitize appoinment.note %></td></tr>
+      <tr><th><%= t("activerecord.attributes.appointment.note") %></th></tr>
+      <tr><td><%= raw sanitize appointment.note %></td></tr>
 
-      <tr><th><%= t("activerecord.attributes.appoinment.prescription") %></th></tr>
-      <tr><td><%= raw sanitize appoinment.prescription %></td></tr>
+      <tr><th><%= t("activerecord.attributes.appointment.prescription") %></th></tr>
+      <tr><td><%= raw sanitize appointment.prescription %></td></tr>
 
-      <tr><th><%= t("activerecord.attributes.appoinment.recommendations") %></th></tr>
-      <tr><td><%= raw appoinment.recommendations %></td></tr>
+      <tr><th><%= t("activerecord.attributes.appointment.recommendations") %></th></tr>
+      <tr><td><%= raw appointment.recommendations %></td></tr>
 
-      <% if appoinment.cabinet_results.present? %>
-        <tr><th><%= t("activerecord.attributes.appoinment.cabinet_results") %></th></tr>
-        <tr><td><%= appoinment.cabinet_results %></td></tr>
+      <% if appointment.cabinet_results.present? %>
+        <tr><th><%= t("activerecord.attributes.appointment.cabinet_results") %></th></tr>
+        <tr><td><%= appointment.cabinet_results %></td></tr>
       <% end %>
 
-      <% if appoinment.histopathology.present? %>
-        <tr><th><%= t("activerecord.attributes.appoinment.histopathology") %></th></tr>
-        <tr><td><%= appoinment.histopathology %></td></tr>
+      <% if appointment.histopathology.present? %>
+        <tr><th><%= t("activerecord.attributes.appointment.histopathology") %></th></tr>
+        <tr><td><%= appointment.histopathology %></td></tr>
       <% end %>
 
       <tr>
@@ -81,61 +81,61 @@
           <table class="table">
             <thead>
               <tr>
-                <% if appoinment.height.present? && !appoinment.height.zero? %>
-                  <th><%= t("activerecord.attributes.appoinment.height") %></th>
+                <% if appointment.height.present? && !appointment.height.zero? %>
+                  <th><%= t("activerecord.attributes.appointment.height") %></th>
                 <% end %>
-                <% if appoinment.weight.present? && !appoinment.weight.zero? %>
-                  <th><%= t("activerecord.attributes.appoinment.weight") %></th>
+                <% if appointment.weight.present? && !appointment.weight.zero? %>
+                  <th><%= t("activerecord.attributes.appointment.weight") %></th>
                 <% end %>
-                <% if appoinment.imc.present? %>
-                  <th><%= t("activerecord.attributes.appoinment.imc") %></th>
+                <% if appointment.imc.present? %>
+                  <th><%= t("activerecord.attributes.appointment.imc") %></th>
                 <% end %>
-                <% if appoinment.blood_pressure.present? %>
-                  <th><%= t("activerecord.attributes.appoinment.blood_pressure") %></th>
+                <% if appointment.blood_pressure.present? %>
+                  <th><%= t("activerecord.attributes.appointment.blood_pressure") %></th>
                 <% end %>
-                <% unless appoinment.heart_rate.zero? %>
-                  <th><%= t("activerecord.attributes.appoinment.heart_rate") %></th>
+                <% unless appointment.heart_rate.zero? %>
+                  <th><%= t("activerecord.attributes.appointment.heart_rate") %></th>
                 <% end %>
-                <% unless appoinment.breathing_rate.zero? %>
-                  <th><%= t("activerecord.attributes.appoinment.breathing_rate") %></th>
+                <% unless appointment.breathing_rate.zero? %>
+                  <th><%= t("activerecord.attributes.appointment.breathing_rate") %></th>
                 <% end %>
-                <% unless appoinment.temperature.zero? %>
-                  <th><%= t("activerecord.attributes.appoinment.temperature") %></th>
+                <% unless appointment.temperature.zero? %>
+                  <th><%= t("activerecord.attributes.appointment.temperature") %></th>
                 <% end %>
-                <% unless appoinment.glycaemia.zero? %>
-                  <th><%= t("activerecord.attributes.appoinment.glycaemia") %></th>
+                <% unless appointment.glycaemia.zero? %>
+                  <th><%= t("activerecord.attributes.appointment.glycaemia") %></th>
                 <% end %>
-                <% unless appoinment.sat_02.zero? %>
-                  <th><%= t("activerecord.attributes.appoinment.sat_02") %></th>
+                <% unless appointment.sat_02.zero? %>
+                  <th><%= t("activerecord.attributes.appointment.sat_02") %></th>
                 <% end %>
               </tr>
               <tr>
-                <% if appoinment.height.present? && !appoinment.height.zero? %>
-                  <td><%= appoinment.height %> cm.</td>
+                <% if appointment.height.present? && !appointment.height.zero? %>
+                  <td><%= appointment.height %> cm.</td>
                 <% end %>
-                <% if appoinment.weight.present? && !appoinment.weight.zero? %>
-                  <td><%= appoinment.weight %> kg.</td>
+                <% if appointment.weight.present? && !appointment.weight.zero? %>
+                  <td><%= appointment.weight %> kg.</td>
                 <% end %>
-                <% if appoinment.imc.present? %>
-                  <td><%= number_with_precision(appoinment.imc, precision: 2) %></td>
+                <% if appointment.imc.present? %>
+                  <td><%= number_with_precision(appointment.imc, precision: 2) %></td>
                 <% end %>
-                <% if appoinment.blood_pressure.present? %>
-                  <td><%= appoinment.blood_pressure %></td>
+                <% if appointment.blood_pressure.present? %>
+                  <td><%= appointment.blood_pressure %></td>
                 <% end %>
-                <% unless appoinment.heart_rate.zero? %>
-                  <td><%= number_with_precision(appoinment.heart_rate, precision: 2) %></td>
+                <% unless appointment.heart_rate.zero? %>
+                  <td><%= number_with_precision(appointment.heart_rate, precision: 2) %></td>
                 <% end %>
-                <% unless appoinment.breathing_rate.zero? %>
-                  <td><%= number_with_precision(appoinment.breathing_rate, precision: 2) %></td>
+                <% unless appointment.breathing_rate.zero? %>
+                  <td><%= number_with_precision(appointment.breathing_rate, precision: 2) %></td>
                 <% end %>
-                <% unless appoinment.temperature.zero? %>
-                  <td><%= temperature appoinment %></td>
+                <% unless appointment.temperature.zero? %>
+                  <td><%= temperature appointment %></td>
                 <% end %>
-                <% unless appoinment.glycaemia.zero? %>
-                  <td><%= appoinment.glycaemia %></td>
+                <% unless appointment.glycaemia.zero? %>
+                  <td><%= appointment.glycaemia %></td>
                 <% end %>
-                <% unless appoinment.sat_02.zero? %>
-                  <td><%= appoinment.sat_02 %></td>
+                <% unless appointment.sat_02.zero? %>
+                  <td><%= appointment.sat_02 %></td>
                 <% end %>
               </tr>
             </thead>

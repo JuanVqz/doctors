@@ -1,24 +1,24 @@
 <div class="header text-size-11 text-right">
-  <strong class="text-uppercase"><%= @appoinment.patient %></strong>
+  <strong class="text-uppercase"><%= @appointment.patient %></strong>
 
   <div>
-    <%= age @appoinment.patient %>
-    <% if @appoinment.height.present? %>
-      <%= @appoinment.height %> cm.
+    <%= age @appointment.patient %>
+    <% if @appointment.height.present? %>
+      <%= @appointment.height %> cm.
     <% end %>
-    <% if @appoinment.weight.present? %>
-      <%= @appoinment.weight %> kg.
+    <% if @appointment.weight.present? %>
+      <%= @appointment.weight %> kg.
     <% end %>
-    <% if @appoinment.imc.present? %>
-      IMC <%= number_with_precision(@appoinment.imc, precision: 2) %>
+    <% if @appointment.imc.present? %>
+      IMC <%= number_with_precision(@appointment.imc, precision: 2) %>
     <% end %>
   </div>
 
   <div>
-    <%= l @appoinment.created_at, format: :normal %>
+    <%= l @appointment.created_at, format: :normal %>
   </div>
 </div>
 
 <div class="text-size-11" style="padding-top:40px">
-  <%= raw @appoinment.prescription %>
+  <%= raw @appointment.prescription %>
 </div>
