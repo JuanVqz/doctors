@@ -38,9 +38,7 @@ RSpec.describe "appoinments", type: :request do
 
   describe "POST /appoinments" do
     context "with valid params" do
-      let(:valid_attributes) do
-        attributes_for(:appoinment)
-      end
+      let(:valid_attributes) { attributes_for(:appoinment) }
       let(:file) { fixture_file_upload("patients.png", "image/png") }
 
       it "creates a new appoinment" do
@@ -56,6 +54,17 @@ RSpec.describe "appoinments", type: :request do
           post appoinments_path, params: params
         }.to change(Appoinment, :count).by(1)
           .and change(ActiveStorage::Attachment, :count).by(1)
+      end
+    end
+
+    context "with invalid params" do
+      let(:invalid_attributes) { attributes_for(:appoinment, reason: nil) }
+
+      it "does not create a new appoinment" do
+        params = {appoinment: invalid_attributes}
+        expect {
+          post appoinments_path, params: params
+        }.to change(Appoinment, :count).by(0)
       end
     end
   end
