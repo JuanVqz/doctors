@@ -3,11 +3,14 @@ require "rails_helper"
 RSpec.describe Appointment do
   it { should belong_to :doctor }
   it { should belong_to :patient }
+  it { should belong_to :hospital }
   it { should have_many_attached :files }
 
   it { should validate_presence_of :reason }
   it { should validate_presence_of :prescription }
-  it { should validate_presence_of :patient_id }
+  it { should validate_presence_of :doctor }
+  it { should validate_presence_of :patient }
+  it { should validate_presence_of :hospital }
   it { should validate_numericality_of(:heart_rate).is_greater_than_or_equal_to 0 }
   it { should validate_numericality_of(:breathing_rate).is_greater_than_or_equal_to 0 }
   it { should validate_numericality_of(:temperature).is_greater_than_or_equal_to 0 }
@@ -29,7 +32,7 @@ RSpec.describe Appointment do
       expect(appointment).to be_valid
       expect(appointment.files).not_to be_attached
     end
-  end # describe #file
+  end
 
   describe "#update_patient" do
     let(:patient) { create(:patient, height: 160, weight: 60) }
@@ -54,27 +57,25 @@ RSpec.describe Appointment do
   end
 
   describe ".search" do
+    let(:hospital) { create(:hospital) }
     let(:mateo) do
-      create(:patient, name: "Mateo", first_name: "Pérez", last_name: "Toledo")
+      create(:patient, name: "Mateo", first_name: "Pérez", last_name: "Toledo", hospital: hospital)
     end
 
     let(:josue) do
-      create(:patient, name: "Josue", first_name: "Alvarez", last_name: "Suarez")
+      create(:patient, name: "Josue", first_name: "Alvarez", last_name: "Suarez", hospital: hospital)
     end
 
     let!(:appointment) do
-      create(:appointment, reason: "Motivo 1", note: "Diagnostico 1",
-        prescription: "Receta 1", patient: mateo)
+      create(:appointment, reason: "Motivo 1", note: "Diagnostico 1", prescription: "Receta 1", patient: mateo, hospital: hospital)
     end
 
     let!(:appoinment_two) do
-      create(:appointment, reason: "Otra cosa", note: "Practica",
-        prescription: "Persona", patient: josue)
+      create(:appointment, reason: "Otra cosa", note: "Practica", prescription: "Persona", patient: josue, hospital: hospital)
     end
 
     let!(:appoinment_tree) do
-      create(:appointment, reason: "Mi razón", note: "Practica",
-        prescription: "Imprimir", patient: mateo)
+      create(:appointment, reason: "Mi razón", note: "Practica", prescription: "Imprimir", patient: mateo, hospital: hospital)
     end
 
     context "search by reason, note or prescription" do
@@ -93,21 +94,22 @@ RSpec.describe Appointment do
   end
 
   describe "returns appointment" do
-    let(:doctor_one) { create(:doctor, name: "Pedro") }
-    let(:doctor_two) { create(:doctor, name: "José") }
+    let(:hospital) { create(:hospital) }
+    let(:doctor_one) { create(:doctor, name: "Pedro", hospital: hospital) }
+    let(:doctor_two) { create(:doctor, name: "José", hospital: hospital) }
 
     let(:patient_one) do
-      create(:patient, name: "Ramon", doctors: [doctor_one, doctor_two])
+      create(:patient, name: "Ramon", doctors: [doctor_one, doctor_two], hospital: hospital)
     end
     let(:patient_two) do
-      create(:patient, name: "Julian", doctors: [doctor_one, doctor_two])
+      create(:patient, name: "Julian", doctors: [doctor_one, doctor_two], hospital: hospital)
     end
 
     let!(:appoinment_doctor_one) do
-      create_list(:appointment, 5, doctor: doctor_one, patient: patient_one)
+      create_list(:appointment, 5, doctor: doctor_one, patient: patient_one, hospital: hospital)
     end
     let!(:appoinment_doctor_two) do
-      create_list(:appointment, 3, doctor: doctor_two, patient: patient_two)
+      create_list(:appointment, 3, doctor: doctor_two, patient: patient_two, hospital: hospital)
     end
 
     it ".per_doctor" do
