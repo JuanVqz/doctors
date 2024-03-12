@@ -1,5 +1,4 @@
 class Appointment < ApplicationRecord
-  self.table_name = :appoinments
   belongs_to :doctor
   belongs_to :patient
 
