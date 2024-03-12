@@ -6,7 +6,7 @@
       %summary.text-sm.font-medium.cursor-pointer
         = appointment.reason
         .font-light.text-right= appointment.created_at.to_date
-      - appointment.attributes.slice('note', 'prescription', 'recommendations').map do |key, value|
+      - appointment.attributes.slice('note', 'prescription', 'recommendations', 'height', 'weight').map do |key, value|
         - if value.present?
           .text-gray-400.my-2= t("activerecord.attributes.appointment.#{key}")
           .text-base= raw value
