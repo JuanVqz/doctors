@@ -3,12 +3,8 @@ require "rails_helper"
 RSpec.describe "appointments", type: :request do
   let(:hospital) { create(:hospital, :basic) }
   let(:doctor) { create(:doctor, hospital: hospital) }
-  let(:patient) do
-    create(:patient, doctors: [doctor], hospital: hospital)
-  end
-  let(:appointment) do
-    create(:appointment, doctor: doctor, patient: patient)
-  end
+  let(:patient) { create(:patient, doctors: [doctor], hospital: hospital) }
+  let(:appointment) { create(:appointment, doctor: doctor, patient: patient) }
 
   before do
     allow_any_instance_of(ApplicationController).to receive(:current_hospital).and_return hospital
@@ -43,16 +39,16 @@ RSpec.describe "appointments", type: :request do
 
       it "creates a new appointment" do
         params = {appointment: valid_attributes.merge(patient_id: patient.id)}
-        expect {
+        expect do
           post appointments_path, params: params
-        }.to change(Appointment, :count).by(1)
+        end.to change(Appointment, :count).by(1)
       end
 
       it "creates with files" do
         params = {appointment: valid_attributes.merge(patient_id: patient.id, files: [file])}
-        expect {
+        expect do
           post appointments_path, params: params
-        }.to change(Appointment, :count).by(1)
+        end.to change(Appointment, :count).by(1)
           .and change(ActiveStorage::Attachment, :count).by(1)
       end
     end
@@ -62,9 +58,9 @@ RSpec.describe "appointments", type: :request do
 
       it "does not create a new appointment" do
         params = {appointment: invalid_attributes}
-        expect {
+        expect do
           post appointments_path, params: params
-        }.to change(Appointment, :count).by(0)
+        end.to change(Appointment, :count).by(0)
       end
     end
   end
@@ -80,17 +76,17 @@ RSpec.describe "appointments", type: :request do
     it "destroy an appointment" do
       appointment = create(:appointment)
 
-      expect {
+      expect do
         delete appointment_path(appointment)
-      }.to change(Appointment, :count).by(-1)
+      end.to change(Appointment, :count).by(-1)
     end
 
     it "destroy an appointment and files" do
       appointment = create(:appointment, :with_files)
 
-      expect {
+      expect do
         delete appointment_path(appointment)
-      }.to change { appointment.files.count }.from(2).to(0)
+      end.to change { appointment.files.count }.from(2).to(0)
     end
   end
 end

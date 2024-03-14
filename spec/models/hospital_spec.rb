@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Hospital do
+  it { should have_many(:appointments).dependent(:destroy) }
   it { should have_many(:doctors).dependent(:destroy) }
   it { should have_many(:patient_referrals).dependent(:destroy) }
   it { should have_many(:patients).dependent(:destroy) }

@@ -1,6 +1,7 @@
 class Hospital < ApplicationRecord
   enum plan: {basic: 0, medium: 1}
 
+  has_many :appointments, dependent: :destroy
   has_many :doctors, dependent: :destroy
   has_many :patient_referrals, dependent: :destroy
   has_many :patients, dependent: :destroy

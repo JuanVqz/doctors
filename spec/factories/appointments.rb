@@ -16,13 +16,9 @@ FactoryBot.define do
     cost { 1.5 }
     cabinet_results { "MyText" }
     histopathology { "MyText" }
-
-    after :build do |appointment|
-      appointment.doctor = create :doctor if appointment.doctor.nil?
-      if appointment.patient.nil?
-        appointment.patient = create :patient, doctors: [appointment.doctor]
-      end
-    end
+    doctor
+    patient
+    hospital
 
     trait :with_files do
       after :create do |appointment|

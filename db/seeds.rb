@@ -112,7 +112,9 @@ doctors.each do |doctor|
         reason: FFaker::Lorem.phrase, note: FFaker::HTMLIpsum.p,
         prescription: FFaker::Lorem.paragraph, recommendations: FFaker::Lorem.paragraph,
         created_at: FFaker::Time.between(10.years.ago, 2.months.ago),
-        doctor: doctor, patient: patient
+        doctor: doctor,
+        patient: patient,
+        hospital: doctor.hospital
       )
     end
   end

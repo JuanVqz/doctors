@@ -72,9 +72,12 @@ class AppointmentsController < ApplicationController
   end
 
   def appoinment_params
-    params.require(:appointment).permit(:reason, :note, :prescription,
-      :recommendations, :patient_id, :imc, :weight, :height, :blood_pressure,
-      :heart_rate, :breathing_rate, :temperature, :glycaemia, :sat_02, :cost,
-      :cabinet_results, :histopathology, files: [])
+    params.require(:appointment)
+      .permit(
+        :reason, :note, :prescription,
+        :recommendations, :patient_id, :imc, :weight, :height, :blood_pressure,
+        :heart_rate, :breathing_rate, :temperature, :glycaemia, :sat_02, :cost,
+        :cabinet_results, :histopathology, files: []
+      ).with_defaults(hospital_id: current_hospital.id)
   end
 end
