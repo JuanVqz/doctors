@@ -1,0 +1,3 @@
+= render 'patients/information/info', patient: patient if patient&.present?
+
+= render 'patients/information/appointments', appointments: appointments if appointments&.any?

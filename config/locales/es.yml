@@ -11,8 +11,11 @@ es-MX:
       title: Historial Clínico
     address:
       title: Dirección
-    appointments:
-      see_more: Ver más
+    information:
+      info:
+        title: Información del Paciente
+      appointments:
+        see_appointment: Ver consulta completa
   shared:
     actions:
       register: Registrar %{model}
