@@ -16,5 +16,5 @@ application.register('search', SearchController)
 import SidebarController from './sidebar_controller'
 application.register('sidebar', SidebarController)
 
-import PatientInformationController from './patient_information_controller'
-application.register('patient-information', PatientInformationController)
+import PatientsInformationController from './patients/information_controller'
+application.register('patients--information', PatientsInformationController)
