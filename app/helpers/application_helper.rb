@@ -10,7 +10,7 @@ module ApplicationHelper
       current_hospital
         .patients
         .order(name: :asc, first_name: :asc, last_name: :asc)
-        .map { |p| [p, p.id] }
+        .map { |u| [u.to_s, u.id] }
   end
 
   def referred_doctor_for_select
@@ -18,7 +18,7 @@ module ApplicationHelper
       ReferredDoctor
         .by_doctor(current_user.id)
         .order(full_name: :asc)
-        .map { |p| [p, p.id] }
+        .map { |u| [u.to_s, u.id] }
   end
 
   def states_for_select
