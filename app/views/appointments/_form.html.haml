@@ -8,7 +8,7 @@
       collection: patients_for_select,
       default: params[:patient_id],
       prompt: true,
-      input_html: { data: { controller: "patient-information", action: "change->patient-information#fetch" } }
+      input_html: { data: { controller: "patients--information", action: "change->patients--information#fetch" } }
     = f.input :reason
 
   = f.input :note, as: :trix_editor
