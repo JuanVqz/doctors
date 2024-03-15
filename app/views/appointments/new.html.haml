@@ -6,6 +6,6 @@
 
 = render 'shared/section' do
   = turbo_frame_tag :patient_information, class: 'hidden space-y-4' do
-    = render 'appointments/patient_information', patient: @patient, appointments: @appointments
+    = render 'patients/information/index', patient: @patient, appointments: @appointments
 
   = render 'form', appointment: @appointment, title: t('helpers.submit.appointment.create')
