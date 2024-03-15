@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     end
     resources :referred_doctors
 
+    authenticate :user, ->(u) { u.admin? } do
+      mount Coverband::Reporters::Web.new, at: "/coverage"
+    end
     root to: "main#hospital"
   end
 
