@@ -325,6 +325,7 @@ es-MX:
         imc: IMC
         note: Anotación
         patient: Paciente
+        patient_id: Paciente
         prescription: Tratamiento
         reason: Motivo
         recommendations: Recomendaciones
