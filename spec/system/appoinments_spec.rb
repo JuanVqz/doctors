@@ -50,7 +50,7 @@ RSpec.describe "Medical Consultations flow", type: :system do
       end
     end
 
-    scenario "can action some pages" do
+    scenario "can visit some pages" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
       patient = create(:patient, doctors: [@admin], hospital: @hospital)

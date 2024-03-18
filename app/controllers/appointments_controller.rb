@@ -1,19 +1,21 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_appoinment, only: [:show, :edit, :update, :destroy]
+  before_action :set_appoinment, only: %i[edit update destroy]
 
   def index
     @pagy, @appointments = pagy(Appointment.includes(:patient).per_doctor(current_user.id).search(params[:query]).recent)
   end
 
   def show
+    @appointment = Appointment.includes(:patient, files_attachments: :blob).find(params[:id])
+
     respond_to do |format|
       format.html
-      format.pdf {
+      format.pdf do
         render pdf: prescription_name,
           template: "pdfs/prescription_#{current_hospital.subdomain}",
           layout: "pdfs/prescription"
-      }
+      end
     end
   end
 
