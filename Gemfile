@@ -7,6 +7,7 @@ gem "bootsnap", require: false
 gem "coverband"
 gem "devise"
 gem "haml-rails"
+gem "hotwire_combobox"
 gem "pagy"
 gem "pg"
 gem "puma"
