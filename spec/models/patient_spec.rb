@@ -29,7 +29,7 @@ RSpec.describe Patient do
     end
   end
 
-  xdescribe ".search" do
+  describe ".search" do
     let(:hospital) { create(:hospital) }
     let(:doctor) { create(:doctor, hospital: hospital) }
     let(:jose) do

@@ -4,7 +4,7 @@
   - patient.attributes.slice('occupation', 'name', 'first_name', 'last_name', 'birthday', 'height', 'weight', 'blood_group', 'place_of_birth', 'marital_status', 'sex', 'referred_by', 'comments').map do |key, value|
     - if value.present?
       %dl
-        %dt.text-sm.text-gray-400.my-2= t("activerecord.attributes.user.#{key}")
+        %dt.text-gray-400.my-2= t("activerecord.attributes.user.#{key}")
         - if key.eql?('birthday')
           %dd= age_months patient
         - elsif key.eql?('height')

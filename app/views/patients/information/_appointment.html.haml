@@ -1,0 +1,14 @@
+%details.border.border-gray-300.dark:border-gray-700.p-1.rounded.hover:bg-gray-200.dark:hover:bg-gray-700{ name: :appointment }
+  %summary.text-sm.cursor-pointer
+    = appointment.reason
+    .font-light.text-right= appointment.created_at.to_date
+  - appointment.attributes.slice('note', 'prescription', 'recommendations', 'weight').map do |key, value|
+    - if value.present?
+      .text-gray-400.my-2= t("activerecord.attributes.appointment.#{key}")
+      - if key.eql?('weight')
+        = weight_for_human(appointment)
+      - else
+        = raw value
+  .text-base.pt-4
+    = link_to appointment_path(appointment), class: 'text-blue-600 dark:text-blue-500 hover:underline', target: :_blank do
+      = t('.see_appointment')
