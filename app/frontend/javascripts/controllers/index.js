@@ -18,3 +18,6 @@ application.register('sidebar', SidebarController)
 
 import PatientsInformationController from './patients/information_controller'
 application.register('patients--information', PatientsInformationController)
+
+import HwComboboxController from "@josefarias/hotwire_combobox"
+application.register("hw-combobox", HwComboboxController)
