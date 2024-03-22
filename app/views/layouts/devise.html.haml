@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    = render "layouts/partials/head"
+    = render "layouts/head"
   %body
     %section.bg-gray-50.dark:bg-gray-900
       .flex.flex-col.items-center.justify-center.px-6.py-8.mx-auto.md:h-screen.lg:py-0
@@ -10,4 +10,4 @@
             %h1.text-xl.font-bold.leading-tight.tracking-tight.text-gray-900.md:text-2xl.dark:text-white
               Iniciar sesión en su cuenta
             = yield
-            = render "layouts/partials/flash"
+            = render "layouts/flash"

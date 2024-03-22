@@ -66,13 +66,12 @@ es-MX:
     hospitalizations:
       new: Nueva Hospitalización
   layouts:
-    partials:
-      sidebar:
-       patients: Pacientes
-       appointments: Consultas
-       hospitalizations: Hospitalizaciónes
-       patient_referrals: Referencias
-       referred_doctors: Doctores
+    sidebar:
+      patients: Pacientes
+      appointments: Consultas
+      hospitalizations: Hospitalizaciónes
+      patient_referrals: Referencias
+      referred_doctors: Doctores
 
   date:
     abbr_day_names:
