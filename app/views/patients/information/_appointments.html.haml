@@ -1,15 +1,4 @@
 = render "shared/title", title: t('tooltips.appointments.previous')
 
 %section.space-y-2
-  - appointments.each do |appointment|
-    %details.border.border-gray-300.dark:border-gray-700.p-1.rounded.hover:bg-gray-200.dark:hover:bg-gray-700{ name: :appointment }
-      %summary.text-sm.font-medium.cursor-pointer
-        = appointment.reason
-        .font-light.text-right= appointment.created_at.to_date
-      - appointment.attributes.slice('note', 'prescription', 'recommendations', 'height', 'weight').map do |key, value|
-        - if value.present?
-          .text-gray-400.my-2= t("activerecord.attributes.appointment.#{key}")
-          .text-base= raw value
-      .text-base.pt-4
-        = link_to appointment_path(appointment), class: 'text-blue-600 dark:text-blue-500 hover:underline', target: :_blank do
-          = t('.see_appointment')
+  = render partial: 'patients/information/appointment', collection: appointments
