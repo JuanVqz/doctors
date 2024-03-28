@@ -7,7 +7,7 @@ class Doctor < User
   validates :name, :first_name, :last_name, :specialty, presence: true
   validate :role_error_message, if: :role_is_patient?
 
-  delegate :subdomain, to: :hospital, prefix: true, allow_nil: true
+  delegate :subdomain, to: :hospital, prefix: true
 
   def role_is_patient?
     patient?

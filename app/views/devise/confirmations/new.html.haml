@@ -1,0 +1,10 @@
+= render 'devise/shared/title', title: t('.title')
+
+= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+  = f.full_error :confirmation_token
+
+  = f.input :email, label: false, required: true, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), placeholder: t('.email'), input_html: { autocomplete: :email }
+
+  = f.button :submit, t('.button')
+
+= render 'devise/shared/links'
