@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     authenticate :user, ->(u) { u.admin? } do
       mount Coverband::Reporters::Web.new, at: "/coverage"
     end
+
+    devise_for :users
     root to: "main#hospital"
   end
-
-  devise_for :users
 end
