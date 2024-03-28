@@ -1,6 +1,6 @@
 = render 'shared/section' do
   .flex.flex-col.md:flex-row.space-y-2.md:space-y-0.md:space-x-2
-    = link_to :hospitalizations, class: secondary_button do
+    = link_to :back, class: secondary_button do
       %span.fa.fa-arrow-left
       %span= t('.back')
     = link_to edit_hospitalization_path(@hospitalization), 'data-tooltip': t('tooltips.defaults.edit'), class: "#{secondary_button} tooltip tooltip-top" do
