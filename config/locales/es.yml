@@ -277,25 +277,26 @@ es-MX:
         avatar: Foto
         allergies: Alergias
         birthday: Edad
-        blood_group: Grupo Sanguíneo
-        cellphone: Número Telefónico
+        blood_group: Grupo sanguíneo
+        cellphone: Número telefónico
         comments: Comentarios
-        email: Correo Electrónico
+        email: Correo electrónico
         family_inheritance_background: Antecedentes heredo-familiares
         first_name: Apellido Paterno
         gyneco_obstetric_background: Antecedentes gineco-obstetricos
         height: Altura
-        last_name: Apellido Materno
-        marital_status: Estado Civil
+        last_name: Apellido materno
+        marital_status: Estado civil
         name: Nombre
         non_pathological_background: Antecedentes personales no patológicos
         occupation: Ocupación
-        other_background: Otros Motivos
+        other_background: Otros motivos
         password: Contraseña
+        password_confirmation: La nueva contraseña
         pathological_background: Antecedentes personales patológicos
         physic_exploration: Exploración fisica
         place_of_birth: Lugar de Nacimiento
-        professional_card: Cédula Profesional
+        professional_card: Cédula profesional
         referred_by: Referido por
         role: Rol
         sex: Sexo
@@ -307,7 +308,7 @@ es-MX:
         country: País
         municipality: Municipio
         number: Número
-        postal_code: Código Postal
+        postal_code: Código postal
         state: Estado
         street: Calle
       appointment:
@@ -355,7 +356,7 @@ es-MX:
         subject: Motivo de envío
       referred_doctor:
         full_name: Nombre completo
-        phone_number: Número Teléfonico
+        phone_number: Número teléfonico
         specialty: Especialidad
   #     hospital:
   #       name: "Nombre"

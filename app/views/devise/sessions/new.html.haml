@@ -1,0 +1,10 @@
+= render 'devise/shared/title', title: t('.title')
+
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'space-y-4 md:space-y-6' }) do |f|
+  = f.input :email, label: false, autofocus: true, placeholder: t('.email'), input_html: { autocomplete: :email }
+
+  = f.input :password, label: false, placeholder: t('.password'), input_html: { autocomplete: 'current-password' }
+
+  = f.button :submit, t('.title')
+
+= render 'devise/shared/links'

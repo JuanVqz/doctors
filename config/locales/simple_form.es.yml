@@ -6,15 +6,16 @@ es-MX:
       # text: "required"
       # mark: "*"
       html: '<abbr title="required" class="text-red-500 no-underline">*</abbr>'
+    error_notification:
+      default_message: "Por favor revisa los campos marcados en rojo:"
     labels:
       user: &user_labels
         active: Si
         allergies: Alergias
         birthday: Fecha de cumpleaños
         blood_group: Grupo Sanguíneo
-        cellphone: Número Telefónico
         comments: Comentarios
-        email: Correo Electrónico
+        email: Correo electrónico
         family_inheritance_background: Antecedentes heredo-familiares
         first_name: Apellido Paterno
         gyneco_obstetric_background: Antecedentes gineco-obstetricos
@@ -26,7 +27,7 @@ es-MX:
         occupation: Ocupación
         other_background: Otros Motivos
         password: Contraseña
-        password_confirmation: Confirmar Contraseña
+        password_confirmation: Confirmación de contraseña
         pathological_background: Antecedentes personales patológicos
         physic_exploration: Exploración fisica
         place_of_birth: Lugar de Nacimiento

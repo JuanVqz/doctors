@@ -1,7 +1,7 @@
 - unless flash.empty?
   - if flash[:notice]
-    .py-4.text-sm.text-green-800.rounded-lg.bg-green-50.dark:bg-gray-800.dark:text-green-400{role: "alert"}
+    .p-4.text-sm.text-green-800.rounded-lg.bg-green-50.dark:bg-green-50.dark:text-green-400.border.border-green-500{role: :alert}
       %span.font-medium= notice
   - if flash[:alert]
-    .py-4.text-sm.text-red-800.rounded-lg.bg-red-50.dark:bg-gray-800.dark:text-red-400{role: "alert"}
+    .p-4.text-sm.text-white.rounded-lg.bg-red-400.dark:bg-red-400.border.border-red-500{role: :alert}
       %span.font-medium= alert
