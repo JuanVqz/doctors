@@ -4,8 +4,7 @@ class User < ApplicationRecord
 
   validates :role, :hospital, presence: true
 
-  devise :database_authenticatable, :registerable, :recoverable,
-    :rememberable, :validatable, :confirmable, :trackable
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable, :confirmable, :trackable
 
   def active_for_authentication?
     super && active?
