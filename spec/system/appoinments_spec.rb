@@ -59,12 +59,12 @@ RSpec.describe "Medical Consultations flow", type: :system do
       visit appointments_path(appointment)
       find('a[data-tooltip="Editar"]').click
       expect(page).to have_content "ACTUALIZAR CONSULTA"
-      expect(find("#appointment_patient_id").value).to eq patient.to_param
+      expect_combobox('input[name="appointment[patient_id]"]', value: patient.to_param)
 
       visit appointment_path(appointment)
       find('a[data-tooltip="Nueva Consulta"]').click
       expect(page).to have_content "REGISTRAR CONSULTA"
-      expect(find("#appointment_patient_id").value).to eq patient.to_param
+      expect_combobox('input[name="appointment[patient_id]"]', value: patient.to_param)
 
       visit appointment_path(appointment)
       find('a[data-tooltip="Nueva Hospitalización"]').click
@@ -74,7 +74,8 @@ RSpec.describe "Medical Consultations flow", type: :system do
   end
 
   def fill_up_appoinment_form(patient_id)
-    expect(find("#appointment_patient_id").value).to eq patient_id
+    expect_combobox('input[name="appointment[patient_id]"]', value: patient_id)
+
     fill_in "appointment_reason", with: "Razón de la consulta"
     find(:xpath, "//*[@input='appointment_note']", visible: false).set("Nota Medica")
     find(:xpath, "//*[@input='appointment_prescription']", visible: false).set("Receta")
