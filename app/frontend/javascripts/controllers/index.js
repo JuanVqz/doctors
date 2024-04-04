@@ -16,8 +16,5 @@ application.register('search', SearchController)
 import SidebarController from './sidebar_controller'
 application.register('sidebar', SidebarController)
 
-import PatientsInformationController from './patients/information_controller'
-application.register('patients--information', PatientsInformationController)
-
-import HwComboboxController from "@josefarias/hotwire_combobox"
+import HwComboboxController from './hw_combobox_controller'
 application.register("hw-combobox", HwComboboxController)

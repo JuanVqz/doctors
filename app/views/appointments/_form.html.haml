@@ -4,11 +4,10 @@
   = render 'shared/title', title: title
 
   .grid.gap-2.grid-cols-1.md:grid-cols-2
-    = f.association :patient,
-      collection: patients_for_select,
-      default: params[:patient_id],
-      prompt: true,
-      input_html: { data: { controller: "patients--information", action: "change->patients--information#fetch" } }
+    .mb-4
+      = f.label :patient, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white string required'
+      = f.combobox :patient_id, patients_for_select, default: params[:patient_id]
+
     = f.input :reason
 
   = f.input :note, as: :trix_editor

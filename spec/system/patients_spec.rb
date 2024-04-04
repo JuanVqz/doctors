@@ -72,11 +72,10 @@ RSpec.describe "Patient's flow", type: :system do
       expect(page).to have_content "Buscar"
       patient = Patient.find_by(name: "Lizzette")
 
-      within "tr", text: "Lizzette" do
+      within "tr[data-patient-id='#{patient.id}']" do
         find('a[data-tooltip="Nueva Consulta"]').click
       end
-      expect(page).to have_content "Lizzette"
-      expect(find("#appointment_patient_id").value).to eq patient.to_param
+      expect_combobox('input[name="appointment[patient_id]"]', value: patient.to_param)
     end
 
     scenario "can go to the appointments history" do
