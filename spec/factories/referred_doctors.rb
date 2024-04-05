@@ -4,5 +4,6 @@ FactoryBot.define do
     sequence(:specialty) { |n| "Specialty #{n}" }
     phone_number { "5551111111" }
     doctor
+    hospital
   end
 end

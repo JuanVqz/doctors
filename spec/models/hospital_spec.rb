@@ -5,6 +5,7 @@ RSpec.describe Hospital do
   it { should have_many(:doctors).dependent(:destroy) }
   it { should have_many(:patient_referrals).dependent(:destroy) }
   it { should have_many(:patients).dependent(:destroy) }
+  it { should have_many(:referred_doctors).dependent(:destroy) }
   it { should have_one(:address).dependent(:destroy) }
 
   it { should accept_nested_attributes_for(:address).allow_destroy(true) }

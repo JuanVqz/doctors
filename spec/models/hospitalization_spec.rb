@@ -12,11 +12,12 @@ RSpec.describe Hospitalization do
   it { should belong_to :patient }
   it { should belong_to(:referred_doctor).optional }
 
-  it { should validate_presence_of :starting }
-  it { should validate_presence_of :ending }
-  it { should validate_presence_of :patient_id }
-  it { should validate_presence_of :status }
   it { should validate_presence_of :days_of_stay }
+  it { should validate_presence_of :doctor }
+  it { should validate_presence_of :ending }
+  it { should validate_presence_of :patient }
+  it { should validate_presence_of :starting }
+  it { should validate_presence_of :status }
   it { should validate_numericality_of(:days_of_stay).is_greater_than(0) }
 
   describe "returns hospitalizations" do

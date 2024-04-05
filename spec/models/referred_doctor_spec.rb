@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe ReferredDoctor do
   it { should belong_to :doctor }
+  it { should belong_to :hospital }
   it { should have_one(:address).dependent(:destroy) }
   it { should have_many :hospitalizations }
 
@@ -21,7 +22,7 @@ RSpec.describe ReferredDoctor do
 
       expect(ReferredDoctor.by_doctor(doctor.id).count).to eq 2
     end
-  end # describe #by_doctor
+  end
 
   context "validations" do
     let(:doctor) { build_stubbed(:doctor) }
@@ -59,8 +60,8 @@ RSpec.describe ReferredDoctor do
 
         expect(referred).to be_valid
       end
-    end # context #phone_number
-  end # context validations
+    end
+  end
 
   describe ".search" do
     let(:doctor) { create(:doctor) }
@@ -90,7 +91,7 @@ RSpec.describe ReferredDoctor do
       it "returns zero" do
         expect(ReferredDoctor.search("Foo").count).to be_zero
       end
-    end # context search by full_name
+    end
 
     context "search by specialty" do
       it "returns one referred doctor" do
@@ -103,7 +104,7 @@ RSpec.describe ReferredDoctor do
       it "returns zero" do
         expect(ReferredDoctor.search("Foo").count).to be_zero
       end
-    end # context search by specialty
+    end
 
     context "search by phone_number" do
       it "returns one referred doctor" do
@@ -116,6 +117,6 @@ RSpec.describe ReferredDoctor do
       it "returns zero" do
         expect(ReferredDoctor.search(333333333).count).to be_zero
       end
-    end # context search by phone_number
-  end # describe .search
+    end
+  end
 end

@@ -69,7 +69,8 @@ es-MX:
       hospitalization: &hospitalization_labels
         created_at: Fecha de registro
         days_of_stay: Días de estadia
-        doctor_id: Doctor
+        doctor: Doctor
+        patient: Paciente
         ending: Fecha de egreso
         input_diagnosis: Diagnóstico de ingreso
         output_diagnosis: Diagnóstico de egreso

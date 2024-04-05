@@ -8,6 +8,7 @@ RSpec.describe "referred_doctors", type: :request do
       specialty: "Odontólogo General",
       phone_number: "5551111111",
       doctor: doctor,
+      hospital: hospital,
       address_attributes: {
         street: "Independencia",
         number: "19",
@@ -63,9 +64,9 @@ RSpec.describe "referred_doctors", type: :request do
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new ReferredDoctor" do
-        expect {
+        expect do
           post referred_doctors_url, params: {referred_doctor: valid_attributes}
-        }.to change(ReferredDoctor, :count).by(1)
+        end.to change(ReferredDoctor, :count).by(1)
           .and change(Address, :count).by(1)
       end
 
@@ -77,9 +78,9 @@ RSpec.describe "referred_doctors", type: :request do
 
     context "with invalid parameters" do
       it "does not create a new ReferredDoctor" do
-        expect {
+        expect do
           post referred_doctors_url, params: {referred_doctor: invalid_attributes}
-        }.not_to change(ReferredDoctor, :count)
+        end.not_to change(ReferredDoctor, :count)
       end
 
       it "returns an unprocessable entry" do

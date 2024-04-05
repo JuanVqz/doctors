@@ -5,24 +5,52 @@ RSpec.describe "Hospitalization's flow", type: :system do
     driven_by(:headless_firefox)
   end
 
-  feature "Doctor can create an hospitalization" do
-    scenario "from patient list" do
+  feature "Doctor" do
+    scenario "can create an hospitalization from patient list" do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
-      @patient = create(:patient, hospital: @hospital)
-      @referred_doctor = create(:referred_doctor, doctor: @admin)
+      patient = create(:patient, hospital: @hospital)
+      referred_doctor = create(:referred_doctor, doctor: @admin, hospital: @hospital)
 
       visit patients_path
       expect(page).to have_content "Buscar"
       expect(page).to have_current_path(patients_path)
 
-      within "tr[data-patient-id='#{@patient.id}']" do
+      within "tr[data-patient-id='#{patient.id}']" do
         find('a[data-tooltip="Detalles"]').click
       end
 
       find('a[data-tooltip="Nueva Hospitalización"]').click
-      expect(page).to have_current_path(new_hospitalization_path(patient_id: @patient.id))
-      fill_up_hospitalization_form
+      expect(page).to have_current_path(new_hospitalization_path(patient_id: patient.id))
+      fill_up_hospitalization_form(patient, referred_doctor)
+      click_button "Registrar Hospitalización"
+
+      expect(page).to have_current_path hospitalization_path Hospitalization.last
+      expect(page).to have_content "INFORMACIÓN"
+      expect(page).to have_content Hospitalization.last.starting
+    end
+
+    scenario "sees errors when not adding required fields" do
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
+      patient = create(:patient, hospital: @hospital)
+      referred_doctor = create(:referred_doctor, doctor: @admin, hospital: @hospital)
+
+      visit patients_path
+      expect(page).to have_content "Buscar"
+      expect(page).to have_current_path(patients_path)
+
+      find('a[href="/hospitalizations"]').click
+      click_link "Registrar Hospitalización"
+
+      click_button "Registrar Hospitalización"
+
+      expect(page).to have_current_path new_hospitalization_path
+      expect(page).to have_content "Paciente no puede estar en blanco"
+      expect(page).to have_content "Fecha de ingreso no puede estar en blanco"
+
+      select patient.to_s, from: "hospitalization_patient_id"
+      fill_up_hospitalization_form(patient, referred_doctor)
       click_button "Registrar Hospitalización"
 
       expect(page).to have_current_path hospitalization_path Hospitalization.last
@@ -31,10 +59,11 @@ RSpec.describe "Hospitalization's flow", type: :system do
     end
   end
 
-  def fill_up_hospitalization_form
-    expect(page).to have_content(/#{@patient}/)
+  def fill_up_hospitalization_form(patient, referred_doctor)
+    expect(page).to have_content(/#{patient}/)
+
     select "Traslado a otra unidad", from: "hospitalization_status"
-    select @referred_doctor.to_s, from: "hospitalization_referred_doctor_id"
+    select referred_doctor.to_s, from: "hospitalization_referred_doctor_id" if referred_doctor
 
     # hospitalization_starting
     # day

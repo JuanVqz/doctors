@@ -63,6 +63,6 @@ class ReferredDoctorsController < ApplicationController
         :id, :street, :number, :colony, :postal_code, :municipality,
         :state, :country, :_destroy
       ])
-      .with_defaults(doctor_id: current_user.to_param)
+      .with_defaults(doctor_id: current_user.to_param, hospital_id: current_user.hospital_id)
   end
 end
