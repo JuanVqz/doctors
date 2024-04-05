@@ -13,10 +13,10 @@ module ApplicationHelper
         .map { |u| [u.to_s, u.id] }
   end
 
-  def referred_doctor_for_select
-    @referred_doctor_for_select ||=
-      ReferredDoctor
-        .by_doctor(current_user.id)
+  def referred_doctors_for_select
+    @referred_doctors_for_select ||=
+      current_hospital
+        .referred_doctors
         .order(full_name: :asc)
         .map { |u| [u.to_s, u.id] }
   end

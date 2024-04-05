@@ -125,5 +125,9 @@ fake_referred_doctors = [
   {full_name: FFaker::NameMX.unique.full_name, specialty: FFaker::Skill.unique.specialty, phone_number: "0987654321"}
 ]
 referred_doctors =
-  doctors.map { |doctor| doctor.referred_doctors.create!(fake_referred_doctors) }
+  doctors.map do |doctor|
+    fake_referred_doctors.map do |referred_doctor|
+      doctor.referred_doctors.create(referred_doctor.merge(hospital: doctor.hospital))
+    end
+  end
 Rails.logger.debug { "Referred Doctors #{referred_doctors.size}" }

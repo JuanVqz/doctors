@@ -33,7 +33,7 @@ SimpleForm.setup do |config|
     b.use :input, class: "focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 mr-2",
       error_class: "is-invalid border-red-400",
       valid_class: "is-valid"
-    b.use :full_error, wrap_with: {tag: :p, class: "invalid-feedback text-xs text-red-400"}
+    b.use :full_error, wrap_with: {tag: :p, class: "mt-2 text-sm text-red-600 dark:text-red-600"}
     b.use :hint, wrap_with: {tag: :small, class: "text-gray-400"}
   end
 
@@ -51,7 +51,7 @@ SimpleForm.setup do |config|
   #   b.use :input, class: 'focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 rounded mr-2',
   #                 error_class: 'is-invalid border-red-400',
   #                 valid_class: 'is-valid'
-  #   b.use :full_error, wrap_with: { tag: :p, class: 'invalid-feedback text-xs text-red-400' }
+  #   b.use :full_error, wrap_with: {tag: :p, class: "mt-2 text-sm text-red-600 dark:text-red-600"}
   #   b.use :hint, wrap_with: { tag: :small, class: 'text-gray-400' }
   # end
 
@@ -68,7 +68,7 @@ SimpleForm.setup do |config|
     b.wrapper :grid_wrapper, tag: :div do |ba|
       ba.use :input, class: "focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 rounded mr-2",
         error_class: "is-invalid", valid_class: "is-valid"
-      ba.use :full_error, wrap_with: {tag: :p, class: "invalid-feedback text-xs text-red-400"}
+      ba.use :full_error, wrap_with: {tag: :p, class: "mt-2 text-sm text-red-600 dark:text-red-600"}
       ba.use :hint, wrap_with: {tag: :small, class: "text-gray-400"}
     end
   end
@@ -84,7 +84,7 @@ SimpleForm.setup do |config|
         error_class: "bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500",
         valid_class: "bg-green-50 border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-green-500"
     end
-    b.use :full_error, wrap_with: {tag: :p, class: "invalid-feedback text-xs text-red-400"}
+    b.use :full_error, wrap_with: {tag: :p, class: "mt-2 text-sm text-red-600 dark:text-red-600"}
     b.use :hint, wrap_with: {tag: :small, class: "text-gray-400"}
   end
 
@@ -100,7 +100,7 @@ SimpleForm.setup do |config|
         valid_class: "is-valid"
       bb.use :label, class: "mb-2"
     end
-    b.use :full_error, wrap_with: {tag: :p, class: "invalid-feedback text-xs text-red-400"}
+    b.use :full_error, wrap_with: {tag: :p, class: "mt-2 text-sm text-red-600 dark:text-red-600"}
     b.use :hint, wrap_with: {tag: :small, class: "text-gray-400"}
   end
 
