@@ -11,8 +11,6 @@ class ReferredDoctor < ApplicationRecord
   validates :phone_number, format: {with: /\A\d+\z/, message: "acepta solo números"}, allow_blank: true
   validates :phone_number, length: {is: 10, allow_blank: true}
 
-  scope :by_doctor, ->(doctor_id) { where(doctor_id: doctor_id) }
-
   delegate :street, :number, :colony, :postal_code, :municipality,
     :state, :country, to: :address, prefix: true, allow_nil: true
 
