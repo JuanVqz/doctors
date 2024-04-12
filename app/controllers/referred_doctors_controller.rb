@@ -3,7 +3,7 @@ class ReferredDoctorsController < ApplicationController
 
   # GET /referred_doctors
   def index
-    @pagy, @referred_doctors = pagy(ReferredDoctor.search(params[:query]).by_doctor(current_user.id).order(:full_name))
+    @pagy, @referred_doctors = pagy(current_hospital.referred_doctors.search(params[:query]).order(:full_name))
   end
 
   # GET /referred_doctors/1
