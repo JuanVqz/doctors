@@ -3,6 +3,7 @@ class Hospital < ApplicationRecord
 
   has_many :appointments, dependent: :destroy
   has_many :doctors, dependent: :destroy
+  has_many :hospitalizations, dependent: :destroy
   has_many :patient_referrals, dependent: :destroy
   has_many :patients, dependent: :destroy
   has_many :referred_doctors, dependent: :destroy

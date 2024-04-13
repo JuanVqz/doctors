@@ -3,7 +3,7 @@ class HospitalizationsController < ApplicationController
   before_action :set_hospitalization, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pagy, @hospitalizations = pagy(Hospitalization.includes(:patient).per_doctor(current_user.id).search(params[:query]).recent)
+    @pagy, @hospitalizations = pagy(current_hospital.hospitalizations.includes(:patient).search(params[:query]).recent)
   end
 
   def show
@@ -64,8 +64,8 @@ class HospitalizationsController < ApplicationController
   def hospitalization_params
     params.require(:hospitalization).permit(
       :starting, :ending, :days_of_stay, :reason_for_hospitalization,
-      :treatment, :doctor_id, :patient_id, :input_diagnosis, :output_diagnosis,
+      :treatment, :patient_id, :input_diagnosis, :output_diagnosis,
       :recommendations, :referred_doctor_id, :status
-    )
+    ).with_defaults(hospital_id: current_hospital.id)
   end
 end

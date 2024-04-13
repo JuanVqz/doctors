@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_05_012705) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_12_213946) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -107,7 +107,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_012705) do
     t.text "recommendations"
     t.bigint "referred_doctor_id"
     t.integer "status", default: 0
+    t.bigint "hospital_id"
     t.index ["doctor_id"], name: "index_hospitalizations_on_doctor_id"
+    t.index ["hospital_id"], name: "index_hospitalizations_on_hospital_id"
     t.index ["patient_id"], name: "index_hospitalizations_on_patient_id"
     t.index ["referred_doctor_id"], name: "index_hospitalizations_on_referred_doctor_id"
   end
@@ -212,6 +214,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_012705) do
   add_foreign_key "appointments", "hospitals"
   add_foreign_key "appointments", "users", column: "doctor_id"
   add_foreign_key "appointments", "users", column: "patient_id"
+  add_foreign_key "hospitalizations", "hospitals"
   add_foreign_key "hospitalizations", "referred_doctors"
   add_foreign_key "hospitalizations", "users", column: "doctor_id"
   add_foreign_key "hospitalizations", "users", column: "patient_id"

@@ -9,15 +9,9 @@ FactoryBot.define do
     output_diagnosis { "MyText" }
     recommendations { "MyText" }
     status { "Alta voluntaria" }
-
-    after :build do |hospitalization|
-      if hospitalization.doctor.nil?
-        hospitalization.doctor = create :doctor
-      end
-      if hospitalization.patient.nil?
-        hospitalization.patient = create :patient,
-          doctors: [hospitalization.doctor]
-      end
-    end
+    doctor
+    patient
+    hospital
+    referred_doctor
   end
 end

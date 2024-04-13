@@ -12,8 +12,7 @@ RSpec.describe "hospitalizations", type: :request do
   end
 
   before do
-    allow_any_instance_of(ApplicationController).to receive(:current_hospital)
-      .and_return hospital
+    allow_any_instance_of(ApplicationController).to receive(:current_hospital).and_return hospital
     sign_in doctor
   end
 
@@ -41,9 +40,7 @@ RSpec.describe "hospitalizations", type: :request do
   describe "POST /hospitalizations" do
     let(:hospitalization_params) do
       attributes_for(:hospitalization)
-        .merge(doctor_id: doctor.id,
-          patient_id: patient.id,
-          referred_doctor_id: referred_doctor.id)
+        .merge(patient_id: patient.id, hospital_id: hospital.id, referred_doctor_id: referred_doctor.id)
     end
 
     it "creates a new Hospitalization with ReferredDoctor" do
