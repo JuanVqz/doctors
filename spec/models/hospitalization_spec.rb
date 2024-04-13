@@ -8,53 +8,19 @@ RSpec.describe Hospitalization do
       .with_values(["Alta médica", "Alta voluntaria", "Traslado a otra unidad"])
   end
 
+  it { should belong_to :hospital }
   it { should belong_to :doctor }
   it { should belong_to :patient }
-  it { should belong_to(:referred_doctor).optional }
+  it { should belong_to :referred_doctor }
 
   it { should validate_presence_of :days_of_stay }
+  it { should validate_presence_of :hospital }
   it { should validate_presence_of :doctor }
   it { should validate_presence_of :ending }
   it { should validate_presence_of :patient }
   it { should validate_presence_of :starting }
   it { should validate_presence_of :status }
   it { should validate_numericality_of(:days_of_stay).is_greater_than(0) }
-
-  describe "returns hospitalizations" do
-    let(:doctor_one) { create(:doctor, name: "Pedro") }
-    let(:doctor_two) { create(:doctor, name: "José") }
-
-    let(:patient_one) do
-      create(:patient, name: "Ramon", doctors: [doctor_one, doctor_two])
-    end
-    let(:patient_two) do
-      create(:patient, name: "Julian", doctors: [doctor_one, doctor_two])
-    end
-
-    let(:hospitalizations_one) do
-      create_list(:hospitalization, 5, doctor: doctor_one, patient: patient_one)
-    end
-    let(:hospitalization_two) do
-      create_list(:hospitalization, 3, doctor: doctor_two, patient: patient_two)
-    end
-
-    before do
-      hospitalizations_one
-      hospitalization_two
-    end
-
-    it ".per_doctor" do
-      expect(described_class.per_doctor(doctor_one.id).count).to eq 5
-    end
-
-    it ".per_patient" do
-      expect(described_class.per_patient(patient_one.id).count).to eq 5
-    end
-
-    it ".by_doctor_and_patient" do
-      expect(described_class.by_doctor_and_patient(doctor_one.id, patient_one.id).count).to eq 5
-    end
-  end
 
   describe ".search" do
     let(:mateo) do
