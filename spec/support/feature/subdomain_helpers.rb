@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Feature
   module SubdomainHelpers
     def capybara_subdomain(subdomain)

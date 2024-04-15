@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReferredDoctor < ApplicationRecord
   belongs_to :doctor
   belongs_to :hospital
@@ -8,14 +10,14 @@ class ReferredDoctor < ApplicationRecord
   accepts_nested_attributes_for :address, allow_destroy: true
 
   validates :full_name, :specialty, :hospital, presence: true
-  validates :phone_number, format: {with: /\A\d+\z/, message: "acepta solo números"}, allow_blank: true
-  validates :phone_number, length: {is: 10, allow_blank: true}
+  validates :phone_number, format: { with: /\A\d+\z/, message: 'acepta solo números' }, allow_blank: true
+  validates :phone_number, length: { is: 10, allow_blank: true }
 
   delegate :street, :number, :colony, :postal_code, :municipality,
-    :state, :country, to: :address, prefix: true, allow_nil: true
+           :state, :country, to: :address, prefix: true, allow_nil: true
 
   def self.search(query)
-    where("full_name ILIKE ? OR specialty ILIKE ? OR phone_number ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
+    where('full_name ILIKE ? OR specialty ILIKE ? OR phone_number ILIKE ?', "%#{query}%", "%#{query}%", "%#{query}%")
   end
 
   def to_s

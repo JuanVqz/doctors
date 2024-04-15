@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class HospitalsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_hospital, only: [:edit, :update]
+  before_action :set_hospital, only: %i[edit update]
 
   def edit
-    flash.now[:notice] = "Los datos que se requieren en esta sección seran publicos"
+    flash.now[:notice] = 'Los datos que se requieren en esta sección seran publicos'
   end
 
   def update
     if @hospital.update(hospital_params)
-      redirect_to [:edit, @hospital], notice: "Datos actualizados correctamente."
+      redirect_to [:edit, @hospital], notice: 'Datos actualizados correctamente.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -24,9 +26,9 @@ class HospitalsController < ApplicationController
     params.require(:hospital).permit(
       :name, :schedule, :maps, :facebook, :twitter,
       :linkedin, :description, :about, :tags,
-      address_attributes: [
-        :id, :street, :number, :colony, :postal_code, :municipality,
-        :state, :country, :_destroy
+      address_attributes: %i[
+        id street number colony postal_code municipality
+        state country _destroy
       ]
     )
   end

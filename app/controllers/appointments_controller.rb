@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_appoinment, only: %i[edit update destroy]
@@ -13,8 +15,8 @@ class AppointmentsController < ApplicationController
       format.html
       format.pdf do
         render pdf: prescription_name,
-          template: "pdfs/prescription_#{current_hospital.subdomain}",
-          layout: "pdfs/prescription"
+               template: "pdfs/prescription_#{current_hospital.subdomain}",
+               layout: 'pdfs/prescription'
       end
     end
   end
@@ -25,15 +27,14 @@ class AppointmentsController < ApplicationController
     @appointment = @patient.appointments.build(height: @patient.height, weight: @patient.weight)
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @appointment = current_user.appointments.build(appoinment_params)
 
     respond_to do |format|
       if @appointment.save
-        format.html { redirect_to @appointment, notice: "Consulta creada correctamente." }
+        format.html { redirect_to @appointment, notice: 'Consulta creada correctamente.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -43,7 +44,7 @@ class AppointmentsController < ApplicationController
   def update
     respond_to do |format|
       if @appointment.update(appoinment_params)
-        format.html { redirect_to @appointment, notice: "Consulta actualizada correctamente." }
+        format.html { redirect_to @appointment, notice: 'Consulta actualizada correctamente.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -53,7 +54,7 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment.destroy
     respond_to do |format|
-      format.html { redirect_to appointments_url, notice: "Consulta eliminada correctamente." }
+      format.html { redirect_to appointments_url, notice: 'Consulta eliminada correctamente.' }
     end
   end
 
@@ -75,11 +76,11 @@ class AppointmentsController < ApplicationController
 
   def appoinment_params
     params.require(:appointment)
-      .permit(
-        :reason, :note, :prescription,
-        :recommendations, :patient_id, :imc, :weight, :height, :blood_pressure,
-        :heart_rate, :breathing_rate, :temperature, :glycaemia, :sat_02, :cost,
-        :cabinet_results, :histopathology, files: []
-      ).with_defaults(hospital_id: current_hospital.id)
+          .permit(
+            :reason, :note, :prescription,
+            :recommendations, :patient_id, :imc, :weight, :height, :blood_pressure,
+            :heart_rate, :breathing_rate, :temperature, :glycaemia, :sat_02, :cost,
+            :cabinet_results, :histopathology, files: []
+          ).with_defaults(hospital_id: current_hospital.id)
   end
 end

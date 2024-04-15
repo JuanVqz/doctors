@@ -45,7 +45,7 @@ jobs:
           cache-version: 1
 
       - name: Run linter 👟
-        run: bundle exec standardrb
+        run: bundle exec rubocop --parallel --display-time
 
       - name: Setup database 🏗
         run: bin/rails db:schema:load

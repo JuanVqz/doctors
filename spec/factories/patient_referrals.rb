@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :patient_referral do
-    subject { "MyString" }
-    content { "MyText" }
+    subject { 'MyString' }
+    content { 'MyText' }
     importance { 0 }
     association :patient, factory: :patient
     association :doctor, factory: :doctor
