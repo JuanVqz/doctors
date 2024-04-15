@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateAppoinments < ActiveRecord::Migration[5.2]
   def change
     create_table :appoinments do |t|
@@ -5,12 +7,12 @@ class CreateAppoinments < ActiveRecord::Migration[5.2]
       t.text :note
       t.text :prescription
       t.text :recommendations
-      t.references :doctor, foreign_key: {to_table: :users}
-      t.references :patient, foreign_key: {to_table: :users}
+      t.references :doctor, foreign_key: { to_table: :users }
+      t.references :patient, foreign_key: { to_table: :users }
       t.float :imc, default: 0
       t.float :weight, default: 0
       t.float :height, default: 0
-      t.string :blood_pressure, default: ""
+      t.string :blood_pressure, default: ''
       t.float :heart_rate, default: 0
       t.float :breathing_rate, default: 0
       t.float :temperature, default: 0

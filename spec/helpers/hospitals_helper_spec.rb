@@ -1,19 +1,21 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe HospitalsHelper do
-  describe "#tags_spliter" do
+  describe '#tags_spliter' do
     context "when tags is 'uno, dos'" do
-      let(:hospital) { create(:hospital, :basic, tags: "uno,dos") }
+      let(:hospital) { create(:hospital, :basic, tags: 'uno,dos') }
 
       it "returns ['uno','dos']" do
-        expect(tags_spliter(hospital)).to eq ["uno", "dos"]
+        expect(tags_spliter(hospital)).to eq %w[uno dos]
       end
     end
 
     context "when tags is ''" do
-      let(:hospital) { create(:hospital, :basic, tags: "") }
+      let(:hospital) { create(:hospital, :basic, tags: '') }
 
-      it "returns []" do
+      it 'returns []' do
         expect(tags_spliter(hospital)).to eq []
       end
     end

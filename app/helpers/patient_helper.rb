@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module PatientHelper
-  def age patient
+  def age(patient)
     return if patient.birthday.nil?
 
     now = Date.current
@@ -8,7 +10,7 @@ module PatientHelper
     "#{age} Años"
   end
 
-  def age_months patient
+  def age_months(patient)
     return if patient.birthday.nil?
 
     now = Date.current

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class SubdomainRoutes
-  def self.matches? request
+  def self.matches?(request)
     case request.subdomain
-    when "", "www"
+    when '', 'www'
       true
     else
       false

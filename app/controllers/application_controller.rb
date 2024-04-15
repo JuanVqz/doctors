@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include Pagy::Backend
 
@@ -14,18 +16,18 @@ class ApplicationController < ActionController::Base
     super
   end
 
-  def generar_pdf name
+  def generar_pdf(name)
     {
       pdf: pdf_name,
-      page_size: "Letter",
+      page_size: 'Letter',
       template: "pdfs/#{name}.pdf.erb",
-      viewport_size: "1280x1024",
+      viewport_size: '1280x1024',
       header: {
-        html: {template: "layouts/pdfs/_header.pdf.erb"},
+        html: { template: 'layouts/pdfs/_header.pdf.erb' },
         spacing: 20
       },
-      footer: {html: {template: "layouts/pdfs/_footer.pdf.erb"}},
-      layout: "pdfs/hospital"
+      footer: { html: { template: 'layouts/pdfs/_footer.pdf.erb' } },
+      layout: 'pdfs/hospital'
     }
   end
 
@@ -33,11 +35,11 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     if devise_controller?
-      "devise"
+      'devise'
     elsif main_controller?
-      "main"
+      'main'
     else
-      "application"
+      'application'
     end
   end
 

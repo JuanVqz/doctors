@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateClinicHistories < ActiveRecord::Migration[5.2]
   def change
     create_table :clinic_histories do |t|
@@ -11,7 +13,7 @@ class CreateClinicHistories < ActiveRecord::Migration[5.2]
       t.text :description_hereditary
       t.text :description_cancer
       t.text :description_other
-      t.references :patient, foreign_key: {to_table: :users}
+      t.references :patient, foreign_key: { to_table: :users }
 
       t.timestamps
     end

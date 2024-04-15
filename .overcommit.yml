@@ -18,7 +18,7 @@
 PreCommit:
   RuboCop:
     enabled: true
-    command: ["bundle", "exec", "standardrb"]
+    command: ["bundle", "exec", "rubocop", "--format", "simple", "--parallel", "--display-time"]
 
   TrailingWhitespace:
     enabled: true

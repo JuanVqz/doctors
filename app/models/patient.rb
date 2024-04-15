@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Patient < User
   has_one :address, as: :addressable, dependent: :destroy
-  has_and_belongs_to_many :doctors, join_table: "doctors_patients"
+  has_and_belongs_to_many :doctors, join_table: 'doctors_patients'
   has_many :appointments, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :hospitalizations, -> { order(created_at: :desc) }, dependent: :destroy
 
@@ -14,9 +16,9 @@ class Patient < User
   delegate :subdomain, to: :hospital, prefix: true
 
   delegate :street, :number, :colony, :postal_code, :municipality,
-    :state, :country, to: :address, prefix: true, allow_nil: true
+           :state, :country, to: :address, prefix: true, allow_nil: true
 
-  def self.search query
+  def self.search(query)
     where("unaccent(concat_ws(' ', name, first_name, last_name)) ILIKE unaccent(?)", "%#{query&.squish}%")
   end
 

@@ -1,7 +1,7 @@
-class MainController < ApplicationController
-  def index
-  end
+# frozen_string_literal: true
 
-  def hospital
-  end
+class MainController < ApplicationController
+  def index; end
+
+  def hospital; end
 end

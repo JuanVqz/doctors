@@ -1,4 +1,6 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe Hospital do
   it { should have_many(:appointments).dependent(:destroy) }
@@ -15,15 +17,15 @@ RSpec.describe Hospital do
   it { should validate_presence_of :subdomain }
   it { should validate_uniqueness_of :subdomain }
 
-  describe "plan" do
+  describe 'plan' do
     context "when plan is 'basic'" do
       let(:hospital) { create(:hospital, plan: :basic) }
 
-      it "returns true" do
+      it 'returns true' do
         expect(hospital).to be_basic
       end
 
-      it "returns false" do
+      it 'returns false' do
         expect(hospital).not_to be_medium
       end
     end
@@ -31,11 +33,11 @@ RSpec.describe Hospital do
     context "when plan is 'medium'" do
       let(:hospital) { create(:hospital, plan: :medium) }
 
-      it "returns true" do
+      it 'returns true' do
         expect(hospital).to be_medium
       end
 
-      it "returns false" do
+      it 'returns false' do
         expect(hospital).not_to be_basic
       end
     end

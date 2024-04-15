@@ -1,27 +1,29 @@
-require "simplecov"
-require "simplecov_json_formatter"
-SimpleCov.start "rails" do
+# frozen_string_literal: true
+
+require 'simplecov'
+require 'simplecov_json_formatter'
+SimpleCov.start 'rails' do
   formatter SimpleCov::Formatter::MultiFormatter.new([
-    SimpleCov::Formatter::HTMLFormatter,
-    SimpleCov::Formatter::JSONFormatter
-  ])
+                                                       SimpleCov::Formatter::HTMLFormatter,
+                                                       SimpleCov::Formatter::JSONFormatter
+                                                     ])
 end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require "spec_helper"
-ENV["RAILS_ENV"] ||= "test"
-require File.expand_path("../../config/environment", __FILE__)
+require 'spec_helper'
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
-require "rspec/rails"
-require "capybara/rspec"
+abort('The Rails environment is running in production mode!') if Rails.env.production?
+require 'rspec/rails'
+require 'capybara/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # When updating Capybara check if we still need this, newer versions already include this config
 # https://github.com/teamcapybara/capybara/blob/c7c22789b7aaf6c1515bf6e68f00bfe074cf8fc1/lib/capybara/registrations/drivers.rb
 Capybara.register_driver :headless_firefox do |app|
-  browser_options = ::Selenium::WebDriver::Firefox::Options.new
-  browser_options.args << "-headless"
+  browser_options = Selenium::WebDriver::Firefox::Options.new
+  browser_options.args << '-headless'
   Capybara::Selenium::Driver.new(app, browser: :firefox, options: browser_options)
 end
 Capybara.javascript_driver = :headless_firefox
@@ -39,7 +41,7 @@ Capybara.javascript_driver = :headless_firefox
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.

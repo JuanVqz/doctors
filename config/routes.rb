@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   constraints(SubdomainRoutes) do
-    root to: "main#index", as: :main_index
+    root to: 'main#index', as: :main_index
   end
 
   constraints(!SubdomainRoutes) do
@@ -15,10 +17,10 @@ Rails.application.routes.draw do
     resources :referred_doctors
 
     authenticate :user, ->(u) { u.admin? } do
-      mount Coverband::Reporters::Web.new, at: "/coverage"
+      mount Coverband::Reporters::Web.new, at: '/coverage'
     end
 
     devise_for :users
-    root to: "main#hospital"
+    root to: 'main#hospital'
   end
 end

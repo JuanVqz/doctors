@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class HospitalizationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_hospitalization, only: [:show, :edit, :update, :destroy]
+  before_action :set_hospitalization, only: %i[show edit update destroy]
 
   def index
     @pagy, @hospitalizations = pagy(current_hospital.hospitalizations.includes(:patient).search(params[:query]).recent)
@@ -9,11 +11,11 @@ class HospitalizationsController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.pdf {
+      format.pdf do
         render pdf: pdf_name,
-          template: "pdfs/hospitalization",
-          layout: "pdfs/hospital"
-      }
+               template: 'pdfs/hospitalization',
+               layout: 'pdfs/hospital'
+      end
     end
   end
 
@@ -21,14 +23,13 @@ class HospitalizationsController < ApplicationController
     @hospitalization = Hospitalization.new(patient_id: patient_id_param)
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @hospitalization = current_user.hospitalizations.new(hospitalization_params)
 
     if @hospitalization.save
-      redirect_to @hospitalization, notice: "Hospitalización creada correctamente."
+      redirect_to @hospitalization, notice: 'Hospitalización creada correctamente.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +37,7 @@ class HospitalizationsController < ApplicationController
 
   def update
     if @hospitalization.update(hospitalization_params)
-      redirect_to @hospitalization, notice: "Hospitalización actualizado correctamente."
+      redirect_to @hospitalization, notice: 'Hospitalización actualizado correctamente.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,7 +45,7 @@ class HospitalizationsController < ApplicationController
 
   def destroy
     @hospitalization.destroy
-    redirect_to hospitalizations_url, notice: "Hospitalizacion eliminada correctamente."
+    redirect_to hospitalizations_url, notice: 'Hospitalizacion eliminada correctamente.'
   end
 
   private
