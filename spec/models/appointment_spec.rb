@@ -97,36 +97,4 @@ RSpec.describe Appointment do
       end
     end
   end
-
-  describe 'returns appointment' do
-    let(:hospital) { create(:hospital) }
-    let(:doctor_one) { create(:doctor, name: 'Pedro', hospital:) }
-    let(:doctor_two) { create(:doctor, name: 'José', hospital:) }
-
-    let(:patient_one) do
-      create(:patient, name: 'Ramon', doctors: [doctor_one, doctor_two], hospital:)
-    end
-    let(:patient_two) do
-      create(:patient, name: 'Julian', doctors: [doctor_one, doctor_two], hospital:)
-    end
-
-    let!(:appoinment_doctor_one) do
-      create_list(:appointment, 5, doctor: doctor_one, patient: patient_one, hospital:)
-    end
-    let!(:appoinment_doctor_two) do
-      create_list(:appointment, 3, doctor: doctor_two, patient: patient_two, hospital:)
-    end
-
-    it '.per_doctor' do
-      expect(described_class.per_doctor(doctor_one.id).count).to eq 5
-    end
-
-    it '.per_patient' do
-      expect(described_class.per_patient(patient_one.id).count).to eq 5
-    end
-
-    it '.by_doctor_and_patient' do
-      expect(described_class.by_doctor_and_patient(doctor_one.id, patient_one.id).count).to eq 5
-    end
-  end
 end

@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
   before_action :set_appoinment, only: %i[edit update destroy]
 
   def index
-    @pagy, @appointments = pagy(Appointment.includes(:patient).per_doctor(current_user.id).search(params[:query]).recent)
+    @pagy, @appointments = pagy(current_hospital.appointments.includes(:patient).search(params[:query]).recent)
   end
 
   def show
