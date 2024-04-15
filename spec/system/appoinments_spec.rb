@@ -54,7 +54,7 @@ RSpec.describe "Medical Consultations flow", type: :system do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
       patient = create(:patient, doctors: [@admin], hospital: @hospital)
-      appointment = create(:appointment, patient: patient, doctor: @admin)
+      appointment = create(:appointment, doctor: @admin, patient: patient, hospital: @hospital)
 
       visit appointments_path(appointment)
       find('a[data-tooltip="Editar"]').click

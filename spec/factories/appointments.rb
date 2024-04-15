@@ -19,14 +19,14 @@ FactoryBot.define do
     doctor
     patient
     hospital
+  end
 
-    trait :with_files do
-      after :create do |appointment|
-        cv1_path = Rails.root.join("spec/fixtures/files/cv.pdf")
-        cv2_path = Rails.root.join("spec/fixtures/files/cv.pdf")
-        appointment.files.attach(io: File.open(cv1_path), filename: "cv.pdf", content_type: "application/pdf")
-        appointment.files.attach(io: File.open(cv2_path), filename: "cv.pdf", content_type: "application/pdf")
-      end
+  trait :with_files do
+    after :create do |appointment|
+      cv1_path = Rails.root.join("spec/fixtures/files/cv.pdf")
+      cv2_path = Rails.root.join("spec/fixtures/files/cv.pdf")
+      appointment.files.attach(io: File.open(cv1_path), filename: "cv.pdf", content_type: "application/pdf")
+      appointment.files.attach(io: File.open(cv2_path), filename: "cv.pdf", content_type: "application/pdf")
     end
   end
 end
