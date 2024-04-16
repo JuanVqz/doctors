@@ -20,17 +20,13 @@ FactoryBot.define do
     type { 'Patient' }
     confirmed_at { Time.zone.now }
     association :hospital, factory: :hospital
+    address { build :address }
+  end
 
-    after :build do |patient|
-      patient.doctors = build_list :doctor, 1 if patient.doctors.nil?
-      patient.address = build :address
-    end
-
-    trait :with_avatar do
-      after :create do |patient|
-        file_path = Rails.root.join('spec/fixtures/files/avatar.jpg')
-        patient.avatar.attach(io: File.open(file_path), filename: 'avatar.jpg', content_type: 'image/jpeg')
-      end
+  trait :with_avatar do
+    after :create do |patient|
+      file_path = Rails.root.join('spec/fixtures/files/avatar.jpg')
+      patient.avatar.attach(io: File.open(file_path), filename: 'avatar.jpg', content_type: 'image/jpeg')
     end
   end
 end

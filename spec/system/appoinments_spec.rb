@@ -52,6 +52,37 @@ RSpec.describe 'Medical Consultations flow', type: :system do
       end
     end
 
+    scenario "can see patient's information and previous appointments when selecting a patient" do
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
+
+      @other_patient = create(:patient, name: 'Jose', allergies: 'Al polen', doctors: [@admin], hospital: @hospital)
+      create(:appointment, patient: @other_patient, doctor: @admin, hospital: @hospital)
+
+      @patient = create(:patient, allergies: 'Aines', doctors: [@admin], hospital: @hospital)
+      create(:appointment, patient: @patient, doctor: @admin, hospital: @hospital)
+
+      visit patients_path
+      expect(page).to have_content 'Buscar'
+      within "tr[data-patient-id='#{@patient.id}']" do
+        first('a[data-tooltip="Nueva Consulta"]').click
+      end
+
+      expect(page).to have_content 'INFORMACIÓN DEL PACIENTE'
+      expect(page).to have_content @patient.allergies
+      expect(page).to have_content 'CONSULTAS PREVIAS'
+      expect(page).to have_content @patient.appointments.first.reason
+
+      delete_from_combobox('#appointment_patient_id', @patient.to_s, original: @other_patient.to_s)
+      click_on_option(@other_patient.to_s)
+      expect_combobox('input[name="appointment[patient_id]"]', value: @other_patient.to_param)
+
+      expect(page).to have_content 'INFORMACIÓN DEL PACIENTE'
+      expect(page).to have_content @other_patient.allergies
+      expect(page).to have_content 'CONSULTAS PREVIAS'
+      expect(page).to have_content @other_patient.appointments.first.reason
+    end
+
     scenario 'can visit some pages' do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
