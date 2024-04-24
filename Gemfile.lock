@@ -96,7 +96,7 @@ GEM
     childprocess (5.0.0)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
-    coverband (6.1.0)
+    coverband (6.1.1)
       redis (>= 3.0)
     crass (1.0.6)
     date (3.3.4)
