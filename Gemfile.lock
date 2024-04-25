@@ -131,7 +131,7 @@ GEM
       activesupport (>= 5.1)
       haml (>= 4.0.6)
       railties (>= 5.1)
-    hotwire_combobox (0.2.2)
+    hotwire_combobox (0.2.3)
       rails (>= 7.0.7.2)
       stimulus-rails (>= 1.2)
       turbo-rails (>= 1.2)
@@ -244,7 +244,7 @@ GEM
     redis-client (0.22.1)
       connection_pool
     regexp_parser (2.9.0)
-    reline (0.5.1)
+    reline (0.5.3)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
