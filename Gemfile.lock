@@ -96,8 +96,6 @@ GEM
     childprocess (5.0.0)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
-    coverband (6.1.2)
-      redis (>= 3.0)
     crass (1.0.6)
     date (3.3.4)
     debug (1.9.2)
@@ -239,10 +237,6 @@ GEM
     rake (13.2.1)
     rdoc (6.6.3.1)
       psych (>= 4.0.0)
-    redis (5.2.0)
-      redis-client (>= 0.22.0)
-    redis-client (0.22.1)
-      connection_pool
     regexp_parser (2.9.0)
     reline (0.5.7)
       io-console (~> 0.5)
@@ -350,7 +344,6 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
-  coverband
   debug
   devise
   factory_bot_rails
