@@ -1,0 +1,12 @@
+.dockerignore
+.overcommit.yml
+.rubocop.yml
+.rubocop_todo.yml
+Dockerfile
+Procfile.dev
+README.md
+dash.png
+docker-compose.yml
+public/assets/
+spec/
+.rspec
