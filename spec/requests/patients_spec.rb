@@ -84,7 +84,15 @@ RSpec.describe 'patients', type: :request do
       end.to change(Patient, :count).by(-1)
     end
 
-    xit "destroy patient's appointments" do
+    it "destroy patient's address" do
+      patient = create(:patient)
+
+      expect do
+        delete patient_path(patient)
+      end.to change(Address, :count).by(-1)
+    end
+
+    it "destroy patient's appointments" do
       doctors = [doctor]
       appointments = [build(:appointment, doctor:)]
       patient = create(:patient, appointments:, doctors:)
@@ -94,12 +102,20 @@ RSpec.describe 'patients', type: :request do
       end.to change(Appointment, :count).by(-1)
     end
 
-    it "does not destroy patient's doctor" do
-      patient = create(:patient, doctors: [doctor])
+    it "destroy patient's hospitalizations" do
+      doctors = [doctor]
+      patient = create(:patient, doctors:)
+      create(:hospitalization, doctor:, patient:)
 
       expect do
         delete patient_path(patient)
-      end.not_to change(Doctor, :count)
+      end.to change(Hospitalization, :count).by(-1)
+    end
+
+    it "does not destroy patient's doctor" do
+      patient = create(:patient, doctors: [doctor])
+
+      expect { delete patient_path(patient) }.not_to change(Doctor, :count)
     end
   end
 end
