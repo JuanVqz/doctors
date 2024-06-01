@@ -17,6 +17,8 @@ es-MX:
       appointments:
         see_appointment: Ver consulta completa
   shared:
+    confirm:
+      delete: ¿Está seguro de eliminar este registro?
     actions:
       register: Registrar %{model}
       patient:
@@ -60,6 +62,7 @@ es-MX:
       edit: Editar
       patient: Paciente
       print: Imprimir
+      delete: Eliminar
     appointments:
       new: Nueva Consulta
       previous: Consultas Previas
