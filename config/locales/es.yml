@@ -14,7 +14,7 @@ es-MX:
     information:
       info:
         title: Información del Paciente
-      appointments:
+      appointment:
         see_appointment: Ver consulta completa
   shared:
     confirm:
