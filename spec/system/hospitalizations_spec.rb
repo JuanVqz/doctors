@@ -56,6 +56,8 @@ RSpec.describe "Hospitalization's flow", type: :system do
 
       expect(page).to have_current_path new_hospitalization_path
 
+      expect(page).to have_content 'Paciente no puede estar vacío'
+      expect(page).to have_content 'Destinatario no puede estar vacío'
       expect(page).to have_content 'Fecha de ingreso no puede estar en blanco'
       expect(page).to have_content 'Fecha de egreso no puede estar en blanco'
 

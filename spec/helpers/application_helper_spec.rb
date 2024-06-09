@@ -12,6 +12,18 @@ RSpec.describe ApplicationHelper do
     expect(helper.blood_groups_for_select).to eq groups
   end
 
+  describe '#combobox_error' do
+    it 'shows the error' do
+      object = double('object', errors: double('errors', added?: true, full_messages_for: ['Error']))
+      expect(helper.combobox_error(object, :field)).to eq '<p class="mt-2 text-sm text-red-600 dark:text-red-600">Error</p>'
+    end
+
+    it 'does not show the error' do
+      object = double('object', errors: double('errors', added?: false, full_messages_for: ['Error']))
+      expect(helper.combobox_error(object, :field)).to eq nil
+    end
+  end
+
   context '#sidebar_classes' do
     it 'returns hover classes' do
       allow(helper).to receive(:controller_name).and_return(:controller_name)
