@@ -2,6 +2,8 @@ import HwComboboxController from "@josefarias/hotwire_combobox"
 import { get } from '@rails/request.js'
 
 export default class extends HwComboboxController {
+  static values = { fetchInformation: { type: Boolean, default: false } }
+
   initialize() {
     super.initialize()
 
@@ -25,12 +27,15 @@ export default class extends HwComboboxController {
   }
 
   async fetch(patient_id) {
+    if (!this.fetchInformationValue) { return }
+
     await get(`/patients/${patient_id}/information`, { responseKind: 'turbo-stream' })
     this.showPatientInformation()
   }
 
   hidePatientInformation() {
-    document.querySelector('turbo-frame[id=patient_information]').classList.add('hidden')
+    document.querySelector('turbo-frame[id=patient_information]') &&
+      document.querySelector('turbo-frame[id=patient_information]').classList.add('hidden')
   }
 
   showPatientInformation() {

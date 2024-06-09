@@ -55,6 +55,10 @@ module ApplicationHelper
     'text-blue-600 dark:text-blue-500 hover:underline'
   end
 
+  def label_classes
+    'block mb-2 text-sm font-medium text-gray-900 dark:text-white string required'
+  end
+
   def sidebar_classes(action)
     classes = 'flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700'
     classes += ' bg-gray-200 dark:bg-gray-700' if controller_name.to_sym.eql?(action)
