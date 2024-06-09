@@ -102,7 +102,7 @@ RSpec.describe 'Medical Consultations flow', type: :system do
       visit appointment_path(appointment)
       find('a[data-tooltip="Nueva Hospitalización"]').click
       expect(page).to have_content 'REGISTRAR HOSPITALIZACIÓN'
-      expect(find('#hospitalization_patient_id').value).to eq patient.to_param
+      expect_combobox('input[name="hospitalization[patient_id]"]', value: patient.to_param)
     end
   end
 

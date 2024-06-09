@@ -24,7 +24,14 @@ RSpec.describe "Hospitalization's flow", type: :system do
 
       find('a[data-tooltip="Nueva Hospitalización"]').click
       expect(page).to have_current_path(new_hospitalization_path(patient_id: patient.id))
-      fill_up_hospitalization_form(patient, referred_doctor)
+
+      expect_combobox('input[name="hospitalization[patient_id]"]', value: patient.to_param)
+
+      delete_from_combobox('#hospitalization_referred_doctor_id', referred_doctor.to_s, original: '')
+      click_on_option(referred_doctor.to_s)
+      expect_combobox('input[name="hospitalization[referred_doctor_id]"]', value: referred_doctor.to_param)
+
+      fill_up_hospitalization_form
       click_button 'Registrar Hospitalización'
 
       expect(page).to have_current_path hospitalization_path Hospitalization.last
@@ -32,7 +39,7 @@ RSpec.describe "Hospitalization's flow", type: :system do
       expect(page).to have_content Hospitalization.last.starting
     end
 
-    scenario 'sees errors when not adding required fields' do
+    scenario 'sees errors when not adding required fields', js: true do
       create_hospital_plan_medium
       sign_in_admin_doctor @hospital
       patient = create(:patient, hospital: @hospital)
@@ -48,11 +55,19 @@ RSpec.describe "Hospitalization's flow", type: :system do
       click_button 'Registrar Hospitalización'
 
       expect(page).to have_current_path new_hospitalization_path
-      expect(page).to have_content 'Paciente no puede estar en blanco'
-      expect(page).to have_content 'Fecha de ingreso no puede estar en blanco'
 
-      select patient.to_s, from: 'hospitalization_patient_id'
-      fill_up_hospitalization_form(patient, referred_doctor)
+      expect(page).to have_content 'Fecha de ingreso no puede estar en blanco'
+      expect(page).to have_content 'Fecha de egreso no puede estar en blanco'
+
+      delete_from_combobox('#hospitalization_patient_id', patient.to_s, original: '')
+      click_on_option(patient.to_s)
+      expect_combobox('input[name="hospitalization[patient_id]"]', value: patient.to_param)
+
+      delete_from_combobox('#hospitalization_referred_doctor_id', referred_doctor.to_s, original: '')
+      click_on_option(referred_doctor.to_s)
+      expect_combobox('input[name="hospitalization[referred_doctor_id]"]', value: referred_doctor.to_param)
+
+      fill_up_hospitalization_form
       click_button 'Registrar Hospitalización'
 
       expect(page).to have_current_path hospitalization_path Hospitalization.last
@@ -61,11 +76,8 @@ RSpec.describe "Hospitalization's flow", type: :system do
     end
   end
 
-  def fill_up_hospitalization_form(patient, referred_doctor)
-    expect(page).to have_content(/#{patient}/)
-
+  def fill_up_hospitalization_form
     select 'Traslado a otra unidad', from: 'hospitalization_status'
-    select referred_doctor.to_s, from: 'hospitalization_referred_doctor_id' if referred_doctor
 
     fill_in 'hospitalization_starting', with: DateTime.current
     fill_in 'hospitalization_ending', with: DateTime.current + 5.days
