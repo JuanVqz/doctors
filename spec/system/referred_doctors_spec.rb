@@ -14,7 +14,7 @@ RSpec.describe "Referred Doctor's flow", type: :system do
 
       visit new_referred_doctor_path
       expect(page).to have_current_path new_referred_doctor_path
-      fill_up_referred_doctor_form
+      fill_form_up
       click_button 'Registrar Doctor'
 
       @referred_doctor = ReferredDoctor.last
@@ -24,7 +24,7 @@ RSpec.describe "Referred Doctor's flow", type: :system do
     end
   end
 
-  def fill_up_referred_doctor_form
+  def fill_form_up
     fill_in 'referred_doctor_full_name', with: 'Licha Perez'
     fill_in 'referred_doctor_specialty', with: 'Odontólogo General'
     fill_in 'referred_doctor_address_attributes_street', with: 'Independencia'

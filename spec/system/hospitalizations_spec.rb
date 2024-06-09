@@ -31,7 +31,7 @@ RSpec.describe "Hospitalization's flow", type: :system do
       click_on_option(referred_doctor.to_s)
       expect_combobox('input[name="hospitalization[referred_doctor_id]"]', value: referred_doctor.to_param)
 
-      fill_up_hospitalization_form
+      fill_form_up
       click_button 'Registrar Hospitalización'
 
       expect(page).to have_current_path hospitalization_path Hospitalization.last
@@ -69,7 +69,7 @@ RSpec.describe "Hospitalization's flow", type: :system do
       click_on_option(referred_doctor.to_s)
       expect_combobox('input[name="hospitalization[referred_doctor_id]"]', value: referred_doctor.to_param)
 
-      fill_up_hospitalization_form
+      fill_form_up
       click_button 'Registrar Hospitalización'
 
       expect(page).to have_current_path hospitalization_path Hospitalization.last
@@ -78,7 +78,7 @@ RSpec.describe "Hospitalization's flow", type: :system do
     end
   end
 
-  def fill_up_hospitalization_form
+  def fill_form_up
     select 'Traslado a otra unidad', from: 'hospitalization_status'
 
     fill_in 'hospitalization_starting', with: DateTime.current

@@ -21,7 +21,7 @@ RSpec.describe 'Medical Consultations flow', type: :system do
 
       find('a[data-tooltip="Nueva Consulta"]').click
 
-      fill_up_appoinment_form(@patient.to_param)
+      fill_form_up(@patient.to_param)
       click_button 'Registrar Consulta'
 
       expect(page).to have_content "CONSULTA ##{Appointment.last.id}"
@@ -40,7 +40,7 @@ RSpec.describe 'Medical Consultations flow', type: :system do
         first('a[data-tooltip="Nueva Consulta"]').click
       end
 
-      fill_up_appoinment_form(@other_patient.to_param)
+      fill_form_up(@other_patient.to_param)
       click_button 'Registrar Consulta'
 
       expect(page).to have_content "CONSULTA ##{Appointment.last.id}"
@@ -106,7 +106,7 @@ RSpec.describe 'Medical Consultations flow', type: :system do
     end
   end
 
-  def fill_up_appoinment_form(patient_id)
+  def fill_form_up(patient_id)
     expect_combobox('input[name="appointment[patient_id]"]', value: patient_id)
 
     fill_in 'appointment_reason', with: 'Razón de la consulta'

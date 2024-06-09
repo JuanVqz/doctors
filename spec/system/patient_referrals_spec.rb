@@ -16,7 +16,7 @@ RSpec.describe "Patient Referrals' flow", type: :system do
 
       visit new_patient_referral_path
       expect(page).to have_current_path new_patient_referral_path
-      fill_form
+      fill_form_up
       click_button 'Referir Paciente'
 
       expect(page).to have_content 'Destinatario no puede estar vacío'
@@ -41,7 +41,7 @@ RSpec.describe "Patient Referrals' flow", type: :system do
     end
   end
 
-  def fill_form
+  def fill_form_up
     fill_in 'patient_referral_subject', with: 'Le da el tramafa'
     fill_in_trix_editor 'patient_referral_content', with: 'Le envio a este paciente porque le da el tramafa'
   end

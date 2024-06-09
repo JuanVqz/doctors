@@ -16,7 +16,7 @@ RSpec.describe "Patient's flow", type: :system do
       expect(page).to have_content 'Buscar'
       click_on 'Registrar Paciente'
 
-      fill_up_patient_form 'Maximo'
+      fill_form_up 'Maximo'
       click_button 'Registrar Paciente'
 
       expect(page).to have_content 'DATOS GENERALES'
@@ -31,11 +31,11 @@ RSpec.describe "Patient's flow", type: :system do
       expect(page).to have_content 'Buscar'
 
       click_on 'Registrar Paciente'
-      fill_up_patient_form ''
+      fill_form_up ''
       click_button 'Registrar Paciente'
       expect(page).to have_content 'Nombre no puede estar en blanco'
 
-      fill_up_patient_form 'Kenia'
+      fill_form_up 'Kenia'
       click_button 'Registrar Paciente'
       expect(page).to have_content 'Kenia'
     end
@@ -48,7 +48,7 @@ RSpec.describe "Patient's flow", type: :system do
       expect(page).to have_content 'Buscar'
       click_on 'Registrar Paciente'
 
-      fill_up_patient_form 'Juan'
+      fill_form_up 'Juan'
       click_button 'Registrar Paciente'
 
       expect(page).to have_content 'Juan'
@@ -67,7 +67,7 @@ RSpec.describe "Patient's flow", type: :system do
       expect(page).to have_content 'Buscar'
 
       click_on 'Registrar Paciente'
-      fill_up_patient_form 'Lizzette'
+      fill_form_up 'Lizzette'
       click_button 'Registrar Paciente'
 
       visit patients_path
@@ -94,7 +94,7 @@ RSpec.describe "Patient's flow", type: :system do
     end
   end
 
-  def fill_up_patient_form(name)
+  def fill_form_up(name)
     fill_in 'patient_name', with: name
     fill_in 'patient_first_name', with: 'Chavez'
     fill_in 'patient_last_name', with: 'Castro'
