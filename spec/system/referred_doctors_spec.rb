@@ -17,10 +17,10 @@ RSpec.describe "Referred Doctor's flow", type: :system do
       fill_up_referred_doctor_form
       click_button 'Registrar Doctor'
 
-      @last_referred_doctor = ReferredDoctor.last
-      expect(page).to have_content @last_referred_doctor.full_name
-      expect(page).to have_content @last_referred_doctor.specialty
-      expect(page).to have_current_path referred_doctor_path @last_referred_doctor
+      @referred_doctor = ReferredDoctor.last
+      expect(page).to have_content @referred_doctor.full_name
+      expect(page).to have_content @referred_doctor.specialty
+      expect(page).to have_current_path referred_doctor_path @referred_doctor
     end
   end
 
