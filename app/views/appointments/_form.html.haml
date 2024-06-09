@@ -7,6 +7,7 @@
     .mb-4
       = f.label :patient, class: label_classes
       = f.combobox :patient_id, patients_for_select, default: params[:patient_id], data: { hw_combobox_fetch_information_value: true }
+      = combobox_error(f.object, :patient)
 
     = f.input :reason
 

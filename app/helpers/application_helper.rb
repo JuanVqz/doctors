@@ -15,6 +15,12 @@ module ApplicationHelper
       .map { |u| [u.to_s, u.id] }
   end
 
+  def combobox_error(object, field, type = :blank)
+    return unless object.errors.added?(field, type)
+
+    content_tag(:p, object.errors.full_messages_for(field).first, class: 'mt-2 text-sm text-red-600 dark:text-red-600')
+  end
+
   def referred_doctors_for_select
     @referred_doctors_for_select ||=
       current_hospital

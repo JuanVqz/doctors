@@ -7,10 +7,12 @@
     .mb-4
       = f.label :patient, class: label_classes
       = f.combobox :patient_id, patients_for_select, default: params[:patient_id]
+      = combobox_error(f.object, :patient)
 
     .mb-4
       = f.label :referred_doctor, class: label_classes
       = f.combobox :referred_doctor_id, referred_doctors_for_select
+      = combobox_error(f.object, :referred_doctor)
 
     = f.input :status, collection: statuses_for_select, prompt: true
     = f.input :starting, as: :date, html5: true
