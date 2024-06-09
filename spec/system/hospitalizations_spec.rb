@@ -67,21 +67,8 @@ RSpec.describe "Hospitalization's flow", type: :system do
     select 'Traslado a otra unidad', from: 'hospitalization_status'
     select referred_doctor.to_s, from: 'hospitalization_referred_doctor_id' if referred_doctor
 
-    # hospitalization_starting
-    # day
-    select '1', from: :hospitalization_starting_3i
-    # month
-    select 'enero', from: :hospitalization_starting_2i
-    # year
-    select '2021', from: :hospitalization_starting_1i
-
-    # hospitalization_ending
-    # day
-    select '5', from: :hospitalization_ending_3i
-    # month
-    select 'enero', from: :hospitalization_ending_2i
-    # year
-    select '2021', from: :hospitalization_ending_1i
+    fill_in 'hospitalization_starting', with: DateTime.current
+    fill_in 'hospitalization_ending', with: DateTime.current + 5.days
 
     fill_in 'hospitalization_days_of_stay', with: '5'
 

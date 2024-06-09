@@ -99,9 +99,7 @@ RSpec.describe "Patient's flow", type: :system do
     fill_in 'patient_first_name', with: 'Chavez'
     fill_in 'patient_last_name', with: 'Castro'
 
-    select '1', from: :patient_birthday_3i
-    select 'enero', from: :patient_birthday_2i
-    select '1990', from: :patient_birthday_1i
+    fill_in 'patient_birthday', with: DateTime.current
 
     fill_in 'patient_height', with: 180
     fill_in 'patient_weight', with: 100
