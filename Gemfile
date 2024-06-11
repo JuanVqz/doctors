@@ -11,6 +11,8 @@ gem 'haml-rails'
 gem 'hotwire_combobox'
 gem 'pagy'
 gem 'pg'
+gem 'prawn', require: false
+gem 'prawn-markup', require: false
 gem 'puma'
 gem 'rails', '~> 7.1'
 gem 'sentry-rails'
