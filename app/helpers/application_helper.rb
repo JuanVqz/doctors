@@ -81,10 +81,8 @@ module ApplicationHelper
   end
 
   def imc_for_human(object)
-    if object.height.to_f.zero? || object.weight.to_f.zero?
-      'N/A'
-    else
-      (object.weight / ((object.height / 100.0)**2)).round(2)
-    end
+    return if object.height.to_f.zero? || object.weight.to_f.zero?
+
+    "#{(object.weight / ((object.height / 100.0)**2)).round(2)} IMC"
   end
 end
