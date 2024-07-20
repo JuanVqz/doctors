@@ -1,14 +1,14 @@
-<div class="text-right" style="padding-top: 60px; padding-right: 130px">
-  <strong class="text-uppercase text-size-14">
+<div class="text-right" style="padding-top: 70px; padding-right: 130px">
+  <strong class="text-uppercase text-size-15">
     <%= @appointment.patient %>
     <%= age_months(@appointment.patient) %>
   </strong>
 
-  <div class="font-size-9">
+  <div class="text-size-15">
     <%= l @appointment.created_at, format: :normal %>
   </div>
 
-  <div class="font-size-9">
+  <div class="text-size-13">
     Receta No. <%= @appointment.id %>
   </div>
 </div>
