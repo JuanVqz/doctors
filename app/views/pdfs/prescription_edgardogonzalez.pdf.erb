@@ -1,20 +1,18 @@
-<div class="text-right" style="padding-top: 70px; padding-right: 130px">
-  <strong class="text-uppercase text-size-15">
+<div class="text-right" style="padding-top: 80px; padding-right: 130px; font-size: 18px;">
+  <strong class="text-uppercase">
     <%= @appointment.patient %>
     <%= age_months(@appointment.patient) %>
   </strong>
 
-  <div class="text-size-15">
-    <%= l @appointment.created_at, format: :normal %>
-  </div>
+  <div><%= l @appointment.created_at, format: :normal %></div>
 
-  <div class="text-size-13">
-    Receta No. <%= @appointment.id %>
-  </div>
+  <div>Receta No. <%= @appointment.id %></div>
 </div>
 
-<div style="padding-top:10px;">
+<div style="padding-top:10px; font-size: 18px;">
   <%= raw @appointment.prescription %>
-  <p>RECOMENDACIONES</p>
-  <%= raw @appointment.recommendations %>
+  <% if @recommendations.present? %>
+    <p>RECOMENDACIONES</p>
+    <%= raw @recommendations %>
+  <% end %>
 </div>

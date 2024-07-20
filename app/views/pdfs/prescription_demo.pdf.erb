@@ -1,24 +1,18 @@
-<div class="header text-right text-uppercase">
-  <strong><%= @appointment.patient %></strong>
+<div class="text-right" style="padding-top: 80px; padding-right: 130px; font-size: 18px;">
+  <strong class="text-uppercase">
+    <%= @appointment.patient %>
+    <%= age_months(@appointment.patient) %>
+  </strong>
 
-  <div>
-    <%= age @appointment.patient %>
-    <% if @appointment.height.present? %>
-      <%= @appointment.height %> Cm.
-    <% end %>
-    <% if @appointment.weight.present? %>
-      <%= @appointment.weight %> Kg.
-    <% end %>
-    <% if @appointment.imc.present? %>
-      <%= number_with_precision(@appointment.imc, precision: 2) %> IMC
-    <% end %>
-  </div>
+  <div><%= l @appointment.created_at, format: :normal %></div>
 
-  <div>
-    <%= l @appointment.created_at, format: :normal %>
-  </div>
+  <div>Receta No. <%= @appointment.id %></div>
 </div>
 
-<div style="padding-top:40px">
+<div style="padding-top:10px; font-size: 18px;">
   <%= raw @appointment.prescription %>
+  <% if @recommendations.present? %>
+    <p>RECOMENDACIONES</p>
+    <%= raw @recommendations %>
+  <% end %>
 </div>
