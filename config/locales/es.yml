@@ -315,6 +315,7 @@ es-MX:
         state: Estado
         street: Calle
       appointment:
+        number: Número de consulta %{number}
         blood_pressure: PA
         breathing_rate: FR
         cabinet_results: Resultados de gabinete

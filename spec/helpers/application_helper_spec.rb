@@ -47,19 +47,19 @@ RSpec.describe ApplicationHelper do
   end
 
   context '#imc_for_human' do
-    it 'returns 22.22' do
+    it 'returns 22.22 IMC' do
       object = double('object', height: 150, weight: 50)
-      expect(helper.imc_for_human(object)).to eq 22.22
+      expect(helper.imc_for_human(object)).to eq '22.22 IMC'
     end
 
-    it 'returns N/A' do
+    it 'returns nil' do
       object = double('object', height: nil, weight: nil)
-      expect(helper.imc_for_human(object)).to eq 'N/A'
+      expect(helper.imc_for_human(object)).to be_nil
     end
 
-    it 'returns N/A' do
+    it 'returns nil' do
       object = double('object', height: 0, weight: 0)
-      expect(helper.imc_for_human(object)).to eq 'N/A'
+      expect(helper.imc_for_human(object)).to be_nil
     end
   end
 end
