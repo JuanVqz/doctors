@@ -14,9 +14,7 @@ class AppointmentsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: prescription_name,
-               template: "pdfs/prescription_#{current_hospital.subdomain}",
-               layout: 'pdfs/prescription'
+        send_data pdf.content, **pdf.options
       end
     end
   end
@@ -60,8 +58,8 @@ class AppointmentsController < ApplicationController
 
   private
 
-  def prescription_name
-    "#{@appointment.patient.name}_#{@appointment.id}_#{@appointment.created_at.to_fs(:number)}".upcase
+  def pdf
+    @pdf ||= Pdf::Prescription.new(@appointment)
   end
 
   def set_appoinment

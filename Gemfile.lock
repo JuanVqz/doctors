@@ -188,7 +188,18 @@ GEM
     parser (3.3.4.0)
       ast (~> 2.4.1)
       racc
+    pdf-core (0.10.0)
     pg (1.5.6)
+    prawn (2.5.0)
+      matrix (~> 0.4)
+      pdf-core (~> 0.10.0)
+      ttfunk (~> 1.8)
+    prawn-markup (1.0.0)
+      nokogiri
+      prawn
+      prawn-table
+    prawn-table (0.2.2)
+      prawn (>= 1.3.0, < 3.0.0)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -311,6 +322,8 @@ GEM
     timeout (0.4.1)
     trix-rails (2.4.0)
       rails (> 4.1)
+    ttfunk (1.8.0)
+      bigdecimal (~> 3.1)
     turbo-rails (2.0.5)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -356,6 +369,8 @@ DEPENDENCIES
   overcommit
   pagy
   pg
+  prawn
+  prawn-markup
   puma
   rails (~> 7.1)
   rspec-rails

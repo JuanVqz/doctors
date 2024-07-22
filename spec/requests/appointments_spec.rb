@@ -25,6 +25,11 @@ RSpec.describe 'appointments', type: :request do
       get appointments_path appointment
       expect(response).to have_http_status(:ok)
     end
+
+    it 'appointments show pdf' do
+      get appointment_path(appointment, format: :pdf)
+      expect(response).to have_http_status(:ok)
+    end
   end
 
   describe 'GET /appointments/new' do
