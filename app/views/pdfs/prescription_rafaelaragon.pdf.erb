@@ -1,24 +1,29 @@
-<div class="header text-size-11 text-right">
+<div class="header text-right" style="font-size: 11px;">
   <strong class="text-uppercase"><%= @appointment.patient %></strong>
 
-  <div>
-    <%= age @appointment.patient %>
-    <% if @appointment.height.present? %>
-      <%= @appointment.height %> cm.
-    <% end %>
-    <% if @appointment.weight.present? %>
-      <%= @appointment.weight %> kg.
-    <% end %>
-    <% if @appointment.imc.present? %>
-      IMC <%= number_with_precision(@appointment.imc, precision: 2) %>
-    <% end %>
-  </div>
+  <div><%= age_months(@appointment.patient) %></div>
 
   <div>
-    <%= l @appointment.created_at, format: :normal %>
+    <%= height_for_human(@appointment) %>
+    <%= weight_for_human(@appointment) %>
+    <%= imc_for_human(@appointment) %>
   </div>
+
+  <div><%= l @appointment.created_at, format: :normal %></div>
+
+  <div><%= t("activerecord.attributes.appointment.number", number: @appointment.id) %></div>
 </div>
 
-<div class="text-size-11" style="padding-top:40px">
+<div style="padding-top: 40px; font-size: 11px;">
   <%= raw @appointment.prescription %>
+
+  <%- if @appointment.patient.allergies.present? -%>
+    <p><%= t("activerecord.attributes.user.allergies").upcase %></p>
+    <%= raw @appointment.patient.allergies %>
+  <%- end -%>
+
+  <%- if @appointment.recommendations.present? -%>
+    <p><%= t("activerecord.attributes.appointment.recommendations").upcase %></p>
+    <%= raw @appointment.recommendations %>
+  <%- end -%>
 </div>
