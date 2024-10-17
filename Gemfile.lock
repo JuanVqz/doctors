@@ -304,7 +304,7 @@ GEM
     timeout (0.4.1)
     trix-rails (2.4.0)
       rails (> 4.1)
-    turbo-rails (2.0.10)
+    turbo-rails (2.0.11)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.6)
@@ -330,7 +330,7 @@ GEM
     wkhtmltopdf-binary (0.12.6.6)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.18)
+    zeitwerk (2.7.0)
 
 PLATFORMS
   ruby
