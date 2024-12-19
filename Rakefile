@@ -5,4 +5,5 @@
 
 require_relative 'config/application'
 
+require 'rails_stats'
 Rails.application.load_tasks

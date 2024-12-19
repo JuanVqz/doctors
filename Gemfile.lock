@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/fastruby/rails_stats.git
+  revision: 76b1c41bd5f6f2777dd34e79b16e95c2b4247580
+  tag: v2.0.0
+  specs:
+    rails_stats (2.0.0)
+      bundler-stats (>= 2.1)
+      rake
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -82,6 +91,9 @@ GEM
     bootsnap (1.18.4)
       msgpack (~> 1.2)
     builder (3.3.0)
+    bundler-stats (2.4.0)
+      bundler (>= 1.9, < 3)
+      thor (>= 0.19.0, < 2.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -358,6 +370,7 @@ DEPENDENCIES
   pg
   puma
   rails (~> 7.2)
+  rails_stats!
   rspec-rails
   rubocop
   selenium-webdriver

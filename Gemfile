@@ -42,3 +42,5 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem 'rails_stats', github: 'fastruby/rails_stats', tag: 'v2.0.0'
