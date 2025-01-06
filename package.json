@@ -10,7 +10,7 @@
     "@hotwired/turbo": "^8.0.12",
     "@josefarias/hotwire_combobox": "^0.3.2",
     "@rails/request.js": "^0.0.11",
-    "trix": "^2.1.11"
+    "trix": "^2.1.12"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
