@@ -2,7 +2,8 @@
 
 class User < ApplicationRecord
   belongs_to :hospital
-  enum role: { patient: 0, doctor: 1, admin: 2 }
+
+  enum :role, %i[patient doctor admin], validate: true
 
   validates :role, :hospital, presence: true
 

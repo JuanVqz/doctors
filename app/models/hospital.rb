@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Hospital < ApplicationRecord
-  enum plan: { basic: 0, medium: 1 }
+  enum :plan, %i[basic medium], validate: true
 
   has_many :appointments, dependent: :destroy
   has_many :doctors, dependent: :destroy

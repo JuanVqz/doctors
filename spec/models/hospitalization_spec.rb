@@ -3,7 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe Hospitalization do
-  it { should define_enum_for :status }
+  it do
+    should define_enum_for(:status)
+      .with_values(['Alta médica', 'Alta voluntaria', 'Traslado a otra unidad'])
+  end
 
   it do
     expect(subject).to define_enum_for(:status)
