@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PatientReferral < ApplicationRecord
-  enum importance: { electivo: 0, urgente: 1 }
+  enum :importance, %i[electivo urgente], validate: true
 
   belongs_to :patient
   belongs_to :doctor

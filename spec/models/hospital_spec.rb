@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Hospital do
+  it { should define_enum_for(:plan).with_values(%i[basic medium]) }
+
   it { should have_many(:appointments).dependent(:destroy) }
   it { should have_many(:doctors).dependent(:destroy) }
   it { should have_many(:patient_referrals).dependent(:destroy) }

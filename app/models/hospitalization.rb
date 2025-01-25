@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Hospitalization < ApplicationRecord
-  enum status: { "Alta m\u00E9dica" => 0, 'Alta voluntaria' => 1, 'Traslado a otra unidad' => 2 }
+  enum :status, ["Alta m\u00E9dica", 'Alta voluntaria', 'Traslado a otra unidad']
 
   belongs_to :hospital
   belongs_to :doctor

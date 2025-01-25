@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe PatientReferral do
-  it { should define_enum_for(:importance) }
+  it { should define_enum_for(:importance).with_values(%i[electivo urgente]) }
 
   it do
     expect(subject).to define_enum_for(:importance).with_values(%i[electivo urgente])
