@@ -48,7 +48,7 @@ SimpleForm.setup do |config|
   #   b.wrapper :legend_tag, tag: 'legend', class: 'col-form-label pt-0' do |ba|
   #     ba.use :label_text, class: 'ml-3 block text-sm font-medium text-gray-700'
   #   end
-  #   b.use :input, class: 'focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 rounded mr-2',
+  #   b.use :input, class: 'focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 rounded-sm mr-2',
   #                 error_class: 'is-invalid border-red-400',
   #                 valid_class: 'is-valid'
   #   b.use :full_error, wrap_with: {tag: :p, class: "mt-2 text-sm text-red-600 dark:text-red-600"}
@@ -66,7 +66,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.use :label, class: 'pt-0 mb-2'
     b.wrapper :grid_wrapper, tag: :div do |ba|
-      ba.use :input, class: 'focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 rounded mr-2',
+      ba.use :input, class: 'focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 rounded-sm mr-2',
                      error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { tag: :p, class: 'mt-2 text-sm text-red-600 dark:text-red-600' }
       ba.use :hint, wrap_with: { tag: :small, class: 'text-gray-400' }
@@ -95,8 +95,8 @@ SimpleForm.setup do |config|
     b.use :html5
     b.optional :readonly
     b.wrapper :form_check_wrapper, tag: 'div' do |bb|
-      bb.use :input, class: 'focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 rounded mr-2',
-                     error_class: '!border-red-500',
+      bb.use :input, class: 'focus:ring-indigo-500 h-4 w-4 text-sky-600 border-gray-300 rounded-sm mr-2',
+                     error_class: 'border-red-500!',
                      valid_class: 'is-valid'
       bb.use :label, class: 'mb-2'
     end
@@ -113,7 +113,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.use :label, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white'
     b.use :input,
-          class: 'block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400',
+          class: 'block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-hidden dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400',
           error_class: 'bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500',
           valid_class: 'bg-green-50 border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-green-500'
     b.use :full_error, wrap_with: { tag: :p, class: 'mt-2 text-sm text-red-600 dark:text-red-600' }
@@ -136,7 +136,7 @@ SimpleForm.setup do |config|
   config.label_text = ->(label, required, _explicit_label) { "#{label} #{required}" }
 
   # CSS class for buttons
-  config.button_class = 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800'
+  config.button_class = 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-hidden dark:focus:ring-blue-800'
 
   # Set this to div to make the checkbox and radio properly work
   # otherwise simple_form adds a label tag instead of a div around
@@ -144,7 +144,7 @@ SimpleForm.setup do |config|
   config.item_wrapper_tag = :div
 
   # CSS class to add for error notification helper.
-  config.error_notification_class = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded'
+  config.error_notification_class = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-sm'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.

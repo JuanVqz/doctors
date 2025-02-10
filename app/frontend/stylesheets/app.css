@@ -1,13 +1,31 @@
-@import 'trix/dist/trix.css';
-@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import 'trix/dist/trix.css' layer(base);
+@import '@fortawesome/fontawesome-free/css/all.min.css' layer(base);
 
-@import 'pagination.css';
-@import 'tooltip.css';
-@import 'trix.css';
+@import './pagination.css' layer(base);
+@import './tooltip.css' layer(base);
+@import './trix.css' layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 .hw-combobox__input {
   @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
