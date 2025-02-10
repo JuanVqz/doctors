@@ -1,5 +1,4 @@
 @import 'trix/dist/trix.css' layer(base);
-@import '@fortawesome/fontawesome-free/css/all.min.css' layer(base);
 
 @import './pagination.css' layer(base);
 @import './tooltip.css' layer(base);
