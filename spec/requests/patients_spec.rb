@@ -11,7 +11,7 @@ RSpec.describe 'patients', type: :request do
 
   before do
     allow_any_instance_of(ApplicationController).to receive(:current_hospital).and_return hospital
-    sign_in doctor
+    login_as doctor
   end
 
   describe 'GET /patients' do
