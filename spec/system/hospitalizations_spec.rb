@@ -76,6 +76,17 @@ RSpec.describe "Hospitalization's flow", type: :system do
       expect(page).to have_content 'INFORMACIÓN'
       expect(page).to have_content Hospitalization.last.starting
     end
+
+    scenario 'calculates days of stay correctly' do
+      create_hospital_plan_medium
+      sign_in_admin_doctor @hospital
+      visit new_hospitalization_path
+
+      fill_in 'hospitalization_starting', with: '2023-01-01'
+      fill_in 'hospitalization_ending', with: '2023-01-10'
+
+      expect(find('input[name="hospitalization[days_of_stay]"]').value).to eq '9'
+    end
   end
 
   def fill_form_up
