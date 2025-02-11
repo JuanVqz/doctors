@@ -17,4 +17,7 @@ import SidebarController from './sidebar_controller'
 application.register('sidebar', SidebarController)
 
 import HwComboboxController from './hw_combobox_controller'
-application.register("hw-combobox", HwComboboxController)
+application.register('hw-combobox', HwComboboxController)
+
+import DaysCalculatorController from './days_calculator_controller'
+application.register('days-calculator', DaysCalculatorController)

@@ -3,7 +3,7 @@
 = simple_form_for(hospitalization) do |f|
   = render 'shared/title', title: title
 
-  .grid.gap-2.grid-cols-1.md:grid-cols-3
+  .grid.gap-2.grid-cols-1.md:grid-cols-3{"data-controller": "days-calculator"}
     .mb-4
       = f.label :patient, class: label_classes
       = f.combobox :patient_id, patients_for_select, default: params[:patient_id]
@@ -15,9 +15,9 @@
       = combobox_error(f.object, :referred_doctor)
 
     = f.input :status, collection: statuses_for_select, prompt: true
-    = f.input :starting, as: :date, html5: true
-    = f.input :ending, as: :date, html5: true
-    = f.input :days_of_stay
+    = f.input :starting, as: :date, html5: true, input_html: { "data-days-calculator-target": "starting", "data-action": "change->days-calculator#calculate" }
+    = f.input :ending, as: :date, html5: true, input_html: { "data-days-calculator-target": "ending", "data-action": "change->days-calculator#calculate" }
+    = f.input :days_of_stay, input_html: { "data-days-calculator-target": "days" }
 
   = f.input :input_diagnosis, as: :trix_editor
   = f.input :output_diagnosis, as: :trix_editor
