@@ -1,4 +1,4 @@
-<div class="text-right" style="padding-top: 100px; padding-right: 130px; font-size: 18px;">
+<div class="text-right" style="padding-top: 120px; padding-right: 130px; font-size: 20px;">
   <strong class="text-uppercase"><%= @appointment.patient %></strong>
 
   <div><%= age_months(@appointment.patient) %></div>
@@ -14,7 +14,7 @@
   <div><%= t("activerecord.attributes.appointment.number", number: @appointment.id) %></div>
 </div>
 
-<div style="padding-top: 10px; font-size: 18px;">
+<div style="padding-top: 10px; font-size: 20px;">
   <%= raw @appointment.prescription %>
 
   <%- if @appointment.patient.allergies.present? -%>
