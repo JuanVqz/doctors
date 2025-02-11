@@ -1,4 +1,4 @@
-import HwComboboxController from "@josefarias/hotwire_combobox"
+import HwComboboxController from '@josefarias/hotwire_combobox'
 import { get } from '@rails/request.js'
 
 export default class extends HwComboboxController {
